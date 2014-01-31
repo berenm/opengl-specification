@@ -11,8 +11,8 @@ This document contains unpublished information of
 Silicon Graphics, Inc.
 
 This document is protected by copyright, and contains information proprietary
-to Silicon Graphics, Inc. Any copying, adaptation, distribution, public perfor-
-mance, or public display of this document without the express written consent
+to Silicon Graphics, Inc. Any copying, adaptation, distribution, public performance,
+or public display of this document without the express written consent
 of Silicon Graphics, Inc. is strictly prohibited. The receipt or possession of this
 document does not convey any rights to reproduce, disclose, or distribute its
 contents, or to manufacture, use, or sell anything that it may describe, in whole
@@ -23,8 +23,8 @@ U.S. Government Restricted Rights Legend
 Use, duplication, or disclosure by the Government is subject to restrictions
 set forth in FAR 52.227.19(c)(2) or subparagraph (c)(1)(ii) of the Rights in
 Technical Data and Computer Software clause at DFARS 252.227-7013 and/or
-in similar or successor clauses in the FAR or the DOD or NASA FAR Sup-
-plement. Unpublished rights reserved under the copyright laws of the United
+in similar or successor clauses in the FAR or the DOD or NASA FAR Supplement.
+Unpublished rights reserved under the copyright laws of the United
 States. Contractor/manufacturer is Silicon Graphics, Inc., 2011 N. Shoreline
 Blvd., Mountain View, CA 94039-7311.
 
@@ -52,16 +52,16 @@ document assume some acquaintance with both the OpenGL and X.
 
 In the X Window System, OpenGL rendering is made available as
 an extension to X in the formal X sense: connection and authentication
-are accomplished with the normal X mechanisms. As with other X ex-
-tensions, there is a de ned network protocol for the OpenGL rendering
+are accomplished with the normal X mechanisms. As with other X extensions,
+there is a de ned network protocol for the OpenGL rendering
 commands encapsulated within the X byte stream.
 
 Since performance is critical in 3D rendering, there is a way for
 OpenGL rendering to bypass the data encoding step, the data copying,
 and interpretation of that data by the X server. This direct rendering is
 possible only when a process has direct access to the graphics pipeline.
-Allowing for parallel rendering has a ected the design of the GLX in-
-terface. This has resulted in an added burden on the client to explicitly
+Allowing for parallel rendering has a ected the design of the GLX interface.
+This has resulted in an added burden on the client to explicitly
 prevent parallel execution when that is inappropriate.
 
 X and the OpenGL have di erent conventions for naming entry points
@@ -79,13 +79,13 @@ purposes of GLX is to provide a means to create an OpenGL context
 and associate it with a drawing surface.
 
 In X, a rendering surface is called a Drawable. Windows, one type
-of Drawable, are associated with a Visual.[1] The X protocol allows
+of Drawable, are associated with a Visual. [*]_ The X protocol allows
 for a single VisualID to be instantiated at multiple depths. The GLX
 bindings allow only one depth for an OpenGL renderer for any given
 VisualID. In GLX the definition of Visual has been extended to include
-the types, quantities and sizes of the ancillary buffers (depth, accumu-
-lation, auxiliary, and stencil). Double buffering capability is also xed
-by the Visual.[2] The ancillary buffers have no meaning within the core
+the types, quantities and sizes of the ancillary buffers (depth, accumulation,
+auxiliary, and stencil). Double buffering capability is also xed
+by the Visual. [*]_ The ancillary buffers have no meaning within the core
 X environment. The set of extended Visuals is xed at server startup
 time. One result is that a server can export multiple Visuals that di er
 only in the extended attributes.
@@ -98,28 +98,28 @@ the Ancillary buffers associated with the Pixmap. The Pixmap is used
 as the front-left color buffer. A GLXDrawable is the union fWindow,
 GLXPixmapg.
 
-Ancillary buffers are associated with a GLXDrawable, not with a ren-
-dering context. If several OpenGL renderers are all writing to the same
-window, they will share those buffers. Rendering operations to one win-
-dow never a ect the unobscured pixels of another window, or of the
+Ancillary buffers are associated with a GLXDrawable, not with a rendering
+context. If several OpenGL renderers are all writing to the same
+window, they will share those buffers. Rendering operations to one window
+never a ect the unobscured pixels of another window, or of the
 corresponding pixels of ancillary buffers of that window. If an Expose
 event is received by the client, the values in the ancillary buffers and in
 the back buffers for regions corresponding to the exposed region become
 unde ned.
 
 A rendering context can be used with multiple GLXDrawables as long
-as those Drawables are similar. Similar means that the rendering con-
-texts and GLXDrawables are created with the same XVisualInfo.
+as those Drawables are similar. Similar means that the rendering contexts
+and GLXDrawables are created with the same XVisualInfo.
 
-An application can use any rendering context (subject to the re-
-strictions discussed in the section on address spaces) to render into any
+An application can use any rendering context (subject to the restrictions
+discussed in the section on address spaces) to render into any
 similar GLXDrawable. An implication is that multiple applications can
 render into the same window, each using a di erent rendering context.
 
-[1] The association is with a fVisual, screen, depthg triple. An XVisualInfo is used
+.. [*] The association is with a fVisual, screen, depthg triple. An XVisualInfo is used
 by GLX functions since it can be interpreted unambiguosly.
 
-[2] Any rendering system is free to use the ancillary buffers as long as it uses them
+.. [*] Any rendering system is free to use the ancillary buffers as long as it uses them
 in a manner consistent with the use by the OpenGL.
 
 2.2 Using Rendering Contexts
@@ -135,8 +135,8 @@ addition, a rendering context can be current for only one thread at one
 time.
 
 Issuing OpenGL commands may cause the X buffer to be ushed. In
-particular, calling glFlush() will ush both the X and OpenGL render-
-ing streams.
+particular, calling glFlush() will ush both the X and OpenGL rendering
+streams.
 
 Some state is shared between the OpenGL and X. The pixel values
 in the X frame buffer are shared. The X double buffer extension (DBE)
@@ -173,8 +173,8 @@ performance penalty in doing so.
 
 Figure 1. Direct Rendering Block Diagram.
 
-In order to use direct rendering, a client must create a direct render-
-ing context. Both the client context state and the server context state of
+In order to use direct rendering, a client must create a direct rendering
+context. Both the client context state and the server context state of
 a direct rendering context exist in the client's address space; this state
 cannot be shared by a client in another process. With indirect rendering
 contexts, the client context state is kept in the client's address space and
@@ -185,22 +185,22 @@ associated XID and may potentially be used by another client process.
 2.4 OpenGL Display Lists
 --------------------------------------------------------
 
-Most OpenGL state is small and easily retrieved using the glGet* com-
-mands. This is not true of OpenGL display lists, which are used, for
+Most OpenGL state is small and easily retrieved using the glGet* commands.
+This is not true of OpenGL display lists, which are used, for
 example, to encapsulate a model of some physical object. First, there is
-no mechanism to obtain the contents of a display list from the render-
-ing context. Second, display lists may be large and numerous. It may
+no mechanism to obtain the contents of a display list from the rendering
+context. Second, display lists may be large and numerous. It may
 be desirable for multiple rendering contexts to share display lists rather
 than replicating that information in each context.
 
 GLX provides for limited sharing of display lists; the lists can be
 shared only if the server state for the contexts share a single address
-space. Using this mechanism, a single set of lists can be used, for in-
-stance, by a context that supports color index rendering and a context
+space. Using this mechanism, a single set of lists can be used, for instance,
+by a context that supports color index rendering and a context
 that supports RGBA rendering.
 
-A group of shared display lists exists until the last referencing ren-
-dering context is destroyed. All rendering contexts have equal access to
+A group of shared display lists exists until the last referencing rendering
+context is destroyed. All rendering contexts have equal access to
 using lists or de ning new lists. Implementations sharing contexts must
 handle the case where one rendering context is using a display list when
 another rendering context destroys that list.
@@ -222,8 +222,8 @@ it.
 
 OpenGL texture state can be encapsulated in a named texture object.
 A texture object is created by binding an unused name to one of the
-texture targets (TEXTURE 1D or TEXTURE 2D) of a rendering con-
-text. When a texture object is bound, OpenGL operations on the target
+texture targets (TEXTURE 1D or TEXTURE 2D) of a rendering context.
+When a texture object is bound, OpenGL operations on the target
 to which it is bound a ect the bound texture object, and queries of the
 target to which it is bound return state from the bound texture object.
 
@@ -278,25 +278,25 @@ routines may not share a connection (and hence a rendering context) with
 the main thread. An application may be written as a set of co-operating
 processes.
 
-X has atomicity (between clients) and sequentiality (within a sin-
-gle client) requirements that limit the amount of parallelism achievable
-when interpreting the command streams. GLX relaxes these require-
-ments. Sequentiality is still guaranteed within a command stream, but
+X has atomicity (between clients) and sequentiality (within a single
+client) requirements that limit the amount of parallelism achievable
+when interpreting the command streams. GLX relaxes these requirements.
+Sequentiality is still guaranteed within a command stream, but
 not between the X and the OpenGL command streams. It is possible, for
 example, that an X command issued by a single threaded client after an
 OpenGL command might be executed before that OpenGL command.
 
 The X specification requires that commands are atomic:
 
-  If a server is implemented with internal concurrency, the over-
-  all effect must be as if individual requests are executed to
+  If a server is implemented with internal concurrency, the overall
+  effect must be as if individual requests are executed to
   completion in some serial order, and requests from a given
   connection must be executed in delivery order (that is, the
   total execution order is a shuffle of the individual streams).
 
 OpenGL commands are not guaranteed to be atomic. Some OpenGL
-rendering commands might otherwise impair interactive use of the win-
-dowing system by the user. For instance calling a deeply nested display
+rendering commands might otherwise impair interactive use of the windowing
+system by the user. For instance calling a deeply nested display
 list or rendering a large texture mapped polygon on a system with no
 graphics hardware could prevent a user from popping up a menu soon
 enough to be usable.
@@ -347,12 +347,12 @@ GLXBadDrawable
 GLXBadPixmap The Pixmap argument does not name a Pixmap that is
   appropriate for OpenGL rendering.
 
-GLXUnsupportedPrivateRequest May be returned in response to ei-
-  ther a glXVendorPrivate request or a glXVendorPrivateWithReply
+GLXUnsupportedPrivateRequest May be returned in response to either
+  a glXVendorPrivate request or a glXVendorPrivateWithReply
   request.
 
-The following error codes may be generated by a faulty GLX imple-
-mentation, but would not normally be visible to clients:
+The following error codes may be generated by a faulty GLX implementation,
+but would not normally be visible to clients:
 
 GLXBadContextTag
   A rendering request    contains an invalid context tag.
@@ -368,8 +368,8 @@ GLXBadLargeRequest
 3.2 Functions
 --------------------------------------------------------
 
-GLX functions should not be called between glBegin and glEnd oper-
-ations. If a GLX function is called within a glBegin/glEnd pair, then
+GLX functions should not be called between glBegin and glEnd operations.
+If a GLX function is called within a glBegin/glEnd pair, then
 the result is unde ned; however, no error is reported.
 
 3.2.1 Initialization
@@ -379,8 +379,7 @@ To ascertain if the GLX extension is de ned for an X server, use
 
 .. code:: cpp
 
-     Bool   glXQueryExtension(          Display    *dpy,   int   *er-
-         ror base, int *event base   ) ;
+  Bool glXQueryExtension(Display *dpy, int *error base, int *event base);
 
 dpy specifies the connection to the X server. False is returned if the
 extension is not present. error base is used to return the value of the
@@ -394,12 +393,11 @@ The GLX definition exists in multiple versions. Use
 
 .. code:: cpp
 
-     Bool   glXQueryVersion(      Display *dpy, int *major, int
-         *minor )   ;
+  Bool glXQueryVersion(Display *dpy, int *major, int *minor);
 
 to discover which version of GLX is available. Upon success, major and
-minor are filled in with the major and minor versions of the extension im-
-plementation. If the client and server both have the same major version
+minor are filled in with the major and minor versions of the extension implementation.
+If the client and server both have the same major version
 number then they are compatible and the minor version that is returned
 is the minimum of the two minor version numbers.
 
@@ -411,8 +409,8 @@ If it fails, major and minor are not updated.
 3.2.2 Configuration Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The constants shown in Table 1 are passed to glXGetConfig and glX-
-ChooseVisual to specify which attributes are being queried.
+The constants shown in Table 1 are passed to glXGetConfig and glXChooseVisual
+to specify which attributes are being queried.
 
 +----------------------+---------+-----------------------------------------------+
 |      Attribute       |   Type  |                     Notes                     |
@@ -468,8 +466,7 @@ use
 
 .. code:: cpp
 
-      int glXGetConfig( Display *dpy, XVisualInfo* *vi-
-          sual, int attribute, int *value ) ;
+  int glXGetConfig(Display *dpy, XVisualInfo* *visual, int attribute, int *value);
 
 glXGetConfig returns through value the value of the attribute of
 visual.
@@ -561,8 +558,7 @@ specified attributes.
 
 .. code:: cpp
 
-     XVisualInfo*     glXChooseVisual(          Display   *dpy,   int
-        screen, int   *attrib list )   ;
+  XVisualInfo* glXChooseVisual(Display *dpy, int screen, int *attrib list);
 
 glXChooseVisual returns a pointer to an XVisualInfo structure
 describing the visual that best matches the specified attributes. If no
@@ -574,8 +570,8 @@ match the specified value exactly; others, such as, GLX BUFFER SIZE and
 GLX RED SIZE must meet or exceed the specified minimum values. In
 the case of GLX BUFFER SIZE, preference is given based on how close the
 visual's attribute value is to the specified value. (Attributes that are
-matched in this manner have minimum, smallest listed as their selec-
-tion criteria in Table 2.) In the case of GLX RED SIZE, if the specified
+matched in this manner have minimum, smallest listed as their selection
+criteria in Table 2.) In the case of GLX RED SIZE, if the specified
 value is non-zero, then preference is given to visuals with the largest
 value for this attribute; otherwise preference is given to visuals with
 the smallest value. (Attributes that are matched in this manner have
@@ -587,15 +583,14 @@ visual will be chosen in preference to a DirectColor visual.
 
 If GLX RGBA is not in attrib list then the returned visual will be
 PseudoColor or StaticColor. If all other attributes are equivalent then
-a PseudoColor visual will be chosen in preference to a StaticColor vi-
-sual.
+a PseudoColor visual will be chosen in preference to a StaticColor visual.
 
 If an attribute is not specified in attrib list, then the default value is
 used. See Table 2 for a list of defaults.
 
-Default specifications are superseded by the attributes included in at-
-trib list. Integer attributes are immediately followed by the correspond-
-ing desired value. Boolean attributes appearing in attrib list have an
+Default specifications are superseded by the attributes included in attrib
+list. Integer attributes are immediately followed by the corresponding
+desired value. Boolean attributes appearing in attrib list have an
 implicit True value; such attributes are never followed by an explicit
 True or False value. The list is terminated with None.
 
@@ -611,8 +606,7 @@ depth specified by the desired Visual, then call
 
 .. code:: cpp
 
-      GLXPixmap glXCreateGLXPixmap(              Display *dpy,
-         XVisualInfo* visual, Pixmap pixmap ) ;
+  GLXPixmap glXCreateGLXPixmap(Display *dpy, XVisualInfo* visual, Pixmap pixmap);
 
 glXCreateGLXPixmap creates an o screen rendering area and
 returns its XID. Any GLX rendering context created with respect to
@@ -640,8 +634,7 @@ A GLXPixmap is destroyed by calling
 
 .. code:: cpp
 
-     void     glXDestroyGLXPixmap(                Display     *dpy,
-        GLXPixmap    pixmap )   ;
+  void glXDestroyGLXPixmap(Display *dpy, GLXPixmap pixmap);
 
 This request deletes the association between the resource ID pixmap
 and the GLX pixmap. The storage will be freed when it is not current
@@ -655,11 +648,9 @@ generated.
 
 To create an OpenGL rendering context call
 
-.. code::cpp
+.. code:: cpp
 
-     GLXContext       glXCreateContext(     Display     *dpy,
-        XVisualInfo* visual, GLXContext share list, Bool direct
-        ) ;
+  GLXContext glXCreateContext(Display *dpy, XVisualInfo* visual, GLXContext share list, Bool direct);
 
 glXCreateContext returns NULL if it fails. If glXCreateContext
 succeeds, it initializes the rendering context to the default OpenGL state
@@ -677,14 +668,14 @@ implementation supports direct rendering and the connection is to an
 X server that is local. If direct is False, then a rendering context that
 renders through the X server is created.
 
-Direct rendering contexts may be a scarce resource in some imple-
-mentations. If direct is true, and if a direct rendering context cannot
+Direct rendering contexts may be a scarce resource in some implementations.
+If direct is true, and if a direct rendering context cannot
 be created, then glXCreateContext will attempt to create an indirect
 context instead.
 
-glXCreateContext can generate the following GLX extension er-
-rors: GLXBadContext if share list is neither zero nor a valid GLX render-
-ing context; BadValue if visual is not a valid X Visual or if GLX does not
+glXCreateContext can generate the following GLX extension errors:
+GLXBadContext if share list is neither zero nor a valid GLX rendering
+context; BadValue if visual is not a valid X Visual or if GLX does not
 support it; BadMatch if share list de nes an address space that cannot
 be shared with the newly created context or if share list was created on a
 di erent screen than the one referenced by visual; BadAlloc if the server
@@ -692,9 +683,9 @@ does not have enough resources to allocate the new context.
 
 To determine if an OpenGL rendering context is direct call
 
-.. code::cpp
+.. code:: cpp
 
-       Bool glXIsDirect( Display *dpy, GLXContext ctx ) ;
+  Bool glXIsDirect(Display *dpy, GLXContext ctx);
 
 glXIsDirect returns True if ctx is a direct rendering context, False
 otherwise. If ctx is not a valid GLX rendering context, a GLXBadContext
@@ -704,8 +695,7 @@ An OpenGL rendering context is destroyed by calling
 
 .. code:: cpp
 
-       void glXDestroyContext( Display *dpy, GLXContext
-           ctx ) ;
+  void glXDestroyContext(Display *dpy, GLXContext ctx);
 
 If ctx is still current to any thread, ctx is not destroyed until it is no
 longer current. In any event, the associated XID will be destroyed and
@@ -716,16 +706,15 @@ not a valid rendering context.
 
 To copy OpenGL rendering state from one context to another, use
 
-.. code::cpp
+.. code:: cpp
 
-       void glXCopyContext( Display *dpy, GLXContext
-           source, GLXContext dest, unsigned long mask ) ;
+  void glXCopyContext(Display *dpy, GLXContext source, GLXContext dest, unsigned long mask);
 
 glXCopyContext copies selected groups of state variables from source
 to dest. mask indicates which groups of state variables are to be copied;
 it contains the bitwise OR of the symbolic names for the attribute
-groups. The symbolic names are the same as those used by glPushAt-
-trib, described in the OpenGL Speci cation. Also, the order in which
+groups. The symbolic names are the same as those used by glPushAttrib,
+described in the OpenGL Speci cation. Also, the order in which
 the attributes are copied to dest as a result of the glXCopyContext
 operation is the same as the order in which they are popped o of
 the stack when glPopAttrib is called. The single symbolic constant
@@ -747,26 +736,25 @@ error is generated.
 glXCopyContext performs an implicit glFlush() if source is the
 current context for the calling thread.
 
-Only one rendering context may be in use, or current, for a par-
-ticular thread at a given time. The minimum number of current ren-
-dering contexts that must be supported by a GLX implementation is
-one. (Supporting a larger number of current rendering contexts is essen-
-tial for general-purpose systems, but may not be necessary for turnkey
+Only one rendering context may be in use, or current, for a particular
+thread at a given time. The minimum number of current rendering
+contexts that must be supported by a GLX implementation is
+one. (Supporting a larger number of current rendering contexts is essential
+for general-purpose systems, but may not be necessary for turnkey
 applications.)
 
 To make a context current, call
 
-.. code::cpp
+.. code:: cpp
 
-       Bool glXMakeCurrent( Display *dpy, GLXDrawable
-          drawable, GLXContext ctx ) ;
+  Bool glXMakeCurrent(Display *dpy, GLXDrawable drawable, GLXContext ctx);
 
 If the calling thread already has a current rendering context, then
 that context is ushed and marked as no longer current. ctx is made the
 current context for the calling thread.
 
-If the drawable and ctx are not similar, a BadMatch error is gener-
-ated. If ctx is current to some other thread, then glXMakeCurrent
+If the drawable and ctx are not similar, a BadMatch error is generated.
+If ctx is current to some other thread, then glXMakeCurrent
 will generate a BadAccess error. GLXBadContextState is generated
 if there is a current rendering context and its render mode is either
 GL FEEDBACK or GL SELECT. GLXBadContextState will also
@@ -780,8 +768,8 @@ that the ancillary buffers for drawable need not be allocated until they
 are needed. A BadAlloc error will be generated if the server does not
 have enough resources to allocate the buffers.
 
-If drawable is destroyed after glXMakeCurrent is called then sub-
-sequent rendering commands will behave as if drawable is bound to the
+If drawable is destroyed after glXMakeCurrent is called then subsequent
+rendering commands will behave as if drawable is bound to the
 NULL clip. The commands will be processed and the context state will
 be updated, but no output will appear on the display.
 
@@ -790,24 +778,24 @@ for ctx and None for drawable. If ctx is NULL and drawable is not None,
 or if drawable is None and ctx is not NULL, then a BadMatch error will be
 generated.
 
-The rst time ctx is made current to a GLXDrawable, its initial view-
-port is set. That viewport must be reset by the client when ctx is sub-
-sequently made current.
+The rst time ctx is made current to a GLXDrawable, its initial viewport
+is set. That viewport must be reset by the client when ctx is subsequently
+made current.
 
 Note that when multiple threads are using their current contexts
 to render to the same drawable, OpenGL does not guarantee atomicity
 of fragment update operations. In particular, programmers may not
 assume that depth-buffering will automatically work correctly; there is
 a race condition between threads that read and update the depth buffer.
-Clients are responsible for avoiding this condition. They may use vendor-
-specific extensions or they may arrange for separate threads to draw in
+Clients are responsible for avoiding this condition. They may use vendorspecific
+extensions or they may arrange for separate threads to draw in
 disjoint regions of the framebuffer, for example.
 
 glXGetCurrentContext returns the current context.
 
 .. code:: cpp
 
-         GLXContext    glXGetCurrentContext( void ) ;
+  GLXContext glXGetCurrentContext(void);
 
 If there is no current context, NULL is returned.
 
@@ -815,7 +803,7 @@ glXGetCurrentDrawable returns the XID of the current drawable.
 
 .. code:: cpp
 
-          GLXDrawable glXGetCurrentDrawable( void ) ;
+  GLXDrawable glXGetCurrentDrawable(void);
 
 If there is no current drawable, None is returned.
 
@@ -824,7 +812,7 @@ call
 
 .. code:: cpp
 
-         Display*   glXGetCurrentDisplay(        void ) ;
+  Display* glXGetCurrentDisplay(void);
 
 If there is no current context, NULL is returned. This routine is
 available only if the GLX version is 1.2 or later.
@@ -841,7 +829,7 @@ rendering is done, call
 
 .. code:: cpp
 
-      void   glXWaitGL(     void ) ;
+  void glXWaitGL(void);
 
 OpenGL calls made prior to glXWaitGL are guaranteed to be executed
 before X rendering calls made after glXWaitGL. While the same result
@@ -858,10 +846,10 @@ outstanding X requests are completed, call
 
 .. code:: cpp
 
-      void   glXWaitX(    void ) ;
+  void glXWaitX(void);
 
-X rendering calls made prior to glXWaitX are guaranteed to be exe-
-cuted before OpenGL rendering calls made after glXWaitX. While the
+X rendering calls made prior to glXWaitX are guaranteed to be executed
+before OpenGL rendering calls made after glXWaitX. While the
 same result can be achieved using XSync, glXWaitX does not require
 a round trip to the server, and may therefore be more e cient.
 
@@ -869,7 +857,7 @@ glXWaitX is ignored if there is no current rendering context. If the
 drawable associated with the calling thread's current context is a window
 that is no longer valid, a GLXBadCurrentWindow error is generated.
 
-3.2.6 Double Bu ering
+3.2.6 Double Buffering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For drawables that are double buffered, the contents of the back buffer
@@ -878,8 +866,7 @@ buffer) by calling
 
 .. code:: cpp
 
-     void glXSwapBuffers ( Display *dpy, GLXDrawable
-        drawable ) ;
+  void glXSwapBuffers(Display *dpy, GLXDrawable drawable);
 
 The contents of the back buffer then become unde ned. This operation
 is a no-op if drawable was created with a non-double-buffered visual, or
@@ -896,15 +883,15 @@ swap and the rendering, using some means outside the scope of GLX,
 to insure that each new frame is completely rendered before it is made
 visible.
 
-If dpy and drawable are the display and drawable for the call-
-ing thread's current context, glXSwapBuffers performs an implicit
+If dpy and drawable are the display and drawable for the calling
+thread's current context, glXSwapBuffers performs an implicit
 glFlush(). Subsequent OpenGL commands can be issued immediately,
-but will not be executed until the buffer swapping has completed, typi-
-cally during vertical retrace of the display monitor.
+but will not be executed until the buffer swapping has completed, typically
+during vertical retrace of the display monitor.
 
 If drawable is not a valid GLX drawable, glXSwapBuffers generates
-a GLXBadDrawable error. If dpy and drawable are the display and draw-
-able associated with the calling thread's current context, and if drawable
+a GLXBadDrawable error. If dpy and drawable are the display and drawable
+associated with the calling thread's current context, and if drawable
 is a window that is no longer valid, a GLXBadCurrentWindow error is
 generated.
 
@@ -915,8 +902,7 @@ A shortcut for using X fonts is provided by the command
 
 .. code:: cpp
 
-      void glXUseXFont( Font font, int rst, int count, int
-          list base ) ;
+  void glXUseXFont(Font font, int rst, int count, int list base);
 
 count display lists are de ned starting at list base, each list consisting
 of a single call on glBitmap. The definition of bitmap list base + i is
@@ -947,32 +933,29 @@ later.
 
 .. code:: cpp
 
-     const char*      glXQueryExtensionsString(           Display
-        *dpy, int   screen )   ;
+  const char* glXQueryExtensionsString(Display *dpy, int screen);
 
-glXQueryExtensionsString returns a pointer to a string describ-
-ing which GLX extensions are supported on the connection. The string is
+glXQueryExtensionsString returns a pointer to a string describing
+which GLX extensions are supported on the connection. The string is
 zero-terminated and contains a space-seperated list of extension names.
 The extension names themselves do not contain spaces. If there are no
 extensions to GLX, then the empty string is returned.
 
 .. code:: cpp
 
-     const char*    glXGetClientString(        Display   *dpy,   int
-        name );
+  const char* glXGetClientString(Display *dpy, int name);
 
 glXGetClientString returns a pointer to a static, zero-terminated
 string describing some aspect of the client library. The possible values
 for name are GLX VENDOR, GLX VERSION, and GLX EXTENSIONS. If name
 is not set to one of these values then NULL is returned. The format
 and contents of the vendor string is implementation dependent, and the
-format of the extension string is the same as for glXQueryExtension-
-sString. The version string is laid out as follows:
+format of the extension string is the same as for glXQueryExtensionsString.
+The version string is laid out as follows:
 
 .. code:: text
 
-     <major version.minor version><space><vendor-specific
-       info>
+  <major version.minor version><space><vendor-specific info>
 
 Both the major and minor portions of the version number are of arbitrary
 length. The vendor-specific information is optional. However, if it is
@@ -980,11 +963,10 @@ present, the format and contents are implementation specific.
 
 .. code:: cpp
 
-     const char*    glXQueryServerString( Display *dpy, int
-        screen, int   name )   ;
+  const char* glXQueryServerString(Display *dpy, int screen, int name);
 
-glXQueryServerString returns a pointer to a static, zero-
-terminated string describing some aspect of the server's GLX extension.
+glXQueryServerString returns a pointer to a static, zeroterminated
+string describing some aspect of the server's GLX extension.
 The possible values for name and the format of the strings is the same
 as for glXGetClientString. If name is not set to a recognized value
 then NULL is returned.
@@ -1002,8 +984,8 @@ request.
 4.1 Requests that hold a single extension request
 --------------------------------------------------------
 
-Each of the commands from glx.h (that is, the glX* commands) is en-
-coded by a separate X extension request. In addition, there is a separate
+Each of the commands from glx.h (that is, the glX* commands) is encoded
+by a separate X extension request. In addition, there is a separate
 X extension request for each of the OpenGL commands that cannot be
 put into a display list. That list consists of all the glGet* commands
 plus
@@ -1034,8 +1016,8 @@ Figure 2. GLX byte stream.
 The two PixelStore commands (glPixelStorei and glPixelStoref) are
 exceptions. These commands are issued to the server only to allow it to
 set its error state appropriately. Pixel storage state is maintained entirely
-on the client side. When pixel data is transmitted to the server (by gl-
-DrawPixels, for example), the pixel storage information that describes
+on the client side. When pixel data is transmitted to the server (by glDrawPixels,
+for example), the pixel storage information that describes
 it is transmitted as part of the same protocol request. Implementations
 may not change this behavior, because such changes would cause shared
 contexts to behave incorrectly.
@@ -1043,8 +1025,8 @@ contexts to behave incorrectly.
 4.2 Request that holds multiple OpenGL commands
 --------------------------------------------------------
 
-The remaining OpenGL commands are those that may be put into dis-
-play lists. Multiple occurrences of these commands are grouped together
+The remaining OpenGL commands are those that may be put into display
+lists. Multiple occurrences of these commands are grouped together
 into a single X extension request (GLXRender). This is diagrammed
 in Figure 2.
 
@@ -1053,14 +1035,14 @@ packs as many OpenGL commands as possible into a single X request
 (without exceeding the maximum size limit). No OpenGL command
 may be split across multiple GLXRender requests.
 
-For long OpenGL commands (those longer than a maximum X re-
-quest size), a series of GLXRenderLarge commands is issued. The
+For long OpenGL commands (those longer than a maximum X request
+size), a series of GLXRenderLarge commands is issued. The
 structure of the OpenGL command within GLXRenderLarge is the
 same as for GLXRender.
 
 Note that it is legal to have a glBegin in one request, followed by
-glVertex commands, and eventually the matching glEnd in a subse-
-quent request. A command is not the same as an OpenGL primitive.
+glVertex commands, and eventually the matching glEnd in a subsequent
+request. A command is not the same as an OpenGL primitive.
 
 4.3 Wire representations and byte swapping
 --------------------------------------------------------
@@ -1074,8 +1056,8 @@ within the transport buffers of the server. For those architectures that
 require it, the server or client must copy those oating point numbers to
 a properly aligned buffer before using them.
 
-Byte swapping on the encapsulated OpenGL byte stream is per-
-formed by the server using the same rule as the core X protocol. Single
+Byte swapping on the encapsulated OpenGL byte stream is performed
+by the server using the same rule as the core X protocol. Single
 precision oating point values are swapped in the same way that 32-bit
 integers are swapped. Double precision oating point values are swapped
 across all 8 bytes.
@@ -1097,8 +1079,8 @@ rates, and some operations may depend on the results of commands in a
 di erent stream, we distinguish between commands assigned to each of
 the X and OpenGL streams.
 
-The following commands are processed on the client side and there-
-fore do not exist in either the X or the OpenGL stream:
+The following commands are processed on the client side and therefore
+do not exist in either the X or the OpenGL stream:
 
 - glXGetClientString
 - glXGetCurrentContext
@@ -1106,8 +1088,8 @@ fore do not exist in either the X or the OpenGL stream:
 - glXGetCurrentDrawable
 - glXGetConfig
 
-The following commands are in the X stream and obey the sequen-
-tiality guarantees for X requests:
+The following commands are in the X stream and obey the sequentiality
+guarantees for X requests:
 
 - glXCreateContext
 - glXDestroyContext
@@ -1153,21 +1135,21 @@ in the X stream only.
 ========================================================
 
 OpenGL is extended by adding new GLX requests, OpenGL requests or
-additional enumerated values to the OpenGL requests. The OpenGL Ar-
-chitectural Review Board maintains a registry of indexes for each vendor
+additional enumerated values to the OpenGL requests. The OpenGL Architectural
+Review Board maintains a registry of indexes for each vendor
 to use as they wish.
 
-New names must clearly indicate to clients whether some partic-
-ular feature is in the core OpenGL or is vendor specific. To make
+New names must clearly indicate to clients whether some particular
+feature is in the core OpenGL or is vendor specific. To make
 a vendor-specific name, append a company identi er (in upper case)
-and any additional vendor-specific tags (e.g. machine names). For in-
-stance, SGI might add new commands and manifest constants of the
+and any additional vendor-specific tags (e.g. machine names). For instance,
+SGI might add new commands and manifest constants of the
 form glNewCommandSGI and GL NEW DEFINITION SGI. If
-SGI wanted to provide extensions that were specific to its Reality En-
-gine, then the names might be of the form glNewCommandSGIre and
+SGI wanted to provide extensions that were specific to its Reality Engine,
+then the names might be of the form glNewCommandSGIre and
 GL NEW DEFINITION SGI RE. If two or more licensees agree in
-good faith to implement the same extension, and to make the specifica-
-tion of that extension publicly available, the procedures and tokens that
+good faith to implement the same extension, and to make the specification
+of that extension publicly available, the procedures and tokens that
 are de ned by the extension can be su xed by EXT.
 
 6 Glossary
@@ -1180,10 +1162,10 @@ Address Space
 
 Client
   an X client. An application communicates to a server by some
-  path. The application program is referred to as a client of the win-
-  dow system server. To the server, the client is the communication
-  path itself. A program with multiple connections is viewed as mul-
-  tiple clients to the server. The resource lifetimes are controlled by
+  path. The application program is referred to as a client of the window
+  system server. To the server, the client is the communication
+  path itself. A program with multiple connections is viewed as multiple
+  clients to the server. The resource lifetimes are controlled by
   the connection lifetimes, not the application program lifetimes.
 
 Connection
@@ -1202,8 +1184,8 @@ GLXContext
   consist of client side state and server side state.
 
 Similar
-  a potential correspondence among GLXDrawables and render-
-  ing contexts. Windows and GLXPixmaps are similar to a rendering
+  a potential correspondence among GLXDrawables and rendering
+  contexts. Windows and GLXPixmaps are similar to a rendering
   context are similar if, and only if, they have been created with
   respect to the same VisualID and root window.
 
