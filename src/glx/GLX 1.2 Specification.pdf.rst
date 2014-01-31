@@ -117,10 +117,10 @@ similar GLXDrawable. An implication is that multiple applications can
 render into the same window, each using a di erent rendering context.
 
 .. [*] The association is with a fVisual, screen, depthg triple. An XVisualInfo is used
-by GLX functions since it can be interpreted unambiguosly.
+       by GLX functions since it can be interpreted unambiguosly.
 
 .. [*] Any rendering system is free to use the ancillary buffers as long as it uses them
-in a manner consistent with the use by the OpenGL.
+       in a manner consistent with the use by the OpenGL.
 
 2.2 Using Rendering Contexts
 --------------------------------------------------------
