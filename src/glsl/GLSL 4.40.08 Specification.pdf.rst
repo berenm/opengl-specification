@@ -1,17 +1,16 @@
- The OpenGL® Shading Language
+===============================================================
+The OpenGL® Shading Language
+===============================================================
 
+| *Language Version: 4.40*
+| *Document Revision: 8*
+| *22-Jan-2014*
 
-                   Language Version: 4.40
-                    Document Revision: 8
-                       22-Jan-2014
-
-
-               Editor: John Kessenich, LunarG
+Editor: John Kessenich, LunarG
 
 Version 1.1 Authors: John Kessenich, Dave Baldwin, Randi Rost
-                  Copyright (c) 2008-2014 The Khronos Group Inc. All Rights Reserved.
 
-
+Copyright (c) 2008-2014 The Khronos Group Inc. All Rights Reserved.
 
 This specification is protected by copyright laws and contains material proprietary to the Khronos Group,
 Inc. It or any components may not be reproduced, republished, distributed, transmitted, displayed,
@@ -20,6 +19,7 @@ Group. You may use this specification for implementing the functionality therein
 removing any trademark, copyright or other notice from the specification, but the receipt or possession of
 this specification does not convey any rights to reproduce, disclose, or distribute its contents, or to
 manufacture, use, or sell anything that it may describe, in whole or in part.
+
 Khronos Group grants express permission to any current Promoter, Contributor or Adopter member of
 Khronos to copy and redistribute UNMODIFIED versions of this specification in any fashion, provided that
 NO CHARGE is made for the specification and the latest available update of the specification for any
@@ -28,6 +28,7 @@ LONG AS the contents of the specification are not changed in any way. The specif
 incorporated into a product that is sold as long as such product includes significant independent work
 developed by the seller. A link to the current version of this specification on the Khronos Group web-site
 should be included whenever possible with specification distributions.
+
 Khronos Group makes no, and expressly disclaims any, representations or warranties, express or
 implied, regarding this specification, including, without limitation, any implied warranties of merchantability
 or fitness for a particular purpose or non-infringement of any intellectual property. Khronos Group makes
@@ -37,909 +38,762 @@ Group, or any of its Promoters, Contributors or Members or their respective part
 employees, agents or representatives be liable for any damages, whether direct, indirect, special or
 consequential damages for lost revenues, lost profits, or otherwise, arising from or in connection with
 these materials.
+
 Khronos, OpenKODE, OpenKOGS, OpenVG, OpenMAX, OpenSL ES and OpenWF are trademarks of
 the Khronos Group Inc. COLLADA is a trademark of Sony Computer Entertainment Inc. used by
 permission by Khronos. OpenGL and OpenML are registered trademarks and the OpenGL ES logo is a
 trademark of Silicon Graphics Inc. used by permission by Khronos. All other product names, trademarks,
 and/or company names are used solely for identification and belong to their respective owners.
 
+.. contents:: Table of Contents
 
-
-
-                                                 ii
-Table of Contents
-1 Introduction.................................................................................................................................1
-  1.1 Acknowledgments................................................................................................................2
-  1.2 Changes................................................................................................................................3
-     1.2.1 Changes since revision 7 of GLSL version 4.40..........................................................3
-     1.2.2 Changes since revision 6 of GLSL version 4.40..........................................................4
-     1.2.3 Summary of Changes from Revision 9 of GLSL Version 4.30....................................5
-  1.3 Overview..............................................................................................................................7
-  1.4 Error Handling......................................................................................................................7
-  1.5 Typographical Conventions.................................................................................................7
-  1.6 Deprecation..........................................................................................................................7
-2 Overview of OpenGL Shading....................................................................................................9
-  2.1 Vertex Processor..................................................................................................................9
-  2.2 Tessellation Control Processor.............................................................................................9
-  2.3 Tessellation Evaluation Processor......................................................................................10
-  2.4 Geometry Processor...........................................................................................................10
-  2.5 Fragment Processor............................................................................................................10
-  2.6 Compute Processor.............................................................................................................10
-3 Basics........................................................................................................................................12
-  3.1 Character Set and Phases of Compilation..........................................................................12
-  3.2 Source Strings....................................................................................................................13
-  3.3 Preprocessor.......................................................................................................................14
-  3.4 Comments..........................................................................................................................19
-  3.5 Tokens................................................................................................................................20
-  3.6 Keywords............................................................................................................................20
-  3.7 Identifiers...........................................................................................................................22
-  3.8 Definitions..........................................................................................................................22
-     3.8.1 Static Use....................................................................................................................23
-     3.8.2 Uniform and Non-Uniform Control Flow..................................................................23
-     3.8.3 Dynamically Uniform Expressions.............................................................................23
-4 Variables and Types..................................................................................................................24
-  4.1 Basic Types........................................................................................................................24
-     4.1.1 Void............................................................................................................................28
-     4.1.2 Booleans.....................................................................................................................28
-     4.1.3 Integers.......................................................................................................................28
-     4.1.4 Floating-Point Variables.............................................................................................30
-     4.1.5 Vectors........................................................................................................................31
-     4.1.6 Matrices......................................................................................................................31
-     4.1.7 Opaque Types.............................................................................................................32
-
-
-                                                                       iii
-      4.1.7.1 Samplers.............................................................................................................32
-      4.1.7.2 Images.................................................................................................................33
-      4.1.7.3 Atomic Counters.................................................................................................33
-   4.1.8 Structures....................................................................................................................33
-   4.1.9 Arrays.........................................................................................................................34
-   4.1.10 Implicit Conversions................................................................................................38
-   4.1.11 Initializers.................................................................................................................39
-4.2 Scoping...............................................................................................................................41
-4.3 Storage Qualifiers...............................................................................................................44
-   4.3.1 Default Storage Qualifier............................................................................................45
-   4.3.2 Constant Qualifier......................................................................................................45
-   4.3.3 Constant Expressions.................................................................................................45
-   4.3.4 Input Variables...........................................................................................................46
-   4.3.5 Uniform Variables......................................................................................................49
-   4.3.6 Output Variables.........................................................................................................49
-   4.3.7 Buffer Variables.........................................................................................................52
-   4.3.8 Shared Variables.........................................................................................................52
-   4.3.9 Interface Blocks..........................................................................................................53
-4.4 Layout Qualifiers................................................................................................................57
-   4.4.1 Input Layout Qualifiers...............................................................................................59
-      4.4.1.1 Tessellation Evaluation Inputs............................................................................62
-      4.4.1.2 Geometry Shader Inputs......................................................................................64
-      4.4.1.3 Fragment Shader Inputs......................................................................................65
-      4.4.1.4 Compute Shader Inputs.......................................................................................66
-   4.4.2 Output Layout Qualifiers............................................................................................67
-      4.4.2.1 Transform Feedback Layout Qualifiers..............................................................69
-      4.4.2.2 Tessellation Control Outputs..............................................................................71
-      4.4.2.3 Geometry Outputs...............................................................................................72
-      4.4.2.4 Fragment Outputs...............................................................................................74
-   4.4.3 Uniform Variable Layout Qualifiers...........................................................................75
-   4.4.4 Subroutine Function Layout Qualifiers......................................................................76
-   4.4.5 Uniform and Shader Storage Block Layout Qualifiers...............................................76
-   4.4.6 Opaque-Uniform Layout Qualifiers............................................................................79
-      4.4.6.1 Atomic Counter Layout Qualifiers.....................................................................80
-      4.4.6.2 Format Layout Qualifiers....................................................................................81
-4.5 Interpolation Qualifiers......................................................................................................83
-   4.5.1 Redeclaring Built-in Interpolation Variables in the Compatibility Profile.................84
-4.6 Parameter Qualifiers...........................................................................................................85
-4.7 Precision and Precision Qualifiers.....................................................................................85
-
-
-                                                                  iv
-     4.7.1 Range and Precision...................................................................................................85
-     4.7.2 Precision Qualifiers....................................................................................................86
-     4.7.3 Default Precision Qualifiers.......................................................................................87
-     4.7.4 Available Precision Qualifiers....................................................................................88
-  4.8 Variance and the Invariant Qualifier..................................................................................88
-     4.8.1 The Invariant Qualifier...............................................................................................88
-     4.8.2 Invariance of Constant Expressions...........................................................................89
-  4.9 The Precise Qualifier..........................................................................................................89
-  4.10 Memory Qualifiers...........................................................................................................92
-  4.11 Order and Repetition of Qualification..............................................................................95
-5 Operators and Expressions........................................................................................................96
-  5.1 Operators............................................................................................................................96
-  5.2 Array Operations...............................................................................................................97
-  5.3 Function Calls....................................................................................................................97
-  5.4 Constructors.......................................................................................................................97
-     5.4.1 Conversion and Scalar Constructors..........................................................................97
-     5.4.2 Vector and Matrix Constructors.................................................................................98
-     5.4.3 Structure Constructors..............................................................................................100
-     5.4.4 Array Constructors...................................................................................................101
-  5.5 Vector and Scalar Components and Length.....................................................................101
-  5.6 Matrix Components..........................................................................................................103
-  5.7 Structure and Array Operations........................................................................................103
-  5.8 Assignments.....................................................................................................................104
-  5.9 Expressions......................................................................................................................105
-  5.10 Vector and Matrix Operations........................................................................................108
-  5.11 Out-of-Bounds Accesses................................................................................................109
-6 Statements and Structure.........................................................................................................110
-  6.1 Function Definitions.........................................................................................................111
-     6.1.1 Function Calling Conventions..................................................................................114
-     6.1.2 Subroutines...............................................................................................................115
-  6.2 Selection...........................................................................................................................116
-  6.3 Iteration............................................................................................................................117
-  6.4 Jumps................................................................................................................................118
-7 Built-in Variables....................................................................................................................120
-  7.1 Built-In Language Variables............................................................................................120
-     7.1.1 Compatibility Profile Built-In Language Variables..................................................128
-  7.2 Compatibility Profile Vertex Shader Built-In Inputs.......................................................131
-  7.3 Built-In Constants............................................................................................................132
-     7.3.1 Compatibility Profile Built-In Constants..................................................................134
-
-
-                                                                      v
-  7.4 Built-In Uniform State.....................................................................................................134
-     7.4.1 Compatibility Profile State.......................................................................................134
-8 Built-in Functions...................................................................................................................138
-  8.1 Angle and Trigonometry Functions..................................................................................139
-  8.2 Exponential Functions......................................................................................................141
-  8.3 Common Functions..........................................................................................................142
-  8.4 Floating-Point Pack and Unpack Functions.....................................................................147
-  8.5 Geometric Functions........................................................................................................149
-  8.6 Matrix Functions..............................................................................................................151
-  8.7 Vector Relational Functions.............................................................................................153
-  8.8 Integer Functions..............................................................................................................155
-  8.9 Texture Functions.............................................................................................................157
-     8.9.1 Texture Query Functions..........................................................................................158
-     8.9.2 Texel Lookup Functions...........................................................................................161
-     8.9.3 Texture Gather Functions.........................................................................................167
-     8.9.4 Compatibility Profile Texture Functions..................................................................170
-  8.10 Atomic-Counter Functions.............................................................................................172
-  8.11 Atomic Memory Functions............................................................................................172
-  8.12 Image Functions.............................................................................................................173
-  8.13 Fragment Processing Functions......................................................................................177
-     8.13.1 Derivative Functions..............................................................................................177
-     8.13.2 Interpolation Functions...........................................................................................178
-  8.14 Noise Functions..............................................................................................................179
-  8.15 Geometry Shader Functions...........................................................................................180
-  8.16 Shader Invocation Control Functions.............................................................................182
-  8.17 Shader Memory Control Functions................................................................................183
-9 Shading Language Grammar for Core Profile........................................................................185
-10 Normative References...........................................................................................................201
-
-
-
-
-                                                                   vi
 1 Introduction
+===============================================================
 
-   This document specifies only version 4.40 of the OpenGL Shading Language. It requires __VERSION__
-   to substitute 440, and requires #version to accept only 440. If #version is declared with a smaller
-   number, the language accepted is a previous version of the shading language, which will be supported
-   depending on the version and type of context in the OpenGL API. See the OpenGL Graphics System
-   Specification, Version 4.4, for details on what language versions are supported.
-   Previous versions of the OpenGL Shading Language, as well as the OpenGL ES Shading Language, are
-   not strict subsets of the version specified here, particularly with respect to precision, name-hiding rules,
-   and treatment of interface variables. See the specification corresponding to a particular language version
-   for details specific to that version of the language.
-   All OpenGL Graphics System Specification references in this specification are to version 4.4.
+This document specifies only version 4.40 of the OpenGL Shading Language. It requires ``__VERSION__``
+to substitute 440, and requires **#version** to accept only 440. If **#version** is declared with a smaller
+number, the language accepted is a previous version of the shading language, which will be supported
+depending on the version and type of context in the OpenGL API. See the OpenGL Graphics System
+Specification, Version 4.4, for details on what language versions are supported.
 
+Previous versions of the OpenGL Shading Language, as well as the OpenGL ES Shading Language, are
+not strict subsets of the version specified here, particularly with respect to precision, name-hiding rules,
+and treatment of interface variables. See the specification corresponding to a particular language version
+for details specific to that version of the language.
 
-
-
-                                                   1
-                                                                                          1 Introduction
-
-
+All OpenGL Graphics System Specification references in this specification are to version 4.4.
 
 1.1   Acknowledgments
-      This specification is based on the work of those who contributed to past versions of the OpenGL
-      Language Specification, the OpenGL ES 2.0 Language Specification, and the following contributors to
-      this version:
-      Pat Brown, NVIDIA
-      Jeff Bolz, NVIDIA
-      Frank Chen
-      Pierre Boudier, AMD
-      Piers Daniell, NVIDIA
-      Chris Dodd, NVIDIA
-      Nick Haemel, NVIDIA
-      Jason Green, TransGaming
-      Brent Insko, Intel
-      Jon Leech
-      Bill Licea-Kane, AMD
-      Daniel Koch, TransGaming
-      Barthold Lichtenbelt, NVIDIA
-      Bruce Merry, ARM
-      Robert Ohannessian
-      Acorn Pooley, NVIDIA
-      Christophe Riccio, AMD
-      Kevin Rogovin
-      Ian Romanick, Intel
-      Greg Roth, Nvidia
-      Graham Sellers, AMD
-      Dave Shreiner, ARM
-      Jeremy Sandmel, Apple
-      Robert Simpson, Qualcomm
-      Eric Werness, NVIDIA
-      Mark Young, AMD
+---------------------------------------------------------------
 
+This specification is based on the work of those who contributed to past versions of the OpenGL
+Language Specification, the OpenGL ES 2.0 Language Specification, and the following contributors to
+this version:
 
-
-
-                                                   2
-                                                                                                 1 Introduction
-
-
+| Pat Brown, NVIDIA
+| Jeff Bolz, NVIDIA
+| Frank Chen
+| Pierre Boudier, AMD
+| Piers Daniell, NVIDIA
+| Chris Dodd, NVIDIA
+| Nick Haemel, NVIDIA
+| Jason Green, TransGaming
+| Brent Insko, Intel
+| Jon Leech
+| Bill Licea-Kane, AMD
+| Daniel Koch, TransGaming
+| Barthold Lichtenbelt, NVIDIA
+| Bruce Merry, ARM
+| Robert Ohannessian
+| Acorn Pooley, NVIDIA
+| Christophe Riccio, AMD
+| Kevin Rogovin
+| Ian Romanick, Intel
+| Greg Roth, Nvidia
+| Graham Sellers, AMD
+| Dave Shreiner, ARM
+| Jeremy Sandmel, Apple
+| Robert Simpson, Qualcomm
+| Eric Werness, NVIDIA
+| Mark Young, AMD
 
 1.2     Changes
+---------------------------------------------------------------
+
 1.2.1   Changes since revision 7 of GLSL version 4.40
-           •   Bug 10440: Clarify that a name collision between members of two anonymous blocks, or
-               between a variable and a member of an anonymous block is an error.
-           •   Bug 11009: Removed packed from the reserved word list.
-           •   Bug 11299: Fixed textureOffset for sampler2DArrayShadow to take a ivec2 (not a vec2) for
-               the offset.
-           •   Bug 11209: It is a compile-time error to use the same block name for more than one block
-               declaration in the same interface within one shader, even if the block contents are identical.
-           •   Bug 11100: Simplify statement of what is written by EmitStreamVertex() to just say all built-in
-               and user-defined output variables.
-           •   Bug 11096: gl_SampleMask can be sized to be no larger than the implementation-dependent
-               maximum sample-mask.
-           •   Bug 10812: Missing text: Added the phrase “a pair of 16-bit signed integers” when describing
-               unpackSnorm2x16.
-           •   Bug 10804: When a uniform layout location is used, it is not required that all declarations of that
-               name include the location; only that those that include a location use the same location.
-           •   Bug 11001: Remove extraneous “g” from some gsampler..shadow types.
-           •   Bug 10990: Remove old contradictory text requiring interpolation qualifiers to match cross
-               stage; they must only match within a stage.
-           •   Bug 9999: Editorial: add explanatory text about optimizing in section 4.4.2.4 about fragment
-               output layout qualifiers: “This potentially includes skipping shader execution if the fragment is
-               discarded because it is occluded and the shader has no side effects.”
-           •   Bug 10485: It is only geometry shaders whose input is sized by the input primitive layout
-               declaration.
-           •   Bug 10903. Clarify that members of structures cannot be declared as atomic counter types.
-           •   Put missing storage qualifiers in component examples.
-           •   Bug 11457. Add missing “SHARED” to the layout_qualifier_id grammar in section 9. This was
-               already correctly reflected in the body of the specification.
-           •   Bug 11392. Clarify that comments do eliminate new lines (but don't change the line count) and
-               that the preprocessing character set is bigger than the character set used in the resulting stream of
-               GLSL tokens.
-           •   Bug 7343. Clarify interactions between comments, new lines, and preprocessing by explicitly
-               listing the logical phases of compilation.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-
-                                                      3
-                                                                                                  1 Introduction
-
-
-
-            •   Bug 11362: When counting locations consumed, clarify that the outer array level for geometry
-                shader inputs, tessellation control shader inputs and outputs, and tessellation evaluation inputs is
-                first removed before counting.
-            •   Bug 10737: State more clearly which types are illegal for inputs and outputs.
-            •   Bug 11178: Correct function overloading examples, which were from a different revision of the
-                spec. than the current rules.
-            •   Bug 10593: Clarify that within a declaration, if inout is used, neither in nor out may be used,
-                and none of these can be repeated.
-            •   Bug 11052: Make type matching across compilation units in the same program apply to all
-                declared variables (not just those statically used, etc.)
-            •   Bug 10941: When accessing the same packed buffer across multiple stages in the same program,
-                it either works or you get a link error.
+* Bug 10440: Clarify that a name collision between members of two anonymous blocks, or
+  between a variable and a member of an anonymous block is an error.
+* Bug 11009: Removed **packed** from the reserved word list.
+* Bug 11299: Fixed **textureOffset** for **sampler2DArrayShadow** to take a **ivec2** (not a **vec2**) for
+  the offset.
+* Bug 11209: It is a compile-time error to use the same block name for more than one block
+  declaration in the same interface within one shader, even if the block contents are identical.
+* Bug 11100: Simplify statement of what is written by EmitStreamVertex() to just say all built-in
+  and user-defined output variables.
+* Bug 11096: gl_SampleMask can be sized to be no larger than the implementation-dependent
+  maximum sample-mask.
+* Bug 10812: Missing text: Added the phrase “a pair of 16-bit signed integers” when describing
+  **unpackSnorm2x16**.
+* Bug 10804: When a uniform layout location is used, it is not required that all declarations of that
+  name include the location; only that those that include a location use the same location.
+* Bug 11001: Remove extraneous “g” from some gsampler..shadow types.
+* Bug 10990: Remove old contradictory text requiring interpolation qualifiers to match cross
+  stage; they must only match within a stage.
+* Bug 9999: Editorial: add explanatory text about optimizing in section 4.4.2.4 about fragment
+  output layout qualifiers: “This potentially includes skipping shader execution if the fragment is
+  discarded because it is occluded and the shader has no side effects.”
+* Bug 10485: It is only geometry shaders whose input is sized by the input primitive layout
+  declaration.
+* Bug 10903. Clarify that members of structures cannot be declared as atomic counter types.
+* Put missing storage qualifiers in **component** examples.
+* Bug 11457. Add missing “SHARED” to the layout_qualifier_id grammar in section 9. This was
+  already correctly reflected in the body of the specification.
+* Bug 11392. Clarify that comments do eliminate new lines (but don't change the line count) and
+  that the preprocessing character set is bigger than the character set used in the resulting stream of
+  GLSL tokens.
+* Bug 7343. Clarify interactions between comments, new lines, and preprocessing by explicitly
+  listing the logical phases of compilation.
+* Bug 11362: When counting locations consumed, clarify that the outer array level for geometry
+  shader inputs, tessellation control shader inputs and outputs, and tessellation evaluation inputs is
+  first removed before counting.
+* Bug 10737: State more clearly which types are illegal for inputs and outputs.
+* Bug 11178: Correct function overloading examples, which were from a different revision of the
+  spec. than the current rules.
+* Bug 10593: Clarify that within a declaration, if **inout** is used, neither **in** nor **out** may be used,
+  and none of these can be repeated.
+* Bug 11052: Make type matching across compilation units in the same program apply to all
+  declared variables (not just those statically used, etc.)
+* Bug 10941: When accessing the same packed buffer across multiple stages in the same program,
+  it either works or you get a link error.
 
 1.2.2   Changes since revision 6 of GLSL version 4.40
-        Deprecation
-            •   Bug 384: Noise is now
-                ◦     defined to return 0, and
-                ◦     deprecated (not removed).
-        Changes
-            •   Bug 10628: Subroutine arrays now require the index to be dynamically uniform.
-            •   Bug 10440: Refine the link-time error: Within an interface, all declarations of the same global
-                name must be for the same object and must match in type and in whether they declare a variable
-                or member of a block with no instance name.
-            •   Bug 10713: Update the offset/align example in section 4.4.5 to adhere to the std140 alignment
-                requirements.
-            •   A few other examples corrected.
-            •   Changed
-                ◦     gl_MaxComputeAtomicCounterBuffers to 8, and
-                ◦     gl_MaxCombinedTextureImageUnits to 96.
-        Clarifications
-            •   Bug 10655: Clarification that opaque types (e.g., samplers) can be in a uniform (e.g., member in
-                a struct), not just a non-aggregate uniform variable.
-            •   Bug 10659: Be even more clear that blocks generally cannot be redeclared as a way to size an
-                unsized array contained in the block.
-            •   Bug 10735: Clarify that sampler type declarations can have precision qualifiers.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+**Deprecation**
 
+* Bug 384: Noise is now
 
+  - defined to return 0, and
+  - deprecated (not removed).
 
-                                                       4
-                                                                                                   1 Introduction
+**Changes**
 
+* Bug 10628: Subroutine arrays now require the index to be dynamically uniform.
+* Bug 10440: Refine the link-time error: Within an interface, all declarations of the same global
+  name must be for the same object and must match in type and in whether they declare a variable
+  or member of a block with no instance name.
+* Bug 10713: Update the offset/align example in section 4.4.5 to adhere to the std140 alignment
+  requirements.
+* A few other examples corrected.
+* Changed
 
+  - *gl_MaxComputeAtomicCounterBuffers* to 8, and
+  - *gl_MaxCombinedTextureImageUnits* to 96.
 
-            •   Bug 10682: Clarify that built-in functions with void return or out arguments are not included in
-                in the set of constant expressions.
+**Clarifications**
+
+* Bug 10655: Clarification that opaque types (e.g., samplers) can be in a uniform (e.g., member in
+  a **struct**), not just a non-aggregate uniform variable.
+* Bug 10659: Be even more clear that blocks generally cannot be redeclared as a way to size an
+  unsized array contained in the block.
+* Bug 10735: Clarify that sampler type declarations can have precision qualifiers.
+* Bug 10682: Clarify that built-in functions with **void** return or **out** arguments are not included in
+  in the set of constant expressions.
 
 1.2.3   Summary of Changes from Revision 9 of GLSL Version 4.30
-        Deprecations
-            •   The built-in noise*() functions are deprecated. They are not removed, but are defined to return
-                0.
-        Changes
-            •   Incorporate the ARB_enhanced_layouts extension, which adds
-                ◦   compile-time constant expressions for layout qualifier integers
-                ◦   new offset and align layout qualifiers for control over buffer block layouts
-                ◦   add location layout qualifier for input and output blocks and block members
-                ◦   new component layout qualifier for finer-grained layout control of input and output
-                    variables and blocks
-                ◦   new xfb_buffer, xfb_stride, and xfb_offset layout qualifiers to allow the shader to control
-                    transform feedback buffering.
-            •   Bug 10530: To be consistent with ES, include sample types as valid in a precision statement.
-                Note the defaults are irrelevant, as precision qualifiers are not required or have any meaning.
-            •   Bug 10628: Subroutine arrays now require the index to be dynamically uniform.
-            •   Changed
-                ◦   gl_MaxComputeAtomicCounterBuffers to 8, and
-                ◦   gl_MaxCombinedTextureImageUnits to 96.
-            •   Bug 11009: Removed packed from the reserved word list.
-            •   Bug 11209: It is a compile-time error to use the same block name for more than one block
-                declaration in the same interface within one shader, even if the block contents are identical.
-            •   Bug 11096: gl_SampleMask can be sized to be no larger than the implementation-dependent
-                maximum sample-mask.
-            •   Bug 10804: When a uniform layout location is used, it is not required that all declarations of that
-                name include the location; only that those that include a location use the same location.
-            •   Bug 11052: Make type matching across compilation units in the same program apply to all
-                declared variables (not just those statically used, etc.)
-            •   Bug 10941: When accessing the same packed buffer across multiple stages in the same program,
-                it either works or you get a link error.
-        Clarifications and Typographical Errors
-            •   Editorial: Added layout qualifier table for non-opaque type and interface layout qualifiers.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+**Deprecations**
 
+* The built-in noise*() functions are deprecated. They are not removed, but are defined to return
+  0.
 
+**Changes**
 
-                                                       5
-                                                                                      1 Introduction
+* Incorporate the ARB_enhanced_layouts extension, which adds
 
+  - compile-time constant expressions for layout qualifier integers
+  - new **offset** and **align** layout qualifiers for control over buffer block layouts
+  - add **location** layout qualifier for input and output blocks and block members
+  - new **component** layout qualifier for finer-grained layout control of input and output
+    variables and blocks
+  - new **xfb_buffer**, **xfb_stride**, and **xfb_offset** layout qualifiers to allow the shader to control
+    transform feedback buffering.
 
+* Bug 10530: To be consistent with ES, include sample types as valid in a **precision** statement.
+  Note the defaults are irrelevant, as precision qualifiers are not required or have any meaning.
+* Bug 10628: Subroutine arrays now require the index to be dynamically uniform.
+* Changed
 
-•   Editorial changes around compute shader group sizes for language consistency within the spec.
-    and extensions.
-•   Bug 10327: Editorial: Say character set is subset of Unicode, in UTF-8 encoding.
-•   Bug 11299: Fixed textureOffset for sampler2DArrayShadow to take a ivec2 (not a vec2) for
-    the offset.
-•   Bug 10440: Clarify that a name collision between members of two anonymous blocks or a
-    variable and a member of an anonymous block is an error.
-•   Bug 10655: Clarification that opaque types (e.g., samplers) can be in a uniform (e.g., member in
-    a struct), not just a non-aggregate uniform variable.
-•   Bug 10659: Be even more clear that blocks generally cannot be redeclared as a way to size an
-    unsized array contained in the block.
-•   Bug 10682: Clarify that built-in functions with void return or out arguments are not included in
-    in the set of constant expressions.
-•   Bug 11100: Editorial: Simplify statement of what is written by EmitStreamVertex() to just say
-    all built-in and user-defined output variables.
-•   Bug 10812: Missing text: Added the phrase “a pair of 16-bit signed integers” when describing
-    unpackSnorm2x16.
-•   Bug 11001: Remove extraneous “g” from some gsampler shadow types.
-•   Bug 10990: Remove old contradictory text requiring interpolation qualifiers to match cross
-    stage; they must only match within a stage.
-•   Bug 9999: Editorial: add explanatory text about optimizing in section 4.4.2.4 about fragment
-    output layout qualifiers: “This potentially includes skipping shader execution if the fragment is
-    discarded because it is occluded and the shader has no side effects.”
-•   Bug 10485: Clarify it is only geometry shaders whose input is sized by the input primitive layout
-    declaration.
-•   Bug 10903. Clarify that members of structures cannot be declared as atomic counter types.
-•   Put missing storage qualifiers in component examples.
-•   Bug 11457. Add missing “SHARED” to the layout_qualifier_id grammar in section 9. This was
-    already correctly reflected in the body of the specification.
-•   Bug 11392. Clarify that comments do eliminate new lines (but don't change the line count) and
-    that the preprocessing character set is bigger than the character set used in the resulting stream of
-    GLSL tokens.
-•   Bug 7343. Clarify interactions between comments, new lines, and preprocessing by explicitly
-    listing the logical phases of compilation.
-•   Bug 11362: When counting locations consumed, clarify that the outer array level for geometry
-    shader inputs, tessellation control shader inputs and outputs, and tessellation evaluation inputs is
-    first removed before counting.
+  - *gl_MaxComputeAtomicCounterBuffers* to 8, and
+  - *gl_MaxCombinedTextureImageUnits* to 96.
+* Bug 11009: Removed **packed** from the reserved word list.
+* Bug 11209: It is a compile-time error to use the same block name for more than one block
+  declaration in the same interface within one shader, even if the block contents are identical.
+* Bug 11096: gl_SampleMask can be sized to be no larger than the implementation-dependent
+  maximum sample-mask.
+* Bug 10804: When a uniform layout location is used, it is not required that all declarations of that
+  name include the location; only that those that include a location use the same location.
+* Bug 11052: Make type matching across compilation units in the same program apply to all
+  declared variables (not just those statically used, etc.)
+* Bug 10941: When accessing the same packed buffer across multiple stages in the same program,
+  it either works or you get a link error.
 
+**Clarifications and Typographical Errors**
 
-
-
-                                           6
-                                                                                                 1 Introduction
-
-
-
-          •    Bug 10737: State more clearly which types are illegal for inputs and outputs.
-          •    Bug 11178: Correct function overloading examples, which were from a different revision of the
-               spec. than the current rules.
-          •    Bug 10593: Clarify that within a declaration, if inout is used, neither in nor out may be used,
-               and none of these can be repeated.
+* Editorial: Added layout qualifier table for non-opaque type and interface layout qualifiers.
+* Editorial changes around compute shader group sizes for language consistency within the spec.
+  and extensions.
+* Bug 10327: Editorial: Say character set is subset of Unicode, in UTF-8 encoding.
+* Bug 11299: Fixed **textureOffset** for **sampler2DArrayShadow** to take a **ivec2** (not a **vec2**) for
+  the offset.
+* Bug 10440: Clarify that a name collision between members of two anonymous blocks or a
+  variable and a member of an anonymous block is an error.
+* Bug 10655: Clarification that opaque types (e.g., samplers) can be in a uniform (e.g., member in
+  a struct), not just a non-aggregate uniform variable.
+* Bug 10659: Be even more clear that blocks generally cannot be redeclared as a way to size an
+  unsized array contained in the block.
+* Bug 10682: Clarify that built-in functions with **void** return or **out** arguments are not included in
+  in the set of constant expressions.
+* Bug 11100: Editorial: Simplify statement of what is written by **EmitStreamVertex()** to just say
+  all built-in and user-defined output variables.
+* Bug 10812: Missing text: Added the phrase “a pair of 16-bit signed integers” when describing
+  **unpackSnorm2x16**.
+* Bug 11001: Remove extraneous “g” from some gsampler shadow types.
+* Bug 10990: Remove old contradictory text requiring interpolation qualifiers to match cross
+  stage; they must only match within a stage.
+* Bug 9999: Editorial: add explanatory text about optimizing in section 4.4.2.4 about fragment
+  output layout qualifiers: “This potentially includes skipping shader execution if the fragment is
+  discarded because it is occluded and the shader has no side effects.”
+* Bug 10485: Clarify it is only geometry shaders whose input is sized by the input primitive layout
+  declaration.
+* Bug 10903. Clarify that members of structures cannot be declared as atomic counter types.
+* Put missing storage qualifiers in **component** examples.
+* Bug 11457. Add missing “SHARED” to the layout_qualifier_id grammar in section 9. This was
+  already correctly reflected in the body of the specification.
+* Bug 11392. Clarify that comments do eliminate new lines (but don't change the line count) and
+  that the preprocessing character set is bigger than the character set used in the resulting stream of
+  GLSL tokens.
+* Bug 7343. Clarify interactions between comments, new lines, and preprocessing by explicitly
+  listing the logical phases of compilation.
+* Bug 11362: When counting locations consumed, clarify that the outer array level for geometry
+  shader inputs, tessellation control shader inputs and outputs, and tessellation evaluation inputs is
+  first removed before counting.
+* Bug 10737: State more clearly which types are illegal for inputs and outputs.
+* Bug 11178: Correct function overloading examples, which were from a different revision of the
+  spec. than the current rules.
+* Bug 10593: Clarify that within a declaration, if **inout** is used, neither **in** nor **out** may be used,
+  and none of these can be repeated.
 
 1.3   Overview
-      This document describes The OpenGL Shading Language, version 4.40.
-      Independent compilation units written in this language are called shaders. A program is a set of shaders
-      that are compiled and linked together, completely creating one or more of the programmable stages of the
-      OpenGL pipeline. All the shaders for a single programmable stage must be within the same program. A
-      complete set of programmable stages can be put into a single program or the stages can be partitioned
-      across multiple programs. The aim of this document is to thoroughly specify the programming language.
-      The OpenGL Graphics System Specification will specify the OpenGL entry points used to manipulate and
-      communicate with programs and shaders.
+---------------------------------------------------------------
+
+This document describes *The OpenGL Shading Language*, version 4.40.
+
+Independent compilation units written in this language are called *shaders*. A *program* is a set of shaders
+that are compiled and linked together, completely creating one or more of the programmable stages of the
+OpenGL pipeline. All the shaders for a single programmable stage must be within the same program. A
+complete set of programmable stages can be put into a single program or the stages can be partitioned
+across multiple programs. The aim of this document is to thoroughly specify the programming language.
+
+The OpenGL Graphics System Specification will specify the OpenGL entry points used to manipulate and
+communicate with programs and shaders.
 
 1.4   Error Handling
-      Compilers, in general, accept programs that are ill-formed, due to the impossibility of detecting all ill-
-      formed programs. Portability is only ensured for well-formed programs, which this specification
-      describes. Compilers are encouraged to detect ill-formed programs and issue diagnostic messages, but are
-      not required to do so for all cases. Compile-time errors must be returned for lexically or grammatically
-      incorrect shaders. Other errors are reported at compile time or link time as indicated. Code that is “dead”
-      must still be error checked. For example:
-         if (false)     // changing false to true cannot uncover additional errors
-             statement; // statement must be error checked regardless
+---------------------------------------------------------------
 
+Compilers, in general, accept programs that are ill-formed, due to the impossibility of detecting all ill-formed
+programs. Portability is only ensured for well-formed programs, which this specification
+describes. Compilers are encouraged to detect ill-formed programs and issue diagnostic messages, but are
+not required to do so for all cases. Compile-time errors must be returned for lexically or grammatically
+incorrect shaders. Other errors are reported at compile time or link time as indicated. Code that is “dead”
+must still be error checked. For example:
 
+.. code:: cpp
+
+  if (false)    // changing false to true cannot uncover additional errors
+     statement; // statement must be error checked regardless
 
 1.5   Typographical Conventions
-      Italic, bold, and font choices have been used in this specification primarily to improve readability. Code
-      fragments use a fixed width font. Identifiers embedded in text are italicized. Keywords embedded in text
-      are bold. Operators are called by their name, followed by their symbol in bold in parentheses. The
-      clarifying grammar fragments in the text use bold for literals and italics for non-terminals. The official
-      grammar in section 9 “Shading Language Grammar” uses all capitals for terminals and lower case for
-      non-terminals.
+---------------------------------------------------------------
+
+Italic, bold, and font choices have been used in this specification primarily to improve readability. Code
+fragments use a fixed width font. Identifiers embedded in text are italicized. Keywords embedded in text
+are bold. Operators are called by their name, followed by their symbol in bold in parentheses. The
+clarifying grammar fragments in the text use bold for literals and italics for non-terminals. The official
+grammar in section 9 “Shading Language Grammar” uses all capitals for terminals and lower case for
+non-terminals.
 
 1.6   Deprecation
-      The OpenGL Shading Language has deprecated some features. These are clearly called out in this
-      specification as “deprecated”. They are still present in this version of the language, but are targeted for
-      potential removal in a future version of the shading language. The OpenGL API has a forward
-      compatibility mode that will disallow use of deprecated features. If compiling in a mode where use of
-      deprecated features is disallowed, their use causes compile-time or link-time errors. See the OpenGL
+---------------------------------------------------------------
 
-
-
-
-                                                      7
-                                                                                       1 Introduction
-
-
-
+The OpenGL Shading Language has deprecated some features. These are clearly called out in this
+specification as “deprecated”. They are still present in this version of the language, but are targeted for
+potential removal in a future version of the shading language. The OpenGL API has a forward
+compatibility mode that will disallow use of deprecated features. If compiling in a mode where use of
+deprecated features is disallowed, their use causes compile-time or link-time errors. See the OpenGL
 Graphics System Specification for details on what causes deprecated language features to be accepted or
 to return an error.
 
-
-
-
-                                              8
 2 Overview of OpenGL Shading
+======================================================================
 
-      The OpenGL Shading Language is actually several closely related languages. These languages are used
-      to create shaders for each of the programmable processors contained in the OpenGL processing pipeline.
-      Currently, these processors are the vertex, tessellation control, tessellation evaluation, geometry,
-      fragment, and compute processors.
-      Unless otherwise noted in this paper, a language feature applies to all languages, and common usage will
-      refer to these languages as a single language. The specific languages will be referred to by the name of
-      the processor they target: vertex, tessellation control, tessellation evaluation, geometry, fragment, or
-      compute.
-      Most OpenGL state is not tracked or made available to shaders. Typically, user-defined variables will be
-      used for communicating between different stages of the OpenGL pipeline. However, a small amount of
-      state is still tracked and automatically made available to shaders, and there are a few built-in variables for
-      interfaces between different stages of the OpenGL pipeline.
+The OpenGL Shading Language is actually several closely related languages. These languages are used
+to create shaders for each of the programmable processors contained in the OpenGL processing pipeline.
+Currently, these processors are the vertex, tessellation control, tessellation evaluation, geometry,
+fragment, and compute processors.
+
+Unless otherwise noted in this paper, a language feature applies to all languages, and common usage will
+refer to these languages as a single language. The specific languages will be referred to by the name of
+the processor they target: vertex, tessellation control, tessellation evaluation, geometry, fragment, or
+compute.
+
+Most OpenGL state is not tracked or made available to shaders. Typically, user-defined variables will be
+used for communicating between different stages of the OpenGL pipeline. However, a small amount of
+state is still tracked and automatically made available to shaders, and there are a few built-in variables for
+interfaces between different stages of the OpenGL pipeline.
 
 2.1   Vertex Processor
-      The vertex processor is a programmable unit that operates on incoming vertices and their associated data.
-      Compilation units written in the OpenGL Shading Language to run on this processor are called vertex
-      shaders. When a set of vertex shaders are successfully compiled and linked, they result in a vertex shader
-      executable that runs on the vertex processor.
-      The vertex processor operates on one vertex at a time. It does not replace graphics operations that require
-      knowledge of several vertices at a time.
+---------------------------------------------------------------
+
+The *vertex processor* is a programmable unit that operates on incoming vertices and their associated data.
+Compilation units written in the OpenGL Shading Language to run on this processor are called *vertex
+shaders*. When a set of vertex shaders are successfully compiled and linked, they result in a *vertex shader
+executable* that runs on the vertex processor.
+
+The vertex processor operates on one vertex at a time. It does not replace graphics operations that require
+knowledge of several vertices at a time.
 
 2.2   Tessellation Control Processor
-      The tessellation control processor is a programmable unit that operates on a patch of incoming vertices
-      and their associated data, emitting a new output patch. Compilation units written in the OpenGL Shading
-      Language to run on this processor are called tessellation control shaders. When a set of tessellation
-      control shaders are successfully compiled and linked, they result in a tessellation control shader
-      executable that runs on the tessellation control processor.
-      The tessellation control shader is invoked for each vertex of the output patch. Each invocation can read
-      the attributes of any vertex in the input or output patches, but can only write per-vertex attributes for the
-      corresponding output patch vertex. The shader invocations collectively produce a set of per-patch
-      attributes for the output patch. After all tessellation control shader invocations have completed, the output
-      vertices and per-patch attributes are assembled to form a patch to be used by subsequent pipeline stages.
-      Tessellation control shader invocations run mostly independently, with undefined relative execution order.
-      However, the built-in function barrier() can be used to control execution order by synchronizing
-      invocations, effectively dividing tessellation control shader execution into a set of phases. Tessellation
-      control shaders will get undefined results if one invocation reads a per-vertex or per-patch attribute
+---------------------------------------------------------------
 
+The tessellation control processor is a programmable unit that operates on a patch of incoming vertices
+and their associated data, emitting a new output patch. Compilation units written in the OpenGL Shading
+Language to run on this processor are called tessellation control shaders. When a set of tessellation
+control shaders are successfully compiled and linked, they result in a *tessellation control shader
+executable* that runs on the tessellation control processor.
 
+The tessellation control shader is invoked for each vertex of the output patch. Each invocation can read
+the attributes of any vertex in the input or output patches, but can only write per-vertex attributes for the
+corresponding output patch vertex. The shader invocations collectively produce a set of per-patch
+attributes for the output patch. After all tessellation control shader invocations have completed, the output
+vertices and per-patch attributes are assembled to form a patch to be used by subsequent pipeline stages.
 
-
-                                                      9
-                                                                         2 Overview of OpenGL Shading
-
-
-
-      written by another invocation at any point during the same phase, or if two invocations attempt to write
-      different values to the same per-patch output in a single phase.
+Tessellation control shader invocations run mostly independently, with undefined relative execution order.
+However, the built-in function barrier() can be used to control execution order by synchronizing
+invocations, effectively dividing tessellation control shader execution into a set of phases. Tessellation
+control shaders will get undefined results if one invocation reads a per-vertex or per-patch attribute
+written by another invocation at any point during the same phase, or if two invocations attempt to write
+different values to the same per-patch output in a single phase.
 
 2.3   Tessellation Evaluation Processor
-      The tessellation evaluation processor is a programmable unit that evaluates the position and other
-      attributes of a vertex generated by the tessellation primitive generator, using a patch of incoming vertices
-      and their associated data. Compilation units written in the OpenGL Shading Language to run on this
-      processor are called tessellation evaluation shaders. When a set of tessellation evaluation shaders are
-      successfully compiled and linked, they result in a tessellation evaluation shader executable that runs on
-      the tessellation evaluation processor.
-      Each invocation of the tessellation evaluation executable computes the position and attributes of a single
-      vertex generated by the tessellation primitive generator. The executable can read the attributes of any
-      vertex in the input patch, plus the tessellation coordinate, which is the relative location of the vertex in the
-      primitive being tessellated. The executable writes the position and other attributes of the vertex.
+---------------------------------------------------------------
+
+The tessellation evaluation processor is a programmable unit that evaluates the position and other
+attributes of a vertex generated by the tessellation primitive generator, using a patch of incoming vertices
+and their associated data. Compilation units written in the OpenGL Shading Language to run on this
+processor are called tessellation evaluation shaders. When a set of tessellation evaluation shaders are
+successfully compiled and linked, they result in a *tessellation evaluation shader executable* that runs on
+the tessellation evaluation processor.
+
+Each invocation of the tessellation evaluation executable computes the position and attributes of a single
+vertex generated by the tessellation primitive generator. The executable can read the attributes of any
+vertex in the input patch, plus the tessellation coordinate, which is the relative location of the vertex in the
+primitive being tessellated. The executable writes the position and other attributes of the vertex.
 
 2.4   Geometry Processor
-      The geometry processor is a programmable unit that operates on data for incoming vertices for a primitive
-      assembled after vertex processing and outputs a sequence of vertices forming output primitives.
-      Compilation units written in the OpenGL Shading Language to run on this processor are called geometry
-      shaders. When a set of geometry shaders are successfully compiled and linked, they result in a geometry
-      shader executable that runs on the geometry processor.
-      A single invocation of the geometry shader executable on the geometry processor will operate on a
-      declared input primitive with a fixed number of vertices. This single invocation can emit a variable
-      number of vertices that are assembled into primitives of a declared output primitive type and passed to
-      subsequent pipeline stages.
+---------------------------------------------------------------
+
+The *geometry processor* is a programmable unit that operates on data for incoming vertices for a primitive
+assembled after vertex processing and outputs a sequence of vertices forming output primitives.
+Compilation units written in the OpenGL Shading Language to run on this processor are called *geometry
+shaders*. When a set of geometry shaders are successfully compiled and linked, they result in a *geometry
+shader executable* that runs on the geometry processor.
+
+A single invocation of the geometry shader executable on the geometry processor will operate on a
+declared input primitive with a fixed number of vertices. This single invocation can emit a variable
+number of vertices that are assembled into primitives of a declared output primitive type and passed to
+subsequent pipeline stages.
 
 2.5   Fragment Processor
-      The fragment processor is a programmable unit that operates on fragment values and their associated
-      data. Compilation units written in the OpenGL Shading Language to run on this processor are called
-      fragment shaders. When a set of fragment shaders are successfully compiled and linked, they result in a
-      fragment shader executable that runs on the fragment processor.
-      A fragment shader cannot change a fragment's (x, y) position. Access to neighboring fragments is not
-      allowed. The values computed by the fragment shader are ultimately used to update framebuffer memory
-      or texture memory, depending on the current OpenGL state and the OpenGL command that caused the
-      fragments to be generated.
+---------------------------------------------------------------
+
+The *fragment processor* is a programmable unit that operates on fragment values and their associated
+data. Compilation units written in the OpenGL Shading Language to run on this processor are called
+*fragment shaders*. When a set of fragment shaders are successfully compiled and linked, they result in a
+*fragment shader executable* that runs on the fragment processor.
+
+A fragment shader cannot change a fragment's (x, y) position. Access to neighboring fragments is not
+allowed. The values computed by the fragment shader are ultimately used to update framebuffer memory
+or texture memory, depending on the current OpenGL state and the OpenGL command that caused the
+fragments to be generated.
 
 2.6   Compute Processor
-      The compute processor is a programmable unit that operates independently from the other shader
-      processors. Compilation units written in the OpenGL Shading Language to run on this processor are
-      called compute shaders. When a set of compute shaders are successfully compiled and linked, they result
-      in a compute shader executable that runs on the compute processor.
+---------------------------------------------------------------
 
-
-
-
-                                                       10
-                                                                2 Overview of OpenGL Shading
-
-
+The *compute processor* is a programmable unit that operates independently from the other shader
+processors. Compilation units written in the OpenGL Shading Language to run on this processor are
+called *compute shaders*. When a set of compute shaders are successfully compiled and linked, they result
+in a *compute shader executable* that runs on the compute processor.
 
 A compute shader has access to many of the same resources as fragment and other shader processors,
 including textures, buffers, image variables, and atomic counters. It does not have any predefined inputs
 nor any fixed-function outputs. It is not part of the graphics pipeline and its visible side effects are
 through changes to images, storage buffers, and atomic counters.
+
 A compute shader operates on a group of work items called a work group. A work group is a collection
 of shader invocations that execute the same code, potentially in parallel. An invocation within a work
 group may share data with other members of the same work group through shared variables and issue
 memory and control barriers to synchronize with other members of the same work group.
 
-
-
-
-                                              11
 3 Basics
+===============================================================
 
 3.1   Character Set and Phases of Compilation
-      The source character set used for the OpenGL shading languages is Unicode in the UTF-8 encoding
-      scheme. After preprocessing, only the following characters are allowed in the resulting stream of GLSL
-      tokens:
-            The letters a-z, A-Z, and the underscore ( _ ).
-            The numbers 0-9.
-            The symbols period (.), plus (+), dash (-), slash (/), asterisk (*), percent (%), angled brackets (< and
-            >), square brackets ( [ and ] ), parentheses ( ( and ) ), braces ( { and } ), caret (^), vertical bar ( | ),
-            ampersand (&), tilde (~), equals (=), exclamation point (!), colon (:), semicolon (;), comma (,), and
-            question mark (?).
-      A compile-time error will be given if any other character is used in a GLSL token.
-      There are no digraphs or trigraphs. There are no escape sequences or uses of the backslash beyond use as
-      the line-continuation character.
-      Lines are relevant for compiler diagnostic messages and the preprocessor. They are terminated by
-      carriage-return or line-feed. If both are used together, it will count as only a single line termination. For
-      the remainder of this document, any of these combinations is simply referred to as a new line.
-      In general, the language’s use of this character set is case sensitive.
-      There are no character or string data types, so no quoting characters are included.
-      There is no end-of-file character.
-      More formally, compilation happens as if the following logical phases were executed in order:
-          1.   Source strings are concatenated to form a single input. All provided new lines are retained.
-          2.   Line numbering is noted, based on all present new lines, and does not change when new lines are
-               later eliminated.
-          3.   Wherever a backslash ('\') occurs immediately before a new line, both are eliminated. (Note no
-               white space is substituted, allowing a single token to span a new line.) Any newly formed
-               backslash followed by a new line is not eliminated; only those pairs originally occurring after
-               phase 1 are eliminated.
-          4.   All comments are replaced with a single space. (Note that '//' style comments end before their
-               terminating new lines and white space is generally relevant to preprocessing.)
-          5.   Preprocessing is done, resulting in a sequence of GLSL tokens, formed from the character set
-               stated above.
-          6.   GLSL processing is done on the sequence of GLSL tokens.
+---------------------------------------------------------------
 
+The source character set used for the OpenGL shading languages is Unicode in the UTF-8 encoding
+scheme. After preprocessing, only the following characters are allowed in the resulting stream of GLSL
+tokens:
 
+* The letters **a-z**, **A-Z**, and the underscore ( **_** ).
+* The numbers **0-9**.
+* The symbols period (**.**), plus (**+**), dash (**-**), slash (**/**), asterisk (*****), percent (**%**), angled brackets (**<** and
+  **>**), square brackets ( **[** and **]** ), parentheses ( **(** and **)** ), braces ( **{** and **}** ), caret (**^**), vertical bar ( **|** ),
+  ampersand (**&**), tilde (**~**), equals (**=**), exclamation point (**!**), colon (**:**), semicolon (**;**), comma (**,**), and
+  question mark (**?**).
 
+A compile-time error will be given if any other character is used in a GLSL token.
 
-                                                       12
-                                                                                                      3 Basics
+There are no digraphs or trigraphs. There are no escape sequences or uses of the backslash beyond use as
+the line-continuation character.
 
+Lines are relevant for compiler diagnostic messages and the preprocessor. They are terminated by
+carriage-return or line-feed. If both are used together, it will count as only a single line termination. For
+the remainder of this document, any of these combinations is simply referred to as a new line.
 
+In general, the language’s use of this character set is case sensitive.
 
-      Details that fully define source strings, comments, line numbering, new line elimination, and
-      preprocessing are all discussed in upcoming sections. Sections beyond those describe GLSL processing.
+There are no character or string data types, so no quoting characters are included.
+
+There is no end-of-file character.
+
+More formally, compilation happens as if the following logical phases were executed in order:
+
+1.   Source strings are concatenated to form a single input. All provided new lines are retained.
+2.   Line numbering is noted, based on all present new lines, and does not change when new lines are
+     later eliminated.
+3.   Wherever a backslash ('\') occurs immediately before a new line, both are eliminated. (Note no
+     white space is substituted, allowing a single token to span a new line.) Any newly formed
+     backslash followed by a new line is not eliminated; only those pairs originally occurring after
+     phase 1 are eliminated.
+4.   All comments are replaced with a single space. (Note that '//' style comments end before their
+     terminating new lines and white space is generally relevant to preprocessing.)
+5.   Preprocessing is done, resulting in a sequence of GLSL tokens, formed from the character set
+     stated above.
+6.   GLSL processing is done on the sequence of GLSL tokens.
+
+Details that fully define source strings, comments, line numbering, new line elimination, and
+preprocessing are all discussed in upcoming sections. Sections beyond those describe GLSL processing.
 
 3.2   Source Strings
-      The source for a single shader is an array of strings of characters from the character set. A single shader
-      is made from the concatenation of these strings. Each string can contain multiple lines, separated by new
-      lines. No new lines need be present in a string; a single line can be formed from multiple strings. No new
-      lines or other characters are inserted by the implementation when it concatenates the strings to form a
-      single shader. Multiple shaders can be linked together to form a single program.
-      Diagnostic messages returned from compiling a shader must identify both the line number within a string
-      and which source string the message applies to. Source strings are counted sequentially with the first
-      string being string 0. Line numbers are one more than the number of new lines that have been processed,
-      including counting the new lines that will be removed by the line-continuation character ( \ ).
-      Lines separated by the line-continuation character preceding a new line are concatenated together before
-      either comment processing or preprocessing. No white space is substituted for the line-continuation
-      character. That is, a single token could be formed by the concatenation by taking the characters at the end
-      of one line concatenating them with the characters at the beginning of the next line.
+---------------------------------------------------------------
 
+The source for a single shader is an array of strings of characters from the character set. A single shader
+is made from the concatenation of these strings. Each string can contain multiple lines, separated by new
+lines. No new lines need be present in a string; a single line can be formed from multiple strings. No new
+lines or other characters are inserted by the implementation when it concatenates the strings to form a
+single shader. Multiple shaders can be linked together to form a single program.
 
+Diagnostic messages returned from compiling a shader must identify both the line number within a string
+and which source string the message applies to. Source strings are counted sequentially with the first
+string being string 0. Line numbers are one more than the number of new lines that have been processed,
+including counting the new lines that will be removed by the line-continuation character ( **\\** ).
 
+Lines separated by the line-continuation character preceding a new line are concatenated together before
+either comment processing or preprocessing. No white space is substituted for the line-continuation
+character. That is, a single token could be formed by the concatenation by taking the characters at the end
+of one line concatenating them with the characters at the beginning of the next line.
 
-                                                    13
-                                                                                                      3 Basics
+.. code:: cpp
 
-
-
-         float f\
-         oo;
-         // forms a single line equivalent to “float foo;”
-         // (assuming '\' is the last character before the new line and “oo” are
-         // the first two characters of the next line)
-
+  float f\
+  oo;
+  // forms a single line equivalent to “float foo;”
+  // (assuming '\' is the last character before the new line and “oo” are
+  // the first two characters of the next line)
 
 3.3   Preprocessor
-      There is a preprocessor that processes the source strings as part of the compilation process. Except as
-      noted below, it behaves as the C++ standard preprocessor (see section 10 “Normative References”).
-      The complete list of preprocessor directives is as follows.
-         #
-         #define
-         #undef
+---------------------------------------------------------------
 
-         #if
-         #ifdef
-         #ifndef
-         #else
-         #elif
-         #endif
+There is a preprocessor that processes the source strings as part of the compilation process. Except as
+noted below, it behaves as the C++ standard preprocessor (see section 10 “Normative References”).
 
-         #error
-         #pragma
+The complete list of preprocessor directives is as follows.
 
-         #extension
-         #version
+.. code:: cpp
 
-         #line
+  #
+  #define
+  #undef
 
-      The following operators are also available
-         defined
-         ##
+  #if
+  #ifdef
+  #ifndef
+  #else
+  #elif
+  #endif
 
-      Each number sign (#) can be preceded in its line only by spaces or horizontal tabs. It may also be
-      followed by spaces and horizontal tabs, preceding the directive. Each directive is terminated by a new
-      line. Preprocessing does not change the number or relative location of new lines in a source string.
-      Preprocessing takes places after new lines have been removed by the line-continuation character.
-      The number sign (#) on a line by itself is ignored. Any directive not listed above will cause a diagnostic
-      message and make the implementation treat the shader as ill-formed.
-      #define and #undef functionality are defined as is standard for C++ preprocessors for macro definitions
-      both with and without macro parameters.
-      The following predefined macros are available
+  #error
+  #pragma
 
+  #extension
+  #version
 
+  #line
 
+The following operators are also available
 
-                                                     14
-                                                                                                  3 Basics
+.. code:: cpp
 
+  defined
+  ##
 
+Each number sign (**#**) can be preceded in its line only by spaces or horizontal tabs. It may also be
+followed by spaces and horizontal tabs, preceding the directive. Each directive is terminated by a new
+line. Preprocessing does not change the number or relative location of new lines in a source string.
+Preprocessing takes places after new lines have been removed by the line-continuation character.
+The number sign (**#**) on a line by itself is ignored. Any directive not listed above will cause a diagnostic
+message and make the implementation treat the shader as ill-formed.
 
-   __LINE__
-   __FILE__
-   __VERSION__
+**#define** and **#undef** functionality are defined as is standard for C++ preprocessors for macro definitions
+both with and without macro parameters.
 
-__LINE__ will substitute a decimal integer constant that is one more than the number of preceding new
+The following predefined macros are available
+
+.. code:: cpp
+
+  __LINE__
+  __FILE__
+  __VERSION__
+
+*__LINE__* will substitute a decimal integer constant that is one more than the number of preceding new
 lines in the current source string.
-__FILE__ will substitute a decimal integer constant that says which source string number is currently
+
+*__FILE__* will substitute a decimal integer constant that says which source string number is currently
 being processed.
-__VERSION__ will substitute a decimal integer reflecting the version number of the OpenGL shading
-language. The version of the shading language described in this document will have __VERSION__
+
+*__VERSION__* will substitute a decimal integer reflecting the version number of the OpenGL shading
+language. The version of the shading language described in this document will have *__VERSION__*
 substitute the decimal integer 440.
-All macro names containing two consecutive underscores ( __ ) are reserved for future use as predefined
-macro names. All macro names prefixed with “GL_” (“GL” followed by a single underscore) are also
+
+All macro names containing two consecutive underscores ( **__** ) are reserved for future use as predefined
+macro names. All macro names prefixed with “GL\_” (“GL” followed by a single underscore) are also
 reserved.
-#if, #ifdef, #ifndef, #else, #elif, and #endif are defined to operate as is standard for C++ preprocessors.
-Expressions following #if and #elif are further restricted to expressions operating on literal integer
-constants, plus identifiers consumed by the defined operator. Character constants are not supported.
+
+**#if**, **#ifdef**, **#ifndef**, **#else**, **#elif**, and **#endif** are defined to operate as is standard for C++ preprocessors.
+Expressions following **#if** and **#elif** are further restricted to expressions operating on literal integer
+constants, plus identifiers consumed by the **defined** operator. Character constants are not supported.
 The operators available are as follows.
 
++-------------+------------------------+-----------------+---------------+
+|Precedence   |Operator class          |Operators        |Associativity  |
++=============+========================+=================+===============+
+|1 (highest)  |parenthetical grouping  |()               |NA             |
++-------------+------------------------+-----------------+---------------+
+|2            |unary                   |defined          |Right to Left  |
+|             |                        |+ - ~ !          |               |
++-------------+------------------------+-----------------+---------------+
+|3            |multiplicative          |\* / %           |Left to Right  |
++-------------+------------------------+-----------------+---------------+
+|4            |additive                |\+ -             |Left to Right  |
++-------------+------------------------+-----------------+---------------+
+|5            |bit-wise shift          |<< >>            |Left to Right  |
++-------------+------------------------+-----------------+---------------+
+|6            |relational              |< > <= >=        |Left to Right  |
++-------------+------------------------+-----------------+---------------+
+|7            |equality                |== !=            |Left to Right  |
++-------------+------------------------+-----------------+---------------+
+|8            |bit-wise and            |&                |Left to Right  |
++-------------+------------------------+-----------------+---------------+
+|9            |bit-wise exclusive or   |^                |Left to Right  |
++-------------+------------------------+-----------------+---------------+
+|10           |bit-wise inclusive or   |\|               |Left to Right  |
++-------------+------------------------+-----------------+---------------+
+|11           |logical and             |&&               |Left to Right  |
++-------------+------------------------+-----------------+---------------+
+|12 (lowest)  |logical inclusive or    |||               |Left to Right  |
++-------------+------------------------+-----------------+---------------+
 
-      Precedence Operator class                               Operators                Associativity
-        1 (highest)    parenthetical grouping                    ()                    NA
-        2              unary                                     defined               Right to Left
-                                                                 + - ~ !
-        3              multiplicative                            * / %                 Left to Right
-        4              additive                                  + -                   Left to Right
-        5              bit-wise shift                            <<    >>              Left to Right
-        6              relational                                <     >   <= >=       Left to Right
-        7              equality                                  == !=                 Left to Right
-        8              bit-wise and                              &                     Left to Right
-        9              bit-wise exclusive or                     ^                     Left to Right
-      10               bit-wise inclusive or                     |                     Left to Right
-      11               logical and                               &&                    Left to Right
-      12 (lowest)      logical inclusive or                      ||                    Left to Right
+The **defined** operator can be used in either of the following ways:
 
+.. code:: cpp
 
+  defined identifier
+  defined ( identifier )
 
-
-                                                15
-                                                                                               3 Basics
-
-
-
-The defined operator can be used in either of the following ways:
-   defined identifier
-   defined ( identifier )
-
-Two tokens in a macro can be concatenated into one token using the token pasting (##) operator, as is
+Two tokens in a macro can be concatenated into one token using the token pasting (**##**) operator, as is
 standard for C++ preprocessors. The result must be a valid single token, which will then be subject to
 macro expansion. That is, macro expansion happens only after token pasting. There are no other number
-sign based operators (e.g., no # or #@), nor is there a sizeof operator.
+sign based operators (e.g., no **#** or **#@**), nor is there a **sizeof** operator.
+
 The semantics of applying operators to integer literals in the preprocessor match those standard in the C+
 + preprocessor, not those in the OpenGL Shading Language.
+
 Preprocessor expressions will be evaluated according to the behavior of the host processor, not the
 processor targeted by the shader.
-#error will cause the implementation to put a compile-time diagnostic message into the shader object’s
+
+**#error** will cause the implementation to put a compile-time diagnostic message into the shader object’s
 information log (see section 7.12 “Shader and Program Queries” in the OpenGL Graphics System
 Specification for how to access a shader object’s information log). The message will be the tokens
-following the #error directive, up to the first new line. The implementation must then consider the shader
+following the **#error** directive, up to the first new line. The implementation must then consider the shader
 to be ill-formed.
-#pragma allows implementation dependent compiler control. Tokens following #pragma are not subject
-to preprocessor macro expansion. If an implementation does not recognize the tokens following
-#pragma, then it will ignore that pragma. The following pragmas are defined as part of the language.
-   #pragma STDGL
 
-The STDGL pragma is used to reserve pragmas for use by future revisions of this language. No
-implementation may use a pragma whose first token is STDGL.
-   #pragma optimize(on)
-   #pragma optimize(off)
+**#pragma** allows implementation dependent compiler control. Tokens following **#pragma** are not subject
+to preprocessor macro expansion. If an implementation does not recognize the tokens following
+**#pragma**, then it will ignore that pragma. The following pragmas are defined as part of the language.
+
+.. code:: cpp
+
+  #pragma STDGL
+
+The **STDGL** pragma is used to reserve pragmas for use by future revisions of this language. No
+implementation may use a pragma whose first token is **STDGL**.
+
+.. code:: cpp
+
+  #pragma optimize(on)
+  #pragma optimize(off)
 
 can be used to turn off optimizations as an aid in developing and debugging shaders. It can only be used
 outside function definitions. By default, optimization is turned on for all shaders. The debug pragma
-   #pragma debug(on)
-   #pragma debug(off)
+
+.. code:: cpp
+
+  #pragma debug(on)
+  #pragma debug(off)
 
 can be used to enable compiling and annotating a shader with debug information, so that it can be used
 with a debugger. It can only be used outside function definitions. By default, debug is turned off.
+
 Shaders should declare the version of the language they are written to. The language version a shader is
 written to is specified by
-   #version number profileopt
 
-where number must be a version of the language, following the same convention as __VERSION__ above.
-The directive “#version 440” is required in any shader that uses version 4.40 of the language. Any
+.. code:: cpp
+
+  #version number profile_opt
+
+where number must be a version of the language, following the same convention as *__VERSION__* above.
+The directive “**#version 440**” is required in any shader that uses version 4.40 of the language. Any
 number representing a version of the language a compiler does not support will cause a compile-time
 error to be generated. Version 1.10 of the language does not require shaders to include this directive, and
-shaders that do not include a #version directive will be treated as targeting version 1.10. Shaders that
-
-
-
-
-                                              16
-                                                                                                  3 Basics
-
-
-
-specify #version 100 will be treated as targeting version 1.00 of the OpenGL ES Shading Language.
-Shaders that specify #version 300 will be treated as targeting version 3.00 of the OpenGL ES Shading
+shaders that do not include a **#version** directive will be treated as targeting version 1.10. Shaders that
+specify **#version** 100 will be treated as targeting version 1.00 of the OpenGL ES Shading Language.
+Shaders that specify **#version** 300 will be treated as targeting version 3.00 of the OpenGL ES Shading
 Language.
-If the optional profile argument is provided, it must be the name of an OpenGL profile. Currently, there
-are three choices:
-   core
-   compatibility
-   es
 
-A profile argument can only be used with version 150 or greater. If no profile argument is provided and
-the version is 150 or greater, the default is core. If version 300 is specified, the profile argument is not
-optional and must be es, or a compile-time error results. The Language Specification for the es profile is
+If the optional *profile* argument is provided, it must be the name of an OpenGL profile. Currently, there
+are three choices:
+
+.. code:: cpp
+
+  core
+  compatibility
+  es
+
+A *profile* argument can only be used with version 150 or greater. If no profile argument is provided and
+the version is 150 or greater, the default is **core**. If version 300 is specified, the profile argument is not
+optional and must be **es**, or a compile-time error results. The Language Specification for the **es** profile is
 specified in The OpenGL ES Shading Language specification.
-Shaders for the core or compatibility profiles that declare different versions can be linked together.
-However, es profile shaders cannot be linked with non-es profile shaders or with es profile shaders of a
+
+Shaders for the **core** or **compatibility** profiles that declare different versions can be linked together.
+However, **es** profile shaders cannot be linked with non-**es** profile shaders or with **es** profile shaders of a
 different version, or a link-time error will result. When linking shaders of versions allowed by these rules,
 remaining link-time errors will be given as per the linking rules in the GLSL version corresponding to the
 version of the context the shaders are linked under. Shader compile-time errors must still be given strictly
 based on the version declared (or defaulted to) within each shader.
+
 Unless otherwise specified, this specification is documenting the core profile, and everything specified for
 the core profile is also available in the compatibility profile. Features specified as belonging specifically
 to the compatibility profile are not available in the core profile.
+
 There is a built-in macro definition for each profile the implementation supports. All implementations
 provide the following macro:
-   #define GL_core_profile 1
 
-Implementations providing the compatibility profile provide the following macro:
-   #define GL_compatibility_profile 1
+.. code:: cpp
 
-Implementations providing the es profile provide the following macro:
-   #define GL_es_profile 1
+  #define GL_core_profile 1
 
+Implementations providing the **compatibility** profile provide the following macro:
 
-The #version directive must occur in a shader before anything else, except for comments and white space.
+.. code:: cpp
 
+  #define GL_compatibility_profile 1
 
+Implementations providing the **es** profile provide the following macro:
 
+.. code:: cpp
 
-                                                17
-                                                                                                  3 Basics
+  #define GL_es_profile 1
 
-
+The **#version** directive must occur in a shader before anything else, except for comments and white space.
 
 By default, compilers of this language must issue compile-time lexical and grammatical errors for shaders
 that do not conform to this specification. Any extended behavior must first be enabled. Directives to
-control the behavior of the compiler with respect to extensions are declared with the #extension directive
-   #extension extension_name : behavior
-   #extension all : behavior
+control the behavior of the compiler with respect to extensions are declared with the **#extension** directive
 
-where extension_name is the name of an extension. Extension names are not documented in this
-specification. The token all means the behavior applies to all extensions supported by the compiler. The
+.. code:: cpp
+
+  #extension extension_name : behavior
+  #extension all : behavior
+
+where *extension_name* is the name of an extension. Extension names are not documented in this
+specification. The token **all** means the behavior applies to all extensions supported by the compiler. The
 behavior can be one of the following
 
- behavior                  Effect
-         require           Behave as specified by the extension extension_name.
-                           Give a compile-time error on the #extension if the extension extension_name
-                           is not supported, or if all is specified.
++-------------+---------------------------------------------------------------------------------------+
+|   behavior  |                                         Effect                                        |
++=============+=======================================================================================+
+| **require** | * Behave as specified by the extension *extension_name*.                              |
+|             | * Give a compile-time error on the **#extension** if the extension *extension_name*   |
+|             |   is not supported, or if **all** is specified.                                       |
++-------------+---------------------------------------------------------------------------------------+
+| **enable**  | * Behave as specified by the extension *extension_name*.                              |
+|             | * Warn on the **#extension** if the extension *extension_name* is not supported.      |
+|             | * Give a compile-time error on the **#extension** if **all** is specified.            |
++-------------+---------------------------------------------------------------------------------------+
+| **warn**    | * Behave as specified by the extension *extension_name*, except issue warnings        |
+|             |   on any detectable use of that extension, unless such use is supported by other      |
+|             |   enabled or required extensions.                                                     |
+|             | * If **all** is specified, then warn on all detectable uses of any extension used.    |
+|             | * Warn on the **#extension** if the extension *extension_name* is not supported.      |
++-------------+---------------------------------------------------------------------------------------+
+| **disable** | * Behave (including issuing errors and warnings) as if the extension                  |
+|             |   *extension_name* is not part of the language definition.                            |
+|             | * If **all** is specified, then behavior must revert back to that of the non-extended |
+|             |   core version of the language being compiled to.                                     |
+|             | * Warn on the **#extension** if the extension *extension_name* is not supported.      |
++-------------+---------------------------------------------------------------------------------------+
 
-
-         enable            Behave as specified by the extension extension_name.
-                           Warn on the #extension if the extension extension_name is not supported.
-                           Give a compile-time error on the #extension if all is specified.
-
-
-          warn             Behave as specified by the extension extension_name, except issue warnings
-                           on any detectable use of that extension, unless such use is supported by other
-                           enabled or required extensions.
-                           If all is specified, then warn on all detectable uses of any extension used.
-                           Warn on the #extension if the extension extension_name is not supported.
-
-
-         disable           Behave (including issuing errors and warnings) as if the extension
-                           extension_name is not part of the language definition.
-                           If all is specified, then behavior must revert back to that of the non-extended
-                           core version of the language being compiled to.
-                           Warn on the #extension if the extension extension_name is not supported.
-
-
-
-The extension directive is a simple, low-level mechanism to set the behavior for each extension. It does
+The **extension** directive is a simple, low-level mechanism to set the behavior for each extension. It does
 not define policies such as which combinations are appropriate, those must be defined elsewhere. Order
 of directives matters in setting the behavior for each extension: Directives that occur later override those
-seen earlier. The all variant sets the behavior for all extensions, overriding all previously issued
-extension directives, but only for the behaviors warn and disable.
+seen earlier. The **all** variant sets the behavior for all extensions, overriding all previously issued
+**extension** directives, but only for the *behaviors* **warn** and **disable**.
 
+The initial state of the compiler is as if the directive
 
+.. code:: cpp
 
+  #extension all : disable
 
-                                               18
-                                                                                                        3 Basics
+was issued, telling the compiler that all error and warning reporting must be done according to this
+specification, ignoring any extensions.
 
+Each extension can define its allowed granularity of scope. If nothing is said, the granularity is a shader
+(that is, a single compilation unit), and the extension directives must occur before any non-preprocessor
+tokens. If necessary, the linker can enforce granularities larger than a single compilation unit, in which
+case each involved shader will have to contain the necessary extension directive.
 
+Macro expansion is not done on lines containing **#extension** and **#version** directives.
 
-      The initial state of the compiler is as if the directive
-         #extension all : disable
+**#line** must have, after macro substitution, one of the following forms:
 
-      was issued, telling the compiler that all error and warning reporting must be done according to this
-      specification, ignoring any extensions.
-      Each extension can define its allowed granularity of scope. If nothing is said, the granularity is a shader
-      (that is, a single compilation unit), and the extension directives must occur before any non-preprocessor
-      tokens. If necessary, the linker can enforce granularities larger than a single compilation unit, in which
-      case each involved shader will have to contain the necessary extension directive.
-      Macro expansion is not done on lines containing #extension and #version directives.
-      #line must have, after macro substitution, one of the following forms:
-         #line line
-         #line line source-string-number
+..  code:: cpp
 
-      where line and source-string-number are constant integer expressions. After processing this directive
-      (including its new line), the implementation will behave as if it is compiling at line number line and source
-      string number source-string-number. Subsequent source strings will be numbered sequentially, until
-      another #line directive overrides that numbering.
+  #line line
+  #line line source-string-number
+
+where *line* and *source-string-number* are constant integer expressions. After processing this directive
+(including its new line), the implementation will behave as if it is compiling at line number *line* and source
+string number *source-string-number*. Subsequent source strings will be numbered sequentially, until
+another **#line** directive overrides that numbering.
 
 3.4   Comments
+---------------------------------------------------------------
+
       Comments are delimited by /* and */, or by // and a new line. The begin comment delimiters (/* or //) are
       not recognized as comment delimiters inside of a comment, hence comments cannot be nested. A /*
       comment includes its terminating delimiter (*/). However, a // comment does not include (or eliminate)
@@ -952,15 +806,9 @@ extension directives, but only for the behaviors warn and disable.
          // a single-line comment containing the next line \
          a = b; // this is still in the first comment
 
-
-
-
-                                                        19
-                                                                                                       3 Basics
-
-
-
 3.5   Tokens
+---------------------------------------------------------------
+
       The language, after preprocessing, is a sequence of GLSL tokens. A token can be
 
            token:
@@ -972,6 +820,8 @@ extension directives, but only for the behaviors warn and disable.
                 ; { }
 
 3.6   Keywords
+---------------------------------------------------------------
+
       The following are the language's keywords and (after preprocessing) can only be used as described in this
       specification, or a compile-time error results:
              attribute const uniform varying                buffer     shared
@@ -993,15 +843,6 @@ extension directives, but only for the behaviors warn and disable.
              mat4x2 mat4x3 mat4x4                    dmat4x2 dmat4x3 dmat4x4
              vec2 vec3 vec4           ivec2 ivec3 ivec4          bvec2 bvec3 bvec4   dvec2   dvec3   dvec4
              uint     uvec2       uvec3     uvec4
-
-
-
-
-                                                           20
-                                                                                              3 Basics
-
-
-
        lowp     mediump highp        precision
        sampler1D sampler2D sampler3D samplerCube
        sampler1DShadow sampler2DShadow                 samplerCubeShadow
@@ -1033,15 +874,6 @@ The following are the keywords reserved for future use. Using them will result i
        asm
        class    union    enum typedef      template this
        resource
-
-
-
-
-                                                 21
-                                                                                                        3 Basics
-
-
-
              goto
              inline    noinline       public    static    extern      external   interface
              long     short    half   fixed    unsigned       superp
@@ -1057,6 +889,8 @@ The following are the keywords reserved for future use. Using them will result i
       keywords.
 
 3.7   Identifiers
+---------------------------------------------------------------
+
       Identifiers are used for variable names, function names, structure names, and field selectors (field
       selectors select components of vectors and matrices similar to structure members, as discussed in section
       5.5 “Vector and Scalar Components” and section 5.6 “Matrix Components” ). Identifiers have the form
@@ -1075,19 +909,13 @@ The following are the keywords reserved for future use. Using them will result i
       Identifiers starting with “gl_” are reserved for use by OpenGL, and may not be declared in a shader as
       either a variable or a function; this results in a compile-time error. However, as noted in the specification,
       there are some cases where previously declared variables can be redeclared, and predeclared "gl_" names
-      are allowed to be redeclared in a shader only for these specific purposes. More generally, it is a compile-
-      time error to redeclare a variable, including those starting “gl_”.
+      are allowed to be redeclared in a shader only for these specific purposes. More generally, it is a compile-time
+      error to redeclare a variable, including those starting “gl_”.
 
 3.8   Definitions
+---------------------------------------------------------------
+
       Some language rules described below depend on the following definitions.
-
-
-
-
-                                                         22
-                                                                                                           3 Basics
-
-
 
 3.8.1   Static Use
         A shader contains a static use of (or static assignment to) a variable x if, after preprocessing, the shader
@@ -1131,6 +959,7 @@ The following are the keywords reserved for future use. Using them will result i
 
                                                         23
 4 Variables and Types
+===============================================================
 
       All variables and functions must be declared before being used. Variable and function names are
       identifiers.
@@ -1144,6 +973,8 @@ The following are the keywords reserved for future use. Using them will result i
       referenced by other sections in this specification.
 
 4.1   Basic Types
+---------------------------------------------------------------
+
       The OpenGL Shading Language supports the following basic data types, grouped as follows.
       Transparent types
 
@@ -1164,14 +995,6 @@ The following are the keywords reserved for future use. Using them will result i
            bvec3                        a three-component Boolean vector
            bvec4                        a four-component Boolean vector
            ivec2                        a two-component signed integer vector
-
-
-
-
-                                                    24
-                                                     4 Variables and Types
-
-
 
 Type      Meaning
 ivec3     a three-component signed integer vector
@@ -1203,14 +1026,6 @@ dmat3x4   a double-precision floating-point matrix with 3 columns and 4 rows
 dmat4x2   a double-precision floating-point matrix with 4 columns and 2 rows
 dmat4x3   a double-precision floating-point matrix with 4 columns and 3 rows
 dmat4x4   same as a dmat4
-
-
-
-
-                      25
-                                                                          4 Variables and Types
-
-
 
 Floating-Point Opaque Types
 
@@ -1252,14 +1067,6 @@ Signed Integer Opaque Types
     Type                      Meaning
     isampler1D                a handle for accessing an integer 1D texture
     iimage1D
-
-
-
-
-                                          26
-                                                                          4 Variables and Types
-
-
 
     Type                        Meaning
     isampler2D                  a handle for accessing an integer 2D texture
@@ -1303,14 +1110,6 @@ Unsigned Integer Opaque Types
     usampler2DArray             a handle for accessing an unsigned integer 2D array texture
     uimage2DArray
 
-
-
-
-                                            27
-                                                                                      4 Variables and Types
-
-
-
              Type                          Meaning
              usamplerBuffer                a handle for accessing an unsigned integer buffer texture
              uimageBuffer
@@ -1352,14 +1151,6 @@ Unsigned Integer Opaque Types
            int i, j = 42;        // default integer literal type is int
            uint k = 3u;          // “u” establishes the type as uint
 
-
-
-
-                                                       28
-                                                                                4 Variables and Types
-
-
-
 Literal integer constants can be expressed in decimal (base 10), octal (base 8), or hexadecimal (base 16)
 as follows.
 
@@ -1399,14 +1190,6 @@ with non-negative syntax, though they could result in a negative value.
 It is a compile-time error to provide a literal integer whose bit pattern cannot fit in 32 bits. The bit pattern
 of the literal is always used unmodified. So a signed literal whose bit pattern includes a set sign bit
 creates a negative value. For example,
-
-
-
-
-                                                 29
-                                                                                      4 Variables and Types
-
-
 
            int    a   =   0xffffffff;
                                 //            32 bits, a gets the value -1
@@ -1451,14 +1234,6 @@ creates a negative value. For example,
         as required by IEEE 754. See section 4.7.1 “Range and Precision” for more details on precision and
         usage of NaNs (Not a Number) and Infs (positive or negative infinities).
 
-
-
-
-                                                       30
-                                                                                      4 Variables and Types
-
-
-
         Floating-point constants are defined as follows.
 
              floating-constant :
@@ -1501,15 +1276,6 @@ creates a negative value. For example,
 4.1.6   Matrices
         The OpenGL Shading Language has built-in types for 2×2, 2×3, 2×4, 3×2, 3×3, 3×4, 4×2, 4×3, and 4×4
         matrices of floating-point numbers. Matrix types beginning with "mat" have single-precision components
-
-
-
-
-                                                        31
-                                                                                      4 Variables and Types
-
-
-
         while matrix types beginning with "dmat" have double-precision components. The first number in the
         type is the number of columns, the second is the number of rows. If there is only one number, the matrix
         is square. Example matrix declarations:
@@ -1550,14 +1316,6 @@ creates a negative value. For example,
         through built-in texture functions (described in section 8.9 “Texture Functions”) and samplers are used to
         specify which texture to access and how it is to be filtered.
 
-
-
-
-                                                       32
-                                                                                     4 Variables and Types
-
-
-
 4.1.7.2 Images
         Image types are opaque types, declared and behaving as described above for opaque types. They can be
         further qualified with memory qualifiers. When aggregated into arrays within a shader, images can only
@@ -1578,8 +1336,8 @@ creates a negative value. For example,
 
 4.1.7.3 Atomic Counters
         Atomic counter types (atomic_uint) are opaque handles to counters, declared and behaving as described
-        above for opaque types. The variables they declare specify which counter to access when using the built-
-        in atomic counter functions as described in section 8.10 “Atomic Counter Functions”. They are bound to
+        above for opaque types. The variables they declare specify which counter to access when using the built-in
+        atomic counter functions as described in section 8.10 “Atomic Counter Functions”. They are bound to
         buffers as described in section 4.4.6.1 “Atomic Counter Layout Qualifiers”. When aggregated into arrays
         within a shader, atomic counters can only be indexed with a dynamically uniform integral expression,
         otherwise results are undefined. Members of structures cannot be declared as atomic counter types.
@@ -1595,14 +1353,6 @@ creates a negative value. For example,
         In this example, light becomes the name of the new type, and lightVar becomes a variable of type light.
         To declare variables of the new type, use its name (without the keyword struct).
            light lightVar2;
-
-
-
-
-                                                       33
-                                                                                       4 Variables and Types
-
-
 
         More formally, structures are declared as follows. However, the complete correct grammar is as given in
         section 9 “Shading Language Grammar” .
@@ -1648,23 +1398,14 @@ creates a negative value. For example,
         member of a shader storage block (section 4.3.9 “Interface Blocks”), the size of an array must be declared
         before it is indexed with anything other than an integral constant expression. The size of any array must
         be declared before passing it as an argument to a function. Violation of any of these rules result in
-
-
-
-
-                                                        34
-                                                                             4 Variables and Types
-
-
-
 compile-time errors. It is legal to declare an array without a size and then later redeclare the same name
 as an array of the same type and specify a size. However, unless noted otherwise, blocks cannot be
 redeclared; an unsized array in a user-declared block cannot be sized by a block redeclaration. It is a
 compile-time error to declare an array with a size, and then later (in the same shader) index the same array
 with an integral constant expression greater than or equal to the declared size. It is also a compile-time
 error to index an array with a negative constant expression. Arrays declared as formal parameters in a
-function declaration must specify a size. Undefined behavior results from indexing an array with a non-
-constant expression that’s greater than or equal to the array’s size or less than 0. Arrays only have a
+function declaration must specify a size. Undefined behavior results from indexing an array with a non-constant
+expression that’s greater than or equal to the array’s size or less than 0. Arrays only have a
 single dimension (a single entry within "[ ]"), however, arrays of arrays can be declared. All types (basic
 types, structures, arrays) can be formed into an array.
 All arrays are inherently homogeneous; made of elements all having the same type and size, with one
@@ -1701,14 +1442,6 @@ and as an alternate way of declaring a variable or function parameter.
    float[5] a;
 
 Arrays can have initializers formed from array constructors:
-
-
-
-
-                                               35
-                                                                                  4 Variables and Types
-
-
 
    float a[5] = float[5](3.4, 4.2, 5.0, 5.2, 1.1);
    float a[5] = float[](3.4, 4.2, 5.0, 5.2, 1.1); // same thing
@@ -1754,15 +1487,6 @@ constant expression. If an array has not been explicitly sized and is not the la
 shader storage block, the value returned by the length method is not a constant expression and will be
 determined when a program is linked. If an array has not been explicitly sized and is the last declared
 member of a shader storage block, the value returned will not be a constant expression and will be
-
-
-
-
-                                                  36
-                                                                               4 Variables and Types
-
-
-
 determined at run time based on the size of the buffer object providing storage for the block. For such
 arrays, the value returned by the length method will be undefined if the array is contained in an array of
 shader storage blocks that is indexed with a non-constant expression less than zero or greater than or
@@ -1795,14 +1519,6 @@ In a shader storage block, the last member may be declared without an explicit s
 effective array size is inferred at run-time from the size of the data store backing the interface block. Such
 unsized arrays may be indexed with general integer expressions. However, it is a compile-time error to
 pass them as an argument to a function or index them with a negative constant expression.
-
-
-
-
-                                                37
-                                                                                     4 Variables and Types
-
-
 
 4.1.10 Implicit Conversions
        In some situations, an expression and its type will be implicitly converted to a different type. The
@@ -1843,20 +1559,12 @@ pass them as an argument to a function or index them with a negative constant ex
                         mat4x2                              dmat4x2
                         mat4x3                              dmat4x3
 
-
-
-
-                                                      38
-                                                                                          4 Variables and Types
-
-
-
         There are no implicit array or structure conversions. For example, an array of int cannot be implicitly
         converted to an array of float.
         When an implicit conversion is done, it is not a re-interpretation of the expression's bit pattern, but a
         conversion of its value to an equivalent value in the new type. For example, the integer value -5 will be
-        converted to the floating-point value -5.0. Integer values having more bits of precision than a single-
-        precision floating-point mantissa will lose precision when converted to float.
+        converted to the floating-point value -5.0. Integer values having more bits of precision than a single-precision
+        floating-point mantissa will lose precision when converted to float.
         When performing implicit conversion for binary operators, there may be multiple data types to which the
         two operands can be converted. For example, when adding an int value to a uint value, both values can
         be implicitly converted to uint, float, and double. In such cases, a floating-point type is chosen if either
@@ -1890,14 +1598,6 @@ pass them as an argument to a function or index them with a negative constant ex
         If an initializer is a list of initializers enclosed in curly braces, the variable being declared must be a
         vector, a matrix, an array, or a structure.
            int i = { 1 };                  // illegal, i is not an aggregate
-
-
-
-
-                                                         39
-                                                                                 4 Variables and Types
-
-
 
 A list of initializers enclosed in a matching set of curly braces is applied to one aggregate. This may be
 the variable being declared or an aggregate contained in the variable being declared. Individual
@@ -1934,14 +1634,6 @@ will be done on the initializer before the assignment is done.
        int   b;
    } e = { 1.2, 2 };                           // legal, all types match
 
-
-
-
-                                                 40
-                                                                                      4 Variables and Types
-
-
-
          struct {
              float a;
              int   b;
@@ -1977,24 +1669,18 @@ will be done on the initializer before the assignment is done.
       initializers.
 
 4.2   Scoping
+---------------------------------------------------------------
+
       The scope of a variable is determined by where it is declared. If it is declared outside all function
       definitions, it has global scope, which starts from where it is declared and persists to the end of the shader
       it is declared in. If it is declared in a while test or a for statement, then it is scoped to the end of the
       following sub-statement. If it is declared in an if or else statement, it is scoped to the end of that
-      statement. (See section 6.2 “Selection” and section 6.3 “Iteration” for the location of statements and sub-
-      statements.) Otherwise, if it is declared as a statement within a compound statement, it is scoped to the
+      statement. (See section 6.2 “Selection” and section 6.3 “Iteration” for the location of statements and sub-statements.)
+      Otherwise, if it is declared as a statement within a compound statement, it is scoped to the
       end of that compound statement. If it is declared as a parameter in a function definition, it is scoped until
       the end of that function definition. A function's parameter declarations and body together form a single
       scope nested in the global scope. The if statement’s expression does not allow new variables to be
       declared, hence does not form a new scope.
-
-
-
-
-                                                      41
-                                                                              4 Variables and Types
-
-
 
 Within a declaration, the scope of a name starts immediately after the initializer if present or immediately
 after the name being declared if not. Several examples:
@@ -2038,15 +1724,6 @@ so the following has a redeclaration compile-time error:
        int i; // redeclaration error
    }
 
-
-
-
-                                               42
-                                                                               4 Variables and Types
-
-
-
-
 The body of a do-while loop introduces a new scope lasting only between the do and while (not including
 the while test expression), whether or not the body is simple or compound:
    int i = 17;
@@ -2086,15 +1763,9 @@ initializers, the initializers must all be constant expressions, and they must a
 Otherwise, a link-time error will result. (A shared global having only one initializer does not require that
 initializer to be a constant expression.)
 
-
-
-
-                                                43
-                                                                                   4 Variables and Types
-
-
-
 4.3   Storage Qualifiers
+---------------------------------------------------------------
+
       Variable declarations may have at most one storage qualifier specified in front of the type. These are
       summarized as
 
@@ -2138,15 +1809,6 @@ initializer to be a constant expression.)
 
              patch                       per-tessellation-patch attributes
 
-
-
-
-                                                    44
-                                                                                         4 Variables and Types
-
-
-
-
         Not all combinations of qualification are allowed. Which variable types can have which qualifiers are
         specifically defined in upcoming sections.
         Local variables can only use the const storage qualifier (or use no storage qualifier).
@@ -2186,14 +1848,6 @@ initializer to be a constant expression.)
             expression
         •   an expression formed by an operator on operands that are all constant expressions, including getting an
             element of a constant array, or a member of a constant structure, or components of a constant vector.
-
-
-
-
-                                                         45
-                                                                                        4 Variables and Types
-
-
 
             However, the lowest precedence operators of the sequence operator ( , ) and the assignment operators
             ( =, +=, ...) are not included in the operators that can create a constant expression.
@@ -2239,14 +1893,6 @@ initializer to be a constant expression.)
                                 Static Use
                                                                                                     undefined)
 
-
-
-
-                                                        46
-                                                                                4 Variables and Types
-
-
-
 Consumption errors are based on static use only. Compilation may generate a warning, but not an error,
 for any dynamic use the compiler can deduce that might cause consumption of undefined values.
 See section 7 “Built-in Variables” for a list of the built-in input names.
@@ -2289,15 +1935,6 @@ and geometry shader input variables of the same name must have matching types, e
 geometry shader will have one more array dimension than the vertex shader, to allow for vertex indexing.
 If such an arrayed interface variable is not declared with the necessary additional input or output array
 dimension, a link-time error will result. Geometry shader inputs, tessellation control shader inputs and
-
-
-
-
-                                                 47
-                                                                               4 Variables and Types
-
-
-
 outputs, and tessellation evaluation inputs all have an additional level of arrayness relative to other shader
 inputs and outputs.
 For non-arrayed interfaces (meaning array dimensionally stays the same between stages), it is a link-time
@@ -2340,15 +1977,6 @@ what matters is what is declared in the fragment shaders, not what is declared i
 stages.
 When an interface between shader stages is formed using shaders from two separate program objects, it is
 not possible to detect mismatches between inputs and outputs when the programs are linked. When there
-
-
-
-
-                                                48
-                                                                                       4 Variables and Types
-
-
-
         are mismatches between inputs and outputs on such interfaces, the values passed across the interface will
         be partially or completely undefined. Shaders can ensure matches across such interfaces either by using
         input and output layout qualifiers (sections 4.4.1 “Input Layout Qualifiers” and 4.4.2 “Output Layout
@@ -2392,15 +2020,6 @@ not possible to detect mismatches between inputs and outputs when the programs a
 4.3.6   Output Variables
         Shader output variables are declared with a storage qualifier using the keyword out. They form the output
         interface between the declaring shader and the subsequent stages of the OpenGL pipeline. Output
-
-
-
-
-                                                        49
-                                                                                4 Variables and Types
-
-
-
 variables must be declared at global scope. During shader execution they will behave as normal
 unqualified global variables. Their values are copied out to the subsequent pipeline stage on shader exit.
 Only output variables that are read by the subsequent pipeline stage need to be written; it is allowed to
@@ -2429,11 +2048,11 @@ Individual vertex, tessellation evaluation, and geometry outputs are declared as
 These can also appear in interface blocks, as described in section 4.3.9 “Interface Blocks”. Interface
 blocks allow simpler addition of arrays to the interface from vertex to geometry shader. They also allow a
 fragment shader to have the same input interface as a geometry shader for a given vertex shader.
-Tessellation control shader output variables are may be used to output per-vertex and per-patch data. Per-
-vertex output variables are arrayed (see arrayed under 4.3.4 Inputs) and declared using the out qualifier
+Tessellation control shader output variables are may be used to output per-vertex and per-patch data. Per-vertex
+output variables are arrayed (see arrayed under 4.3.4 Inputs) and declared using the out qualifier
 without the patch qualifier. Per-patch output variables are declared using the patch and out qualifiers.
-Since tessellation control shaders produce an arrayed primitive comprising multiple vertices, each per-
-vertex output variable (or output block, see interface blocks below) needs to be declared as an array. For
+Since tessellation control shaders produce an arrayed primitive comprising multiple vertices, each per-vertex
+output variable (or output block, see interface blocks below) needs to be declared as an array. For
 example,
    out float foo[];          // feeds next stage input “in float foo[]”
 
@@ -2443,15 +2062,6 @@ output layout declaration(s) establishing the number of vertices in the output p
 section 4.4.2.1 “Tessellation Control Outputs”.
 Each tessellation control shader invocation has a corresponding output patch vertex, and may assign
 values to per-vertex outputs only if they belong to that corresponding vertex. If a per-vertex output
-
-
-
-
-                                                50
-                                                                                4 Variables and Types
-
-
-
 variable is used as an l-value, it is a compile-time error if the expression indicating the vertex index is not
 the identifier gl_InvocationID.
 The order of execution of a tessellation control shader invocation relative to the other invocations for the
@@ -2495,14 +2105,6 @@ Compute shaders have no built-in output variables, do not support user-defined o
 not form a formal interface with any other shader stage. All outputs from a compute shader take the form
 of the side effects such as image stores and operations on atomic counters.
 
-
-
-
-                                                51
-                                                                                     4 Variables and Types
-
-
-
 4.3.7   Buffer Variables
         The buffer qualifier is used to declare global variables whose values are stored in the data store of a
         buffer object bound through the OpenGL API. Buffer variables can be read and written with the
@@ -2544,14 +2146,6 @@ of the side effects such as image stores and operations on atomic counters.
         same shared variable by different invocations of a shader is not defined. In order to achieve ordering with
         respect to reads and writes to shared variables, memory barriers must be employed using the barrier()
         function (see section 8.16 “Shader Invocation Control Functions”).
-
-
-
-
-                                                      52
-                                                                                     4 Variables and Types
-
-
 
         There is a limit to the total size of all variables declared as shared in a single program. This limit,
         expressed in units of basic machine units may be determined by using the OpenGL API to query the value
@@ -2596,14 +2190,6 @@ of the side effects such as image stores and operations on atomic counters.
 
         The above establishes a uniform block named “Transform” with four uniforms grouped inside it.
 
-
-
-
-                                                       53
-                                                                               4 Variables and Types
-
-
-
 Types and declarators are the same as for other input, output, uniform, and buffer variable declarations
 outside blocks, with these exceptions:
 •   initializers are not allowed
@@ -2646,15 +2232,6 @@ Matched block names within an interface (as defined above) must match in terms o
 number of declarations with the same sequence of types and the same sequence of member names, as well
 as having the same member-wise layout qualification (see next section). Matched uniform block names
 (but not input or output block names) must also either all be lacking an instance name or all having an
-
-
-
-
-                                                54
-                                                                             4 Variables and Types
-
-
-
 instance name, putting their members at the same scoping level. When instance names are present on
 matched block names, it is allowed for the instance names to differ; they need not match for the blocks to
 match. Furthermore, if a matching block is declared as an array, then the array sizes must also match (or
@@ -2691,14 +2268,6 @@ interface contains
           name, or
      •    a variable outside a block, and a block with no instance name, where the variable has the same
           name as a member in the block.
-
-
-
-
-                                              55
-                                                                             4 Variables and Types
-
-
 
    out Vertex {
        vec4 Position;          // API transform/feedback will use “Vertex.Position”
@@ -2747,18 +2316,12 @@ Transform.ModelViewMatrix).
 Geometry shader input blocks must be declared as arrays and follow the array declaration and linking
 rules for all geometry shader inputs. All other input and output block arrays must specify an array size.
 
-
-
-
-                                               56
-                                                                                       4 Variables and Types
-
-
-
       There are implementation dependent limits on the number of uniform blocks and the number of shader
       storage blocks that can be used per stage. If either limit is exceeded, it will cause a link-time error.
 
 4.4   Layout Qualifiers
+---------------------------------------------------------------
+
       Layout qualifiers can appear in several forms of declaration. They can appear as part of an interface
       block definition or block member, as shown in the grammar in the previous section. They can also appear
       with just an interface qualifier (a storage qualifier that is in, out, or uniform) to establish layouts of other
@@ -2782,8 +2345,8 @@ rules for all geometry shader inputs. All other input and output block arrays mu
       allowed as a layout-qualifier-id. Generally, they can be listed in any order. Order-dependent meanings
       exist only if explicitly called out below. Similarly, these identifiers are not case sensitive, unless
       explicitly noted otherwise.
-      More than one layout qualifier may appear in a single declaration. Additionally, the same layout-
-      qualifier-name can occur multiple times within a layout qualifier or across multiple layout qualifiers in the
+      More than one layout qualifier may appear in a single declaration. Additionally, the same layout-qualifier-name
+      can occur multiple times within a layout qualifier or across multiple layout qualifiers in the
       same declaration. When the same layout-qualifier-name occurs multiple times, in a single declaration, the
       last occurrence overrides the former occurrence(s). Further, if such a layout-qualifier-name will effect
       subsequent declarations or other observable behavior, it is only the last occurrence that will have any
@@ -2794,14 +2357,6 @@ rules for all geometry shader inputs. All other input and output block arrays mu
       each one what kinds of declarations it may be applied to. These are all discussed in detail in the following
       sections. Layout qualifiers applied to opaque types are not show in this table, but are discussed
       subsequently in section 4.4.6 “Opaque-Uniform Layout Qualifiers”.
-
-
-
-
-                                                       57
-                                                                 4 Variables and Types
-
-
 
 Layout Qualifier          Qualifier    Individual           Block
                            Only         Variable     Block Member     Allowed Interfaces
@@ -2847,14 +2402,6 @@ invocations =                X                                            geomet
 origin_upper_left                     gl_FragCoord
 pixel_center_integer                      only                            fragment in
 early_fragment_tests         X
-
-
-
-
-                                        58
-                                                                                     4 Variables and Types
-
-
 
         Layout Qualifier                Qualifier      Individual           Block
                                          Only           Variable     Block Member          Allowed Interfaces
@@ -2902,15 +2449,6 @@ early_fragment_tests         X
 
         will establish that the shader input normal is assigned to vector location number 3 and v is assigned
         location number 8. For vertex shader inputs, the location specifies the number of the generic vertex
-
-
-
-
-                                                           59
-                                                                                4 Variables and Types
-
-
-
 attribute from which input values are taken. For inputs of all other shader types, the location specifies a
 vector number that can be used to match against outputs from a previous shader stage, even if that shader
 is in a different program object.
@@ -2949,14 +2487,6 @@ have a location layout qualifier, or a compile-time error results.
 The locations consumed by block and structure members are determined by applying the rules above
 recursively as though the structure member were declared as an input variable of the same type. For
 example:
-
-
-
-
-                                                60
-                                                                               4 Variables and Types
-
-
 
    layout(location = 3) in struct S {
         vec3 a;                       //                  gets location 3
@@ -2997,14 +2527,6 @@ component without also specifying the location qualifier (order does not matter)
 within a location are 0, 1, 2, and 3. A variable or block member starting at component N will consume
 components N, N+1, N+2, ... up through its size. It is a compile-time error if this sequence of components
 gets larger than 3. For example:
-
-
-
-
-                                                61
-                                                                                       4 Variables and Types
-
-
 
           // a consumes components 2 and 3 of location 4
           layout(location = 4, component = 2) in vec2 a;
@@ -3051,14 +2573,6 @@ gets larger than 3. For example:
 4.4.1.1 Tessellation Evaluation Inputs
        Additional input layout qualifier identifiers allowed for tessellation evaluation shaders are:
 
-
-
-
-                                                        62
-                                                                               4 Variables and Types
-
-
-
      layout-qualifier-id
           triangles
           quads
@@ -3079,14 +2593,14 @@ A second subset of these identifiers, vertex spacing, is used to specify the spa
 primitive generator when subdividing an edge. To specify vertex spacing, the identifier must be one of
 the following.
        equal_spacing signifying that edges should be divided into a collection of equal-sized segments.
-       fractional_even_spacing signifying that edges should be divided into an even number of equal-
-       length segments plus two additional shorter "fractional" segments.
-       fractional_odd_spacing signifying that edges should be divided into an odd number of equal-
-       length segments plus two additional shorter "fractional" segments.
+       fractional_even_spacing signifying that edges should be divided into an even number of equal-length
+       segments plus two additional shorter "fractional" segments.
+       fractional_odd_spacing signifying that edges should be divided into an odd number of equal-length
+       segments plus two additional shorter "fractional" segments.
 A third subset of these identifiers, ordering, specifies whether the tessellation primitive generator
 produces triangles in clockwise or counter-clockwise order, according to the coordinate system depicted
-in the OpenGL specification. The ordering identifiers cw and ccw indicate clockwise and counter-
-clockwise triangles, respectively. If the tessellation primitive generator does not produce triangles,
+in the OpenGL specification. The ordering identifiers cw and ccw indicate clockwise and counter-clockwise
+triangles, respectively. If the tessellation primitive generator does not produce triangles,
 ordering is ignored.
 Finally, point mode, is specified with the identifier point_mode indicating the tessellation primitive
 generator should produce a point for each unique vertex in the subdivided primitive, rather than
@@ -3100,14 +2614,6 @@ required that all tessellation evaluation shaders in a program declare a primiti
 vertex ordering declarations are omitted, the tessellation primitive generator will use equal spacing or
 counter-clockwise vertex ordering, respectively. If a point mode declaration is omitted, the tessellation
 primitive generator will produce lines or triangles according to the primitive mode.
-
-
-
-
-                                                63
-                                                                                     4 Variables and Types
-
-
 
 4.4.1.2 Geometry Shader Inputs
        Additional layout qualifier identifiers for geometry shader inputs include primitive identifiers and an
@@ -3146,14 +2652,6 @@ primitive generator will produce lines or triangles according to the primitive m
               triangles                                    3
               triangles_adjacency                          6
 
-
-
-
-                                                      64
-                                                                                        4 Variables and Types
-
-
-
        The intrinsically declared input array gl_in[] will also be sized by any input primitive-layout declaration.
        Hence, the expression
           gl_in.length()
@@ -3183,21 +2681,13 @@ primitive generator will produce lines or triangles according to the primitive m
                  origin_upper_left
                  pixel_center_integer
        By default, gl_FragCoord assumes a lower-left origin for window coordinates and assumes pixel centers
-       are located at half-pixel coordinates. For example, the (x, y) location (0.5, 0.5) is returned for the lower-
-       left-most pixel in a window. The origin can be changed by redeclaring gl_FragCoord with the
+       are located at half-pixel coordinates. For example, the (x, y) location (0.5, 0.5) is returned for the lower-left-most
+       pixel in a window. The origin can be changed by redeclaring gl_FragCoord with the
        origin_upper_left identifier, moving the origin of gl_FragCoord to the upper left of the window, with y
        increasing in value toward the bottom of the window. The values returned can also be shifted by half a
        pixel in both x and y by pixel_center_integer so it appears the pixels are centered at whole number pixel
        offsets. This moves the (x, y) value returned by gl_FragCoord of (0.5, 0.5) by default, to (0.0, 0.0) with
        pixel_center_integer.
-
-
-
-
-                                                        65
-                                                                                    4 Variables and Types
-
-
 
        Redeclarations are done as follows
           in vec4 gl_FragCoord;               // redeclaration that changes nothing is allowed
@@ -3242,14 +2732,6 @@ primitive generator will produce lines or triangles according to the primitive m
        dimension is 1. If a shader does not specify a size for one of the dimensions, that dimension will have a
        size of 1.
 
-
-
-
-                                                      66
-                                                                                     4 Variables and Types
-
-
-
         For example, the following declaration in a compute shader
            layout (local_size_x = 32, local_size_y = 32) in;
 
@@ -3261,8 +2743,8 @@ primitive generator will produce lines or triangles according to the primitive m
         effectively specifies that a one-dimensional compute shader is being compiled, and its size is 8 elements.
         If the fixed local group size of the shader in any dimension is greater than the maximum size supported by
         the implementation for that dimension, a compile-time error results. Also, if such a layout qualifier is
-        declared more than once in the same shader, all those declarations must set the same set of local work-
-        group sizes and set them to the same values; otherwise a compile-time error results. If multiple compute
+        declared more than once in the same shader, all those declarations must set the same set of local work-group
+        sizes and set them to the same values; otherwise a compile-time error results. If multiple compute
         shaders attached to a single program object declare a fixed local group size, the declarations must be
         identical; otherwise a link-time error results.
         Furthermore, if a program object contains any compute shaders, at least one must contain an input layout
@@ -3288,14 +2770,6 @@ primitive generator will produce lines or triangles according to the primitive m
         Each of these qualifiers may appear at most once. If index is specified, location must also be specified.
         If index is not specified, the value 0 is used. For example, in a fragment shader,
 
-
-
-
-                                                            67
-                                                                                 4 Variables and Types
-
-
-
    layout(location = 3) out vec4 color;
 
 will establish that the fragment shader output color is assigned to fragment color 3 as the first (index zero)
@@ -3317,8 +2791,8 @@ specified. For example,
 
 will establish that colors is assigned to vector location numbers 2, 3, and 4.
 If the declared output is an n x m single- or double-precision matrix, it will be assigned multiple locations
-starting with the location specified. The number of locations assigned will be the same as for an n-
-element array of m-component vectors.
+starting with the location specified. The number of locations assigned will be the same as for an n-element
+array of m-component vectors.
 If the declared output is a structure, its members will be assigned consecutive locations in the order of
 declaration, with the first member assigned the location specified for the structure. The number of
 locations consumed by a structure member is determined by applying the rules above recursively as
@@ -3337,15 +2811,6 @@ compile-time error if a fragment shader sets a layout index to less than 0 or gr
 A program will fail to link if any of the following occur:
     •    any two fragment shader output variables are assigned to the same location and index, or
     •    any two geometry shader output variables are assigned the same location and stream, or
-
-
-
-
-                                                68
-                                                                                      4 Variables and Types
-
-
-
            •      if any two output variables from the same vertex or tessellation shader stage are assigned to the
                   same location.
        For fragment shader outputs, locations can be assigned using either a layout qualifier or via the OpenGL
@@ -3385,15 +2850,6 @@ A program will fail to link if any of the following occur:
        declared with an xfb_buffer qualifier, it has that declared buffer. All members of a block inherit the
        block's buffer. A member is allowed to declare an xfb_buffer, but it must match the buffer inherited from
        its block, or a compile-time error results.
-
-
-
-
-                                                        69
-                                                                               4 Variables and Types
-
-
-
 
    layout(xfb_buffer=2, xfb_offset=0)                out block { // block's buffer is 2
        layout(xfb_buffer = 2) vec4 v;                // okay, matches the inherited 2
@@ -3439,15 +2895,6 @@ The xfb_stride qualifier specifies how many bytes are consumed by each captured 
 the transform feedback buffer for that declaration, whether it is inherited or explicitly declared. It can be
 applied to variables, blocks, block members, or just the qualifier out. If the buffer is capturing any
 outputs with double-precision components, the stride must be a multiple of 8, otherwise it must be a
-
-
-
-
-                                                70
-                                                                                      4 Variables and Types
-
-
-
        multiple of 4, or a compile-time or link-time error results. It is a compile-time or link-time error to have
        any xfb_offset that overflows xfb_stride, whether stated on declarations before or after the xfb_stride, or
        in different compilation units. While xfb_stride can be declared multiple times for the same buffer, it is a
@@ -3494,15 +2941,6 @@ outputs with double-precision components, the stride must be a multiple of 8, ot
 4.4.2.2 Tessellation Control Outputs
        Other than for the transform feedback layout qualifiers, tessellation control shaders allow output layout
        qualifiers only on the interface qualifier out, not on an output block, block member, or variable
-
-
-
-
-                                                       71
-                                                                                      4 Variables and Types
-
-
-
        declaration. The output layout qualifier identifiers allowed for tessellation control shaders include the
        vertex-count layout qualifier:
             layout-qualifier-id
@@ -3543,14 +2981,6 @@ outputs with double-precision components, the stride must be a multiple of 8, ot
        shader (compilation unit) in a program must declare an output primitive type, and all geometry shader
        output primitive type declarations in a program must declare the same primitive type. It is not required
        that all geometry shaders in a program declare an output primitive type.
-
-
-
-
-                                                       72
-                                                                               4 Variables and Types
-
-
 
 The vertex count identifier max_vertices is used to specify the maximum number of vertices the shader
 will ever emit in a single invocation. At least one geometry shader (compilation unit) in a program must
@@ -3597,15 +3027,6 @@ emitted vertex are taken from the set of output blocks and variables assigned to
 each vertex is emitted, the values of all output variables become undefined. Additionally, the output
 variables associated with each vertex stream may share storage. Writing to an output variable associated
 with one stream may overwrite output variables associated with any other stream. When emitting each
-
-
-
-
-                                                73
-                                                                                    4 Variables and Types
-
-
-
        vertex, a geometry shader should write to all outputs associated with the stream to which the vertex will
        be emitted and to no outputs associated with any other stream.
        If a geometry shader output block or variable is declared more than once, all such declarations must
@@ -3647,14 +3068,6 @@ with one stream may overwrite output variables associated with any other stream.
        value. When the layout qualifier is depth_unchanged, the shader compiler will honor any modification to
        gl_FragDepth, but the rest of the GL can assume that gl_FragDepth is not assigned a new value.
 
-
-
-
-                                                      74
-                                                                                       4 Variables and Types
-
-
-
         Redeclarations of gl_FragDepth are performed as follows:
            // redeclaration that changes nothing is allowed
            out float gl_FragDepth;
@@ -3689,26 +3102,17 @@ with one stream may overwrite output variables associated with any other stream.
         Individual elements of a uniform array are assigned consecutive locations with the first element taking
         location location. No two default-block uniform variables in the program can have the same location,
         even if they are unused, otherwise a compile-time or link-time error will be generated. No two subroutine
-        uniform variables can have the same location in the same shader stage, otherwise a compile-time or link-
-        time error will be generated. Valid locations for default-block uniform variable locations are in the range
+        uniform variables can have the same location in the same shader stage, otherwise a compile-time or link-time
+        error will be generated. Valid locations for default-block uniform variable locations are in the range
         of 0 to the implementation-defined maximum number of uniform locations minus one. Valid locations for
         subroutine uniforms are in the range of 0 to the implementation-defined per-stage maximum number of
         subroutine uniform locations minus one.
         Locations can be assigned to default-block uniform arrays and structures. The first inner-most scalar,
-        vector or matrix member or element takes the specified location and the compiler assigns the next inner-
-        most member or element the next incremental location value. Each subsequent inner-most member or
+        vector or matrix member or element takes the specified location and the compiler assigns the next inner-most
+        member or element the next incremental location value. Each subsequent inner-most member or
         element gets incremental locations for the entire structure or array. This rule applies to nested structures
         and arrays and gives each inner-most scalar, vector, or matrix type a unique location. For arrays without
         an explicit size, the size is calculated based on its static usage. When the linker generates locations for
-
-
-
-
-                                                        75
-                                                                                       4 Variables and Types
-
-
-
         uniforms without an explicit location, it assumes for all uniforms with an explicit location all their array
         elements and structure members are used and the linker will not generate a conflicting location, even if
         that element of member is deemed unused.
@@ -3749,14 +3153,6 @@ with one stream may overwrite output variables associated with any other stream.
            layout(layout-qualifier-id-list) uniform;
 
         and for shader storage blocks as
-
-
-
-
-                                                        76
-                                                                                  4 Variables and Types
-
-
 
    layout(layout-qualifier-id-list) buffer;
 
@@ -3799,14 +3195,6 @@ These can only be used at global scope or on a block declaration, or a compile-t
 The row_major and column_major qualifiers affect the layout of matrices, including all matrices
 contained in structures and arrays they are applied to, to all depths of nesting. These qualifiers can be
 applied to other types, but will have no effect.
-
-
-
-
-                                                  77
-                                                                                4 Variables and Types
-
-
 
 The row_major qualifier overrides only the column_major qualifier; other qualifiers are inherited.
 Elements within a matrix row will be contiguous in memory.
@@ -3851,21 +3239,13 @@ results in the qualification being column_major. Other examples:
        mat3 N2;                                      //   column_major
    };
 
-
-
-
-                                                78
-                                                                                          4 Variables and Types
-
-
-
         The offset qualifier can only be used on block members of blocks declared with std140 or std430 layouts.
-        The offset qualifier forces the qualified member to start at or after the specified integral-constant-
-        expression, which will be its byte offset from the beginning of the buffer. It is a compile-time error to
+        The offset qualifier forces the qualified member to start at or after the specified integral-constant-expression,
+        which will be its byte offset from the beginning of the buffer. It is a compile-time error to
         specify an offset that is smaller than the offset of the previous member in the block or that lies within the
         previous member of the block. Two blocks linked together in the same program with the same block
-        name must have the exact same set of members qualified with offset and their integral-constant-
-        expression values must be the same, or a link-time error results. The specified offset must be a multiple
+        name must have the exact same set of members qualified with offset and their integral-constant-expression
+        values must be the same, or a link-time error results. The specified offset must be a multiple
         of the base alignment of the type of the block member it qualifies, or a compile-time error results.
         The align qualifier can only be used on blocks or block members, and only for blocks declared with
         std140 or std430 layouts. The align qualifier makes the start of each block member have a minimum
@@ -3903,14 +3283,6 @@ results in the qualification being column_major. Other examples:
         can be bound to buffers.
         Details for specific to image formats and atomic counter bindings are given in the subsections below.
 
-
-
-
-                                                          79
-                                                                                        4 Variables and Types
-
-
-
        Image and sampler types both take the uniform layout qualifier identifier for binding:
              layout-qualifier-id
                   binding = integer-constant-expression
@@ -3923,8 +3295,8 @@ results in the qualification being column_major. Other examples:
        If the binding is less than zero, or greater than or equal to the implementation-dependent maximum
        supported number of units, a compile-time error will occur. When the binding identifier is used with an
        array of size N, all elements of the array from binding through binding + N - 1 must be within this range.
-       A link-time error will result if two compilation units in a program specify different integer-constant-
-       expression bindings for the same opaque-uniform name. However, it is not an error to specify a binding
+       A link-time error will result if two compilation units in a program specify different integer-constant-expression
+       bindings for the same opaque-uniform name. However, it is not an error to specify a binding
        on some but not all declarations for the same name, as shown in the examples below.
           // in one compilation unit...
           layout(binding=3) uniform sampler2D s; // s bound to unit 3
@@ -3948,14 +3320,6 @@ results in the qualification being column_major. Other examples:
        will be post incremented by 4 (the size of an atomic counter).
        A subsequent atomic counter declaration will inherit the previous (post incremented) offset. For example,
        a subsequent declaration of
-
-
-
-
-                                                        80
-                                                                                     4 Variables and Types
-
-
 
           layout (binding = 2) uniform atomic_uint bar;
 
@@ -4000,14 +3364,6 @@ results in the qualification being column_major. Other examples:
        are
             layout-qualifier-id
                  float-image-format-qualifier
-
-
-
-
-                                                      81
-                                             4 Variables and Types
-
-
 
      int-image-format-qualifier
      uint-image-format-qualifier
@@ -4055,17 +3411,9 @@ uint-image-format-qualifier
       r16ui
       r8ui
 
-
-
-
-                                      82
-                                                                                    4 Variables and Types
-
-
-
       A format layout qualifier specifies the image format associated with a declared image variable. Only one
-      format qualifier may be specified for any image variable declaration. For image variables with floating-
-      point component types (keywords starting with “image”), signed integer component types (keywords
+      format qualifier may be specified for any image variable declaration. For image variables with floating-point
+      component types (keywords starting with “image”), signed integer component types (keywords
       starting with “iimage”), or unsigned integer component types (keywords starting with “uimage”), the
       format qualifier used must match the float-image-format-qualifier, int-image-format-qualifier, or uint-
       image-format-qualifier grammar rules, respectively. It is a compile-time error to declare an image
@@ -4080,6 +3428,8 @@ uint-image-format-qualifier
       with a format layout qualifier.
 
 4.5   Interpolation Qualifiers
+---------------------------------------------------------------
+
       Inputs and outputs that could be interpolated can be further qualified by at most one of the following
       interpolation qualifiers:
 
@@ -4105,14 +3455,6 @@ uint-image-format-qualifier
       centroid nor sample, the value of the assigned variable may be interpolated anywhere within the pixel
       and a single value may be assigned to each sample within the pixel, to the extent permitted by the
       OpenGL Graphics System Specification.
-
-
-
-
-                                                     83
-                                                                                        4 Variables and Types
-
-
 
         When multisample rasterization is enabled, centroid and sample may be used to control the location and
         frequency of the sampling of the qualified fragment shader input. If a fragment shader input is qualified
@@ -4157,19 +3499,12 @@ uint-image-format-qualifier
         are written to) must also be redeclared with the same interpolation qualifier, and vice versa. If
         gl_SecondaryColor is redeclared with an interpolation qualifier, then gl_FrontSecondaryColor and
         gl_BackSecondaryColor (if they are written to) must also be redeclared with the same interpolation
-
-
-
-
-                                                        84
-                                                                                      4 Variables and Types
-
-
-
         qualifier, and vice versa. This qualifier matching on predeclared variables is only required for variables
         that are statically used within the shaders in a program.
 
 4.6     Parameter Qualifiers
+---------------------------------------------------------------
+
         In addition to precision qualifiers and memory qualifiers, parameters can have these parameter qualifiers.
 
 
@@ -4185,6 +3520,8 @@ uint-image-format-qualifier
         Parameter qualifiers are discussed in more detail in section 6.1.1 “Function Calling Conventions”.
 
 4.7     Precision and Precision Qualifiers
+---------------------------------------------------------------
+
         Precision qualifiers are added for code portability with OpenGL ES, not for functionality. They have the
         same syntax as in OpenGL ES, as described below, but they have no semantic meaning, which includes no
         effect on the precision used to store or operate on variables.
@@ -4206,14 +3543,6 @@ uint-image-format-qualifier
         and is undefined. NaNs are not required to be generated. Support for signaling NaNs is not required and
         exceptions are never raised. Operations and built-in functions that operate on a NaN are not required to
         return a NaN as the result.
-
-
-
-
-                                                       85
-                                                                                        4 Variables and Types
-
-
 
         Precisions are expressed in terms of maximum relative error in units of ULP (units in the last place),
         unless otherwise noted.
@@ -4251,14 +3580,6 @@ uint-image-format-qualifier
                  mediump                None.
                  lowp                   None.
 
-
-
-
-                                                        86
-                                                                                        4 Variables and Types
-
-
-
         For example:
            lowp float color;
            out mediump vec2 P;
@@ -4279,8 +3600,8 @@ uint-image-format-qualifier
 
         can be used to establish a default precision qualifier. The type field can be either int, or float, or any of
         the sampler types, and the precision-qualifier can be lowp, mediump, or highp. Any other types or
-        qualifiers will result in a compile-time error. If type is float, the directive applies to non-precision-
-        qualified single-precision floating-point type (scalar, vector, and matrix) declarations. If type is int, the
+        qualifiers will result in a compile-time error. If type is float, the directive applies to non-precision-qualified
+        single-precision floating-point type (scalar, vector, and matrix) declarations. If type is int, the
         directive applies to all non-precision-qualified integer type (scalar, vector, signed, and unsigned)
         declarations. This includes global variable declarations, function return declarations, function parameter
         declarations, and local variable declarations.
@@ -4302,14 +3623,6 @@ uint-image-format-qualifier
         There are no errors for omission of a precision qualifier; so the above is just for reference of what may
         happen in OpenGL ES versions of the shading languages.
 
-
-
-
-                                                        87
-                                                                                        4 Variables and Types
-
-
-
 4.7.4   Available Precision Qualifiers
         The built-in macro GL_FRAGMENT_PRECISION_HIGH is defined to 1:
             #define GL_FRAGMENT_PRECISION_HIGH 1
@@ -4317,6 +3630,8 @@ uint-image-format-qualifier
         This macro is available in the vertex, tessellation, geometry, and fragment languages.
 
 4.8     Variance and the Invariant Qualifier
+---------------------------------------------------------------
+
         In this section, variance refers to the possibility of getting different values from the same expression in
         different programs. For example, say two vertex shaders, in different programs, each set gl_Position with
         the same expression in both shaders, and the input values into that expression are the same when both
@@ -4350,15 +3665,6 @@ uint-image-format-qualifier
         •   The output variable is declared as invariant in both programs.
         •   The same values must be input to all shader input variables consumed by expressions and flow control
             contributing to the value assigned to the output variable.
-
-
-
-
-                                                        88
-                                                                                        4 Variables and Types
-
-
-
         •   The texture formats, texel values, and texture filtering are set the same way for any texture function
             calls contributing to the value of the output variable.
         •   All input values are all operated on in the same way. All operations in the consuming expressions and
@@ -4389,6 +3695,8 @@ uint-image-format-qualifier
         invariant variables, whether or not the invariant qualifier is used.
 
 4.9     The Precise Qualifier
+---------------------------------------------------------------
+
         Some algorithms require floating-point computations to exactly follow the order of operations specified in
         the source code and to treat all operations consistently, even if the implementation supports optimizations
         that could produce nearly equivalent results with higher performance. For example, many GL
@@ -4400,14 +3708,6 @@ uint-image-format-qualifier
         multiply yielding a floating-point result and then doing a floating-point add. Hence, in this example, the
         two multiply operations would not be treated consistently; the two multiplies could effectively appear to
         have differing precisions.
-
-
-
-
-                                                        89
-                                                                                4 Variables and Types
-
-
 
  The key computation that needs to be made consistent appears when tessellating, where intermediate
  points for subdivision are synthesized in different directions, yet need to yield the same result, as shown in
@@ -4452,14 +3752,6 @@ need to land on the                                     for subdivision
  tessellation stages are responsible for following, which in conjunction with the above allow avoiding
  cracking when subdividing.
 
-
-
-
-                                                 90
-                                                                                4 Variables and Types
-
-
-
 For example,
    precise out vec4 position;
 
@@ -4474,14 +3766,6 @@ This qualifier will affect the evaluation of an r-value in a particular function
 eventually consumed in the same function by an l-value qualified as precise. Any other expressions
 within a function are not affected, including return values and output parameters not declared as precise
 but that are eventually consumed outside the function by an variable qualified as precise.
-
-
-
-
-                                                91
-                                                                                    4 Variables and Types
-
-
 
        Some examples of the use of precise:
           in vec4 a, b, c, d;
@@ -4524,16 +3808,10 @@ but that are eventually consumed outside the function by an variable qualified a
        expression evaluates to the same value as a corresponding non-constant expression.
 
 4.10   Memory Qualifiers
+---------------------------------------------------------------
+
        Variables declared as image types (the basic opaque types with “image” in their keyword) can be further
        qualified with one or more of the following memory qualifiers:
-
-
-
-
-                                                     92
-                                                                             4 Variables and Types
-
-
 
        Qualifier                   Meaning
        coherent                    memory variable where reads and writes are coherent with reads and
@@ -4579,17 +3857,8 @@ the shader stage in question. This allows the compiler to coalesce or reorder lo
 restrict-qualified image variables in ways that wouldn't be permitted for image variables not so qualified,
 because the compiler can assume that the underlying image won't be read or written by other code.
 Applications are responsible for ensuring that image memory referenced by variables qualified with
-
-
-
-
-                                               93
-                                                                               4 Variables and Types
-
-
-
-restrict will not be referenced using other variables in the same scope; otherwise, accesses to restrict-
-qualified variables will have undefined results.
+restrict will not be referenced using other variables in the same scope; otherwise, accesses to restrict-qualified
+variables will have undefined results.
 Memory accesses to image variables declared using the readonly qualifier may only read the underlying
 memory, which is treated as read-only memory and cannot be written to. It is a compile-time error to pass
 an image variable qualified with readonly to imageStore() or other built-in functions that modify image
@@ -4602,8 +3871,8 @@ imageSize() to have the size queried.
 The memory qualifiers coherent, volatile, restrict, readonly, and writeonly may be used in the
 declaration of buffer variables (i.e., members of shader storage blocks). When a buffer variable is
 declared with a memory qualifier, the behavior specified for memory accesses involving image variables
-described above applies identically to memory accesses involving that buffer variable. It is a compile-
-time error to assign to a buffer variable qualified with readonly or to read from a buffer variable qualified
+described above applies identically to memory accesses involving that buffer variable. It is a compile-time
+error to assign to a buffer variable qualified with readonly or to read from a buffer variable qualified
 with writeonly.
 Additionally, memory qualifiers may also be used in the declaration of shader storage blocks. When a
 block declaration is qualified with a memory qualifier, it is as if all of its members were declared with the
@@ -4626,14 +3895,6 @@ be passed to functions whose formal parameters lack such qualifiers. (See sectio
 Definitions” for more detail on function calling.) It is legal to have additional qualifiers on a formal
 parameter, but not to have fewer.
 
-
-
-
-                                                94
-                                                                                     4 Variables and Types
-
-
-
           vec4 funcA(restrict image2D a)   { ... }
           vec4 funcB(image2D a)            { ... }
           layout(rgba32f) uniform image2D img1;
@@ -4650,6 +3911,8 @@ parameter, but not to have fewer.
        through that variable) while const qualifiers the variable itself.
 
 4.11   Order and Repetition of Qualification
+---------------------------------------------------------------
+
        When multiple qualifiers are present in a variable or parameter declaration, they may appear in any order,
        but they must all appear before the type. The layout qualifier is the only qualifier that can appear more
        than once. Further, a declaration can have at most one storage qualifier, at most one auxiliary storage
@@ -4661,8 +3924,11 @@ parameter, but not to have fewer.
 
                                                       95
 5 Operators and Expressions
+===============================================================
 
 5.1   Operators
+---------------------------------------------------------------
+
       The OpenGL Shading Language has the following operators.
 
             Precedence       Operator Class                              Operators            Associativity
@@ -4696,23 +3962,21 @@ parameter, but not to have fewer.
       There is no address-of operator nor a dereference operator. There is no typecast operator; constructors
       are used instead.
 
-
-
-
-                                                      96
-                                                                             5 Operators and Expressions
-
-
-
 5.2     Array Operations
+---------------------------------------------------------------
+
         These are now described in section 5.7 “Structure and Array Operations”.
 
 5.3     Function Calls
+---------------------------------------------------------------
+
         If a function returns a value, then a call to that function may be used as an expression, whose type will be
         the type that was used to declare or define the function.
         Function definitions and calling conventions are discussed in section 6.1 “Function Definitions” .
 
 5.4     Constructors
+---------------------------------------------------------------
+
         Constructors use the function call syntax, where the function name is a type, and the call makes an object
         of that type. Constructors are used the same way in both initializers and expressions. (See section 9
         “Shading Language Grammar” for details.) The parameters are used to initialize the constructed value.
@@ -4746,14 +4010,6 @@ parameter, but not to have fewer.
            double(uint) //        converts    an unsigned integer value to a double
            double(bool) //        converts    a Boolean value to a double
            double(float)//        converts    a float value to a double
-
-
-
-
-                                                       97
-                                                                                 5 Operators and Expressions
-
-
 
         When constructors are used to convert any floating-point type to an integer type, the fractional part of the
         floating-point value is dropped. It is undefined to convert a negative floating-point value to an uint.
@@ -4789,14 +4045,6 @@ parameter, but not to have fewer.
         If the basic type (bool, int, float, or double) of a parameter to a constructor does not match the basic type
         of the object being constructed, the scalar construction rules (above) are used to convert the parameters.
 
-
-
-
-                                                          98
-                                                                        5 Operators and Expressions
-
-
-
 Some useful vector constructors are as follows:
    vec3(float)        // initializes each component of the vec3 with the float
    vec4(ivec4)        // makes a vec4 with component-wise conversion
@@ -4826,14 +4074,6 @@ To initialize the diagonal of a matrix with all other elements set to zero:
    mat4(float)
 
 That is, result[i][j] is set to the float argument for all i = j and set to 0 for all i≠ j.
-
-
-
-
-                                                  99
-                                                                               5 Operators and Expressions
-
-
 
         To initialize a matrix by specifying vectors or scalars, the components are assigned to the matrix elements
         in column-major order.
@@ -4882,14 +4122,6 @@ That is, result[i][j] is set to the float argument for all i = j and set to 0 fo
 
            light lightVar = light(3.0, vec3(1.0, 2.0, 3.0));
 
-
-
-
-                                                      100
-                                                                                5 Operators and Expressions
-
-
-
         The arguments to the constructor will be used to set the structure's members, in order, using one argument
         per member. Each argument must be the same type as the member it sets, or be a type that can be
         converted to the member's type according to section 4.1.10 “Implicit Conversions.”
@@ -4921,6 +4153,8 @@ That is, result[i][j] is set to the float argument for all i = j and set to 0 fo
            vec4[3][](b, b, b);                     // compile-time error, invalid type constructed
 
 5.5     Vector and Scalar Components and Length
+---------------------------------------------------------------
+
         The names of the components of a vector or scalar are denoted by a single letter. As a notational
         convenience, several letters are associated with each component based on common usage of position,
         color or texture coordinate vectors. The individual components can be selected by following the variable
@@ -4930,14 +4164,6 @@ That is, result[i][j] is set to the float argument for all i = j and set to 0 fo
               {x, y, z, w}        Useful when accessing vectors that represent points or normals
               {r, g, b, a}              Useful when accessing vectors that represent colors
               {s, t, p, q}       Useful when accessing vectors that represent texture coordinates
-
-
-
-
-                                                       101
-                                                                     5 Operators and Expressions
-
-
 
 The component names x, r, and s are, for example, synonyms for the same (first) component in a vector.
 They are also the names of the only component in a scalar.
@@ -4985,14 +4211,6 @@ To form an l-value, swizzling must be applied to an l-value of vector or scalar 
 components, and it results in an l-value of scalar or vector type, depending on number of components
 specified.
 
-
-
-
-                                              102
-                                                                             5 Operators and Expressions
-
-
-
       Array subscripting syntax can also be applied to vectors (but not to scalars) to provide numeric indexing.
       So in
          vec4       pos;
@@ -5012,6 +4230,8 @@ specified.
       constant expression.
 
 5.6   Matrix Components
+---------------------------------------------------------------
+
       The components of a matrix can be accessed using array subscripting syntax. Applying a single subscript
       to a matrix treats the matrix as an array of column vectors, and selects a single column, whose type is a
       vector of the same size as the matrix. The leftmost column is column 0. A second subscript would then
@@ -5034,15 +4254,9 @@ specified.
       constant expression.
 
 5.7   Structure and Array Operations
+---------------------------------------------------------------
+
       The members of a structure and the length method of an array are selected using the period ( . ).
-
-
-
-
-                                                      103
-                                                                           5 Operators and Expressions
-
-
 
       In total, only the following operators are allowed to operate on arrays and structures as whole entities:
 
@@ -5070,11 +4284,13 @@ specified.
 
 
 5.8   Assignments
+---------------------------------------------------------------
+
       Assignments of values to variable names are done with the assignment operator ( = ):
          lvalue-expression = rvalue-expression
 
-      The lvalue-expression evaluates to an l-value. The assignment operator stores the value of rvalue-
-      expression into the l-value and returns an r-value with the type and precision of lvalue-expression. The
+      The lvalue-expression evaluates to an l-value. The assignment operator stores the value of rvalue-expression
+      into the l-value and returns an r-value with the type and precision of lvalue-expression. The
       lvalue-expression and rvalue-expression must have the same type, or the expression must have a type in
       the table in section 4.1.10 “Implicit Conversions” that converts to the type of lvalue-expression, in which
       case an implicit conversion will be done on the rvalue-expression before the assignment is done. Any
@@ -5086,14 +4302,6 @@ specified.
       operator (?:) is also not allowed as an l-value. Using an incorrect expression as an l-value results in a
       compile-time error.
       Expressions on the left of an assignment are evaluated before expressions on the right of the assignment.
-
-
-
-
-                                                     104
-                                                                             5 Operators and Expressions
-
-
 
       The other assignment operators are
       •    add into (+=)
@@ -5119,6 +4327,8 @@ specified.
       Reading a variable before writing (or initializing) it is legal, however the value is undefined.
 
 5.9   Expressions
+---------------------------------------------------------------
+
       Expressions in the shading language are built from the following:
       •   Constants of type bool, all integer types, all floating-point types, all vector types, and all matrix types.
       •   Constructors of all types.
@@ -5129,15 +4339,6 @@ specified.
       •   Component field selectors and array subscript results.
       •   Parenthesized expression. Any expression can be parenthesized. Parentheses can be used to group
           operations. Operations within parentheses are done before operations across parentheses.
-
-
-
-
-                                                      105
-                                                                      5 Operators and Expressions
-
-
-
 •   The arithmetic binary operators add (+), subtract (-), multiply (*), and divide (/) operate on integer and
     floating-point scalars, vectors, and matrices. If the fundamental types in the operands do not match,
     then the conversions from section 4.1.10 “Implicit Conversions” are applied to create matching types.
@@ -5151,8 +4352,8 @@ specified.
     •   The two operands are vectors of the same size. In this case, the operation is done component-wise
         resulting in the same size vector.
     •   The operator is add (+), subtract (-), or divide (/), and the operands are matrices with the same
-        number of rows and the same number of columns. In this case, the operation is done component-
-        wise resulting in the same size matrix.
+        number of rows and the same number of columns. In this case, the operation is done component-wise
+        resulting in the same size matrix.
     •   The operator is multiply (*), where both operands are matrices or one operand is a vector and the
         other a matrix. A right vector operand is treated as a column vector and a left vector operand as a
         row vector. In all these cases, it is required that the number of columns of the left operand is equal
@@ -5178,17 +4379,8 @@ specified.
 •   The arithmetic unary operators negate (-), post- and pre-increment and decrement (-- and ++) operate
     on integer or floating-point values (including vectors and matrices). All unary operators work
     component-wise on their operands. These result with the same type they operated on. For post- and
-    pre-increment and decrement, the expression must be one that could be assigned to (an l-value). Pre-
-    increment and pre-decrement add or subtract 1 or 1.0 to the contents of the expression they operate on,
-
-
-
-
-                                                106
-                                                                       5 Operators and Expressions
-
-
-
+    pre-increment and decrement, the expression must be one that could be assigned to (an l-value). Pre-increment
+    and pre-decrement add or subtract 1 or 1.0 to the contents of the expression they operate on,
     and the value of the pre-increment or pre-decrement expression is the resulting value of that
     modification. Post-increment and post-decrement expressions add or subtract 1 or 1.0 to the contents
     of the expression they operate on, but the resulting expression has the expression’s value before the
@@ -5212,8 +4404,8 @@ specified.
     hand operand evaluated to false. Exclusive or (^^) will always evaluate both operands.
 •   The logical unary operator not (!). It operates only on a Boolean expression and results in a Boolean
     expression. To operate on a vector, use the built-in function not.
-•   The sequence ( , ) operator that operates on expressions by returning the type and value of the right-
-    most expression in a comma separated list of expressions. All expressions are evaluated, in order,
+•   The sequence ( , ) operator that operates on expressions by returning the type and value of the right-most
+    expression in a comma separated list of expressions. All expressions are evaluated, in order,
     from left to right.
 •   The ternary selection operator (?:). It operates on three expressions (exp1 ? exp2 : exp3). This
     operator evaluates the first expression, which must result in a scalar Boolean. If the result is true, it
@@ -5231,17 +4423,8 @@ specified.
     operand has to be a scalar as well. If the first operand is a vector, the second operand must be a scalar
     or a vector, and the result is computed component-wise. The result is undefined if the right operand is
     negative, or greater than or equal to the number of bits in the left expression's base type. The value of
-    E1 << E2 is E1 (interpreted as a bit pattern) left-shifted by E2 bits. The value of E1 >> E2 is E1 right-
-
-
-
-
-                                                107
-                                                                               5 Operators and Expressions
-
-
-
-           shifted by E2 bit positions. If E1 is a signed integer, the right-shift will extend the sign bit. If E1 is an
+    E1 << E2 is E1 (interpreted as a bit pattern) left-shifted by E2 bits. The value of E1 >> E2 is E1 right-shifted
+           by E2 bit positions. If E1 is a signed integer, the right-shift will extend the sign bit. If E1 is an
            unsigned integer, the right-shift will zero-extend.
        •   The bitwise operators and (&), exclusive-or (^), and inclusive-or (|). The operands must be of type
            signed or unsigned integers or integer vectors. The operands cannot be vectors of differing size; this is
@@ -5254,6 +4437,8 @@ specified.
        For a complete specification of the syntax of expressions, see section 9 “Shading Language Grammar.”
 
 5.10   Vector and Matrix Operations
+---------------------------------------------------------------
+
        With a few exceptions, operations are component-wise. Usually, when an operator operates on a vector or
        matrix, it is operating independently on each component of the vector or matrix, in a component-wise
        fashion. For example,
@@ -5285,15 +4470,6 @@ specified.
            u = v * m;
 
        is equivalent to
-
-
-
-
-                                                        108
-                                                                              5 Operators and Expressions
-
-
-
           u.x = dot(v, m[0]); // m[0] is the left column of m
           u.y = dot(v, m[1]); // dot(a,b) is the inner (dot) product of a and b
           u.z = dot(v, m[2]);
@@ -5327,6 +4503,8 @@ specified.
        and similarly for other sizes of vectors and matrices.
 
 5.11   Out-of-Bounds Accesses
+---------------------------------------------------------------
+
        In the subsections described above for array, vector, matrix and structure accesses, any out-of-bounds
        access produced undefined behavior. However, if robust buffer access is enabled via the OpenGL API,
        such accesses will be bound within the memory extent of the active program. It will not be possible to
@@ -5342,6 +4520,7 @@ specified.
 
                                                       109
 6 Statements and Structure
+===============================================================
 
    The fundamental building blocks of the OpenGL Shading Language are:
    •   statements and declarations
@@ -5370,14 +4549,6 @@ specified.
              compound-statement
              simple-statement
 
-
-
-
-                                                   110
-                                                                            6 Statements and Structure
-
-
-
       Curly braces are used to group sequences of statements into compound statements.
 
            compound-statement:
@@ -5396,6 +4567,8 @@ specified.
       Declarations and expressions have already been discussed.
 
 6.1   Function Definitions
+---------------------------------------------------------------
+
       As indicated by the grammar above, a valid shader is a sequence of global declarations and function
       definitions. A function is declared as the following example shows:
          // prototype
@@ -5420,14 +4593,6 @@ specified.
       An array is passed or returned by using just its name, without brackets, and the size of the array must
       match the size specified in the function's declaration.
       Structures are also allowed as argument types. The return type can also be structure.
-
-
-
-
-                                                    111
-                                                                       6 Statements and Structure
-
-
 
 See section 9 “Shading Language Grammar” for the definitive reference on the syntax to declare and
 define functions.
@@ -5471,15 +4636,6 @@ comparisons are performed, each pair of matching functions are compared. A funct
 considered a better match than function declaration B if
 •   for at least one function argument, the conversion for that argument in A is better than the
     corresponding conversion in B; and
-
-
-
-
-                                                112
-                                                                           6 Statements and Structure
-
-
-
 •   there is no function argument for which the conversion in B is better than the corresponding
     conversion in A.
 If a single function declaration is considered a better match than every other matching function
@@ -5523,14 +4679,6 @@ The function main can contain uses of return. See section 6.4 “Jumps” for mo
 It is a compile-time or link-time error to declare or define a function main with any other parameters or
 return type.
 
-
-
-
-                                                 113
-                                                                               6 Statements and Structure
-
-
-
 6.1.1   Function Calling Conventions
         Functions are called by value-return. This means input arguments are copied into the function at call time,
         and output arguments are copied back to the caller before function exit. Because the function works with
@@ -5545,8 +4693,8 @@ return type.
         All arguments are evaluated at call time, exactly once, in order, from left to right. Evaluation of an in
         parameter results in a value that is copied to the formal parameter. Evaluation of an out parameter results
         in an l-value that is used to copy out a value when the function returns. Evaluation of an inout parameter
-        results in both a value and an l-value; the value is copied to the formal parameter at call time and the l-
-        value is used to copy out a value when the function returns.
+        results in both a value and an l-value; the value is copied to the formal parameter at call time and the l-value
+        is used to copy out a value when the function returns.
         The order in which output parameters are copied back to the caller is undefined.
         If the function matching described in the previous section required argument type conversions, these
         conversions are applied at copy-in and copy-out times.
@@ -5554,14 +4702,6 @@ return type.
         can be prevented by declaring a parameter with the const qualifier.
         When calling a function, expressions that do not evaluate to l-values cannot be passed to parameters
         declared as out or inout, or a compile-time error results
-
-
-
-
-                                                       114
-                                                                                 6 Statements and Structure
-
-
 
              function-prototype :
                   precision-qualifier type function-name(parameter-qualifiers precision-qualifier type name
@@ -5604,15 +4744,6 @@ return type.
         declared, one or more functions are associated with that subroutine type, and a subroutine variable of that
         type is declared. The function currently assigned to the variable function is then called by using function
         calling syntax replacing a function name with the name of the subroutine variable. Subroutine variables
-
-
-
-
-                                                        115
-                                                                              6 Statements and Structure
-
-
-
       are uniforms, and are assigned to specific functions only through commands (UniformSubroutinesuiv) in
       the OpenGL API.
       Subroutine types are declared using a statement similar to a function declaration, with the subroutine
@@ -5647,6 +4778,8 @@ return type.
       dynamically uniform expressions.
 
 6.2   Selection
+---------------------------------------------------------------
+
       Conditional control flow in the shading language is done by either if, if-else, or switch statements:
            selection-statement :
                  if ( bool-expression ) statement
@@ -5654,14 +4787,6 @@ return type.
                  switch ( init-expression ) { switch-statement-listopt }
       Where switch-statement-list is a list of zero or more switch-statement and other statements defined by the
       language, where switch-statement adds some forms of labels. That is
-
-
-
-
-                                                     116
-                                                                               6 Statements and Structure
-
-
 
            switch-statement-list :
                 switch-statement
@@ -5692,6 +4817,8 @@ return type.
       switch.
 
 6.3   Iteration
+---------------------------------------------------------------
+
       For, while, and do loops are allowed as follows:
          for (init-expression; condition-expression; loop-expression)
              sub-statement
@@ -5704,17 +4831,8 @@ return type.
          while (condition-expression)
 
       See section 9 “Shading Language Grammar” for the definitive specification of loops.
-      The for loop first evaluates the init-expression, then the condition-expression. If the condition-
-      expression evaluates to true, then the body of the loop is executed. After the body is executed, a for loop
-
-
-
-
-                                                      117
-                                                                             6 Statements and Structure
-
-
-
+      The for loop first evaluates the init-expression, then the condition-expression. If the condition-expression
+      evaluates to true, then the body of the loop is executed. After the body is executed, a for loop
       will then evaluate the loop-expression, and then loop back to evaluate the condition-expression, repeating
       until the condition-expression evaluates to false. The loop is then exited, skipping its body and skipping
       its loop-expression. Variables modified by the loop-expression maintain their value after the loop is
@@ -5735,6 +4853,8 @@ return type.
       dependent.
 
 6.4   Jumps
+---------------------------------------------------------------
+
       These are the jumps:
 
            jump_statement:
@@ -5756,15 +4876,6 @@ return type.
       The discard keyword is only allowed within fragment shaders. It can be used within a fragment shader to
       abandon the operation on the current fragment. This keyword causes the fragment to be discarded and no
       updates to any buffers will occur. Control flow exits the shader, and subsequent implicit or explicit
-
-
-
-
-                                                    118
-                                                                      6 Statements and Structure
-
-
-
 derivatives are undefined when this exit is non-uniform. It would typically be used within a conditional
 statement, for example:
    if (intensity < 0.0)
@@ -5785,8 +4896,11 @@ outputs.
 
                                               119
 7 Built-in Variables
+===============================================================
 
 7.1   Built-In Language Variables
+---------------------------------------------------------------
+
       Some OpenGL operations occur in fixed functionality and need to provide values to or receive values
       from shader executables. Shaders communicate with fixed-function OpenGL pipeline stages, and
       optionally with other shader executables, through the use of built-in input and output variables.
@@ -5812,14 +4926,6 @@ outputs.
              float gl_PointSize;
              float gl_ClipDistance[];
          };
-
-
-
-
-                                                      120
-                                                                                      7 Built-in Variables
-
-
 
 In the geometry language, the built-in variables are intrinsically declared as:
    in gl_PerVertex {
@@ -5869,15 +4975,6 @@ In the tessellation evaluation language, built-in variables are intrinsically de
    } gl_in[gl_MaxPatchVertices];
 
    in int gl_PatchVerticesIn;
-
-
-
-
-                                                121
-                                                                                   7 Built-in Variables
-
-
-
    in int gl_PrimitiveID;
    in vec3 gl_TessCoord;
    patch in float gl_TessLevelOuter[4];
@@ -5919,21 +5016,13 @@ compile-time error to use gl_WorkGroupSize in a shader that does not declare a f
 before that shader has declared a fixed local group size, using local_size_x, local_size_y, and
 local_size_z. When a size is given for some of these identifiers, but not all, the corresponding
 gl_WorkGroupSize will have a size of 1.
-The built-in variable gl_WorkGroupID is a compute-shader input variable containing the three-
-dimensional index of the global work group that the current invocation is executing in. The possible
+The built-in variable gl_WorkGroupID is a compute-shader input variable containing the three-dimensional
+index of the global work group that the current invocation is executing in. The possible
 values range across the parameters passed into DispatchCompute, i.e., from (0, 0, 0) to
 (gl_NumWorkGroups.x - 1, gl_NumWorkGroups.y - 1, gl_NumWorkGroups.z -1).
 
-
-
-
-                                               122
-                                                                                    7 Built-in Variables
-
-
-
-The built-in variable gl_LocalInvocationID is a compute-shader input variable containing the t-
-dimensional index of the local work group within the global work group that the current invocation is
+The built-in variable gl_LocalInvocationID is a compute-shader input variable containing the t-dimensional
+index of the local work group within the global work group that the current invocation is
 executing in. The possible values for this variable range across the local work group size, i.e., (0,0,0) to
 (gl_WorkGroupSize.x - 1, gl_WorkGroupSize.y - 1, gl_WorkGroupSize.z - 1).
 The built-in variable gl_GlobalInvocationID is a compute shader input variable containing the global
@@ -5943,8 +5032,8 @@ as:
    gl_GlobalInvocationID =
             gl_WorkGroupID * gl_WorkGroupSize + gl_LocalInvocationID;
 
-The built-in variable gl_LocalInvocationIndex is a compute shader input variable that contains the one-
-dimensional representation of the gl_LocalInvocationID. This is useful for uniquely identifying a unique
+The built-in variable gl_LocalInvocationIndex is a compute shader input variable that contains the one-dimensional
+representation of the gl_LocalInvocationID. This is useful for uniquely identifying a unique
 region of shared memory within the local work group for this invocation to use. This is computed as:
    gl_LocalInvocationIndex =
             gl_LocalInvocationID.z * gl_WorkGroupSize.x * gl_WorkGroupSize.y +
@@ -5974,14 +5063,6 @@ The element gl_ClipDistance[i] specifies a clip distance for each plane i. A dis
 vertex is on the plane, a positive distance means the vertex is inside the clip plane, and a negative distance
 means the point is outside the clip plane. The clip distances will be linearly interpolated across the
 primitive and the portion of the primitive with interpolated distances less than 0 will be clipped.
-
-
-
-
-                                               123
-                                                                                  7 Built-in Variables
-
-
 
 The gl_ClipDistance array is predeclared as unsized and must be sized by the shader either redeclaring it
 with a size or indexing it only with integral constant expressions. This needs to size the array to include
@@ -6027,14 +5108,6 @@ layered rendering mode is enabled. See section 11.3.4.5 “Geometry Shader Outpu
 statically assigns a value to gl_Layer, and there is an execution path through the shader that does not set
 gl_Layer, then the value of gl_Layer is undefined for executions of the shader that take that path.
 
-
-
-
-                                              124
-                                                                                     7 Built-in Variables
-
-
-
 The output variable gl_Layer takes on a special value when used with an array of cube map textures.
 Instead of only referring to the layer, it is used to select a cube map face and a layer. Setting gl_Layer to
 the value layer*6+face will render to face face of the cube defined in layer layer. The face values are
@@ -6076,15 +5149,6 @@ output variable gl_ViewportIndex in the geometry stage. If the geometry stage do
 assign to gl_ViewportIndex, the value of gl_ViewportIndex in the fragment shader will be undefined. If
 the geometry stage makes no static assignment to gl_ViewportIndex, the fragment stage will read zero.
 Otherwise, the fragment stage will read the same value written by the geometry stage, even if that value is
-
-
-
-
-                                               125
-                                                                                      7 Built-in Variables
-
-
-
 out of range. If a fragment shader contains a static access to gl_ViewportIndex, it will count against the
 implementation defined limit for the maximum number of inputs to the fragment stage.
 The variable gl_PatchVerticesIn is available only in the tessellation control and evaluation languages. It
@@ -6095,8 +5159,8 @@ The output variables gl_TessLevelOuter[] and gl_TessLevelInner[] are available o
 control language. The values written to these variables are assigned to the corresponding outer and inner
 tessellation levels of the output patch. They are used by the tessellation primitive generator to control
 primitive tessellation and may be read by tessellation evaluation shaders.
-The variable gl_TessCoord is available only in the tessellation evaluation language. It specifies a three-
-component (u,v,w) vector identifying the position of the vertex being processed by the shader relative to
+The variable gl_TessCoord is available only in the tessellation evaluation language. It specifies a three-component
+(u,v,w) vector identifying the position of the vertex being processed by the shader relative to
 the primitive being tessellated. Its values will obey the properties
    gl_TessCoord.x == 1.0 – (1.0 – gl_TessCoord.x) // two operations performed
    gl_TessCoord.y == 1.0 – (1.0 – gl_TessCoord.y) // two operations performed
@@ -6126,15 +5190,6 @@ any location within the pixel, or one of the fragment samples. The use of centro
 restrict this value to be inside the current primitive. This value is the result of the fixed functionality that
 interpolates primitives after vertex processing to generate fragments. The z component is the depth value
 that would be used for the fragment’s depth if no shader contained any writes to gl_FragDepth. This is
-
-
-
-
-                                                126
-                                                                                     7 Built-in Variables
-
-
-
 useful for invariance if a shader conditionally computes gl_FragDepth but otherwise wants the fixed
 functionality fragment depth.
 Fragment shaders have access to the input built-in variable gl_FrontFacing, whose value is true if the
@@ -6177,15 +5232,6 @@ For example:
 
 This establishes the output interface the shader will use with the subsequent pipeline stage. It must be a
 subset of the built-in members of gl_PerVertex. Such a redeclaration can also add the invariant qualifier,
-
-
-
-
-                                                127
-                                                                                            7 Built-in Variables
-
-
-
         interpolation qualifiers, and the layout qualifiers xfb_offset, xfb_buffer, and xfb_stride. It can also add
         an array size for unsized arrays. For example:
            out layout(xfb_buffer = 1, xfb_stride = 16) gl_PerVertex {
@@ -6196,16 +5242,16 @@ subset of the built-in members of gl_PerVertex. Such a redeclaration can also ad
         Other layout qualifiers, like location, cannot be added to such a redeclaration, unless specifically stated.
         If a built-in interface block is redeclared, it must appear in the shader before any use of any member
         included in the built-in declaration, or a compile-time error will result. It is also a compile-time error to
-        redeclare the block more than once or to redeclare a built-in block and then use a member from that built-
-        in block that was not included in the redeclaration. Also, if a built-in interface block is redeclared, no
+        redeclare the block more than once or to redeclare a built-in block and then use a member from that built-in
+        block that was not included in the redeclaration. Also, if a built-in interface block is redeclared, no
         member of the built-in declaration can be redeclared outside the block redeclaration. If multiple shaders
         using members of a built-in block belonging to the same interface are linked together in the same
         program, they must all redeclare the built-in block in the same way, as described in section 4.3.9
         “Interface Blocks” for interface block matching, or a link-time error will result. It will also be a link-time
         error if some shaders in a program redeclare a specific built-in interface block while another shader in that
-        program does not redeclare that interface block yet still uses a member of that interface block. If a built-
-        in block interface is formed across shaders in different programs, the shaders must all redeclare the built-
-        in block in the same way (as described for a single program), or the values passed along the interface are
+        program does not redeclare that interface block yet still uses a member of that interface block. If a built-in
+        block interface is formed across shaders in different programs, the shaders must all redeclare the built-in
+        block in the same way (as described for a single program), or the values passed along the interface are
         undefined.
 
 7.1.1   Compatibility Profile Built-In Language Variables
@@ -6231,15 +5277,6 @@ subset of the built-in members of gl_PerVertex. Such a redeclaration can also ad
         The output variable gl_ClipVertex provides a place for vertex and geometry shaders to write the
         coordinate to be used with the user clipping planes. Writing to gl_ClipDistance is the preferred method
         for user clipping. It is a compile-time or link-time error for the set of shaders forming a program to
-
-
-
-
-                                                       128
-                                                                                   7 Built-in Variables
-
-
-
 statically read or write both gl_ClipVertex and gl_ClipDistance. If neither gl_ClipVertex nor
 gl_ClipDistance is written, their values are undefined and any clipping against user clip planes is also
 undefined.
@@ -6253,8 +5290,8 @@ in a shader to explicitly include these additional members. For example:
    }; // no other aspects of the fixed interface will be used
 
 The user must ensure the clip vertex and user clipping planes are defined in the same coordinate space.
-User clip planes work properly only under linear transform. It is undefined what happens under non-
-linear transform.
+User clip planes work properly only under linear transform. It is undefined what happens under non-linear
+transform.
 The output variables gl_FrontColor, glFrontSecondaryColor, gl_BackColor, and glBackSecondaryColor
 assign primary and secondary colors for front and back faces of primitives containing the vertex being
 processed. The output variable gl_TexCoord assigns texture coordinates for the vertex being processed.
@@ -6276,14 +5313,6 @@ within a stage, as block redeclarations must match across all shaders using it).
 In the tessellation control, evaluation, and geometry shaders, the outputs of the previous stage described
 above are also available in the input gl_PerVertex block in these languages.
 
-
-
-
-                                               129
-                                                                                    7 Built-in Variables
-
-
-
    in gl_PerVertex {        // part of the gl_PerVertex block described in 7.1
        // in addition to other gl_PerVertex members...
        vec4 gl_ClipVertex;
@@ -6299,8 +5328,8 @@ above are also available in the input gl_PerVertex block in these languages.
 These can be redeclared to establish an explicit pipeline interface, the same way as described above for
 the output block gl_PerVertex, and the input redeclaration must match the output redeclaration of the
 previous stage. However, when a built-in interface block with an instance name is redeclared (e.g., gl_in),
-the instance name must be included in the redeclaration. It is a compile-time error to not include the built-
-in instance name or to change its name. For example,
+the instance name must be included in the redeclaration. It is a compile-time error to not include the built-in
+instance name or to change its name. For example,
    in gl_PerVertex {
        vec4 gl_ClipVertex;
        vec4 gl_FrontColor;
@@ -6331,14 +5360,6 @@ separate programs, members in the gl_PerVertex output block must be declared if 
 corresponding fragment-shader members generated from them are present in the gl_PerFragment input
 block. These matches are described in detail in section 7.4.1 “Shader Interface Matching” of the OpenGL
 
-
-
-
-                                               130
-                                                                                         7 Built-in Variables
-
-
-
       Graphics System Specification. If they don't match within a program, a link-time error will result. If the
       mismatch is between two programs, values passed between programs are undefined. Unlike with all other
       block matching, the order of declaration within gl_PerFragment does not have to match across shaders
@@ -6367,6 +5388,8 @@ block. These matches are described in detail in section 7.4.1 “Shader Interfac
       gl_FragColor become irrelevant.
 
 7.2   Compatibility Profile Vertex Shader Built-In Inputs
+---------------------------------------------------------------
+
       The following predeclared input names can be used from within a vertex shader to access the current
       values of OpenGL state when using the compatibility profile.
          in   vec4    gl_Color;
@@ -6383,15 +5406,9 @@ block. These matches are described in detail in section 7.4.1 “Shader Interfac
          in   vec4    gl_MultiTexCoord7;
          in   float   gl_FogCoord;
 
-
-
-
-                                                     131
-                                                                                      7 Built-in Variables
-
-
-
 7.3   Built-In Constants
+---------------------------------------------------------------
+
       The following built-in constants are provided to all shaders. The actual values used are implementation
       dependent, but must be at least the value shown.
          //
@@ -6435,15 +5452,6 @@ block. These matches are described in detail in section 7.4.1 “Shader Interfac
          const   int    gl_MaxGeometryTotalOutputComponents = 1024;
          const   int    gl_MaxGeometryUniformComponents = 1024;
          const   int    gl_MaxGeometryVaryingComponents = 64;
-
-
-
-
-                                                   132
-                                                                           7 Built-in Variables
-
-
-
    const   int   gl_MaxTessControlInputComponents = 128;
    const   int   gl_MaxTessControlOutputComponents = 128;
    const   int   gl_MaxTessControlTextureImageUnits = 16;
@@ -6489,14 +5497,6 @@ block. These matches are described in detail in section 7.4.1 “Shader Interfac
 The constant gl_MaxVaryingFloats is removed in the core profile, use gl_MaxVaryingComponents
 instead.
 
-
-
-
-                                          133
-                                                                                         7 Built-in Variables
-
-
-
 7.3.1   Compatibility Profile Built-In Constants
            const      int    gl_MaxTextureUnits = 2;
            const      int    gl_MaxTextureCoords = 8;
@@ -6505,6 +5505,8 @@ instead.
 
 
 7.4     Built-In Uniform State
+---------------------------------------------------------------
+
         As an aid to accessing OpenGL processing state, the following uniform variables are built into the
         OpenGL Shading Language.
            //
@@ -6545,15 +5547,6 @@ instead.
            uniform mat4       gl_ModelViewMatrixInverse;
            uniform mat4       gl_ProjectionMatrixInverse;
            uniform mat4       gl_ModelViewProjectionMatrixInverse;
-
-
-
-
-                                                      134
-                                                            7 Built-in Variables
-
-
-
 uniform mat4     gl_TextureMatrixInverse[gl_MaxTextureCoords];
 
 uniform   mat4   gl_ModelViewMatrixTranspose;
@@ -6603,14 +5596,6 @@ struct gl_MaterialParameters {
 };
 uniform gl_MaterialParameters gl_FrontMaterial;
 uniform gl_MaterialParameters gl_BackMaterial;
-
-
-
-
-                                  135
-                                                           7 Built-in Variables
-
-
 
 //
 // compatibility profile only
@@ -6663,15 +5648,6 @@ struct gl_LightProducts {
 uniform gl_LightProducts gl_FrontLightProduct[gl_MaxLights];
 uniform gl_LightProducts gl_BackLightProduct[gl_MaxLights];
 
-
-
-
-                                  136
-                                                         7 Built-in Variables
-
-
-
-
 //
 // compatibility profile only
 //
@@ -6703,6 +5679,7 @@ uniform gl_FogParameters gl_Fog;
 
                                  137
 8 Built-in Functions
+===============================================================
 
    The OpenGL Shading Language defines an assortment of built-in convenience functions for scalar and
    vector operations. Many of these built-in functions can be used in more than one type of shader, but some
@@ -6736,15 +5713,9 @@ uniform gl_FogParameters gl_Fog;
    with single-precision components and dmat is used for any matrix basic type with double-precision
    components.
 
-
-
-
-                                                   138
-                                                                                        8 Built-in Functions
-
-
-
 8.1   Angle and Trigonometry Functions
+---------------------------------------------------------------
+
       Function parameters specified as angle are assumed to be in units of radians. In no case will any of these
       functions result in a divide by zero error. If the divisor of a ratio is 0, then results will be undefined.
       These all operate component-wise. The description is per component.
@@ -6797,14 +5768,6 @@ uniform gl_FogParameters gl_Fog;
                                                                
                                                               2 2    ].
 
-
-
-
-                                                    139
-                                                              8 Built-in Functions
-
-
-
 Syntax                        Description
 genType sinh (genType x)      Returns the hyperbolic sine function
                                  x   −x
@@ -6823,15 +5786,9 @@ genType acosh (genType x)     Arc hyperbolic cosine; returns the non-negative in
 genType atanh (genType x)     Arc hyperbolic tangent; returns the inverse of tanh.
                               Results are undefined if ∣x∣≥1.
 
-
-
-
-                            140
-                                                                                       8 Built-in Functions
-
-
-
 8.2   Exponential Functions
+---------------------------------------------------------------
+
       These all operate component-wise. The description is per component.
 
        Syntax                                       Description
@@ -6865,15 +5822,9 @@ genType atanh (genType x)     Arc hyperbolic tangent; returns the inverse of tan
                                                                √x
                                                     Results are undefined if x <= 0.
 
-
-
-
-                                                 141
-                                                                                       8 Built-in Functions
-
-
-
 8.3   Common Functions
+---------------------------------------------------------------
+
       These all operate component-wise. The description is per component.
 
        Syntax                                       Description
@@ -6915,14 +5866,6 @@ genType atanh (genType x)     Arc hyperbolic tangent; returns the inverse of tan
        genDType mod (genDType x, double y)
        genDType mod (genDType x, genDType y)
 
-
-
-
-                                                 142
-                                                                             8 Built-in Functions
-
-
-
 Syntax                                      Description
 genType modf (genType x, out genType i)    Returns the fractional part of x and sets i to the integer
 genDType modf (genDType x,                 part (as a whole number floating-point value). Both the
@@ -6947,14 +5890,6 @@ genIType max (genIType x, genIType y)
 genIType max (genIType x, int y)
 genUType max (genUType x, genUType y)
 genUType max (genUType x, uint y)
-
-
-
-
-                                          143
-                                                                        8 Built-in Functions
-
-
 
 Syntax                                 Description
 genType clamp (genType x,             Returns min (max (x, minVal), maxVal).
@@ -6995,14 +5930,6 @@ genDType mix (genDType x,
 genDType mix (genDType x,
                genDType y,
                double a)
-
-
-
-
-                                     144
-                                                                                8 Built-in Functions
-
-
 
 Syntax                                      Description
 genType mix (genType x,                     Selects which vector each returned component comes
@@ -7047,14 +5974,6 @@ genBType isinf (genDType x)                 infinity. Returns false otherwise.
 genIType floatBitsToInt (genType value)  Returns a signed or unsigned integer value representing
 genUType floatBitsToUint (genType value) the encoding of a float. The float value's bit-level
                                          representation is preserved.
-
-
-
-
-                                          145
-                                                                                 8 Built-in Functions
-
-
 
 Syntax                                       Description
 genType intBitsToFloat (genIType value)  Returns a float value corresponding to a signed or
@@ -7105,15 +6024,9 @@ genDType ldexp (genDType x,
                                              If this product is too large to be represented in the
                                              floating-point type, the result is undefined.
 
-
-
-
-                                          146
-                                                                                        8 Built-in Functions
-
-
-
 8.4   Floating-Point Pack and Unpack Functions
+---------------------------------------------------------------
+
       These functions do not operate component-wise, rather, as described in each case.
 
        Syntax                                         Description
@@ -7153,20 +6066,12 @@ genDType ldexp (genDType x,
                                                       last component will be extracted from the most
                                                       significant bits.
 
-
-
-
-                                                   147
-                                                                       8 Built-in Functions
-
-
-
 Syntax                                Description
 double packDouble2x32 (uvec2 v)      Returns a double-precision value obtained by packing
                                      the components of v into a 64-bit value. If an IEEE 754
                                      Inf or NaN is created, it will not signal, and the resulting
-                                     floating-point value is unspecified. Otherwise, the bit-
-                                     level representation of v is preserved. The first vector
+                                     floating-point value is unspecified. Otherwise, the bit-level
+                                     representation of v is preserved. The first vector
                                      component specifies the 32 least significant bits; the
                                      second component specifies the 32 most significant bits.
 
@@ -7181,10 +6086,10 @@ uvec2 unpackDouble2x32 (double v)    Returns a two-component unsigned integer ve
 uint packHalf2x16 (vec2 v)           Returns an unsigned integer obtained by converting the
                                      components of a two-component floating-point vector to
                                      the 16-bit floating-point representation found in the
-                                     OpenGL Specification, and then packing these two 16-
-                                     bit integers into a 32-bit unsigned integer.
-                                     The first vector component specifies the 16 least-
-                                     significant bits of the result; the second component
+                                     OpenGL Specification, and then packing these two 16-bit
+                                     integers into a 32-bit unsigned integer.
+                                     The first vector component specifies the 16 least-significant
+                                     bits of the result; the second component
                                      specifies the 16 most-significant bits.
 
 
@@ -7198,15 +6103,9 @@ vec2 unpackHalf2x16 (uint v)         Returns a two-component floating-point vect
                                      16 least-significant bits of v; the second component is
                                      obtained from the 16 most-significant bits of v.
 
-
-
-
-                                    148
-                                                                                       8 Built-in Functions
-
-
-
 8.5   Geometric Functions
+---------------------------------------------------------------
+
       These operate on vectors as vectors, not component-wise.
 
        Syntax                                        Description
@@ -7249,14 +6148,6 @@ vec2 unpackHalf2x16 (uint v)         Returns a two-component floating-point vect
                                                      passes, and one pass uses the fixed functionality path to
                                                      render and another pass uses programmable shaders.
 
-
-
-
-                                                  149
-                                                                            8 Built-in Functions
-
-
-
 Syntax                                     Description
 genType faceforward (genType N,           If dot(Nref, I) < 0 return N, otherwise return –N.
                       genType I,
@@ -7287,15 +6178,9 @@ genDType refract (genDType I,             vector. The result is computed by
                                           surface normal N must already be normalized to get the
                                           desired results.
 
-
-
-
-                                         150
-                                                                                           8 Built-in Functions
-
-
-
 8.6   Matrix Functions
+---------------------------------------------------------------
+
       For each of the following built-in matrix functions, there is both a single-precision floating-point version,
       where all arguments and return values are single precision, and a double-precision floating-point version,
       where all arguments and return values are double precision. Only the single-precision floating-point
@@ -7338,29 +6223,15 @@ genDType refract (genDType I,             vector. The result is computed by
        float determinant (mat3 m)
        float determinant (mat4 m)
 
-
-
-
-                                                     151
-                                                         8 Built-in Functions
-
-
-
 Syntax                    Description
 mat2 inverse (mat2 m)    Returns a matrix that is the inverse of m. The input
 mat3 inverse (mat3 m)    matrix m is not modified. The values in the returned
-mat4 inverse (mat4 m)    matrix are undefined if m is singular or poorly-
-                         conditioned (nearly singular).
-
-
-
-
-                        152
-                                                                                            8 Built-in Functions
-
-
+mat4 inverse (mat4 m)    matrix are undefined if m is singular or poorly-conditioned
+                         (nearly singular).
 
 8.7   Vector Relational Functions
+---------------------------------------------------------------
+
       Relational and equality operators (<, <=, >, >=, ==, !=) are defined to operate on scalars and produce
       scalar Boolean results. For vector results, use the following built-in functions. Below, the following
       placeholders are used for the listed specific types:
@@ -7408,29 +6279,15 @@ mat4 inverse (mat4 m)    matrix are undefined if m is singular or poorly-
 
        bool any (bvec x)                                 Returns true if any component of x is true.
 
-
-
-
-                                                      153
-                                                     8 Built-in Functions
-
-
-
 Syntax                Description
 bool all (bvec x)    Returns true only if all components of x are true.
 
 
 bvec not (bvec x)    Returns the component-wise logical complement of x.
 
-
-
-
-                    154
-                                                                                          8 Built-in Functions
-
-
-
 8.8   Integer Functions
+---------------------------------------------------------------
+
       These all operate component-wise. The description is per component. The notation [a, b] means the set
       of bits from bit-number a through bit-number b, inclusive. The lowest-order bit is bit 0. “Bit number”
       will always refer to counting up from the lowest-order bit as bit 0.
@@ -7470,14 +6327,6 @@ bvec not (bvec x)    Returns the component-wise logical complement of x.
                                                         offset and bits is greater than the number of bits used
                                                         to store the operand.
 
-
-
-
-                                                      155
-                                                                                   8 Built-in Functions
-
-
-
 Syntax                                            Description
 genIType bitfieldInsert (genIType base,           Returns the insertion of the bits least-significant bits of
                         genIType insert,          insert into base.
@@ -7511,15 +6360,9 @@ genIType findMSB (genUType value)                 binary representation of value
                                                   bit set to 0. For a value of zero or negative one, -1 will
                                                   be returned.
 
-
-
-
-                                                156
-                                                                                           8 Built-in Functions
-
-
-
 8.9   Texture Functions
+---------------------------------------------------------------
+
       Texture lookup functions are available in all shading stages. However, automatic level of detail is
       computed only for fragment shaders. Other shaders operate as though the base level of detail were
       computed as zero. The functions in the table below provide access to textures through samplers, as set up
@@ -7564,14 +6407,6 @@ genIType findMSB (genUType value)                 binary representation of value
       comparisons turned off, then results are undefined. If a shadow texture call is made to a sampler that does
       not represent a depth texture, then results are undefined.
 
-
-
-
-                                                      157
-                                                                                           8 Built-in Functions
-
-
-
         In all functions below, the bias parameter is optional for fragment shaders. The bias parameter is not
         accepted in any other shader stage. For a fragment shader, if bias is present, it is added to the implicit
         level of detail prior to performing the texture access operation. No bias or lod parameters for rectangle
@@ -7605,14 +6440,6 @@ genIType findMSB (genUType value)                 binary representation of value
         level of detail would be accessed, the level-of-detail number relative to the base level is returned. If
         multiple levels of detail would be accessed, a floating-point number between the two levels is returned,
         with the fractional part equal to the fractional part of the computed and clamped level of detail.
-
-
-
-
-                                                        158
-                                                                               8 Built-in Functions
-
-
 
 The algorithm used is given by the following pseudo-code:
    float ComputeAccessedLod(float computedLod)
@@ -7663,14 +6490,6 @@ base level.
  ivec2 textureSize (gsampler2DMS sampler)
  ivec3 textureSize (gsampler2DMSArray sampler)
 
-
-
-
-                                            159
-                                                                       8 Built-in Functions
-
-
-
 Syntax                                                         Description
 vec2 textureQueryLod(gsampler1D sampler, float P)              Returns the mipmap array(s)
 vec2 textureQueryLod(gsampler2D sampler, vec2 P)               that would be accessed in the x
@@ -7699,14 +6518,6 @@ int textureQueryLevels(samplerCubeShadow sampler)              sampler.
 int textureQueryLevels(sampler1DArrayShadow sampler)
 int textureQueryLevels(sampler2DArrayShadow sampler)           Available in all shader stages.
 int textureQueryLevels(samplerCubeArrayShadow sampler)
-
-
-
-
-                                      160
-                                                                                     8 Built-in Functions
-
-
 
 8.9.2   Texel Lookup Functions
          Syntax                                                               Description
@@ -7758,14 +6569,6 @@ int textureQueryLevels(samplerCubeArrayShadow sampler)
                                                                                    =0         =0    =0
                                                                                 ∂y         ∂y    ∂y
 
-
-
-
-                                                   161
-                                                                      8 Built-in Functions
-
-
-
 Syntax                                                         Description
 gvec4 textureOffset (gsampler1D sampler, float P,              Do a texture lookup as in
                       int offset [, float bias] )              texture but with offset added to
@@ -7804,14 +6607,6 @@ gvec4 texelFetch (gsampler2DMSArray sampler, ivec3 P,          “Scale Factor a
                   int sample)                                  Detail” of the OpenGL Graphics
                                                                System Specification.
 
-
-
-
-                                        162
-                                                                            8 Built-in Functions
-
-
-
 Syntax                                                               Description
 gvec4 texelFetchOffset (gsampler1D sampler, int P, int lod,        Fetch a single texel as in
                         int offset)                                texelFetch offset by offset as
@@ -7846,14 +6641,6 @@ gvec4 textureProjOffset (gsampler2DRect sampler, vec4 P,
                           int offset [, float bias] )
  float textureProjOffset (sampler2DShadow sampler, vec4 P,
                           ivec2 offset [, float bias] )
-
-
-
-
-                                          163
-                                                                          8 Built-in Functions
-
-
 
 Syntax                                                             Description
 gvec4 textureLodOffset (gsampler1D sampler, float P,               Do an offset texture lookup with
@@ -7896,14 +6683,6 @@ gvec4 textureProjLodOffset (gsampler3D sampler, vec4 P,
                              float lod, int offset)
  float textureProjLodOffset (sampler2DShadow sampler, vec4 P,
                              float lod, ivec2 offset)
-
-
-
-
-                                         164
-                                                                    8 Built-in Functions
-
-
 
 Syntax                                                      Description
 gvec4 textureGrad (gsampler1D sampler, float P,             Do a texture lookup as in
@@ -7974,14 +6753,6 @@ gvec4 textureGrad (gsamplerCubeArray sampler, vec4 P,            0.0  for 1D or 
                                                             projected onto the appropriate
                                                             cube face.
 
-
-
-
-                                       165
-                                                                          8 Built-in Functions
-
-
-
 Syntax                                                            Description
 gvec4 textureGradOffset (gsampler1D sampler, float P,             Do a texture lookup with both
                            float dPdx, float dPdy, int offset)    explicit gradient and offset, as
@@ -8031,14 +6802,6 @@ gvec4 textureProjGrad (gsampler2DRect sampler, vec4 P,
  float textureProjGrad (sampler2DShadow sampler, vec4 P,
                         vec2 dPdx, vec2 dPdy)
 
-
-
-
-                                        166
-                                                                                              8 Built-in Functions
-
-
-
           Syntax                                                                      Description
          gvec4 textureProjGradOffset (gsampler1D sampler, vec2 P,                     Do a texture lookup projectively
                                        float dPdx, float dPdy, int offset)            and with explicit gradient as
@@ -8082,14 +6845,6 @@ gvec4 textureProjGrad (gsampler2DRect sampler, vec4 P,
         As with other texture lookup functions, the results of a texture gather are undefined for shadow samplers if
         the texture referenced is not a depth texture or has depth comparisons disabled; or for non-shadow
         samplers if the texture referenced is a depth texture with depth comparisons enabled.
-
-
-
-
-                                                         167
-                                                                            8 Built-in Functions
-
-
 
 Syntax                                                 Description
 gvec4 textureGather (gsampler2D sampler, vec2 P        Returns the value
@@ -8138,14 +6893,6 @@ vec4 textureGatherOffset (
                    sampler2DRectShadow sampler,
                    vec2 P, float refZ, ivec2 offset)
 
-
-
-
-                                         168
-                                                                         8 Built-in Functions
-
-
-
 Syntax                                              Description
 gvec4 textureGatherOffsets (                        Operate identically to textureGatherOffset
                     gsampler2D sampler,             except that offsets is used to determine the
@@ -8172,14 +6919,6 @@ vec4 textureGatherOffsets (
                     sampler2DRectShadow sampler,
                     vec2 P, float refZ, ivec2
                     offsets[4])
-
-
-
-
-                                      169
-                                                                                         8 Built-in Functions
-
-
 
 8.9.4   Compatibility Profile Texture Functions
         The following texture functions are only in the compatibility profile.
@@ -8232,14 +6971,6 @@ vec4 textureGatherOffsets (
          vec4 textureCubeLod (samplerCube sampler,
                               vec3 coord, float lod)
 
-
-
-
-                                                      170
-                                                                          8 Built-in Functions
-
-
-
 Syntax (deprecated)                                    Description (deprecated)
 vec4 shadow1D (sampler1DShadow sampler,                Same functionality as the “texture” based
                      vec3 coord [, float bias] )       names above with the same signature.
@@ -8258,15 +6989,9 @@ vec4 shadow1DProjLod(sampler1DShadow sampler,
 vec4 shadow2DProjLod(sampler2DShadow sampler,
                              vec4 coord, float lod)
 
-
-
-
-                                         171
-                                                                                            8 Built-in Functions
-
-
-
 8.10   Atomic-Counter Functions
+---------------------------------------------------------------
+
        The atomic-counter operations in this section operate atomically with respect to each other. They are
        atomic for any single counter, meaning any of these operations on a specific counter in one shader
        instantiation will be indivisible by any of these operations on the same counter from another shader
@@ -8302,20 +7027,14 @@ vec4 shadow2DProjLod(sampler2DShadow sampler,
 
 
 8.11   Atomic Memory Functions
+---------------------------------------------------------------
+
        Atomic memory functions perform atomic operations on an individual signed or unsigned integer stored in
        buffer-object or shared-variable storage. All of the atomic memory operations read a value from memory,
        compute a new value using one of the operations described below, write the new value to memory, and
        return the original value read. The contents of the memory being updated by the atomic operation are
        guaranteed not to be modified by any other assignment or atomic memory function in any shader
        invocation between the time the original value is read and the time the new value is written.
-
-
-
-
-                                                       172
-                                                                                         8 Built-in Functions
-
-
 
        Atomic memory functions are supported only for a limited set of variables. A shader will fail to compile
        if the value passed to the mem argument of an atomic memory function does not correspond to a buffer or
@@ -8354,22 +7073,15 @@ vec4 shadow2DProjLod(sampler2DShadow sampler,
 
 
 8.12   Image Functions
+---------------------------------------------------------------
+
        Variables using one of the image basic types may be used by the built-in shader image memory functions
        defined in this section to read and write individual texels of a texture. Each image variable references an
        image unit, which has a texture image attached.
        When image memory functions below access memory, an individual texel in the image is identified using
        an (i), (i, j), or (i, j, k) coordinate corresponding to the values of P. For image2DMS and
-       image2DMSArray variables (and the corresponding int/unsigned int types) corresponding to multi-
-       sample textures, each texel may have multiple samples and an individual sample is identified using the
-
-
-
-
-                                                     173
-                                                                                  8 Built-in Functions
-
-
-
+       image2DMSArray variables (and the corresponding int/unsigned int types) corresponding to multi-sample
+       textures, each texel may have multiple samples and an individual sample is identified using the
 integer sample parameter. The coordinates and sample number are used to select an individual texel in
 the manner described in section 8.25 “Texture Image Loads and Stores” of the OpenGL specification.
 Loads and stores support float, integer, and unsigned integer types. The data types below starting
@@ -8405,14 +7117,6 @@ either:
          data argument of type int, or
     •    an unsigned image variable (type starts “uimage”) and a format qualifier of r32ui, used with a
          data argument of type uint.
-
-
-
-
-                                              174
-                                                                          8 Built-in Functions
-
-
 
 Syntax                                        Description
    int imageSize (readonly writeonly          Returns the dimensions of the image or images
@@ -8462,14 +7166,6 @@ uint imageAtomicAdd (IMAGE_PARAMS,            Computes a new value by adding the
 int imageAtomicAdd (IMAGE_PARAMS,
                         int data)
 
-
-
-
-                                        175
-                                                                         8 Built-in Functions
-
-
-
 Syntax                                      Description
 uint imageAtomicMin (IMAGE_PARAMS,          Computes a new value by taking the minimum of the
                         uint data)          value of data and the contents of the selected texel.
@@ -8510,15 +7206,9 @@ int imageAtomicCompSwap
                       int compare,
                       int data)
 
-
-
-
-                                      176
-                                                                                         8 Built-in Functions
-
-
-
 8.13   Fragment Processing Functions
+---------------------------------------------------------------
+
        Fragment processing functions are only available in fragment shaders.
 
 8.13.1 Derivative Functions
@@ -8549,23 +7239,14 @@ int imageAtomicCompSwap
        following conditions:
        1. The method may use piecewise linear approximations. Such linear approximations imply that higher
           order derivatives, dFdx(dFdx(x)) and above, are undefined.
-       2. The method may assume that the function evaluated is continuous. Therefore derivatives within non-
-          uniform control flow are undefined.
+       2. The method may assume that the function evaluated is continuous. Therefore derivatives within non-uniform
+          control flow are undefined.
        3. The method may differ per fragment, subject to the constraint that the method may vary by window
           coordinates, not screen coordinates. The invariance requirement described in section 14.2
           “Invariance” of the OpenGL Graphics System Specification, is relaxed for derivative calculations,
           because the method may be a function of fragment location.
        Other properties that are desirable, but not required, are:
        4. Functions should be evaluated within the interior of a primitive (interpolated, not extrapolated).
-
-
-
-
-                                                      177
-                                                                                           8 Built-in Functions
-
-
-
        5. Functions for dFdx should be evaluated while holding y constant. Functions for dFdy should be
           evaluated while holding x constant. However, mixed higher order derivatives, like dFdx(dFdy(y))
           and dFdy(dFdx(x)) are undefined.
@@ -8613,14 +7294,6 @@ int imageAtomicCompSwap
        with the centroid qualifier. If interpolant is declared with the noperspective qualifier, the interpolated
        value will be computed without perspective correction.
 
-
-
-
-                                                      178
-                                                                                         8 Built-in Functions
-
-
-
         Syntax                                             Description
         float interpolateAtCentroid (float interpolant)    Returns the value of the input interpolant sampled at
         vec2 interpolateAtCentroid (vec2 interpolant)      a location inside both the pixel and the primitive
@@ -8652,6 +7325,8 @@ int imageAtomicCompSwap
 
 
 8.14   Noise Functions
+---------------------------------------------------------------
+
        The noise functions noise1, noise2, noise3, and noise4 have been deprecated starting with version 4.4 of
        GLSL. They are defined to return the value 0.0 or a vector whose components are all 0.0. However, as in
        previous releases, they are not semantically considered to be compile-time constant expressions.
@@ -8669,15 +7344,9 @@ int imageAtomicCompSwap
 
         vec4 noise4 (genType x)                         Returns a 4D noise value based on the input value x.
 
-
-
-
-                                                    179
-                                                                                        8 Built-in Functions
-
-
-
 8.15   Geometry Shader Functions
+---------------------------------------------------------------
+
        These functions are only available in geometry shaders. They are described in more depth following the
        table.
 
@@ -8723,27 +7392,13 @@ int imageAtomicCompSwap
        geometry shader terminates, the current output primitive for each stream is automatically completed. It is
        not necessary to call EndStreamPrimitive() if the geometry shader writes only a single primitive.
 
-
-
-
-                                                     180
-                                                                                 8 Built-in Functions
-
-
-
 Multiple output streams are supported only if the output primitive type is declared to be points. A
 program will fail to link if it contains a geometry shader calling EmitStreamVertex() or
 EndStreamPrimitive() if its output primitive type is not points.
 
-
-
-
-                                              181
-                                                                                          8 Built-in Functions
-
-
-
 8.16   Shader Invocation Control Functions
+---------------------------------------------------------------
+
        The shader invocation control function is available only in tessellation control shaders and compute
        shaders. It is used to control the relative execution order of multiple shader invocations used to process a
        patch (in the case of tessellation control shaders) or a local work group (in the case of compute shaders),
@@ -8776,15 +7431,9 @@ EndStreamPrimitive() if its output primitive type is not points.
        responsibility to ensure barrier() only exists inside uniform flow control. Otherwise, some shader
        invocations will stall indefinitely, waiting for a barrier that is never reached by other invocations.
 
-
-
-
-                                                     182
-                                                                                         8 Built-in Functions
-
-
-
 8.17   Shader Memory Control Functions
+---------------------------------------------------------------
+
        Shaders of all types may read and write the contents of textures and buffer objects using image variables.
        While the order of reads and writes within a single shader invocation is well-defined, the relative order of
        reads and writes to a single shared memory address from multiple separate shader invocations is largely
@@ -8831,14 +7480,6 @@ EndStreamPrimitive() if its output primitive type is not points.
        functions memoryBarrierShared() and groupMemoryBarrier() are available only in compute shaders;
        the other functions are available in all shader types.
 
-
-
-
-                                                     183
-                                                                                  8 Built-in Functions
-
-
-
 When these functions return, the results of any memory stores performed using coherent variables
 performed prior to the call will be visible to any future coherent access to the same memory performed by
 any other shader invocation. In particular, the values written this way in one shader stage are guaranteed
@@ -8857,17 +7498,8 @@ required to guarantee the order of memory stores as observed by the invocation p
 invocation reading from a variable that it previously wrote will always see the most recently written value
 unless another shader invocation also wrote to the same memory.
 
-
-
-
-                                              184
-                                              9 Shading Language Grammar for Core Profile
-
-
-
-
-9 Shading Language Grammar for Core
-Profile
+9 Shading Language Grammar for Core Profile
+===============================================================
 
    The grammar is fed from the output of lexical analysis. The tokens returned from lexical analysis are
       CONST BOOL FLOAT DOUBLE INT UINT
@@ -8907,14 +7539,6 @@ Profile
       IMAGECUBEARRAY IIMAGECUBEARRAY UIMAGECUBEARRAY
       IMAGE2DMS IIMAGE2DMS UIMAGE2DMS
       IMAGE2DMSARRAY IIMAGE2DMSARRAY UIMAGE2DMSARRAY
-
-
-
-
-                                                185
-                                           9 Shading Language Grammar for Core Profile
-
-
 
    STRUCT VOID WHILE
 
@@ -8962,15 +7586,6 @@ postfix_expression:
      postfix_expression INC_OP
      postfix_expression DEC_OP
 
-
-
-
-                                             186
-                                           9 Shading Language Grammar for Core Profile
-
-
-
-
 integer_expression:
      expression
 
@@ -9014,15 +7629,6 @@ unary_expression:
 
 // Grammar Note: No traditional style type casts.
 
-
-
-
-                                             187
-                                         9 Shading Language Grammar for Core Profile
-
-
-
-
 unary_operator:
      PLUS
      DASH
@@ -9063,15 +7669,6 @@ and_expression:
      equality_expression
      and_expression AMPERSAND equality_expression
 
-
-
-
-                                           188
-                                      9 Shading Language Grammar for Core Profile
-
-
-
-
 exclusive_or_expression:
     and_expression
     exclusive_or_expression CARET and_expression
@@ -9111,15 +7708,6 @@ assignment_operator:
     RIGHT_ASSIGN
     AND_ASSIGN
     XOR_ASSIGN
-
-
-
-
-                                        189
-                                        9 Shading Language Grammar for Core Profile
-
-
-
      OR_ASSIGN
 
 expression:
@@ -9161,14 +7749,6 @@ function_header_with_parameters:
 function_header:
      fully_specified_type IDENTIFIER LEFT_PAREN
 
-
-
-
-                                         190
-                                            9 Shading Language Grammar for Core Profile
-
-
-
 parameter_declarator:
      type_specifier IDENTIFIER
      type_specifier IDENTIFIER array_specifier
@@ -9199,8 +7779,6 @@ single_declaration:
      fully_specified_type IDENTIFIER array_specifier EQUAL initializer
      fully_specified_type IDENTIFIER EQUAL initializer
 
-
-
 // Grammar Note: No 'enum', or 'typedef'.
 
 fully_specified_type:
@@ -9212,15 +7790,6 @@ invariant_qualifier:
 
 
 interpolation_qualifier:
-
-
-
-
-                                             191
-                                            9 Shading Language Grammar for Core Profile
-
-
-
      SMOOTH
      FLAT
      NOPERSPECTIVE
@@ -9266,15 +7835,6 @@ storage_qualifier:
      CENTROID
      PATCH
      SAMPLE
-
-
-
-
-                                             192
-                                         9 Shading Language Grammar for Core Profile
-
-
-
      UNIFORM
      BUFFER
      SHARED
@@ -9316,15 +7876,6 @@ type_specifier_nonarray:
      VEC4
      DVEC2
      DVEC3
-
-
-
-
-                                           193
-              9 Shading Language Grammar for Core Profile
-
-
-
 DVEC4
 BVEC2
 BVEC3
@@ -9362,15 +7913,6 @@ DMAT4X4
 ATOMIC_UINT
 SAMPLER1D
 SAMPLER2D
-
-
-
-
-               194
-                         9 Shading Language Grammar for Core Profile
-
-
-
 SAMPLER3D
 SAMPLERCUBE
 SAMPLER1DSHADOW
@@ -9408,15 +7950,6 @@ ISAMPLER2DMS
 USAMPLER2DMS
 SAMPLER2DMSARRAY
 ISAMPLER2DMSARRAY
-
-
-
-
-                          195
-                       9 Shading Language Grammar for Core Profile
-
-
-
    USAMPLER2DMSARRAY
    IMAGE1D
    IIMAGE1D
@@ -9455,15 +7988,6 @@ ISAMPLER2DMSARRAY
    TYPE_NAME
 precision_qualifier:
      HIGH_PRECISION
-
-
-
-
-                        196
-                                           9 Shading Language Grammar for Core Profile
-
-
-
      MEDIUM_PRECISION
      LOW_PRECISION
 
@@ -9507,15 +8031,6 @@ statement:
 
 // Grammar Note: labeled statements for SWITCH only; 'goto' is not supported.
 
-
-
-
-                                             197
-                                        9 Shading Language Grammar for Core Profile
-
-
-
-
 simple_statement:
      declaration_statement
      expression_statement
@@ -9555,15 +8070,6 @@ selection_rest_statement:
 condition:
      expression
      fully_specified_type IDENTIFIER EQUAL initializer
-
-
-
-
-                                         198
-                                             9 Shading Language Grammar for Core Profile
-
-
-
 
 switch_statement:
      SWITCH LEFT_PAREN expression RIGHT_PAREN LEFT_BRACE switch_statement_list
@@ -9608,15 +8114,6 @@ translation_unit:
      external_declaration
      translation_unit external_declaration
 
-
-
-
-                                              199
-                                      9 Shading Language Grammar for Core Profile
-
-
-
-
 external_declaration:
      function_definition
      declaration
@@ -9624,21 +8121,8 @@ external_declaration:
 function_definition:
      function_prototype compound_statement_no_new_scope
 
-
-
-
-                                        200
-                                                           10 Normative References
-
-
-
-
 10 Normative References
+===============================================================
 
   1.   International Standard ISO/IEC 14882:1998(E). Programming Languages – C++.
        Referenced for preprocessor only.
-
-
-
-
-                                       201
