@@ -1081,38 +1081,38 @@ Floating-Point Opaque Types
 +------------------------+-----------------------------------------------------------------+
 |          Type          |                             Meaning                             |
 +========================+=================================================================+
-| sampler1D              | a handle for accessing a 1D texture                             |
-| image1D                |                                                                 |
+| | sampler1D            | a handle for accessing a 1D texture                             |
+| | image1D              |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| sampler2D              | a handle for accessing a 2D texture                             |
-| image2D                |                                                                 |
+| | sampler2D            | a handle for accessing a 2D texture                             |
+| | image2D              |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| sampler3D              | a handle for accessing a 3D texture                             |
-| image3D                |                                                                 |
+| | sampler3D            | a handle for accessing a 3D texture                             |
+| | image3D              |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| samplerCube            | a handle for accessing a cube mapped texture                    |
-| imageCube              |                                                                 |
+| | samplerCube          | a handle for accessing a cube mapped texture                    |
+| | imageCube            |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| sampler2DRect          | a handle for accessing a rectangle texture                      |
-| image2DRect            |                                                                 |
+| | sampler2DRect        | a handle for accessing a rectangle texture                      |
+| | image2DRect          |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| sampler1DArray         | a handle for accessing a 1D array texture                       |
-| image1DArray           |                                                                 |
+| | sampler1DArray       | a handle for accessing a 1D array texture                       |
+| | image1DArray         |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| sampler2DArray         | a handle for accessing a 2D array texture                       |
-| image2DArray           |                                                                 |
+| | sampler2DArray       | a handle for accessing a 2D array texture                       |
+| | image2DArray         |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| samplerBuffer          | a handle for accessing a buffer texture                         |
-| imageBuffer            |                                                                 |
+| | samplerBuffer        | a handle for accessing a buffer texture                         |
+| | imageBuffer          |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| sampler2DMS            | a handle for accessing a 2D multi-sample texture                |
-| image2DMS              |                                                                 |
+| | sampler2DMS          | a handle for accessing a 2D multi-sample texture                |
+| | image2DMS            |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| sampler2DMSArray       | a handle for accessing a 2D multi-sample array texture          |
-| image2DMSArray         |                                                                 |
+| | sampler2DMSArray     | a handle for accessing a 2D multi-sample array texture          |
+| | image2DMSArray       |                                                                 |
 +------------------------+-----------------------------------------------------------------+
-| samplerCubeArray       | a handle for accessing a cube map array texture                 |
-| imageCubeArray         |                                                                 |
+| | samplerCubeArray     | a handle for accessing a cube map array texture                 |
+| | imageCubeArray       |                                                                 |
 +------------------------+-----------------------------------------------------------------+
 | sampler1DShadow        | a handle for accessing a 1D depth texture with comparison       |
 +------------------------+-----------------------------------------------------------------+
@@ -1132,83 +1132,83 @@ Floating-Point Opaque Types
 
 Signed Integer Opaque Types
 
-+-------------------+-----------------------------------------------------------------+
-|        Type       |                             Meaning                             |
-+===================+=================================================================+
-| isampler1D        | a handle for accessing an integer 1D texture                    |
-| iimage1D          |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isampler2D        | a handle for accessing an integer 2D texture                    |
-| iimage2D          |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isampler3D        | a handle for accessing an integer 3D texture                    |
-| iimage3D          |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isamplerCube      | a handle for accessing an integer cube mapped texture           |
-| iimageCube        |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isampler2DRect    | a handle for accessing an integer 2D rectangle texture          |
-| iimage2DRect      |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isampler1DArray   | a handle for accessing an integer 1D array texture              |
-| iimage1DArray     |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isampler2DArray   | a handle for accessing an integer 2D array texture              |
-| iimage2DArray     |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isamplerBuffer    | a handle for accessing an integer buffer texture                |
-| iimageBuffer      |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isampler2DMS      | a handle for accessing an integer 2D multi-sample texture       |
-| iimage2DMS        |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isampler2DMSArray | a handle for accessing an integer 2D multi-sample array texture |
-| iimage2DMSArray   |                                                                 |
-+-------------------+-----------------------------------------------------------------+
-| isamplerCubeArray | a handle for accessing an integer cube map array texture        |
-| iimageCubeArray   |                                                                 |
-+-------------------+-----------------------------------------------------------------+
++---------------------+-----------------------------------------------------------------+
+|        Type         |                             Meaning                             |
++=====================+=================================================================+
+| | isampler1D        | a handle for accessing an integer 1D texture                    |
+| | iimage1D          |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isampler2D        | a handle for accessing an integer 2D texture                    |
+| | iimage2D          |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isampler3D        | a handle for accessing an integer 3D texture                    |
+| | iimage3D          |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isamplerCube      | a handle for accessing an integer cube mapped texture           |
+| | iimageCube        |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isampler2DRect    | a handle for accessing an integer 2D rectangle texture          |
+| | iimage2DRect      |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isampler1DArray   | a handle for accessing an integer 1D array texture              |
+| | iimage1DArray     |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isampler2DArray   | a handle for accessing an integer 2D array texture              |
+| | iimage2DArray     |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isamplerBuffer    | a handle for accessing an integer buffer texture                |
+| | iimageBuffer      |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isampler2DMS      | a handle for accessing an integer 2D multi-sample texture       |
+| | iimage2DMS        |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isampler2DMSArray | a handle for accessing an integer 2D multi-sample array texture |
+| | iimage2DMSArray   |                                                                 |
++---------------------+-----------------------------------------------------------------+
+| | isamplerCubeArray | a handle for accessing an integer cube map array texture        |
+| | iimageCubeArray   |                                                                 |
++---------------------+-----------------------------------------------------------------+
 
 Unsigned Integer Opaque Types
 
-+-------------------+--------------------------------------------------------------------+
-|        Type       |                              Meaning                               |
-+===================+====================================================================+
-| atomic_uint       | a handle for accessing an unsigned integer atomic counter          |
-+-------------------+--------------------------------------------------------------------+
-| usampler1D        | a handle for accessing an unsigned integer 1D texture              |
-| uimage1D          |                                                                    |
-+-------------------+--------------------------------------------------------------------+
-| usampler2D        | a handle for accessing an unsigned integer 2D texture              |
-| uimage2D          |                                                                    |
-+-------------------+--------------------------------------------------------------------+
-| usampler3D        | a handle for accessing an unsigned integer 3D texture              |
-| uimage3D          |                                                                    |
-+-------------------+--------------------------------------------------------------------+
-| usamplerCube      | a handle for accessing an unsigned integer cube mapped texture     |
-| uimageCube        |                                                                    |
-+-------------------+--------------------------------------------------------------------+
-| usampler2DRect    | a handle for accessing an unsigned integer rectangle texture       |
-| uimage2DRect      |                                                                    |
-+-------------------+--------------------------------------------------------------------+
-| usampler1DArray   | a handle for accessing an unsigned integer 1D array texture        |
-| uimage1DArray     |                                                                    |
-+-------------------+--------------------------------------------------------------------+
-| usampler2DArray   | a handle for accessing an unsigned integer 2D array texture        |
-| uimage2DArray     |                                                                    |
-+-------------------+--------------------------------------------------------------------+
-| usamplerBuffer    | a handle for accessing an unsigned integer buffer texture          |
-| uimageBuffer      |                                                                    |
-+-------------------+--------------------------------------------------------------------+
-| usampler2DMS      | a handle for accessing an unsigned integer 2D multi-sample texture |
-| uimage2DMS        |                                                                    |
-+-------------------+--------------------------------------------------------------------+
-| usampler2DMSArray | a handle for accessing an unsigned integer 2D multi-sample texture |
-| uimage2DMSArray   | array                                                              |
-+-------------------+--------------------------------------------------------------------+
-| usamplerCubeArray | a handle for accessing an unsigned integer cube map array texture  |
-| uimageCubeArray   |                                                                    |
-+-------------------+--------------------------------------------------------------------+
++---------------------+--------------------------------------------------------------------+
+|        Type         |                              Meaning                               |
++=====================+====================================================================+
+| atomic_uint         | a handle for accessing an unsigned integer atomic counter          |
++---------------------+--------------------------------------------------------------------+
+| | usampler1D        | a handle for accessing an unsigned integer 1D texture              |
+| | uimage1D          |                                                                    |
++---------------------+--------------------------------------------------------------------+
+| | usampler2D        | a handle for accessing an unsigned integer 2D texture              |
+| | uimage2D          |                                                                    |
++---------------------+--------------------------------------------------------------------+
+| | usampler3D        | a handle for accessing an unsigned integer 3D texture              |
+| | uimage3D          |                                                                    |
++---------------------+--------------------------------------------------------------------+
+| | usamplerCube      | a handle for accessing an unsigned integer cube mapped texture     |
+| | uimageCube        |                                                                    |
++---------------------+--------------------------------------------------------------------+
+| | usampler2DRect    | a handle for accessing an unsigned integer rectangle texture       |
+| | uimage2DRect      |                                                                    |
++---------------------+--------------------------------------------------------------------+
+| | usampler1DArray   | a handle for accessing an unsigned integer 1D array texture        |
+| | uimage1DArray     |                                                                    |
++---------------------+--------------------------------------------------------------------+
+| | usampler2DArray   | a handle for accessing an unsigned integer 2D array texture        |
+| | uimage2DArray     |                                                                    |
++---------------------+--------------------------------------------------------------------+
+| | usamplerBuffer    | a handle for accessing an unsigned integer buffer texture          |
+| | uimageBuffer      |                                                                    |
++---------------------+--------------------------------------------------------------------+
+| | usampler2DMS      | a handle for accessing an unsigned integer 2D multi-sample texture |
+| | uimage2DMS        |                                                                    |
++---------------------+--------------------------------------------------------------------+
+| | usampler2DMSArray | a handle for accessing an unsigned integer 2D multi-sample texture |
+| | uimage2DMSArray   | array                                                              |
++---------------------+--------------------------------------------------------------------+
+| | usamplerCubeArray | a handle for accessing an unsigned integer cube map array texture  |
+| | uimageCubeArray   |                                                                    |
++---------------------+--------------------------------------------------------------------+
 
 In addition, a shader can aggregate these basic types using arrays and structures to build more complex
 types.
@@ -1218,35 +1218,35 @@ There are no pointer types.
 4.1.1   Void
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Functions that do not return a value must be declared as void. There is no default function return type.
-        The keyword void cannot be used in any other declarations (except for empty formal or actual parameter
-        lists), or a compile-time error results.
+Functions that do not return a value must be declared as void. There is no default function return type.
+The keyword void cannot be used in any other declarations (except for empty formal or actual parameter
+lists), or a compile-time error results.
 
 4.1.2   Booleans
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        To make conditional execution of code easier to express, the type bool is supported. There is no
-        expectation that hardware directly supports variables of this type. It is a genuine Boolean type, holding
-        only one of two values meaning either true or false. Two keywords true and false can be used as literal
-        Boolean constants. Booleans are declared and optionally initialized as in the follow example:
-           bool success;      // declare “success” to be a Boolean
-           bool done = false; // declare and initialize “done”
+To make conditional execution of code easier to express, the type bool is supported. There is no
+expectation that hardware directly supports variables of this type. It is a genuine Boolean type, holding
+only one of two values meaning either true or false. Two keywords true and false can be used as literal
+Boolean constants. Booleans are declared and optionally initialized as in the follow example:
+   bool success;      // declare “success” to be a Boolean
+   bool done = false; // declare and initialize “done”
 
-        The right side of the assignment operator ( = ) must be an expression whose type is bool.
-        Expressions used for conditional jumps (if, for, ?:, while, do-while) must evaluate to the type bool.
+The right side of the assignment operator ( = ) must be an expression whose type is bool.
+Expressions used for conditional jumps (if, for, ?:, while, do-while) must evaluate to the type bool.
 
 4.1.3   Integers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Signed and unsigned integer variables are fully supported. In this document, the term integer is meant to
-        generally include both signed and unsigned integers. Unsigned integers have exactly 32 bits of precision.
-        Signed integers use 32 bits, including a sign bit, in two's complement form. Addition, subtraction, and
-        shift operations resulting in overflow or underflow will not cause any exception, nor will they saturate,
-        rather they will “wrap” to yield the low-order 32 bits of the result. Division and multiplication operations
-        resulting in overflow or underflow will not cause any exception but will result in an undefined value.
-        Integers are declared and optionally initialized with integer expressions, as in the following example:
-           int i, j = 42;        // default integer literal type is int
-           uint k = 3u;          // “u” establishes the type as uint
+Signed and unsigned integer variables are fully supported. In this document, the term integer is meant to
+generally include both signed and unsigned integers. Unsigned integers have exactly 32 bits of precision.
+Signed integers use 32 bits, including a sign bit, in two's complement form. Addition, subtraction, and
+shift operations resulting in overflow or underflow will not cause any exception, nor will they saturate,
+rather they will “wrap” to yield the low-order 32 bits of the result. Division and multiplication operations
+resulting in overflow or underflow will not cause any exception but will result in an undefined value.
+Integers are declared and optionally initialized with integer expressions, as in the following example:
+   int i, j = 42;        // default integer literal type is int
+   uint k = 3u;          // “u” establishes the type as uint
 
 Literal integer constants can be expressed in decimal (base 10), octal (base 8), or hexadecimal (base 16)
 as follows.
@@ -1319,200 +1319,200 @@ creates a negative value. For example,
 4.1.4   Floating-Point Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Single-precision and double-precision floating point variables are available for use in a variety of scalar
-        calculations. Generally, the term floating-point will refer to both single- and double-precision floating
-        point. Floating-point variables are defined as in the following examples:
-           float a, b = 1.5;              // single-precision floating-point
-           double c, d = 2.0LF;           // double-precision floating-point
+Single-precision and double-precision floating point variables are available for use in a variety of scalar
+calculations. Generally, the term floating-point will refer to both single- and double-precision floating
+point. Floating-point variables are defined as in the following examples:
+   float a, b = 1.5;              // single-precision floating-point
+   double c, d = 2.0LF;           // double-precision floating-point
 
-        As an input value to one of the processing units, a single-precision or double-precision floating-point
-        variable is expected to match the corresponding IEEE 754 floating-point definition for precision and
-        dynamic range. Floating-point variables within a shader are also encoded according to the IEEE 754
-        specification for single-precision floating-point values (logically, not necessarily physically). While
-        encodings are logically IEEE 754, operations (addition, multiplication, etc.) are not necessarily performed
-        as required by IEEE 754. See section 4.7.1 “Range and Precision” for more details on precision and
-        usage of NaNs (Not a Number) and Infs (positive or negative infinities).
+As an input value to one of the processing units, a single-precision or double-precision floating-point
+variable is expected to match the corresponding IEEE 754 floating-point definition for precision and
+dynamic range. Floating-point variables within a shader are also encoded according to the IEEE 754
+specification for single-precision floating-point values (logically, not necessarily physically). While
+encodings are logically IEEE 754, operations (addition, multiplication, etc.) are not necessarily performed
+as required by IEEE 754. See section 4.7.1 “Range and Precision” for more details on precision and
+usage of NaNs (Not a Number) and Infs (positive or negative infinities).
 
-        Floating-point constants are defined as follows.
+Floating-point constants are defined as follows.
 
-             floating-constant :
-                   fractional-constant exponent-partopt floating-suffixopt
-                  digit-sequence exponent-part floating-suffixopt
-             fractional-constant :
-                  digit-sequence . digit-sequence
-                  digit-sequence .
-                  . digit-sequence
-             exponent-part :
-                 e signopt digit-sequence
-                 E signopt digit-sequence
+     floating-constant :
+           fractional-constant exponent-partopt floating-suffixopt
+          digit-sequence exponent-part floating-suffixopt
+     fractional-constant :
+          digit-sequence . digit-sequence
+          digit-sequence .
+          . digit-sequence
+     exponent-part :
+         e signopt digit-sequence
+         E signopt digit-sequence
 
-             sign : one of
-                  +–
-             digit-sequence :
-                   digit
-                   digit-sequence digit
-             floating-suffix: one of
-                   f F lf LF
-        A decimal point ( . ) is not needed if the exponent part is present. No white space may appear anywhere
-        within a floating-point constant, including before a suffix. When tokenizing, the maximal token matching
-        the above will be recognized before a new token is started. When the suffix "lf" or "LF" is present, the
-        literal has type double. Otherwise, the literal has type float. A leading unary minus sign (-) is interpreted
-        as a unary operator and is not part of the floating-point constant.
+     sign : one of
+          +–
+     digit-sequence :
+           digit
+           digit-sequence digit
+     floating-suffix: one of
+           f F lf LF
+A decimal point ( . ) is not needed if the exponent part is present. No white space may appear anywhere
+within a floating-point constant, including before a suffix. When tokenizing, the maximal token matching
+the above will be recognized before a new token is started. When the suffix "lf" or "LF" is present, the
+literal has type double. Otherwise, the literal has type float. A leading unary minus sign (-) is interpreted
+as a unary operator and is not part of the floating-point constant.
 
 4.1.5   Vectors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The OpenGL Shading Language includes data types for generic 2-, 3-, and 4-component vectors of
-        floating-point values, integers, or Booleans. Floating-point vector variables can be used to store colors,
-        normals, positions, texture coordinates, texture lookup results and the like. Boolean vectors can be used
-        for component-wise comparisons of numeric vectors. Some examples of vector declaration are:
-           vec2 texcoord1, texcoord2;
-           vec3 position;
-           vec4 myRGBA;
-           ivec2 textureLookup;
-           bvec3 less;
+The OpenGL Shading Language includes data types for generic 2-, 3-, and 4-component vectors of
+floating-point values, integers, or Booleans. Floating-point vector variables can be used to store colors,
+normals, positions, texture coordinates, texture lookup results and the like. Boolean vectors can be used
+for component-wise comparisons of numeric vectors. Some examples of vector declaration are:
+   vec2 texcoord1, texcoord2;
+   vec3 position;
+   vec4 myRGBA;
+   ivec2 textureLookup;
+   bvec3 less;
 
-        Initialization of vectors can be done with constructors, which are discussed shortly.
+Initialization of vectors can be done with constructors, which are discussed shortly.
 
 4.1.6   Matrices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The OpenGL Shading Language has built-in types for 2×2, 2×3, 2×4, 3×2, 3×3, 3×4, 4×2, 4×3, and 4×4
-        matrices of floating-point numbers. Matrix types beginning with "mat" have single-precision components
-        while matrix types beginning with "dmat" have double-precision components. The first number in the
-        type is the number of columns, the second is the number of rows. If there is only one number, the matrix
-        is square. Example matrix declarations:
-           mat2 mat2D;
-           mat3 optMatrix;
-           mat4 view, projection;
-           mat4x4 view; // an alternate way of declaring a mat4
-           mat3x2 m;     // a matrix with 3 columns and 2 rows
-           dmat4 highPrecisionMVP;
-           dmat2x4 dm;
+The OpenGL Shading Language has built-in types for 2×2, 2×3, 2×4, 3×2, 3×3, 3×4, 4×2, 4×3, and 4×4
+matrices of floating-point numbers. Matrix types beginning with "mat" have single-precision components
+while matrix types beginning with "dmat" have double-precision components. The first number in the
+type is the number of columns, the second is the number of rows. If there is only one number, the matrix
+is square. Example matrix declarations:
+   mat2 mat2D;
+   mat3 optMatrix;
+   mat4 view, projection;
+   mat4x4 view; // an alternate way of declaring a mat4
+   mat3x2 m;     // a matrix with 3 columns and 2 rows
+   dmat4 highPrecisionMVP;
+   dmat2x4 dm;
 
-        Initialization of matrix values is done with constructors (described in section 5.4 “Constructors” ) in
-        column-major order.
+Initialization of matrix values is done with constructors (described in section 5.4 “Constructors” ) in
+column-major order.
 
 4.1.7   Opaque Types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The opaque types declare variables that are effectively opaque handles to other objects. These objects are
-        accessed through built-in functions, not through direct reading or writing of the declared variable. They
-        can only be declared as function parameters or in uniform-qualified variables. The only opaque types
-        that take memory qualifiers are the image types. Except for array indexing, structure member selection,
-        and parentheses, opaque variables are not allowed to be operands in expressions; such use results in a
-        compile-time error.
-        Opaque variables cannot be treated as l-values; hence cannot be used as out or inout function parameters,
-        nor can they be assigned into. Any such use results in a compile-time error. However, they can be passed
-        as in parameters with matching type and memory qualifiers. They are initialized only through the
-        OpenGL API; they cannot be declared with an initializer in a shader.
-        Because a single opaque type declaration effectively declares two objects, the opaque handle itself and the
-        object it is a handle to, there is room for both a storage qualifier and a memory qualifier. The storage
-        qualifier will qualify the opaque handle, while the memory qualifier will qualify the object it is a handle
-        to.
+The opaque types declare variables that are effectively opaque handles to other objects. These objects are
+accessed through built-in functions, not through direct reading or writing of the declared variable. They
+can only be declared as function parameters or in uniform-qualified variables. The only opaque types
+that take memory qualifiers are the image types. Except for array indexing, structure member selection,
+and parentheses, opaque variables are not allowed to be operands in expressions; such use results in a
+compile-time error.
+Opaque variables cannot be treated as l-values; hence cannot be used as out or inout function parameters,
+nor can they be assigned into. Any such use results in a compile-time error. However, they can be passed
+as in parameters with matching type and memory qualifiers. They are initialized only through the
+OpenGL API; they cannot be declared with an initializer in a shader.
+Because a single opaque type declaration effectively declares two objects, the opaque handle itself and the
+object it is a handle to, there is room for both a storage qualifier and a memory qualifier. The storage
+qualifier will qualify the opaque handle, while the memory qualifier will qualify the object it is a handle
+to.
 
 4.1.7.1 Samplers
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-        Sampler types (e.g., sampler2D) are opaque types, declared and behaving as described above for opaque
-        types. When aggregated into arrays within a shader, samplers can only be indexed with a dynamically
-        uniform integral expression, otherwise results are undefined.
-        Sampler variables are handles to one-, two-, and three- dimensional textures, cube maps, depth textures
-        (shadowing), etc., as enumerated in the basic types tables. There are distinct sampler types for each
-        texture target, and for each of float, integer, and unsigned integer data types. Texture accesses are done
-        through built-in texture functions (described in section 8.9 “Texture Functions”) and samplers are used to
-        specify which texture to access and how it is to be filtered.
+Sampler types (e.g., sampler2D) are opaque types, declared and behaving as described above for opaque
+types. When aggregated into arrays within a shader, samplers can only be indexed with a dynamically
+uniform integral expression, otherwise results are undefined.
+Sampler variables are handles to one-, two-, and three- dimensional textures, cube maps, depth textures
+(shadowing), etc., as enumerated in the basic types tables. There are distinct sampler types for each
+texture target, and for each of float, integer, and unsigned integer data types. Texture accesses are done
+through built-in texture functions (described in section 8.9 “Texture Functions”) and samplers are used to
+specify which texture to access and how it is to be filtered.
 
 4.1.7.2 Images
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-        Image types are opaque types, declared and behaving as described above for opaque types. They can be
-        further qualified with memory qualifiers. When aggregated into arrays within a shader, images can only
-        be indexed with a dynamically uniform integral expression, otherwise results are undefined.
-        Image variables are handles to one-, two-, or three-dimensional images corresponding to all or a portion
-        of a single level of a texture image bound to an image unit. There are distinct image types for each texture
-        target, and for each of float, integer, and unsigned integer data types. Image accesses should use an image
-        type that matches the target of the texture whose level is bound to the image unit, or for non-layered
-        bindings of 3D or array images should use the image type that matches the dimensionality of the layer of
-        the image (i.e., a layer of 3D, 2DArray, Cube, or CubeArray should use image2D, a layer of 1DArray
-        should use image1D, and a layer of 2DMSArray should use image2DMS). If the image target type does
-        not match the bound image in this manner, if the data type does not match the bound image, or if the
-        format layout qualifier does not match the image unit format as described in section 8.25 “Texture Image
-        Loads and Stores” of the OpenGL Specification, the results of image accesses are undefined but cannot
-        include program termination.
-        Image variables are used in the image load, store, and atomic functions described in section 8.12 "Image
-        Functions" to specify an image to access.
+Image types are opaque types, declared and behaving as described above for opaque types. They can be
+further qualified with memory qualifiers. When aggregated into arrays within a shader, images can only
+be indexed with a dynamically uniform integral expression, otherwise results are undefined.
+Image variables are handles to one-, two-, or three-dimensional images corresponding to all or a portion
+of a single level of a texture image bound to an image unit. There are distinct image types for each texture
+target, and for each of float, integer, and unsigned integer data types. Image accesses should use an image
+type that matches the target of the texture whose level is bound to the image unit, or for non-layered
+bindings of 3D or array images should use the image type that matches the dimensionality of the layer of
+the image (i.e., a layer of 3D, 2DArray, Cube, or CubeArray should use image2D, a layer of 1DArray
+should use image1D, and a layer of 2DMSArray should use image2DMS). If the image target type does
+not match the bound image in this manner, if the data type does not match the bound image, or if the
+format layout qualifier does not match the image unit format as described in section 8.25 “Texture Image
+Loads and Stores” of the OpenGL Specification, the results of image accesses are undefined but cannot
+include program termination.
+Image variables are used in the image load, store, and atomic functions described in section 8.12 "Image
+Functions" to specify an image to access.
 
 4.1.7.3 Atomic Counters
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-        Atomic counter types (atomic_uint) are opaque handles to counters, declared and behaving as described
-        above for opaque types. The variables they declare specify which counter to access when using the built-in
-        atomic counter functions as described in section 8.10 “Atomic Counter Functions”. They are bound to
-        buffers as described in section 4.4.6.1 “Atomic Counter Layout Qualifiers”. When aggregated into arrays
-        within a shader, atomic counters can only be indexed with a dynamically uniform integral expression,
-        otherwise results are undefined. Members of structures cannot be declared as atomic counter types.
+Atomic counter types (atomic_uint) are opaque handles to counters, declared and behaving as described
+above for opaque types. The variables they declare specify which counter to access when using the built-in
+atomic counter functions as described in section 8.10 “Atomic Counter Functions”. They are bound to
+buffers as described in section 4.4.6.1 “Atomic Counter Layout Qualifiers”. When aggregated into arrays
+within a shader, atomic counters can only be indexed with a dynamically uniform integral expression,
+otherwise results are undefined. Members of structures cannot be declared as atomic counter types.
 
 4.1.8   Structures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        User-defined types can be created by aggregating other already defined types into a structure using the
-        struct keyword. For example,
-           struct light {
-               float intensity;
-               vec3 position;
-           } lightVar;
+User-defined types can be created by aggregating other already defined types into a structure using the
+struct keyword. For example,
+   struct light {
+       float intensity;
+       vec3 position;
+   } lightVar;
 
-        In this example, light becomes the name of the new type, and lightVar becomes a variable of type light.
-        To declare variables of the new type, use its name (without the keyword struct).
-           light lightVar2;
+In this example, light becomes the name of the new type, and lightVar becomes a variable of type light.
+To declare variables of the new type, use its name (without the keyword struct).
+   light lightVar2;
 
-        More formally, structures are declared as follows. However, the complete correct grammar is as given in
-        section 9 “Shading Language Grammar” .
+More formally, structures are declared as follows. However, the complete correct grammar is as given in
+section 9 “Shading Language Grammar” .
 
-             struct-definition :
-                  qualifieropt struct nameopt { member-list } declaratorsopt ;
+     struct-definition :
+          qualifieropt struct nameopt { member-list } declaratorsopt ;
 
-             member-list :
-                member-declaration;
-                member-declaration member-list;
-             member-declaration :
-                basic-type declarators;
-        where name becomes the user-defined type, and can be used to declare variables to be of this new type.
-        The name shares the same name space as other variables, types, and functions. All previously visible
-        variables, types, constructors, or functions with that name are hidden. The optional qualifier only applies
-        to any declarators, and is not part of the type being defined for name.
-        Structures must have at least one member declaration. Member declarators may contain precision
-        qualifiers, but use of any other qualifier results in a compile-time error. Bit fields are not supported.
-        Member types must be already defined (there are no forward references). A compile-time error results if a
-        member declaration contains an initializer. Member declarators can contain arrays. Such arrays must
-        have a size specified, and the size must be an integral constant expression that's greater than zero (see
-        section 4.3.3 “Constant Expressions”). Each level of structure has its own name space for names given in
-        member declarators; such names need only be unique within that name space.
-        Anonymous structures are not supported. Embedded structure definitions are not supported. These result
-        in compile-time errors.
-           struct S { float f; };
+     member-list :
+        member-declaration;
+        member-declaration member-list;
+     member-declaration :
+        basic-type declarators;
+where name becomes the user-defined type, and can be used to declare variables to be of this new type.
+The name shares the same name space as other variables, types, and functions. All previously visible
+variables, types, constructors, or functions with that name are hidden. The optional qualifier only applies
+to any declarators, and is not part of the type being defined for name.
+Structures must have at least one member declaration. Member declarators may contain precision
+qualifiers, but use of any other qualifier results in a compile-time error. Bit fields are not supported.
+Member types must be already defined (there are no forward references). A compile-time error results if a
+member declaration contains an initializer. Member declarators can contain arrays. Such arrays must
+have a size specified, and the size must be an integral constant expression that's greater than zero (see
+section 4.3.3 “Constant Expressions”). Each level of structure has its own name space for names given in
+member declarators; such names need only be unique within that name space.
+Anonymous structures are not supported. Embedded structure definitions are not supported. These result
+in compile-time errors.
+   struct S { float f; };
 
-           struct T {
-                  S;              // Error: anonymous structures disallowed
-                  struct { ... }; // Error: embedded structures disallowed
-                  S s;            // Okay: nested structures with name are allowed
-           };
+   struct T {
+          S;              // Error: anonymous structures disallowed
+          struct { ... }; // Error: embedded structures disallowed
+          S s;            // Okay: nested structures with name are allowed
+   };
 
-        Structures can be initialized at declaration time using constructors, as discussed in section 5.4.3 “Structure
-        Constructors” .
-        Any restrictions on the usage of a type or qualifier also apply to any structure that contains a member of
-        that type or qualifier. This also applies to structure members that are structures, recursively.
+Structures can be initialized at declaration time using constructors, as discussed in section 5.4.3 “Structure
+Constructors” .
+Any restrictions on the usage of a type or qualifier also apply to any structure that contains a member of
+that type or qualifier. This also applies to structure members that are structures, recursively.
 
 4.1.9   Arrays
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Variables of the same type can be aggregated into arrays by declaring a name followed by brackets ( [ ] )
-        enclosing an optional size. When an array size is specified in a declaration, it must be an integral constant
-        expression (see section 4.3.3 “Constant Expressions”) greater than zero. Except for the last declared
-        member of a shader storage block (section 4.3.9 “Interface Blocks”), the size of an array must be declared
-        before it is indexed with anything other than an integral constant expression. The size of any array must
-        be declared before passing it as an argument to a function. Violation of any of these rules result in
+Variables of the same type can be aggregated into arrays by declaring a name followed by brackets ( [ ] )
+enclosing an optional size. When an array size is specified in a declaration, it must be an integral constant
+expression (see section 4.3.3 “Constant Expressions”) greater than zero. Except for the last declared
+member of a shader storage block (section 4.3.9 “Interface Blocks”), the size of an array must be declared
+before it is indexed with anything other than an integral constant expression. The size of any array must
+be declared before passing it as an argument to a function. Violation of any of these rules result in
 compile-time errors. It is legal to declare an array without a size and then later redeclare the same name
 as an array of the same type and specify a size. However, unless noted otherwise, blocks cannot be
 redeclared; an unsized array in a user-declared block cannot be sized by a block redeclaration. It is a
@@ -1638,85 +1638,108 @@ pass them as an argument to a function or index them with a negative constant ex
 4.1.10 Implicit Conversions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-       In some situations, an expression and its type will be implicitly converted to a different type. The
-       following table shows all allowed implicit conversions:
+In some situations, an expression and its type will be implicitly converted to a different type. The
+following table shows all allowed implicit conversions:
 
-                 Type of expression            Can be implicitly converted to
-                           int                                 uint
-                          int                                 float
-                          uint
-                           int                               double
-                          uint
-                          float
-                          ivec2                               uvec2
-                          ivec3                               uvec3
-                          ivec4                               uvec4
-                         ivec2                                vec2
-                         uvec2
-                         ivec3                                vec3
-                         uvec3
-                         ivec4                                vec4
-                         uvec4
-                         ivec2                                dvec2
-                         uvec2
-                          vec2
-                         ivec3                                dvec3
-                         uvec3
-                          vec3
-                         ivec4                                dvec4
-                         uvec4
-                          vec4
-                          mat2                               dmat2
-                          mat3                               dmat3
-                          mat4                               dmat4
-                        mat2x3                              dmat2x3
-                        mat2x4                              dmat2x4
-                        mat3x2                              dmat3x2
-                        mat3x4                              dmat3x4
-                        mat4x2                              dmat4x2
-                        mat4x3                              dmat4x3
++--------------------+--------------------------------+
+| Type of expression | Can be implicitly converted to |
++====================+================================+
+| **int**            | **uint**                       |
++--------------------+--------------------------------+
+| | **int**          | **float**                      |
+| | **uint**         |                                |
++--------------------+--------------------------------+
+| | **int**          | **double**                     |
+| | **uint**         |                                |
+| | **float**        |                                |
++--------------------+--------------------------------+
+| **ivec2**          | **uvec2**                      |
++--------------------+--------------------------------+
+| **ivec3**          | **uvec3**                      |
++--------------------+--------------------------------+
+| **ivec4**          | **uvec4**                      |
++--------------------+--------------------------------+
+| | **ivec2**        | **vec2**                       |
+| | **uvec2**        |                                |
++--------------------+--------------------------------+
+| | **ivec3**        | **vec3**                       |
+| | **uvec3**        |                                |
++--------------------+--------------------------------+
+| | **ivec4**        | **vec4**                       |
+| | **uvec4**        |                                |
++--------------------+--------------------------------+
+| | **ivec2**        | **dvec2**                      |
+| | **uvec2**        |                                |
+| | **vec2**         |                                |
++--------------------+--------------------------------+
+| | **ivec3**        | **dvec3**                      |
+| | **uvec3**        |                                |
+| | **vec3**         |                                |
++--------------------+--------------------------------+
+| | **ivec4**        | **dvec4**                      |
+| | **uvec4**        |                                |
+| | **vec4**         |                                |
++--------------------+--------------------------------+
+| **mat2**           | **dmat2**                      |
++--------------------+--------------------------------+
+| **mat3**           | **dmat3**                      |
++--------------------+--------------------------------+
+| **mat4**           | **dmat4**                      |
++--------------------+--------------------------------+
+| **mat2x3**         | **dmat2x3**                    |
++--------------------+--------------------------------+
+| **mat2x4**         | **dmat2x4**                    |
++--------------------+--------------------------------+
+| **mat3x2**         | **dmat3x2**                    |
++--------------------+--------------------------------+
+| **mat3x4**         | **dmat3x4**                    |
++--------------------+--------------------------------+
+| **mat4x2**         | **dmat4x2**                    |
++--------------------+--------------------------------+
+| **mat4x3**         | **dmat4x3**                    |
++--------------------+--------------------------------+
 
-        There are no implicit array or structure conversions. For example, an array of int cannot be implicitly
-        converted to an array of float.
-        When an implicit conversion is done, it is not a re-interpretation of the expression's bit pattern, but a
-        conversion of its value to an equivalent value in the new type. For example, the integer value -5 will be
-        converted to the floating-point value -5.0. Integer values having more bits of precision than a single-precision
-        floating-point mantissa will lose precision when converted to float.
-        When performing implicit conversion for binary operators, there may be multiple data types to which the
-        two operands can be converted. For example, when adding an int value to a uint value, both values can
-        be implicitly converted to uint, float, and double. In such cases, a floating-point type is chosen if either
-        operand has a floating-point type. Otherwise, an unsigned integer type is chosen if either operand has an
-        unsigned integer type. Otherwise, a signed integer type is chosen. If operands can be implicitly converted
-        to multiple data types deriving from the same base data type, the type with the smallest component size is
-        used.
-        The conversions in the table above are done only as indicated by other sections of this specification.
+There are no implicit array or structure conversions. For example, an array of int cannot be implicitly
+converted to an array of float.
+When an implicit conversion is done, it is not a re-interpretation of the expression's bit pattern, but a
+conversion of its value to an equivalent value in the new type. For example, the integer value -5 will be
+converted to the floating-point value -5.0. Integer values having more bits of precision than a single-precision
+floating-point mantissa will lose precision when converted to float.
+When performing implicit conversion for binary operators, there may be multiple data types to which the
+two operands can be converted. For example, when adding an int value to a uint value, both values can
+be implicitly converted to uint, float, and double. In such cases, a floating-point type is chosen if either
+operand has a floating-point type. Otherwise, an unsigned integer type is chosen if either operand has an
+unsigned integer type. Otherwise, a signed integer type is chosen. If operands can be implicitly converted
+to multiple data types deriving from the same base data type, the type with the smallest component size is
+used.
+The conversions in the table above are done only as indicated by other sections of this specification.
 
 4.1.11 Initializers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        At declaration, an initial value for an aggregate variable may be provided, specified as an equals (=)
-        followed by an initializer. The initializer is either an assignment-expression or a list of initializers
-        enclosed in curly braces. The grammar for the initializer is:
+At declaration, an initial value for an aggregate variable may be provided, specified as an equals (=)
+followed by an initializer. The initializer is either an assignment-expression or a list of initializers
+enclosed in curly braces. The grammar for the initializer is:
 
-             initializer :
-                   assignment-expression
-                   { initializer-list }
-                   { initializer-list , }
-             initializer-list :
-                   initializer
-                   initializer-list , initializer
-        The assignment-expression is a normal expression except that a comma ( , ) outside parentheses is
-        interpreted as the end of the initializer, not as the sequence operator. As explained in more detail below,
-        this allows creation of nested initializers: The aggregate and its initializer must exactly match in terms of
-        nesting, number of components/elements/members present at each level, and types of
-        components/elements/members.
-        An assignment-expression in an initializer must be either the same type as the object it initializes or be a
-        type that can be converted to the object's type according to section 4.1.10 "Implicit Conversions". Since
-        these include constructors, an aggregate can be initialized by either a constructor or an initializer list; an
-        element in an initializer list can be a constructor.
-        If an initializer is a list of initializers enclosed in curly braces, the variable being declared must be a
-        vector, a matrix, an array, or a structure.
-           int i = { 1 };                  // illegal, i is not an aggregate
+     initializer :
+           assignment-expression
+           { initializer-list }
+           { initializer-list , }
+     initializer-list :
+           initializer
+           initializer-list , initializer
+The assignment-expression is a normal expression except that a comma ( , ) outside parentheses is
+interpreted as the end of the initializer, not as the sequence operator. As explained in more detail below,
+this allows creation of nested initializers: The aggregate and its initializer must exactly match in terms of
+nesting, number of components/elements/members present at each level, and types of
+components/elements/members.
+An assignment-expression in an initializer must be either the same type as the object it initializes or be a
+type that can be converted to the object's type according to section 4.1.10 "Implicit Conversions". Since
+these include constructors, an aggregate can be initialized by either a constructor or an initializer list; an
+element in an initializer list can be a constructor.
+If an initializer is a list of initializers enclosed in curly braces, the variable being declared must be a
+vector, a matrix, an array, or a structure.
+   int i = { 1 };                  // illegal, i is not an aggregate
 
 A list of initializers enclosed in a matching set of curly braces is applied to one aggregate. This may be
 the variable being declared or an aggregate contained in the variable being declared. Individual
@@ -1753,53 +1776,53 @@ will be done on the initializer before the assignment is done.
        int   b;
    } e = { 1.2, 2 };                           // legal, all types match
 
-         struct {
-             float a;
-             int   b;
-         } e = { 1, 3 };                            // legal, first initializer is converted
+   struct {
+       float a;
+       int   b;
+   } e = { 1, 3 };                            // legal, first initializer is converted
 
-      All of the following declarations result in a compile-time error.
-         int a = true;                                            // illegal
-         vec4 b[2] = { vec4(0.0), 1.0 };                          // illegal
-         mat4x2 c = { vec3(0.0), vec3(1.0) };                     // illegal
+All of the following declarations result in a compile-time error.
+   int a = true;                                            // illegal
+   vec4 b[2] = { vec4(0.0), 1.0 };                          // illegal
+   mat4x2 c = { vec3(0.0), vec3(1.0) };                     // illegal
 
-         struct S1 {
-             vec4 a;
-             vec4 b;
-         };
+   struct S1 {
+       vec4 a;
+       vec4 b;
+   };
 
-         struct {
-             float s;
-             float t;
-         } d[] = { S1(vec4(0.0), vec4(1.1)) };                    // illegal
+   struct {
+       float s;
+       float t;
+   } d[] = { S1(vec4(0.0), vec4(1.1)) };                    // illegal
 
-      If an initializer (of either form) is provided for an unsized array, the size of the array is determined by the
-      number of top-level (non-nested) initializers within the initializer. All of the following declarations create
-      arrays explicitly sized with five elements:
-         float    a[] = float[](3.4, 4.2, 5.0, 5.2, 1.1);
-         float    b[] = { 3.4, 4.2, 5.0, 5.2, 1.1 };
-         float    c[] = a;                           // c is explicitly size 5
-         float    d[5] = b;                          // means the same thing
+If an initializer (of either form) is provided for an unsized array, the size of the array is determined by the
+number of top-level (non-nested) initializers within the initializer. All of the following declarations create
+arrays explicitly sized with five elements:
+   float    a[] = float[](3.4, 4.2, 5.0, 5.2, 1.1);
+   float    b[] = { 3.4, 4.2, 5.0, 5.2, 1.1 };
+   float    c[] = a;                           // c is explicitly size 5
+   float    d[5] = b;                          // means the same thing
 
 
-      It is a compile-time error to have too few or too many initializers in an initializer list for the aggregate
-      being initialized. That is, all elements of an array, all members of a structure, all columns of a matrix, and
-      all components of a vector must have exactly one initializer expression present, with no unconsumed
-      initializers.
+It is a compile-time error to have too few or too many initializers in an initializer list for the aggregate
+being initialized. That is, all elements of an array, all members of a structure, all columns of a matrix, and
+all components of a vector must have exactly one initializer expression present, with no unconsumed
+initializers.
 
 4.2   Scoping
 ---------------------------------------------------------------
 
-      The scope of a variable is determined by where it is declared. If it is declared outside all function
-      definitions, it has global scope, which starts from where it is declared and persists to the end of the shader
-      it is declared in. If it is declared in a while test or a for statement, then it is scoped to the end of the
-      following sub-statement. If it is declared in an if or else statement, it is scoped to the end of that
-      statement. (See section 6.2 “Selection” and section 6.3 “Iteration” for the location of statements and sub-statements.)
-      Otherwise, if it is declared as a statement within a compound statement, it is scoped to the
-      end of that compound statement. If it is declared as a parameter in a function definition, it is scoped until
-      the end of that function definition. A function's parameter declarations and body together form a single
-      scope nested in the global scope. The if statement’s expression does not allow new variables to be
-      declared, hence does not form a new scope.
+The scope of a variable is determined by where it is declared. If it is declared outside all function
+definitions, it has global scope, which starts from where it is declared and persists to the end of the shader
+it is declared in. If it is declared in a while test or a for statement, then it is scoped to the end of the
+following sub-statement. If it is declared in an if or else statement, it is scoped to the end of that
+statement. (See section 6.2 “Selection” and section 6.3 “Iteration” for the location of statements and sub-statements.)
+Otherwise, if it is declared as a statement within a compound statement, it is scoped to the
+end of that compound statement. If it is declared as a parameter in a function definition, it is scoped until
+the end of that function definition. A function's parameter declarations and body together form a single
+scope nested in the global scope. The if statement’s expression does not allow new variables to be
+declared, hence does not form a new scope.
 
 Within a declaration, the scope of a name starts immediately after the initializer if present or immediately
 after the name being declared if not. Several examples:
@@ -1885,140 +1908,142 @@ initializer to be a constant expression.)
 4.3   Storage Qualifiers
 ---------------------------------------------------------------
 
-      Variable declarations may have at most one storage qualifier specified in front of the type. These are
-      summarized as
+Variable declarations may have at most one storage qualifier specified in front of the type. These are
+summarized as
 
-             Storage Qualifier       Meaning
-             < none: default >       local read/write memory, or an input parameter to a function
-             const                   a variable whose value cannot be changed
++-------------------+----------------------------------------------------------------------------+
+| Storage Qualifier |                                  Meaning                                   |
++===================+============================================================================+
+| < none: default > | local read/write memory, or an input parameter to a function               |
++-------------------+----------------------------------------------------------------------------+
+| const             | a variable whose value cannot be changed                                   |
++-------------------+----------------------------------------------------------------------------+
+| in                | linkage into a shader from a previous stage, variable is copied in         |
++-------------------+----------------------------------------------------------------------------+
+| out               | linkage out of a shader to a subsequent stage, variable is copied out      |
++-------------------+----------------------------------------------------------------------------+
+| attribute         | compatibility profile only and vertex language only; same as in when in a  |
+|                   | vertex shader                                                              |
++-------------------+----------------------------------------------------------------------------+
+| uniform           | value does not change across the primitive being processed, uniforms       |
+|                   | form the linkage between a shader, OpenGL, and the application             |
++-------------------+----------------------------------------------------------------------------+
+| varying           | compatibility profile only and vertex and fragment languages only; same    |
+|                   | as out when in a vertex shader and same as in when in a fragment shader    |
++-------------------+----------------------------------------------------------------------------+
+| buffer            | value is stored in a buffer object, and can be read or written both by     |
+|                   | shader invocations and the OpenGL API                                      |
++-------------------+----------------------------------------------------------------------------+
+| shared            | compute shader only; variable storage is shared across all work items in a |
+|                   | local work group                                                           |
++-------------------+----------------------------------------------------------------------------+
 
-             in                      linkage into a shader from a previous stage, variable is copied in
+Some input and output qualified variables can be qualified with at most one additional auxiliary storage
+qualifier:
 
++-------------------+-----------------------------------+
+| Auxiliary Storage |              Meaning              |
+|     Qualifier     |                                   |
++===================+===================================+
+| centroid          | centroid-based interpolation      |
++-------------------+-----------------------------------+
+| sample            | per-sample interpolation          |
++-------------------+-----------------------------------+
+| patch             | per-tessellation-patch attributes |
++-------------------+-----------------------------------+
 
-             out                     linkage out of a shader to a subsequent stage, variable is copied out
-
-
-             attribute               compatibility profile only and vertex language only; same as in when in a
-                                     vertex shader
-
-             uniform                 value does not change across the primitive being processed, uniforms
-                                     form the linkage between a shader, OpenGL, and the application
-
-             varying                 compatibility profile only and vertex and fragment languages only; same
-                                     as out when in a vertex shader and same as in when in a fragment shader
-
-
-             buffer                  value is stored in a buffer object, and can be read or written both by
-                                     shader invocations and the OpenGL API
-
-
-             shared                  compute shader only; variable storage is shared across all work items in a
-                                     local work group
-
-
-
-      Some input and output qualified variables can be qualified with at most one additional auxiliary storage
-      qualifier:
-
-             Auxiliary Storage           Meaning
-             Qualifier
-             centroid                    centroid-based interpolation
-
-             sample                      per-sample interpolation
-
-             patch                       per-tessellation-patch attributes
-
-        Not all combinations of qualification are allowed. Which variable types can have which qualifiers are
-        specifically defined in upcoming sections.
-        Local variables can only use the const storage qualifier (or use no storage qualifier).
-        Function parameters can use const, in, and out qualifiers, but as parameter qualifiers. Parameter
-        qualifiers are discussed in section 6.1.1 “Function Calling Conventions”.
-        Function return types and structure members do not use storage qualifiers.
-        Initializers in global declarations may only be used in declarations of global variables with no storage
-        qualifier, with a const qualifier or with a uniform qualifier. Global variables without storage qualifiers
-        that are not initialized in their declaration or by the application will not be initialized by OpenGL, but
-        rather will enter main() with undefined values.
-        When comparing an output from one shader stage to an input of a subsequent shader stage, the input and
-        output don't match if their auxiliary qualifiers (or lack thereof) are not the same.
+Not all combinations of qualification are allowed. Which variable types can have which qualifiers are
+specifically defined in upcoming sections.
+Local variables can only use the const storage qualifier (or use no storage qualifier).
+Function parameters can use const, in, and out qualifiers, but as parameter qualifiers. Parameter
+qualifiers are discussed in section 6.1.1 “Function Calling Conventions”.
+Function return types and structure members do not use storage qualifiers.
+Initializers in global declarations may only be used in declarations of global variables with no storage
+qualifier, with a const qualifier or with a uniform qualifier. Global variables without storage qualifiers
+that are not initialized in their declaration or by the application will not be initialized by OpenGL, but
+rather will enter main() with undefined values.
+When comparing an output from one shader stage to an input of a subsequent shader stage, the input and
+output don't match if their auxiliary qualifiers (or lack thereof) are not the same.
 
 4.3.1   Default Storage Qualifier
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        If no qualifier is present on a global variable, then the variable has no linkage to the application or shaders
-        running on other pipeline stages. For either global or local unqualified variables, the declaration will
-        appear to allocate memory associated with the processor it targets. This variable will provide read/write
-        access to this allocated memory.
+If no qualifier is present on a global variable, then the variable has no linkage to the application or shaders
+running on other pipeline stages. For either global or local unqualified variables, the declaration will
+appear to allocate memory associated with the processor it targets. This variable will provide read/write
+access to this allocated memory.
 
 4.3.2   Constant Qualifier
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Named compile-time constants or read-only variables can be declared using the const qualifier. The const
-        qualifier can be used with any of the non-void transparent basic data types, as well as with structures and
-        arrays of these. It is a compile-time error to write to a const variable outside of its declaration, so they
-        must be initialized when declared. For example,
-            const vec3 zAxis = vec3 (0.0, 0.0, 1.0);
-            const float ceiling = a + b; // a and b not necessarily constants
+Named compile-time constants or read-only variables can be declared using the const qualifier. The const
+qualifier can be used with any of the non-void transparent basic data types, as well as with structures and
+arrays of these. It is a compile-time error to write to a const variable outside of its declaration, so they
+must be initialized when declared. For example,
+    const vec3 zAxis = vec3 (0.0, 0.0, 1.0);
+    const float ceiling = a + b; // a and b not necessarily constants
 
-        Structure members may not be qualified with const. Structure variables can be declared as const, and
-        initialized with a structure constructor or initializer.
-        Initializers for const declarations at global scope must be constant expressions, as defined in section 4.3.3
-        “Constant Expressions.”
+Structure members may not be qualified with const. Structure variables can be declared as const, and
+initialized with a structure constructor or initializer.
+Initializers for const declarations at global scope must be constant expressions, as defined in section 4.3.3
+“Constant Expressions.”
 
 4.3.3   Constant Expressions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        A constant expression is one of
-        •   a literal value (e.g., 5 or true)
-        •   a variable declared with the const qualifier and an initializer, where the initializer is a constant
-            expression
-        •   an expression formed by an operator on operands that are all constant expressions, including getting an
-            element of a constant array, or a member of a constant structure, or components of a constant vector.
+A constant expression is one of
+•   a literal value (e.g., 5 or true)
+•   a variable declared with the const qualifier and an initializer, where the initializer is a constant
+    expression
+•   an expression formed by an operator on operands that are all constant expressions, including getting an
+    element of a constant array, or a member of a constant structure, or components of a constant vector.
 
-            However, the lowest precedence operators of the sequence operator ( , ) and the assignment operators
-            ( =, +=, ...) are not included in the operators that can create a constant expression.
-        •   valid use of the length() method on an explicitly sized object, whether or not the object itself is
-            constant (implicitly sized or unsized arrays do not return a constant expression)
-        •   a constructor whose arguments are all constant expressions
-        •   the value returned by a built-in function call whose arguments are all constant expressions, with the
-            exception of the texture lookup functions and the noise functions. This rule excludes functions with a
-            void return or functions that have an out parameter. The built-in functions dFdx, dFdy, and fwidth
-            must return 0 when evaluated with an argument that is a constant expression.
-        Function calls to user-defined functions (non-built-in functions) cannot be used to form constant
-        expressions.
-        An integral constant expression is a constant expression that evaluates to a scalar signed or unsigned
-        integer.
-        Constant expressions will be always be evaluated in an invariant way, independent of use of invariant
-        and precise qualification, so as to create the same value in multiple shaders when the same constant
-        expressions appear in those shaders. See section 4.8.1 “The Invariant Qualifier” and section 4.9 “The
-        Precise Qualifier” for more details on how to create invariant expressions. Constant expressions may be
-        evaluated by the compiler's host platform, and are therefore not required to compute the same value that
-        the same expression would evaluate to on the shader execution target. However, the host must use the
-        same or greater precision than the target would use.
+    However, the lowest precedence operators of the sequence operator ( , ) and the assignment operators
+    ( =, +=, ...) are not included in the operators that can create a constant expression.
+•   valid use of the length() method on an explicitly sized object, whether or not the object itself is
+    constant (implicitly sized or unsized arrays do not return a constant expression)
+•   a constructor whose arguments are all constant expressions
+•   the value returned by a built-in function call whose arguments are all constant expressions, with the
+    exception of the texture lookup functions and the noise functions. This rule excludes functions with a
+    void return or functions that have an out parameter. The built-in functions dFdx, dFdy, and fwidth
+    must return 0 when evaluated with an argument that is a constant expression.
+Function calls to user-defined functions (non-built-in functions) cannot be used to form constant
+expressions.
+An integral constant expression is a constant expression that evaluates to a scalar signed or unsigned
+integer.
+Constant expressions will be always be evaluated in an invariant way, independent of use of invariant
+and precise qualification, so as to create the same value in multiple shaders when the same constant
+expressions appear in those shaders. See section 4.8.1 “The Invariant Qualifier” and section 4.9 “The
+Precise Qualifier” for more details on how to create invariant expressions. Constant expressions may be
+evaluated by the compiler's host platform, and are therefore not required to compute the same value that
+the same expression would evaluate to on the shader execution target. However, the host must use the
+same or greater precision than the target would use.
 
 4.3.4   Input Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Shader input variables are declared with the storage qualifier in. They form the input interface between
-        previous stages of the OpenGL pipeline and the declaring shader. Input variables must be declared at
-        global scope. Values from the previous pipeline stage are copied into input variables at the beginning of
-        shader execution. It is a compile-time error to write to a variable declared as an input.
-        Only the input variables that are statically read need to be written by the previous stage; it is allowed to
-        have superfluous declarations of input variables. This is shown in the following table.
+Shader input variables are declared with the storage qualifier in. They form the input interface between
+previous stages of the OpenGL pipeline and the declaring shader. Input variables must be declared at
+global scope. Values from the previous pipeline stage are copied into input variables at the beginning of
+shader execution. It is a compile-time error to write to a variable declared as an input.
+Only the input variables that are statically read need to be written by the previous stage; it is allowed to
+have superfluous declarations of input variables. This is shown in the following table.
 
-                                                                 Consuming Shader (input variables)
-               Treatment of Mismatched Input
-                         Variables                    No Declaration       Declared but no        Declared and
-                                                                             Static Use            Static Use
-                               No Declaration            Allowed              Allowed            Link-Time Error
-              Generating      Declared but no                                                        Allowed
-                                                         Allowed              Allowed
-               Shader           Static Use                                                    (values are undefined)
-               (output
-                                                                                                     Allowed
-              variables)       Declared and
-                                                         Allowed              Allowed         (values are potentially
-                                Static Use
-                                                                                                    undefined)
++-------------------------------+------------------------------------------------------------+
+|                               |             Consuming Shader (input variables)             |
+| Treatment of Mismatched Input +----------------+-----------------+-------------------------+
+| Variables                     | No Declaration | Declared but no | Declared and            |
+|                               |                | Static Use      | Static Use              |
++-------------+-----------------+----------------+-----------------+-------------------------+
+|             | No Declaration  | Allowed        | Allowed         | Link-Time Error         |
+|             +-----------------+----------------+-----------------+-------------------------+
+| Generating  | Declared but no | Allowed        | Allowed         | Allowed                 |
+| Shader      | Static Use      |                |                 | (values are undefined)  |
+| (output     +-----------------+----------------+-----------------+-------------------------+
+| variables)  | Declared and    | Allowed        | Allowed         | Allowed                 |
+|             | Static Use      |                |                 | (values are potentially |
+|             |                 |                |                 | undefined)              |
++-------------+-----------------+----------------+-----------------+-------------------------+
 
 Consumption errors are based on static use only. Compilation may generate a warning, but not an error,
 for any dynamic use the compiler can deduce that might cause consumption of undefined values.
@@ -2104,53 +2129,53 @@ what matters is what is declared in the fragment shaders, not what is declared i
 stages.
 When an interface between shader stages is formed using shaders from two separate program objects, it is
 not possible to detect mismatches between inputs and outputs when the programs are linked. When there
-        are mismatches between inputs and outputs on such interfaces, the values passed across the interface will
-        be partially or completely undefined. Shaders can ensure matches across such interfaces either by using
-        input and output layout qualifiers (sections 4.4.1 “Input Layout Qualifiers” and 4.4.2 “Output Layout
-        Qualifiers”) or by using identical input and output declarations of blocks or variables. Complete rules for
-        interface matching between programs are found in section 7.4.1 “Shader Interface Matching” of the
-        OpenGL Graphics System Specification.
-        Compute shaders do not permit user-defined input variables and do not form a formal interface with any
-        other shader stage. See section 7.1 “Built-In Variables” for a description of built-in compute shader input
-        variables. All other input to a compute shader is retrieved explicitly through image loads, texture fetches,
-        loads from uniforms or uniform buffers, or other user supplied code. Redeclaration of built-in input
-        variables in compute shaders is not permitted.
+are mismatches between inputs and outputs on such interfaces, the values passed across the interface will
+be partially or completely undefined. Shaders can ensure matches across such interfaces either by using
+input and output layout qualifiers (sections 4.4.1 “Input Layout Qualifiers” and 4.4.2 “Output Layout
+Qualifiers”) or by using identical input and output declarations of blocks or variables. Complete rules for
+interface matching between programs are found in section 7.4.1 “Shader Interface Matching” of the
+OpenGL Graphics System Specification.
+Compute shaders do not permit user-defined input variables and do not form a formal interface with any
+other shader stage. See section 7.1 “Built-In Variables” for a description of built-in compute shader input
+variables. All other input to a compute shader is retrieved explicitly through image loads, texture fetches,
+loads from uniforms or uniform buffers, or other user supplied code. Redeclaration of built-in input
+variables in compute shaders is not permitted.
 
 4.3.5   Uniform Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The uniform qualifier is used to declare global variables whose values are the same across the entire
-        primitive being processed. All uniform variables are read-only and are initialized externally either at link
-        time or through the API. The link-time initial value is either the value of the variable's initializer, if
-        present, or 0 if no initializer is present. Opaque types cannot have initializers, or a compile-time error
-        results.
-        Example declarations are:
-           uniform vec4 lightPosition;
-           uniform vec3 color = vec3(0.7, 0.7, 0.2);                    // value assigned at link time
+The uniform qualifier is used to declare global variables whose values are the same across the entire
+primitive being processed. All uniform variables are read-only and are initialized externally either at link
+time or through the API. The link-time initial value is either the value of the variable's initializer, if
+present, or 0 if no initializer is present. Opaque types cannot have initializers, or a compile-time error
+results.
+Example declarations are:
+   uniform vec4 lightPosition;
+   uniform vec3 color = vec3(0.7, 0.7, 0.2);                    // value assigned at link time
 
-        The uniform qualifier can be used with any of the basic data types, or when declaring a variable whose
-        type is a structure, or an array of any of these.
-        There is an implementation dependent limit on the amount of storage for uniforms that can be used for
-        each type of shader and if this is exceeded it will cause a compile-time or link-time error. Uniform
-        variables that are declared but not used do not count against this limit. The number of user-defined
-        uniform variables and the number of built-in uniform variables that are used within a shader are added
-        together to determine whether available uniform storage has been exceeded.
-        If multiple shaders are linked together, then they will share a single global uniform name space, including
-        within a language as well as across languages. Hence, the types and initializers of all declared uniform
-        variables with the same name must match across all shaders that are linked into a single program. While
-        this single uniform name space is cross stage, a uniform variable name's scope is per stage: If a uniform
-        variable name is declared in one stage (e.g., a vertex shader) but not in another (e.g., a fragment shader),
-        then that name is still available in the other stage for a different use.
-        It is legal for some shaders to provide an initializer for a particular uniform variable, while another shader
-        does not, but all provided initializers must be equal. Similarly, when a layout location is used, it is not
-        required that all declarations of that name include the location; only that those that include a location use
-        the same location.
+The uniform qualifier can be used with any of the basic data types, or when declaring a variable whose
+type is a structure, or an array of any of these.
+There is an implementation dependent limit on the amount of storage for uniforms that can be used for
+each type of shader and if this is exceeded it will cause a compile-time or link-time error. Uniform
+variables that are declared but not used do not count against this limit. The number of user-defined
+uniform variables and the number of built-in uniform variables that are used within a shader are added
+together to determine whether available uniform storage has been exceeded.
+If multiple shaders are linked together, then they will share a single global uniform name space, including
+within a language as well as across languages. Hence, the types and initializers of all declared uniform
+variables with the same name must match across all shaders that are linked into a single program. While
+this single uniform name space is cross stage, a uniform variable name's scope is per stage: If a uniform
+variable name is declared in one stage (e.g., a vertex shader) but not in another (e.g., a fragment shader),
+then that name is still available in the other stage for a different use.
+It is legal for some shaders to provide an initializer for a particular uniform variable, while another shader
+does not, but all provided initializers must be equal. Similarly, when a layout location is used, it is not
+required that all declarations of that name include the location; only that those that include a location use
+the same location.
 
 4.3.6   Output Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Shader output variables are declared with a storage qualifier using the keyword out. They form the output
-        interface between the declaring shader and the subsequent stages of the OpenGL pipeline. Output
+Shader output variables are declared with a storage qualifier using the keyword out. They form the output
+interface between the declaring shader and the subsequent stages of the OpenGL pipeline. Output
 variables must be declared at global scope. During shader execution they will behave as normal
 unqualified global variables. Their values are copied out to the subsequent pipeline stage on shader exit.
 Only output variables that are read by the subsequent pipeline stage need to be written; it is allowed to
@@ -2239,93 +2264,93 @@ of the side effects such as image stores and operations on atomic counters.
 4.3.7   Buffer Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The buffer qualifier is used to declare global variables whose values are stored in the data store of a
-        buffer object bound through the OpenGL API. Buffer variables can be read and written with the
-        underlying storage shared among all active shader invocations. Buffer variable memory reads and writes
-        within a single shader invocation are processed in order. However, the order of reads and writes
-        performed in one invocation relative to those performed by another invocation is largely undefined.
-        Buffer variables may be qualified with memory qualifiers affecting how the underlying memory is
-        accessed, as described in section 4.10 “Memory Qualifiers”.
-        The buffer qualifier can be used with any of the basic data types, or when declaring a variable whose type
-        is a structure, or an array of any of these.
-        Buffer variables may only be declared inside interface blocks (section 4.3.9 “Interface Blocks”), which
-        are then referred to as shader storage blocks. It is a compile-time error to declare buffer variables at
-        global scope (outside a block). Buffer variables cannot have initializers.
-           // use buffer to create a buffer block (shader storage block)
-           buffer BufferName {   // externally visible name of buffer
-               int count;        // typed, shared memory...
-               ...               // ...
-               vec4 v[];         // last element may be an array that is not sized
-                                 //      until after link time (dynamically sized)
-           } Name;               // name of block within the shader
+The buffer qualifier is used to declare global variables whose values are stored in the data store of a
+buffer object bound through the OpenGL API. Buffer variables can be read and written with the
+underlying storage shared among all active shader invocations. Buffer variable memory reads and writes
+within a single shader invocation are processed in order. However, the order of reads and writes
+performed in one invocation relative to those performed by another invocation is largely undefined.
+Buffer variables may be qualified with memory qualifiers affecting how the underlying memory is
+accessed, as described in section 4.10 “Memory Qualifiers”.
+The buffer qualifier can be used with any of the basic data types, or when declaring a variable whose type
+is a structure, or an array of any of these.
+Buffer variables may only be declared inside interface blocks (section 4.3.9 “Interface Blocks”), which
+are then referred to as shader storage blocks. It is a compile-time error to declare buffer variables at
+global scope (outside a block). Buffer variables cannot have initializers.
+   // use buffer to create a buffer block (shader storage block)
+   buffer BufferName {   // externally visible name of buffer
+       int count;        // typed, shared memory...
+       ...               // ...
+       vec4 v[];         // last element may be an array that is not sized
+                         //      until after link time (dynamically sized)
+   } Name;               // name of block within the shader
 
-        There are implementation-dependent limits on the number of shader storage blocks used for each type of
-        shader, the combined number of shader storage blocks used for a program, and the amount of storage
-        required by each individual shader storage block. If any of these limits are exceeded, it will cause a
-        compile-time or link-time error.
-        If multiple shaders are linked together, then they will share a single global buffer variable name space,
-        including within a language as well as across languages. Hence, the types of all declared buffer variables
-        with the same name must match across all shaders that are linked into a single program.
+There are implementation-dependent limits on the number of shader storage blocks used for each type of
+shader, the combined number of shader storage blocks used for a program, and the amount of storage
+required by each individual shader storage block. If any of these limits are exceeded, it will cause a
+compile-time or link-time error.
+If multiple shaders are linked together, then they will share a single global buffer variable name space,
+including within a language as well as across languages. Hence, the types of all declared buffer variables
+with the same name must match across all shaders that are linked into a single program.
 
 4.3.8   Shared Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The shared qualifier is used to declare variables that have storage shared between all work items
-        compute shader local work group. Variables declared as shared may only be used in compute shaders
-        (see section 2.6 “Compute Processor”). Shared variables are implicitly coherent. That is, writes to shared
-        variables from one shader invocation will eventually be seen by other invocations within the same local
-        work group.
-        Variables declared as shared may not have initializers and their contents are undefined at the beginning
-        of shader execution. Any data written to shared variables will be visible to other shaders executing the
-        same shader within the same local work group. Order of execution with respect to reads and writes to the
-        same shared variable by different invocations of a shader is not defined. In order to achieve ordering with
-        respect to reads and writes to shared variables, memory barriers must be employed using the barrier()
-        function (see section 8.16 “Shader Invocation Control Functions”).
+The shared qualifier is used to declare variables that have storage shared between all work items
+compute shader local work group. Variables declared as shared may only be used in compute shaders
+(see section 2.6 “Compute Processor”). Shared variables are implicitly coherent. That is, writes to shared
+variables from one shader invocation will eventually be seen by other invocations within the same local
+work group.
+Variables declared as shared may not have initializers and their contents are undefined at the beginning
+of shader execution. Any data written to shared variables will be visible to other shaders executing the
+same shader within the same local work group. Order of execution with respect to reads and writes to the
+same shared variable by different invocations of a shader is not defined. In order to achieve ordering with
+respect to reads and writes to shared variables, memory barriers must be employed using the barrier()
+function (see section 8.16 “Shader Invocation Control Functions”).
 
-        There is a limit to the total size of all variables declared as shared in a single program. This limit,
-        expressed in units of basic machine units may be determined by using the OpenGL API to query the value
-        of MAX_COMPUTE_SHARED_MEMORY_SIZE.
+There is a limit to the total size of all variables declared as shared in a single program. This limit,
+expressed in units of basic machine units may be determined by using the OpenGL API to query the value
+of MAX_COMPUTE_SHARED_MEMORY_SIZE.
 
 4.3.9   Interface Blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Input, output, uniform, and buffer variable declarations can be grouped into named interface blocks to
-        provide coarser granularity backing than is achievable with individual declarations. They can have an
-        optional instance name, used in the shader to reference their members. An output block of one
-        programmable stage is backed by a corresponding input block in the subsequent programmable stage. A
-        uniform block is backed by the application with a buffer object. A block of buffer variables, called a
-        shader storage block, is also backed by the application with a buffer object. It is a compile-time error to
-        have an input block in a vertex shader or an output block in a fragment shader; these uses are reserved for
-        future use.
-        An interface block is started by an in, out, uniform, or buffer keyword, followed by a block name,
-        followed by an open curly brace ( { ) as follows:
-             interface-block :
-                   layout-qualifieropt interface-qualifier block-name { member-list } instance-nameopt ;
-             interface-qualifier :
-                   in
-                   out
-                   uniform
-                   buffer
-             member-list :
-                 member-declaration
-                 member-declaration member-list
-             member-declaration :
-                 layout-qualifieropt qualifiersopt type declarators ;
-             instance-name :
-                   identifier
-                   identifier [ ]
-                   identifier [ integral-constant-expression ]
-        Each of the above elements is discussed below, with the exception of layout qualifiers (layout-qualifier),
-        which are defined in the next section.
-        First, an example,
-           uniform Transform {
-               mat4 ModelViewMatrix;
-               mat4 ModelViewProjectionMatrix;
-               uniform mat3 NormalMatrix;                        // allowed restatement of qualifier
-               float Deformation;
-           };
+Input, output, uniform, and buffer variable declarations can be grouped into named interface blocks to
+provide coarser granularity backing than is achievable with individual declarations. They can have an
+optional instance name, used in the shader to reference their members. An output block of one
+programmable stage is backed by a corresponding input block in the subsequent programmable stage. A
+uniform block is backed by the application with a buffer object. A block of buffer variables, called a
+shader storage block, is also backed by the application with a buffer object. It is a compile-time error to
+have an input block in a vertex shader or an output block in a fragment shader; these uses are reserved for
+future use.
+An interface block is started by an in, out, uniform, or buffer keyword, followed by a block name,
+followed by an open curly brace ( { ) as follows:
+     interface-block :
+           layout-qualifieropt interface-qualifier block-name { member-list } instance-nameopt ;
+     interface-qualifier :
+           in
+           out
+           uniform
+           buffer
+     member-list :
+         member-declaration
+         member-declaration member-list
+     member-declaration :
+         layout-qualifieropt qualifiersopt type declarators ;
+     instance-name :
+           identifier
+           identifier [ ]
+           identifier [ integral-constant-expression ]
+Each of the above elements is discussed below, with the exception of layout qualifiers (layout-qualifier),
+which are defined in the next section.
+First, an example,
+   uniform Transform {
+       mat4 ModelViewMatrix;
+       mat4 ModelViewProjectionMatrix;
+       uniform mat3 NormalMatrix;                        // allowed restatement of qualifier
+       float Deformation;
+   };
 
-        The above establishes a uniform block named “Transform” with four uniforms grouped inside it.
+The above establishes a uniform block named “Transform” with four uniforms grouped inside it.
 
 Types and declarators are the same as for other input, output, uniform, and buffer variable declarations
 outside blocks, with these exceptions:
@@ -2453,141 +2478,152 @@ Transform.ModelViewMatrix).
 Geometry shader input blocks must be declared as arrays and follow the array declaration and linking
 rules for all geometry shader inputs. All other input and output block arrays must specify an array size.
 
-      There are implementation dependent limits on the number of uniform blocks and the number of shader
-      storage blocks that can be used per stage. If either limit is exceeded, it will cause a link-time error.
+There are implementation dependent limits on the number of uniform blocks and the number of shader
+storage blocks that can be used per stage. If either limit is exceeded, it will cause a link-time error.
 
 4.4   Layout Qualifiers
 ---------------------------------------------------------------
 
-      Layout qualifiers can appear in several forms of declaration. They can appear as part of an interface
-      block definition or block member, as shown in the grammar in the previous section. They can also appear
-      with just an interface qualifier (a storage qualifier that is in, out, or uniform) to establish layouts of other
-      declarations made with that interface qualifier:
-           layout-qualifier interface-qualifier ;
-      Or, they can appear with an individual variable declared with an interface qualifier:
-           layout-qualifier interface-qualifier declaration ;
-      Declarations of layouts can only be made at global scope, and only where indicated in the following
-      subsections; their details are specific to what the interface qualifier is, and are discussed individually.
-      The layout-qualifier expands to
-           layout-qualifier :
-                layout ( layout-qualifier-id-list )
-           layout-qualifier-id-list :
-                layout-qualifier-id
-                layout-qualifier-id , layout-qualifier-id-list
-           layout-qualifier-id
-                layout-qualifier-name
-                layout-qualifier-name = layout-qualifier-value
-                shared
-      The tokens used for layout-qualifier-name are identifiers, not keywords, however, the shared keyword is
-      allowed as a layout-qualifier-id. Generally, they can be listed in any order. Order-dependent meanings
-      exist only if explicitly called out below. Similarly, these identifiers are not case sensitive, unless
-      explicitly noted otherwise.
-      More than one layout qualifier may appear in a single declaration. Additionally, the same layout-qualifier-name
-      can occur multiple times within a layout qualifier or across multiple layout qualifiers in the
-      same declaration. When the same layout-qualifier-name occurs multiple times, in a single declaration, the
-      last occurrence overrides the former occurrence(s). Further, if such a layout-qualifier-name will effect
-      subsequent declarations or other observable behavior, it is only the last occurrence that will have any
-      effect, behaving as if the earlier occurrence(s) within the declaration are not present. This is also true for
-      overriding layout-qualifier-names, where one overrides the other (e.g., row_major vs. column_major);
-      only the last occurrence has any effect.
-      The following table summarizes the use of layout qualifiers applied to non-opaque types. It shows for
-      each one what kinds of declarations it may be applied to. These are all discussed in detail in the following
-      sections. Layout qualifiers applied to opaque types are not show in this table, but are discussed
-      subsequently in section 4.4.6 “Opaque-Uniform Layout Qualifiers”.
+Layout qualifiers can appear in several forms of declaration. They can appear as part of an interface
+block definition or block member, as shown in the grammar in the previous section. They can also appear
+with just an interface qualifier (a storage qualifier that is in, out, or uniform) to establish layouts of other
+declarations made with that interface qualifier:
+   layout-qualifier interface-qualifier ;
+Or, they can appear with an individual variable declared with an interface qualifier:
+   layout-qualifier interface-qualifier declaration ;
+Declarations of layouts can only be made at global scope, and only where indicated in the following
+subsections; their details are specific to what the interface qualifier is, and are discussed individually.
+The layout-qualifier expands to
+   layout-qualifier :
+        layout ( layout-qualifier-id-list )
+   layout-qualifier-id-list :
+        layout-qualifier-id
+        layout-qualifier-id , layout-qualifier-id-list
+   layout-qualifier-id
+        layout-qualifier-name
+        layout-qualifier-name = layout-qualifier-value
+        shared
+The tokens used for layout-qualifier-name are identifiers, not keywords, however, the shared keyword is
+allowed as a layout-qualifier-id. Generally, they can be listed in any order. Order-dependent meanings
+exist only if explicitly called out below. Similarly, these identifiers are not case sensitive, unless
+explicitly noted otherwise.
+More than one layout qualifier may appear in a single declaration. Additionally, the same layout-qualifier-name
+can occur multiple times within a layout qualifier or across multiple layout qualifiers in the
+same declaration. When the same layout-qualifier-name occurs multiple times, in a single declaration, the
+last occurrence overrides the former occurrence(s). Further, if such a layout-qualifier-name will effect
+subsequent declarations or other observable behavior, it is only the last occurrence that will have any
+effect, behaving as if the earlier occurrence(s) within the declaration are not present. This is also true for
+overriding layout-qualifier-names, where one overrides the other (e.g., row_major vs. column_major);
+only the last occurrence has any effect.
+The following table summarizes the use of layout qualifiers applied to non-opaque types. It shows for
+each one what kinds of declarations it may be applied to. These are all discussed in detail in the following
+sections. Layout qualifiers applied to opaque types are not show in this table, but are discussed
+subsequently in section 4.4.6 “Opaque-Uniform Layout Qualifiers”.
 
-Layout Qualifier          Qualifier    Individual           Block
-                           Only         Variable     Block Member     Allowed Interfaces
-shared
-packed
-                             X                        X
-std140
-std430
-row_major
-                             X                        X      X
-column_major                                                            uniform/buffer
-binding =                             opaque types
-                                                      X
-                                          only
-offset =                                                     X
-align =                                               X      X
-location =                                                            uniform/buffer and
-                                             X
-                                                                      subroutine variables
-location =                                   X        X      X        all in/out, except for
-component =                                  X               X               compute
-
-                                                                         fragment out
-index =                                      X
-                                                                    and subroutine functions
-triangles
-quads                        X                                      tessellation evaluation in
-isolines
-equal_spacing
-fractional_even_spacing      X                                      tessellation evaluation in
-fractional_odd_spacing
-cw
-                             X                                      tessellation evaluation in
-ccw
-point_mode                   X                                      tessellation evaluation in
-points                       X                                          geometry in/out
-[ points ]
-lines
-lines_adjacency              X                                            geometry in
-triangles
-triangles_adjacency
-invocations =                X                                            geometry in
-origin_upper_left                     gl_FragCoord
-pixel_center_integer                      only                            fragment in
-early_fragment_tests         X
-
-        Layout Qualifier                Qualifier      Individual           Block
-                                         Only           Variable     Block Member          Allowed Interfaces
-        local_size_x =
-        local_size_y =                                                                         compute in
-                                             X
-        local_size_z =
-        xfb_buffer =
-                                             X                  X      X         X       vertex, tessellation, and
-        xfb_stride =
-                                                                                              geometry out
-        xfb_offset =                                            X      X         X
-        vertices =                           X                                           tessellation control out
-        [ points ]
-        line_strip
-                                             X
-        triangle_strip
-                                                                                              geometry out
-        max_vertices =                       X
-        stream =                             X                  X      X         X
-        depth_any
-        depth_greater                                 gl_FragDepth
-                                                                                               fragment out
-        depth_less                                        only
-        depth_unchanged
-
-
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+|     Layout Qualifier    | Qualifier |  Individual  | Block | Block  |     Allowed Interfaces     |
+|                         |    Only   |   Variable   |       | Member |                            |
++=========================+===========+==============+=======+========+============================+
+| shared                  | X         |              | X     |        | uniform/buffer             |
+| packed                  |           |              |       |        |                            |
+| std140                  |           |              |       |        |                            |
+| std430                  |           |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+                            |
+| row_major               | X         |              | X     | X      |                            |
+| column_major            |           |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+                            |
+| binding =               |           | opaque types | X     |        |                            |
+|                         |           | only         |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+                            |
+| offset =                |           |              |       | X      |                            |
++-------------------------+-----------+--------------+-------+--------+                            |
+| align =                 |           |              | X     | X      |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| location =              |           | X            |       |        | uniform/buffer and         |
+|                         |           |              |       |        | subroutine variables       |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| location =              |           | X            | X     | X      | all in/out, except for     |
++-------------------------+-----------+--------------+-------+--------+ compute                    |
+| component =             |           | X            |       | X      |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| index =                 |           | X            |       |        | fragment out               |
+|                         |           |              |       |        | and subroutine functions   |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| triangles               | X         |              |       |        | tessellation evaluation in |
+| quads                   |           |              |       |        |                            |
+| isolines                |           |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| equal_spacing           | X         |              |       |        | tessellation evaluation in |
+| fractional_even_spacing |           |              |       |        |                            |
+| fractional_odd_spacing  |           |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| cw                      | X         |              |       |        | tessellation evaluation in |
+| ccw                     |           |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| point_mode              | X         |              |       |        | tessellation evaluation in |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| points                  | X         |              |       |        | geometry in/out            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| [ points ]              | X         |              |       |        | geometry in                |
+| lines                   |           |              |       |        |                            |
+| lines_adjacency         |           |              |       |        |                            |
+| triangles               |           |              |       |        |                            |
+| triangles_adjacency     |           |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| invocations =           | X         |              |       |        | geometry in                |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| origin_upper_left       |           | gl_FragCoord |       |        | fragment in                |
+| pixel_center_integer    |           | only         |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+                            |
+| early_fragment_tests    | X         |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| local_size_x =          | X         |              |       |        | compute in                 |
+| local_size_y =          |           |              |       |        |                            |
+| local_size_z =          |           |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| xfb_buffer =            | X         | X            | X     | X      | vertex, tessellation, and  |
+| xfb_stride =            |           |              |       |        | geometry out               |
++-------------------------+-----------+--------------+-------+--------+                            |
+| xfb_offset =            |           | X            | X     | X      |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| vertices =              | X         |              |       |        | tessellation control out   |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| [ points ]              | X         |              |       |        | geometry out               |
+| line_strip              |           |              |       |        |                            |
+| triangle_strip          |           |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+                            |
+| max_vertices =          | X         |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+                            |
+| stream =                | X         | X            | X     | X      |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
+| depth_any               |           | gl_FragDepth |       |        | fragment out               |
+| depth_greater           |           | only         |       |        |                            |
+| depth_less              |           |              |       |        |                            |
+| depth_unchanged         |           |              |       |        |                            |
+|                         |           |              |       |        |                            |
++-------------------------+-----------+--------------+-------+--------+----------------------------+
 
 4.4.1   Input Layout Qualifiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Some input layout qualifiers apply to all shader languages and some apply only to specific languages.
-        The latter are discussed in separate sections below.
-        All shaders, except compute shaders, allow location layout qualifiers on input variable declarations, input
-        block declarations, and input block member declarations. Of these, variables and block members (but not
-        blocks) additionally allow the component layout qualifier.
-        The layout qualifier identifiers for inputs are:
-             layout-qualifier-id
-                  location = integer-constant-expression
-                  component = integer-constant-expression
-        Where integral-constant-expression is defined in section 4.3.3 “Constant Expressions” as “integral
-        constant expression”.
-        For example,
-           layout(location = 3) in vec4 normal;
-           const int start = 6;
-           layout(location = start + 2) int vec4 v;
+Some input layout qualifiers apply to all shader languages and some apply only to specific languages.
+The latter are discussed in separate sections below.
+All shaders, except compute shaders, allow location layout qualifiers on input variable declarations, input
+block declarations, and input block member declarations. Of these, variables and block members (but not
+blocks) additionally allow the component layout qualifier.
+The layout qualifier identifiers for inputs are:
+     layout-qualifier-id
+          location = integer-constant-expression
+          component = integer-constant-expression
+Where integral-constant-expression is defined in section 4.3.3 “Constant Expressions” as “integral
+constant expression”.
+For example,
+   layout(location = 3) in vec4 normal;
+   const int start = 6;
+   layout(location = start + 2) int vec4 v;
 
-        will establish that the shader input normal is assigned to vector location number 3 and v is assigned
-        location number 8. For vertex shader inputs, the location specifies the number of the generic vertex
+will establish that the shader input normal is assigned to vector location number 3 and v is assigned
+location number 8. For vertex shader inputs, the location specifies the number of the generic vertex
 attribute from which input values are taken. For inputs of all other shader types, the location specifies a
 vector number that can be used to match against outputs from a previous shader stage, even if that shader
 is in a different program object.
@@ -2667,63 +2703,63 @@ within a location are 0, 1, 2, and 3. A variable or block member starting at com
 components N, N+1, N+2, ... up through its size. It is a compile-time error if this sequence of components
 gets larger than 3. For example:
 
-          // a consumes components 2 and 3 of location 4
-          layout(location = 4, component = 2) in vec2 a;
+  // a consumes components 2 and 3 of location 4
+  layout(location = 4, component = 2) in vec2 a;
 
-          // b consumes component 1 of location 4
-          layout(location = 4, component = 1) in float b;
+  // b consumes component 1 of location 4
+  layout(location = 4, component = 1) in float b;
 
-          // ERROR: c overflows components 2 and 3
-          layout(location = 3, component = 2) in vec3 c;
+  // ERROR: c overflows components 2 and 3
+  layout(location = 3, component = 2) in vec3 c;
 
-       If the variable is an array, each element of the array, in order, is assigned to consecutive locations, but all
-       at the same specified component within each location. For example:
-          // component 3 in 6 locations are consumed
-          layout(location = 2, component = 3) in float d[6];
+If the variable is an array, each element of the array, in order, is assigned to consecutive locations, but all
+at the same specified component within each location. For example:
+  // component 3 in 6 locations are consumed
+  layout(location = 2, component = 3) in float d[6];
 
-       That is, location 2 component 3 will hold d[0], location 3 component 3 will hold d[1], …, up through
-       location 7 component 3 holding d[5].
-       This allows packing of two arrays into the same set of locations:
-          // e consumes beginning (components 0, 1 and 2) of each of 6 slots
-          layout(location = 0, component = 0) in vec3 e[6];
+That is, location 2 component 3 will hold d[0], location 3 component 3 will hold d[1], …, up through
+location 7 component 3 holding d[5].
+This allows packing of two arrays into the same set of locations:
+  // e consumes beginning (components 0, 1 and 2) of each of 6 slots
+  layout(location = 0, component = 0) in vec3 e[6];
 
-          // f consumes last component of the same 6 slots
-          layout(location = 0, component = 3) in float f[6];
+  // f consumes last component of the same 6 slots
+  layout(location = 0, component = 3) in float f[6];
 
-       If applying this to an array of arrays, all levels of arrayness are removed to get to the elements that are
-       assigned per location to the specified component. These non-arrayed elements will fill the locations in the
-       order specified for arrays of arrays in section 4.1.9 "Arrays".
-       It is a compile-time error to apply the component qualifier to a matrix, a structure, a block, or an array
-       containing any of these. It is a link-time error to specify different components for the same variable
-       within a program.
-       Location aliasing is causing two variables or block members to have the same location number.
-       Component aliasing is assigning the same (or overlapping) component numbers for two location aliases.
-       (Recall if component is not used, component's are assigned starting with 0.) With one exception, location
-       aliasing is allowed only if it does not cause component aliasing; it is a compile-time or link-time error to
-       cause component aliasing. Further, when location aliasing, the aliases sharing the location must have the
-       same underlying numerical type (floating-point or integer) and the same auxiliary storage and
-       interpolation qualification. The one exception where component aliasing is permitted is for two input
-       variables (not block members) to a vertex shader, which are allowed to have component aliasing. This
-       vertex-variable component aliasing is intended only to support vertex shaders where each execution path
-       accesses at most one input per each aliased component. Implementations are permitted, but not required,
-       to generate link-time errors if they detect that every path through the vertex shader executable accesses
-       multiple inputs aliased to any single component.
+If applying this to an array of arrays, all levels of arrayness are removed to get to the elements that are
+assigned per location to the specified component. These non-arrayed elements will fill the locations in the
+order specified for arrays of arrays in section 4.1.9 "Arrays".
+It is a compile-time error to apply the component qualifier to a matrix, a structure, a block, or an array
+containing any of these. It is a link-time error to specify different components for the same variable
+within a program.
+Location aliasing is causing two variables or block members to have the same location number.
+Component aliasing is assigning the same (or overlapping) component numbers for two location aliases.
+(Recall if component is not used, component's are assigned starting with 0.) With one exception, location
+aliasing is allowed only if it does not cause component aliasing; it is a compile-time or link-time error to
+cause component aliasing. Further, when location aliasing, the aliases sharing the location must have the
+same underlying numerical type (floating-point or integer) and the same auxiliary storage and
+interpolation qualification. The one exception where component aliasing is permitted is for two input
+variables (not block members) to a vertex shader, which are allowed to have component aliasing. This
+vertex-variable component aliasing is intended only to support vertex shaders where each execution path
+accesses at most one input per each aliased component. Implementations are permitted, but not required,
+to generate link-time errors if they detect that every path through the vertex shader executable accesses
+multiple inputs aliased to any single component.
 
 4.4.1.1 Tessellation Evaluation Inputs
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       Additional input layout qualifier identifiers allowed for tessellation evaluation shaders are:
+Additional input layout qualifier identifiers allowed for tessellation evaluation shaders are:
 
-     layout-qualifier-id
-          triangles
-          quads
-          isolines
-          equal_spacing
-          fractional_even_spacing
-          fractional_odd_spacing
-          cw
-          ccw
-          point_mode
+layout-qualifier-id
+  triangles
+  quads
+  isolines
+  equal_spacing
+  fractional_even_spacing
+  fractional_odd_spacing
+  cw
+  ccw
+  point_mode
 
 
 One subset of these identifiers, primitive mode, is used to specify a tessellation primitive mode to be used
@@ -2733,11 +2769,11 @@ triangle into smaller triangles, a quad into triangles, or a quad into a collect
 A second subset of these identifiers, vertex spacing, is used to specify the spacing used by the tessellation
 primitive generator when subdividing an edge. To specify vertex spacing, the identifier must be one of
 the following.
-       equal_spacing signifying that edges should be divided into a collection of equal-sized segments.
-       fractional_even_spacing signifying that edges should be divided into an even number of equal-length
-       segments plus two additional shorter "fractional" segments.
-       fractional_odd_spacing signifying that edges should be divided into an odd number of equal-length
-       segments plus two additional shorter "fractional" segments.
+   equal_spacing signifying that edges should be divided into a collection of equal-sized segments.
+   fractional_even_spacing signifying that edges should be divided into an even number of equal-length
+   segments plus two additional shorter "fractional" segments.
+   fractional_odd_spacing signifying that edges should be divided into an odd number of equal-length
+   segments plus two additional shorter "fractional" segments.
 A third subset of these identifiers, ordering, specifies whether the tessellation primitive generator
 produces triangles in clockwise or counter-clockwise order, according to the coordinate system depicted
 in the OpenGL specification. The ordering identifiers cw and ccw indicate clockwise and counter-clockwise
@@ -2759,165 +2795,171 @@ primitive generator will produce lines or triangles according to the primitive m
 4.4.1.2 Geometry Shader Inputs
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       Additional layout qualifier identifiers for geometry shader inputs include primitive identifiers and an
-       invocation count identifier:
-            layout-qualifier-id
-                 points
-                 lines
-                 lines_adjacency
-                 triangles
-                 triangles_adjacency
-                 invocations = integer-constant-expression
-       The identifiers points, lines, lines_adjacency, triangles, and triangles_adjacency are used to specify the
-       type of input primitive accepted by the geometry shader, and only one of these is accepted. At least one
-       geometry shader (compilation unit) in a program must declare this input primitive layout, and all geometry
-       shader input layout declarations in a program must declare the same layout. It is not required that all
-       geometry shaders in a program declare an input primitive layout.
-       The identifier invocations is used to specify the number of times the geometry shader executable is
-       invoked for each input primitive received. Invocation count declarations are optional. If no invocation
-       count is declared in any geometry shader in a program, the geometry shader will be run once for each
-       input primitive. If an invocation count is declared, all such declarations must specify the same count. If a
-       shader specifies an invocation count greater than the implementation-dependent maximum, it will fail to
-       compile.
-       For example,
-          layout(triangles, invocations = 6) in;
+Additional layout qualifier identifiers for geometry shader inputs include primitive identifiers and an
+invocation count identifier:
+    layout-qualifier-id
+         points
+         lines
+         lines_adjacency
+         triangles
+         triangles_adjacency
+         invocations = integer-constant-expression
+The identifiers points, lines, lines_adjacency, triangles, and triangles_adjacency are used to specify the
+type of input primitive accepted by the geometry shader, and only one of these is accepted. At least one
+geometry shader (compilation unit) in a program must declare this input primitive layout, and all geometry
+shader input layout declarations in a program must declare the same layout. It is not required that all
+geometry shaders in a program declare an input primitive layout.
+The identifier invocations is used to specify the number of times the geometry shader executable is
+invoked for each input primitive received. Invocation count declarations are optional. If no invocation
+count is declared in any geometry shader in a program, the geometry shader will be run once for each
+input primitive. If an invocation count is declared, all such declarations must specify the same count. If a
+shader specifies an invocation count greater than the implementation-dependent maximum, it will fail to
+compile.
+For example,
+  layout(triangles, invocations = 6) in;
 
-       will establish that all inputs to the geometry shader are triangles and that the geometry shader executable
-       is run six times for each triangle processed.
-       All geometry shader input unsized array declarations will be sized by an earlier input primitive layout
-       qualifier, when present, as per the following table.
+will establish that all inputs to the geometry shader are triangles and that the geometry shader executable
+is run six times for each triangle processed.
+All geometry shader input unsized array declarations will be sized by an earlier input primitive layout
+qualifier, when present, as per the following table.
 
++---------------------+----------------------+
+|        Layout       | Size of Input Arrays |
++=====================+======================+
+| points              |                    1 |
++---------------------+----------------------+
+| lines               |                    2 |
++---------------------+----------------------+
+| lines_adjacency     |                    4 |
++---------------------+----------------------+
+| triangles           |                    3 |
++---------------------+----------------------+
+| triangles_adjacency |                    6 |
++---------------------+----------------------+
 
-                          Layout                 Size of Input Arrays
-              points                                       1
-              lines                                        2
-              lines_adjacency                              4
-              triangles                                    3
-              triangles_adjacency                          6
+The intrinsically declared input array gl_in[] will also be sized by any input primitive-layout declaration.
+Hence, the expression
+  gl_in.length()
 
-       The intrinsically declared input array gl_in[] will also be sized by any input primitive-layout declaration.
-       Hence, the expression
-          gl_in.length()
+will return the value from the table above.
+For inputs declared without an array size, including intrinsically declared inputs (i.e., gl_in), a layout must
+be declared before any use of the method length or other any array use that requires the array size to be
+known.
+It is a compile-time error if a layout declaration's array size (from table above) does not match all the
+explicit array sizes specified in declarations of an input variables in the same shader. The following
+includes examples of compile-time errors:
+  // code sequence within            one shader...
+  in vec4 Color1[];    //            legal, size still unknown
+  in vec4 Color2[2];   //            legal, size is 2
+  in vec4 Color3[3];   //            illegal, input sizes are inconsistent
+  layout(lines) in;    //            legal for Color2, input size is 2, matching Color2
+  in vec4 Color4[3];   //            illegal, contradicts layout of lines
+  layout(lines) in;    //            legal, matches other layout() declaration
+  layout(triangles) in;//            illegal, does not match earlier layout() declaration
 
-       will return the value from the table above.
-       For inputs declared without an array size, including intrinsically declared inputs (i.e., gl_in), a layout must
-       be declared before any use of the method length or other any array use that requires the array size to be
-       known.
-       It is a compile-time error if a layout declaration's array size (from table above) does not match all the
-       explicit array sizes specified in declarations of an input variables in the same shader. The following
-       includes examples of compile-time errors:
-          // code sequence within            one shader...
-          in vec4 Color1[];    //            legal, size still unknown
-          in vec4 Color2[2];   //            legal, size is 2
-          in vec4 Color3[3];   //            illegal, input sizes are inconsistent
-          layout(lines) in;    //            legal for Color2, input size is 2, matching Color2
-          in vec4 Color4[3];   //            illegal, contradicts layout of lines
-          layout(lines) in;    //            legal, matches other layout() declaration
-          layout(triangles) in;//            illegal, does not match earlier layout() declaration
-
-       It is a link-time error if not all provided sizes (sized input arrays and layout size) match across all
-       geometry shaders in a program.
+It is a link-time error if not all provided sizes (sized input arrays and layout size) match across all
+geometry shaders in a program.
 
 4.4.1.3 Fragment Shader Inputs
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       Additional fragment layout qualifier identifiers include the following for gl_FragCoord
-            layout-qualifier-id
-                 origin_upper_left
-                 pixel_center_integer
-       By default, gl_FragCoord assumes a lower-left origin for window coordinates and assumes pixel centers
-       are located at half-pixel coordinates. For example, the (x, y) location (0.5, 0.5) is returned for the lower-left-most
-       pixel in a window. The origin can be changed by redeclaring gl_FragCoord with the
-       origin_upper_left identifier, moving the origin of gl_FragCoord to the upper left of the window, with y
-       increasing in value toward the bottom of the window. The values returned can also be shifted by half a
-       pixel in both x and y by pixel_center_integer so it appears the pixels are centered at whole number pixel
-       offsets. This moves the (x, y) value returned by gl_FragCoord of (0.5, 0.5) by default, to (0.0, 0.0) with
-       pixel_center_integer.
+Additional fragment layout qualifier identifiers include the following for gl_FragCoord
+    layout-qualifier-id
+         origin_upper_left
+         pixel_center_integer
+By default, gl_FragCoord assumes a lower-left origin for window coordinates and assumes pixel centers
+are located at half-pixel coordinates. For example, the (x, y) location (0.5, 0.5) is returned for the lower-left-most
+pixel in a window. The origin can be changed by redeclaring gl_FragCoord with the
+origin_upper_left identifier, moving the origin of gl_FragCoord to the upper left of the window, with y
+increasing in value toward the bottom of the window. The values returned can also be shifted by half a
+pixel in both x and y by pixel_center_integer so it appears the pixels are centered at whole number pixel
+offsets. This moves the (x, y) value returned by gl_FragCoord of (0.5, 0.5) by default, to (0.0, 0.0) with
+pixel_center_integer.
 
-       Redeclarations are done as follows
-          in vec4 gl_FragCoord;               // redeclaration that changes nothing is allowed
+Redeclarations are done as follows
+  in vec4 gl_FragCoord;               // redeclaration that changes nothing is allowed
 
-          // All the following are allowed redeclaration that change behavior
-          layout(origin_upper_left) in vec4 gl_FragCoord;
-          layout(pixel_center_integer) in vec4 gl_FragCoord;
-          layout(origin_upper_left, pixel_center_integer) in vec4 gl_FragCoord;
+  // All the following are allowed redeclaration that change behavior
+  layout(origin_upper_left) in vec4 gl_FragCoord;
+  layout(pixel_center_integer) in vec4 gl_FragCoord;
+  layout(origin_upper_left, pixel_center_integer) in vec4 gl_FragCoord;
 
-       If gl_FragCoord is redeclared in any fragment shader in a program, it must be redeclared in all the
-       fragment shaders in that program that have a static use gl_FragCoord. All redeclarations of
-       gl_FragCoord in all fragment shaders in a single program must have the same set of qualifiers. Within
-       any shader, the first redeclarations of gl_FragCoord must appear before any use of gl_FragCoord. The
-       built-in gl_FragCoord is only predeclared in fragment shaders, so redeclaring it in any other shader
-       language results in a compile-time error.
-       Redeclaring gl_FragCoord with origin_upper_left and/or pixel_center_integer qualifiers only affects
-       gl_FragCoord.x and gl_FragCoord.y. It has no affect on rasterization, transformation, or any other part
-       of the OpenGL pipeline or language features.
-       Fragment shaders also allow the following layout qualifier on in only (not with variable declarations)
-            layout-qualifier-id
-                 early_fragment_tests
-       to request that fragment tests be performed before fragment shader execution, as described in section
-       15.2.4 “Early Fragment Tests” of the OpenGL Specification.
-       For example,
-          layout(early_fragment_tests) in;
+If gl_FragCoord is redeclared in any fragment shader in a program, it must be redeclared in all the
+fragment shaders in that program that have a static use gl_FragCoord. All redeclarations of
+gl_FragCoord in all fragment shaders in a single program must have the same set of qualifiers. Within
+any shader, the first redeclarations of gl_FragCoord must appear before any use of gl_FragCoord. The
+built-in gl_FragCoord is only predeclared in fragment shaders, so redeclaring it in any other shader
+language results in a compile-time error.
+Redeclaring gl_FragCoord with origin_upper_left and/or pixel_center_integer qualifiers only affects
+gl_FragCoord.x and gl_FragCoord.y. It has no affect on rasterization, transformation, or any other part
+of the OpenGL pipeline or language features.
+Fragment shaders also allow the following layout qualifier on in only (not with variable declarations)
+    layout-qualifier-id
+         early_fragment_tests
+to request that fragment tests be performed before fragment shader execution, as described in section
+15.2.4 “Early Fragment Tests” of the OpenGL Specification.
+For example,
+  layout(early_fragment_tests) in;
 
 
-       Specifying this will make per-fragment tests be performed before fragment shader execution. If this is not
-       declared, per-fragment tests will be performed after fragment shader execution. Only one fragment shader
-       (compilation unit) need declare this, though more than one can. If at least one declares this, then it is
-       enabled.
+Specifying this will make per-fragment tests be performed before fragment shader execution. If this is not
+declared, per-fragment tests will be performed after fragment shader execution. Only one fragment shader
+(compilation unit) need declare this, though more than one can. If at least one declares this, then it is
+enabled.
 
 4.4.1.4 Compute Shader Inputs
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       There are no layout location qualifiers for compute shader inputs.
-       Layout qualifier identifiers for compute shader inputs are the work-group size qualifiers:
-            layout-qualifier-id
-                 local_size_x = integer-constant-expression
-                 local_size_y = integer-constant-expression
-                 local_size_z = integer-constant-expression
-       The local_size_x, local_size_y, and local_size_z qualifiers are used to declare a fixed local group size by
-       the compute shader in the first, second, and third dimension, respectively. The default size in each
-       dimension is 1. If a shader does not specify a size for one of the dimensions, that dimension will have a
-       size of 1.
+There are no layout location qualifiers for compute shader inputs.
+Layout qualifier identifiers for compute shader inputs are the work-group size qualifiers:
+    layout-qualifier-id
+         local_size_x = integer-constant-expression
+         local_size_y = integer-constant-expression
+         local_size_z = integer-constant-expression
+The local_size_x, local_size_y, and local_size_z qualifiers are used to declare a fixed local group size by
+the compute shader in the first, second, and third dimension, respectively. The default size in each
+dimension is 1. If a shader does not specify a size for one of the dimensions, that dimension will have a
+size of 1.
 
-        For example, the following declaration in a compute shader
-           layout (local_size_x = 32, local_size_y = 32) in;
+For example, the following declaration in a compute shader
+   layout (local_size_x = 32, local_size_y = 32) in;
 
-        is used to declare a two-dimensional compute shader with a local size of 32 X 32 elements, which is
-        equivalent to a three-dimensional compute shader where the third dimension has size one.
-        As another example, the declaration
-           layout (local_size_x = 8) in;
+is used to declare a two-dimensional compute shader with a local size of 32 X 32 elements, which is
+equivalent to a three-dimensional compute shader where the third dimension has size one.
+As another example, the declaration
+   layout (local_size_x = 8) in;
 
-        effectively specifies that a one-dimensional compute shader is being compiled, and its size is 8 elements.
-        If the fixed local group size of the shader in any dimension is greater than the maximum size supported by
-        the implementation for that dimension, a compile-time error results. Also, if such a layout qualifier is
-        declared more than once in the same shader, all those declarations must set the same set of local work-group
-        sizes and set them to the same values; otherwise a compile-time error results. If multiple compute
-        shaders attached to a single program object declare a fixed local group size, the declarations must be
-        identical; otherwise a link-time error results.
-        Furthermore, if a program object contains any compute shaders, at least one must contain an input layout
-        qualifier specifying a fixed local group size for the program, or a link-time error will occur.
+effectively specifies that a one-dimensional compute shader is being compiled, and its size is 8 elements.
+If the fixed local group size of the shader in any dimension is greater than the maximum size supported by
+the implementation for that dimension, a compile-time error results. Also, if such a layout qualifier is
+declared more than once in the same shader, all those declarations must set the same set of local work-group
+sizes and set them to the same values; otherwise a compile-time error results. If multiple compute
+shaders attached to a single program object declare a fixed local group size, the declarations must be
+identical; otherwise a link-time error results.
+Furthermore, if a program object contains any compute shaders, at least one must contain an input layout
+qualifier specifying a fixed local group size for the program, or a link-time error will occur.
 
 4.4.2   Output Layout Qualifiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Some output layout qualifiers apply to all shader languages and some apply only to specific languages.
-        The latter are discussed in separate sections below.
-        As with input layout qualifiers, all shaders except compute shaders allow location layout qualifiers
-        on output variable declarations, output block declarations, and output block member declarations. Of
-        these, variables and block members (but not blocks) additionally allow the component layout qualifier.
-        The layout qualifier identifiers for outputs are:
-             layout-qualifier-id
-                  location = integer-constant-expression
-                  component = integer-constant-expression
-        The usage and rules for using the component qualifier, and applying location qualifier to blocks and
-        structures, are exactly as described in section 4.4.1 "Input Layout Qualifiers". Additionally, for fragment
-        shader outputs, if two variables are placed within the same location, they must have the same underlying
-        type (floating-point or integer). No component aliasing of output variables or members is allowed.
-        Fragment shaders allow an additional index output layout qualifiers:
-             layout-qualifier-id
-                  index = integer-constant-expression
-        Each of these qualifiers may appear at most once. If index is specified, location must also be specified.
-        If index is not specified, the value 0 is used. For example, in a fragment shader,
+Some output layout qualifiers apply to all shader languages and some apply only to specific languages.
+The latter are discussed in separate sections below.
+As with input layout qualifiers, all shaders except compute shaders allow location layout qualifiers
+on output variable declarations, output block declarations, and output block member declarations. Of
+these, variables and block members (but not blocks) additionally allow the component layout qualifier.
+The layout qualifier identifiers for outputs are:
+     layout-qualifier-id
+          location = integer-constant-expression
+          component = integer-constant-expression
+The usage and rules for using the component qualifier, and applying location qualifier to blocks and
+structures, are exactly as described in section 4.4.1 "Input Layout Qualifiers". Additionally, for fragment
+shader outputs, if two variables are placed within the same location, they must have the same underlying
+type (floating-point or integer). No component aliasing of output variables or members is allowed.
+Fragment shaders allow an additional index output layout qualifiers:
+     layout-qualifier-id
+          index = integer-constant-expression
+Each of these qualifiers may appear at most once. If index is specified, location must also be specified.
+If index is not specified, the value 0 is used. For example, in a fragment shader,
 
    layout(location = 3) out vec4 color;
 
@@ -2958,49 +3000,49 @@ within available hardware resources. Compile-time errors may also be given if at
 known the link will fail. A negative output location will result in a compile-time error. It is also a
 compile-time error if a fragment shader sets a layout index to less than 0 or greater than 1.
 A program will fail to link if any of the following occur:
-    •    any two fragment shader output variables are assigned to the same location and index, or
-    •    any two geometry shader output variables are assigned the same location and stream, or
-           •      if any two output variables from the same vertex or tessellation shader stage are assigned to the
-                  same location.
-       For fragment shader outputs, locations can be assigned using either a layout qualifier or via the OpenGL
-       API. For all shader types, a program will fail to link if explicit location assignments leave the linker
-       unable to find space for other variables without explicit assignments.
-       If an output variable with no location or index assigned in the shader text has a location specified through
-       the OpenGL API, the API-assigned location will be used. Otherwise, such variables will be assigned a
-       location by the linker. All such assignments will have a color index of zero. See section 15.2 “Shader
-       Execution” of the OpenGL Graphics System Specification for more details. A link-time error will occur if
-       an output variable is declared in multiple shaders of the same language with conflicting location or index
-       values.
-       For the purposes of determining if a non-fragment output matches an input from a subsequent shader
-       stage, the location layout qualifier (if any) must match.
+  •    any two fragment shader output variables are assigned to the same location and index, or
+  •    any two geometry shader output variables are assigned the same location and stream, or
+  •      if any two output variables from the same vertex or tessellation shader stage are assigned to the
+        same location.
+For fragment shader outputs, locations can be assigned using either a layout qualifier or via the OpenGL
+API. For all shader types, a program will fail to link if explicit location assignments leave the linker
+unable to find space for other variables without explicit assignments.
+If an output variable with no location or index assigned in the shader text has a location specified through
+the OpenGL API, the API-assigned location will be used. Otherwise, such variables will be assigned a
+location by the linker. All such assignments will have a color index of zero. See section 15.2 “Shader
+Execution” of the OpenGL Graphics System Specification for more details. A link-time error will occur if
+an output variable is declared in multiple shaders of the same language with conflicting location or index
+values.
+For the purposes of determining if a non-fragment output matches an input from a subsequent shader
+stage, the location layout qualifier (if any) must match.
 
 4.4.2.1 Transform Feedback Layout Qualifiers
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       The vertex, tessellation, and geometry stages allow shaders to control transform feedback. When doing
-       this, shaders will dictate which transform feedback buffers are in use, which output variables will be
-       written to which buffers, and how each buffer is laid out. To accomplish this, shaders allow the following
-       layout qualifier identifiers on output declarations:
-               layout-qualifier-id
-                    xfb_buffer = integer-constant-expression
-                    xfb_offset = integer-constant-expression
-                    xfb_stride = integer-constant-expression
-       Any shader making any static use (after preprocessing) of any of these xfb_ qualifiers will cause the
-       shader to be in a transform feedback capturing mode and hence responsible for describing the transform
-       feedback setup. This mode will capture any output selected by xfb_offset, directly or indirectly, to a
-       transform feedback buffer.
-       The xfb_buffer qualifier specifies which transform feedback buffer will capture outputs selected with
-       xfb_offset. The xfb_buffer qualifier can be applied to the qualifier out, to output variables, to output
-       blocks, and to output block members. Shaders in the transform feedback capturing mode have an initial
-       global default of
-          layout(xfb_buffer = 0) out;
+The vertex, tessellation, and geometry stages allow shaders to control transform feedback. When doing
+this, shaders will dictate which transform feedback buffers are in use, which output variables will be
+written to which buffers, and how each buffer is laid out. To accomplish this, shaders allow the following
+layout qualifier identifiers on output declarations:
+       layout-qualifier-id
+            xfb_buffer = integer-constant-expression
+            xfb_offset = integer-constant-expression
+            xfb_stride = integer-constant-expression
+Any shader making any static use (after preprocessing) of any of these xfb_ qualifiers will cause the
+shader to be in a transform feedback capturing mode and hence responsible for describing the transform
+feedback setup. This mode will capture any output selected by xfb_offset, directly or indirectly, to a
+transform feedback buffer.
+The xfb_buffer qualifier specifies which transform feedback buffer will capture outputs selected with
+xfb_offset. The xfb_buffer qualifier can be applied to the qualifier out, to output variables, to output
+blocks, and to output block members. Shaders in the transform feedback capturing mode have an initial
+global default of
+  layout(xfb_buffer = 0) out;
 
-       This default can be changed by declaring a different buffer with xfb_buffer on the interface qualifier out.
-       This is the only way the global default can be changed. When a variable or output block is declared
-       without an xfb_buffer qualifier, it inherits the global default buffer. When a variable or output block is
-       declared with an xfb_buffer qualifier, it has that declared buffer. All members of a block inherit the
-       block's buffer. A member is allowed to declare an xfb_buffer, but it must match the buffer inherited from
-       its block, or a compile-time error results.
+This default can be changed by declaring a different buffer with xfb_buffer on the interface qualifier out.
+This is the only way the global default can be changed. When a variable or output block is declared
+without an xfb_buffer qualifier, it inherits the global default buffer. When a variable or output block is
+declared with an xfb_buffer qualifier, it has that declared buffer. All members of a block inherit the
+block's buffer. A member is allowed to declare an xfb_buffer, but it must match the buffer inherited from
+its block, or a compile-time error results.
 
    layout(xfb_buffer=2, xfb_offset=0)                out block { // block's buffer is 2
        layout(xfb_buffer = 2) vec4 v;                // okay, matches the inherited 2
@@ -3046,96 +3088,96 @@ The xfb_stride qualifier specifies how many bytes are consumed by each captured 
 the transform feedback buffer for that declaration, whether it is inherited or explicitly declared. It can be
 applied to variables, blocks, block members, or just the qualifier out. If the buffer is capturing any
 outputs with double-precision components, the stride must be a multiple of 8, otherwise it must be a
-       multiple of 4, or a compile-time or link-time error results. It is a compile-time or link-time error to have
-       any xfb_offset that overflows xfb_stride, whether stated on declarations before or after the xfb_stride, or
-       in different compilation units. While xfb_stride can be declared multiple times for the same buffer, it is a
-       compile-time or link-time error to have different values specified for the stride for the same buffer.
-       For example:
+multiple of 4, or a compile-time or link-time error results. It is a compile-time or link-time error to have
+any xfb_offset that overflows xfb_stride, whether stated on declarations before or after the xfb_stride, or
+in different compilation units. While xfb_stride can be declared multiple times for the same buffer, it is a
+compile-time or link-time error to have different values specified for the stride for the same buffer.
+For example:
 
-          // buffer 1 has 32-byte stride
-          layout (xfb_buffer = 1, xfb_stride = 32) out;
+  // buffer 1 has 32-byte stride
+  layout (xfb_buffer = 1, xfb_stride = 32) out;
 
-          // same as previous example; order within layout does not matter
-          layout (xfb_stride = 32, xfb_buffer = 1) out;
+  // same as previous example; order within layout does not matter
+  layout (xfb_stride = 32, xfb_buffer = 1) out;
 
-          // everything in this block goes to buffer 0
-          layout (xfb_buffer = 0, xfb_stride = 32) out block1 {
-              layout (xfb_offset = 0) vec4 a; // a goes to byte offset 0 of buffer 0
-              layout (xfb_offset = 16) vec4 b; // b goes to offset 16 of buffer 0
-          };
+  // everything in this block goes to buffer 0
+  layout (xfb_buffer = 0, xfb_stride = 32) out block1 {
+      layout (xfb_offset = 0) vec4 a; // a goes to byte offset 0 of buffer 0
+      layout (xfb_offset = 16) vec4 b; // b goes to offset 16 of buffer 0
+  };
 
-          layout (xfb_buffer = 3, xfb_offset =                12) out block2 {
-              vec4 v; // v will be written to                 byte offsets 12 through 27 of buffer
-              float u; // u will be written to                offset 28
-              layout(xfb_offset = 40) vec4 w;
-              vec4 x; // x will be written to                 offset 56, the next available offset
-          };
+  layout (xfb_buffer = 3, xfb_offset =                12) out block2 {
+      vec4 v; // v will be written to                 byte offsets 12 through 27 of buffer
+      float u; // u will be written to                offset 28
+      layout(xfb_offset = 40) vec4 w;
+      vec4 x; // x will be written to                 offset 56, the next available offset
+  };
 
-          layout (xfb_buffer = 2, xfb_stride = 32) out block3 {
-              layout (xfb_offset = 12) vec3 c;
-              layout (xfb_offset = 24) vec3 d; // ERROR, requires stride of 36
-              layout (xfb_offset = 0) vec3 g; // okay, increasing order not required
-          };
+  layout (xfb_buffer = 2, xfb_stride = 32) out block3 {
+      layout (xfb_offset = 12) vec3 c;
+      layout (xfb_offset = 24) vec3 d; // ERROR, requires stride of 36
+      layout (xfb_offset = 0) vec3 g; // okay, increasing order not required
+  };
 
-       When no xfb_stride is specified for a buffer, the stride of the buffer will be the smallest needed to hold
-       the variable placed at the highest offset, including any required padding. For example:
-          // if there no other declarations for buffer 3, it has stride 32
-          layout (xfb_buffer = 3) out block4 {
-              layout (xfb_offset = 0) vec4 e;
-              layout (xfb_offset = 16) vec4 f;
-          };
+When no xfb_stride is specified for a buffer, the stride of the buffer will be the smallest needed to hold
+the variable placed at the highest offset, including any required padding. For example:
+  // if there no other declarations for buffer 3, it has stride 32
+  layout (xfb_buffer = 3) out block4 {
+      layout (xfb_offset = 0) vec4 e;
+      layout (xfb_offset = 16) vec4 f;
+  };
 
 
-       The resulting stride (implicit or explicit), when divided by 4, must be less than or equal to the
-       implementation-dependent constant gl_MaxTransformFeedbackInterleavedComponents.
+The resulting stride (implicit or explicit), when divided by 4, must be less than or equal to the
+implementation-dependent constant gl_MaxTransformFeedbackInterleavedComponents.
 
 4.4.2.2 Tessellation Control Outputs
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       Other than for the transform feedback layout qualifiers, tessellation control shaders allow output layout
-       qualifiers only on the interface qualifier out, not on an output block, block member, or variable
-       declaration. The output layout qualifier identifiers allowed for tessellation control shaders include the
-       vertex-count layout qualifier:
-            layout-qualifier-id
-                 vertices = integer-constant-expression
-       The identifier vertices specifies the number of vertices in the output patch produced by the tessellation
-       control shader, which also specifies the number of times the tessellation control shader is invoked. It is a
-       compile- or link-time error for the output vertex count to be less than or equal to zero, or greater than the
-       implementation-dependent maximum patch size.
-       The intrinsically declared tessellation control output array gl_out[] will also be sized by any output layout
-       declaration. Hence, the expression
-          gl_out.length()
+Other than for the transform feedback layout qualifiers, tessellation control shaders allow output layout
+qualifiers only on the interface qualifier out, not on an output block, block member, or variable
+declaration. The output layout qualifier identifiers allowed for tessellation control shaders include the
+vertex-count layout qualifier:
+    layout-qualifier-id
+         vertices = integer-constant-expression
+The identifier vertices specifies the number of vertices in the output patch produced by the tessellation
+control shader, which also specifies the number of times the tessellation control shader is invoked. It is a
+compile- or link-time error for the output vertex count to be less than or equal to zero, or greater than the
+implementation-dependent maximum patch size.
+The intrinsically declared tessellation control output array gl_out[] will also be sized by any output layout
+declaration. Hence, the expression
+  gl_out.length()
 
-      will return the output patch vertex count specified in a previous output layout qualifier. For outputs
-      declared without an array size, including intrinsically declared outputs (i.e., gl_out), a layout must be must
-      be declared before any use of the method length() or other array use requires its size be known.
-       It is a compile-time error if the output patch vertex count specified in an output layout qualifier does not
-       match the array size specified in any output variable declaration in the same shader.
-       All tessellation control shader layout declarations in a program must specify the same output patch vertex
-       count. There must be at least one layout qualifier specifying an output patch vertex count in any program
-       containing tessellation control shaders; however, such a declaration is not required in all tessellation
-       control shaders.
+will return the output patch vertex count specified in a previous output layout qualifier. For outputs
+declared without an array size, including intrinsically declared outputs (i.e., gl_out), a layout must be must
+be declared before any use of the method length() or other array use requires its size be known.
+It is a compile-time error if the output patch vertex count specified in an output layout qualifier does not
+match the array size specified in any output variable declaration in the same shader.
+All tessellation control shader layout declarations in a program must specify the same output patch vertex
+count. There must be at least one layout qualifier specifying an output patch vertex count in any program
+containing tessellation control shaders; however, such a declaration is not required in all tessellation
+control shaders.
 
 4.4.2.3 Geometry Outputs
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       Geometry shaders can have three additional types of output layout identifiers: an output primitive type, a
-       maximum output vertex count, and per-output stream numbers. The primitive type and vertex count
-       identifiers are allowed only on the interface qualifier out, not on an output block, block member, or
-       variable declaration. The stream identifier is allowed on the interface qualifier out, on output blocks, and
-       on variable declarations.
-       The layout qualifier identifiers for geometry shader outputs are
-            layout-qualifier-id
-                 points
-                 line_strip
-                 triangle_strip
-                 max_vertices = integer-constant-expression
-                 stream = integer-constant-expression
-       The primitive type identifiers points, line_strip, and triangle_strip are used to specify the type of output
-       primitive produced by the geometry shader, and only one of these is accepted. At least one geometry
-       shader (compilation unit) in a program must declare an output primitive type, and all geometry shader
-       output primitive type declarations in a program must declare the same primitive type. It is not required
-       that all geometry shaders in a program declare an output primitive type.
+Geometry shaders can have three additional types of output layout identifiers: an output primitive type, a
+maximum output vertex count, and per-output stream numbers. The primitive type and vertex count
+identifiers are allowed only on the interface qualifier out, not on an output block, block member, or
+variable declaration. The stream identifier is allowed on the interface qualifier out, on output blocks, and
+on variable declarations.
+The layout qualifier identifiers for geometry shader outputs are
+    layout-qualifier-id
+         points
+         line_strip
+         triangle_strip
+         max_vertices = integer-constant-expression
+         stream = integer-constant-expression
+The primitive type identifiers points, line_strip, and triangle_strip are used to specify the type of output
+primitive produced by the geometry shader, and only one of these is accepted. At least one geometry
+shader (compilation unit) in a program must declare an output primitive type, and all geometry shader
+output primitive type declarations in a program must declare the same primitive type. It is not required
+that all geometry shaders in a program declare an output primitive type.
 
 The vertex count identifier max_vertices is used to specify the maximum number of vertices the shader
 will ever emit in a single invocation. At least one geometry shader (compilation unit) in a program must
@@ -3182,140 +3224,140 @@ emitted vertex are taken from the set of output blocks and variables assigned to
 each vertex is emitted, the values of all output variables become undefined. Additionally, the output
 variables associated with each vertex stream may share storage. Writing to an output variable associated
 with one stream may overwrite output variables associated with any other stream. When emitting each
-       vertex, a geometry shader should write to all outputs associated with the stream to which the vertex will
-       be emitted and to no outputs associated with any other stream.
-       If a geometry shader output block or variable is declared more than once, all such declarations must
-       associate the variable with the same vertex stream. If any stream declaration specifies a non-existent
-       stream number, the shader will fail to compile.
-       Built-in geometry shader outputs are always associated with vertex stream zero.
-       All geometry shader output layout declarations in a program must declare the same layout and same value
-       for max_vertices. If geometry shaders are in a program, there must be at least one geometry output
-       layout declaration somewhere in that program, but not all geometry shaders (compilation units) are
-       required to declare it.
+vertex, a geometry shader should write to all outputs associated with the stream to which the vertex will
+be emitted and to no outputs associated with any other stream.
+If a geometry shader output block or variable is declared more than once, all such declarations must
+associate the variable with the same vertex stream. If any stream declaration specifies a non-existent
+stream number, the shader will fail to compile.
+Built-in geometry shader outputs are always associated with vertex stream zero.
+All geometry shader output layout declarations in a program must declare the same layout and same value
+for max_vertices. If geometry shaders are in a program, there must be at least one geometry output
+layout declaration somewhere in that program, but not all geometry shaders (compilation units) are
+required to declare it.
 
 4.4.2.4 Fragment Outputs
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       The built-in fragment shader variable gl_FragDepth may be redeclared using one of the following layout
-       qualifiers.
-            layout-qualifier-id
-                 depth_any
-                 depth_greater
-                 depth_less
-                 depth_unchanged
-       For example:
-          layout (depth_greater) out float gl_FragDepth;
+The built-in fragment shader variable gl_FragDepth may be redeclared using one of the following layout
+qualifiers.
+    layout-qualifier-id
+         depth_any
+         depth_greater
+         depth_less
+         depth_unchanged
+For example:
+  layout (depth_greater) out float gl_FragDepth;
 
 
-       The layout qualifier for gl_FragDepth constrains intentions of the final value of gl_FragDepth written
-       by any shader invocation. GL implementations are allowed to perform optimizations assuming that the
-       depth test fails (or passes) for a given fragment if all values of gl_FragDepth consistent with the layout
-       qualifier would fail (or pass). This potentially includes skipping shader execution if the fragment is
-       discarded because it is occluded and the shader has no side effects. If the final value of gl_FragDepth is
-       inconsistent with its layout qualifier, the result of the depth test for the corresponding fragment is
-       undefined. However, no error will be generated in this case. If the depth test passes and depth writes are
-       enabled, the value written to the depth buffer is always the value of gl_FragDepth, whether or not it is
-       consistent with the layout qualifier.
-       By default, gl_FragDepth is qualified as depth_any. When the layout qualifier for gl_FragDepth is
-       depth_any, the shader compiler will note any assignment to gl_FragDepth modifying it in an unknown
-       way, and depth testing will always be performed after the shader has executed. When the layout qualifier
-       is depth_greater, the GL can assume that the final value of gl_FragDepth is greater than or equal to the
-       fragment's interpolated depth value, as given by the z component of gl_FragCoord. When the layout
-       qualifier is depth_less, the GL can assume that any modification of gl_FragDepth will only decrease its
-       value. When the layout qualifier is depth_unchanged, the shader compiler will honor any modification to
-       gl_FragDepth, but the rest of the GL can assume that gl_FragDepth is not assigned a new value.
+The layout qualifier for gl_FragDepth constrains intentions of the final value of gl_FragDepth written
+by any shader invocation. GL implementations are allowed to perform optimizations assuming that the
+depth test fails (or passes) for a given fragment if all values of gl_FragDepth consistent with the layout
+qualifier would fail (or pass). This potentially includes skipping shader execution if the fragment is
+discarded because it is occluded and the shader has no side effects. If the final value of gl_FragDepth is
+inconsistent with its layout qualifier, the result of the depth test for the corresponding fragment is
+undefined. However, no error will be generated in this case. If the depth test passes and depth writes are
+enabled, the value written to the depth buffer is always the value of gl_FragDepth, whether or not it is
+consistent with the layout qualifier.
+By default, gl_FragDepth is qualified as depth_any. When the layout qualifier for gl_FragDepth is
+depth_any, the shader compiler will note any assignment to gl_FragDepth modifying it in an unknown
+way, and depth testing will always be performed after the shader has executed. When the layout qualifier
+is depth_greater, the GL can assume that the final value of gl_FragDepth is greater than or equal to the
+fragment's interpolated depth value, as given by the z component of gl_FragCoord. When the layout
+qualifier is depth_less, the GL can assume that any modification of gl_FragDepth will only decrease its
+value. When the layout qualifier is depth_unchanged, the shader compiler will honor any modification to
+gl_FragDepth, but the rest of the GL can assume that gl_FragDepth is not assigned a new value.
 
-        Redeclarations of gl_FragDepth are performed as follows:
-           // redeclaration that changes nothing is allowed
-           out float gl_FragDepth;
+Redeclarations of gl_FragDepth are performed as follows:
+   // redeclaration that changes nothing is allowed
+   out float gl_FragDepth;
 
-           // assume it may be modified in any way
-           layout (depth_any) out float gl_FragDepth;
+   // assume it may be modified in any way
+   layout (depth_any) out float gl_FragDepth;
 
-           // assume it may be modified such that its value will only increase
-           layout (depth_greater) out float gl_FragDepth;
+   // assume it may be modified such that its value will only increase
+   layout (depth_greater) out float gl_FragDepth;
 
-           // assume it may be modified such that its value will only decrease
-           layout (depth_less) out float gl_FragDepth;
+   // assume it may be modified such that its value will only decrease
+   layout (depth_less) out float gl_FragDepth;
 
-           // assume it will not be modified
-           layout (depth_unchanged) out float gl_FragDepth;
+   // assume it will not be modified
+   layout (depth_unchanged) out float gl_FragDepth;
 
 
-        If gl_FragDepth is redeclared in any fragment shader in a program, it must be redeclared in all fragment
-        shaders in that program that have static assignments to gl_FragDepth. All redeclarations of
-        gl_FragDepth in all fragment shaders in a single program must have the same set of qualifiers. Within
-        any shader, the first redeclarations of gl_FragDepth must appear before any use of gl_FragDepth. The
-        built-in gl_FragDepth is only predeclared in fragment shaders, so redeclaring it in any other shader
-        language results in a compile-time error.
+If gl_FragDepth is redeclared in any fragment shader in a program, it must be redeclared in all fragment
+shaders in that program that have static assignments to gl_FragDepth. All redeclarations of
+gl_FragDepth in all fragment shaders in a single program must have the same set of qualifiers. Within
+any shader, the first redeclarations of gl_FragDepth must appear before any use of gl_FragDepth. The
+built-in gl_FragDepth is only predeclared in fragment shaders, so redeclaring it in any other shader
+language results in a compile-time error.
 
 4.4.3   Uniform Variable Layout Qualifiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Layout qualifiers can be used for uniform variables and subroutine uniforms. The layout qualifier
-        identifiers for uniform variables and subroutine uniforms are:
-             layout-qualifier-id
-                  location = integer-constant-expression
-        The location identifier can be used with default-block uniform variables and subroutine uniforms. The
-        location specifies the location by which the OpenGL API can reference the uniform and update its value.
-        Individual elements of a uniform array are assigned consecutive locations with the first element taking
-        location location. No two default-block uniform variables in the program can have the same location,
-        even if they are unused, otherwise a compile-time or link-time error will be generated. No two subroutine
-        uniform variables can have the same location in the same shader stage, otherwise a compile-time or link-time
-        error will be generated. Valid locations for default-block uniform variable locations are in the range
-        of 0 to the implementation-defined maximum number of uniform locations minus one. Valid locations for
-        subroutine uniforms are in the range of 0 to the implementation-defined per-stage maximum number of
-        subroutine uniform locations minus one.
-        Locations can be assigned to default-block uniform arrays and structures. The first inner-most scalar,
-        vector or matrix member or element takes the specified location and the compiler assigns the next inner-most
-        member or element the next incremental location value. Each subsequent inner-most member or
-        element gets incremental locations for the entire structure or array. This rule applies to nested structures
-        and arrays and gives each inner-most scalar, vector, or matrix type a unique location. For arrays without
-        an explicit size, the size is calculated based on its static usage. When the linker generates locations for
-        uniforms without an explicit location, it assumes for all uniforms with an explicit location all their array
-        elements and structure members are used and the linker will not generate a conflicting location, even if
-        that element of member is deemed unused.
+Layout qualifiers can be used for uniform variables and subroutine uniforms. The layout qualifier
+identifiers for uniform variables and subroutine uniforms are:
+     layout-qualifier-id
+          location = integer-constant-expression
+The location identifier can be used with default-block uniform variables and subroutine uniforms. The
+location specifies the location by which the OpenGL API can reference the uniform and update its value.
+Individual elements of a uniform array are assigned consecutive locations with the first element taking
+location location. No two default-block uniform variables in the program can have the same location,
+even if they are unused, otherwise a compile-time or link-time error will be generated. No two subroutine
+uniform variables can have the same location in the same shader stage, otherwise a compile-time or link-time
+error will be generated. Valid locations for default-block uniform variable locations are in the range
+of 0 to the implementation-defined maximum number of uniform locations minus one. Valid locations for
+subroutine uniforms are in the range of 0 to the implementation-defined per-stage maximum number of
+subroutine uniform locations minus one.
+Locations can be assigned to default-block uniform arrays and structures. The first inner-most scalar,
+vector or matrix member or element takes the specified location and the compiler assigns the next inner-most
+member or element the next incremental location value. Each subsequent inner-most member or
+element gets incremental locations for the entire structure or array. This rule applies to nested structures
+and arrays and gives each inner-most scalar, vector, or matrix type a unique location. For arrays without
+an explicit size, the size is calculated based on its static usage. When the linker generates locations for
+uniforms without an explicit location, it assumes for all uniforms with an explicit location all their array
+elements and structure members are used and the linker will not generate a conflicting location, even if
+that element of member is deemed unused.
 
 4.4.4   Subroutine Function Layout Qualifiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Layout qualifiers can be used for subroutine functions. The layout qualifier identifiers for subroutine
-        functions are:
-             layout-qualifier-id
-                  index = integer-constant-expression
-        Each subroutine with an index qualifier in the shader must be given a unique index, otherwise a compile-
-        or link-time error will be generated. The indices must be in the range of 0 to the implementation defined
-        maximum number of subroutines minus one. It is recommended, but not required, that the shader assigns
-        a range of tightly packed index values starting from zero so that the OpenGL subroutine function
-        enumeration API returns a non-empty name for all active indices.
+Layout qualifiers can be used for subroutine functions. The layout qualifier identifiers for subroutine
+functions are:
+     layout-qualifier-id
+          index = integer-constant-expression
+Each subroutine with an index qualifier in the shader must be given a unique index, otherwise a compile-
+or link-time error will be generated. The indices must be in the range of 0 to the implementation defined
+maximum number of subroutines minus one. It is recommended, but not required, that the shader assigns
+a range of tightly packed index values starting from zero so that the OpenGL subroutine function
+enumeration API returns a non-empty name for all active indices.
 
 4.4.5   Uniform and Shader Storage Block Layout Qualifiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Layout qualifiers can be used for uniform and shader storage blocks, but not for non-block uniform
-        declarations. The layout qualifier identifiers (and shared keyword) for uniform and shader storage blocks
-        are
-             layout-qualifier-id
-                  shared
-                  packed
-                  std140
-                  std430
-                  row_major
-                  column_major
-                  binding = integer-constant-expression
-                  offset = integer-constant-expression
-                  align = integer-constant-expression
+Layout qualifiers can be used for uniform and shader storage blocks, but not for non-block uniform
+declarations. The layout qualifier identifiers (and shared keyword) for uniform and shader storage blocks
+are
+     layout-qualifier-id
+          shared
+          packed
+          std140
+          std430
+          row_major
+          column_major
+          binding = integer-constant-expression
+          offset = integer-constant-expression
+          align = integer-constant-expression
 
-        None of these have any semantic affect at all on the usage of the variables being declared; they only
-        describe how data is laid out in memory. For example, matrix semantics are always column-based, as
-        described in the rest of this specification, no matter what layout qualifiers are being used.
-        Uniform and shader storage block layout qualifiers can be declared for global scope, on a single uniform
-        or shader storage block, or on a single block member declaration.
-        Default layouts for shared, packed, std140, std430, row_major, and column_major are established at
-        global scope for uniform blocks as
-           layout(layout-qualifier-id-list) uniform;
+None of these have any semantic affect at all on the usage of the variables being declared; they only
+describe how data is laid out in memory. For example, matrix semantics are always column-based, as
+described in the rest of this specification, no matter what layout qualifiers are being used.
+Uniform and shader storage block layout qualifiers can be declared for global scope, on a single uniform
+or shader storage block, or on a single block member declaration.
+Default layouts for shared, packed, std140, std430, row_major, and column_major are established at
+global scope for uniform blocks as
+   layout(layout-qualifier-id-list) uniform;
 
-        and for shader storage blocks as
+and for shader storage blocks as
 
    layout(layout-qualifier-id-list) buffer;
 
@@ -3402,137 +3444,137 @@ results in the qualification being column_major. Other examples:
        mat3 N2;                                      //   column_major
    };
 
-        The offset qualifier can only be used on block members of blocks declared with std140 or std430 layouts.
-        The offset qualifier forces the qualified member to start at or after the specified integral-constant-expression,
-        which will be its byte offset from the beginning of the buffer. It is a compile-time error to
-        specify an offset that is smaller than the offset of the previous member in the block or that lies within the
-        previous member of the block. Two blocks linked together in the same program with the same block
-        name must have the exact same set of members qualified with offset and their integral-constant-expression
-        values must be the same, or a link-time error results. The specified offset must be a multiple
-        of the base alignment of the type of the block member it qualifies, or a compile-time error results.
-        The align qualifier can only be used on blocks or block members, and only for blocks declared with
-        std140 or std430 layouts. The align qualifier makes the start of each block member have a minimum
-        byte alignment. It does not affect the internal layout within each member, which will still follow the
-        std140 or std430 rules. The specified alignment must be a power of 2, or a compile-time error results.
-        The actual alignment of a member will be the greater of the specified align alignment and the standard
-        (e.g., std140) base alignment for the member's type. The actual offset of a member is computed as
-        follows: If offset was declared, start with that offset, otherwise start with the next available offset. If the
-        resulting offset is not a multiple of the actual alignment, increase it to the first offset that is a multiple of
-        the actual alignment. This results in the actual offset the member will have.
-        When align is applied to an array, it effects only the start of the array, not the array's internal stride. Both
-        an offset and an align qualifier can be specified on a declaration.
-        The align qualifier, when used on a block, has the same effect as qualifying each member with the same
-        align value as declared on the block, and gets the same compile-time results and errors as if this had been
-        done. As described in general earlier, an individual member can specify its own align, which overrides
-        the block-level align, but just for that member.
-        Examples:
-           layout(std140) uniform block {
-                                   vec4                  a;        //   a takes offsets 0-15
-               layout(offset = 20) vec3                  b;        //   b takes offsets 32-43
-               layout(offset = 40) vec2                  c;        //   ERROR, lies within previous member
-               layout(offset = 48) vec2                  d;        //   d takes offsets 48-55
-               layout(align = 16) float                  e;        //   e takes offsets 64-67
-               layout(align = 2)   double                f;        //   f takes offsets 72-79
-               layout(align = 6)   double                g;        //   ERROR, 6 is not a power of 2
-               layout(offset = 80) float                 h;        //   h takes offsets 80-83
-               layout(align = 64) dvec3                  i;        //   i takes offsets 128-151
-               layout(offset = 153, align                = 8)
-                                   float                 j;        // j takes offsets 160-163
-           };
+The offset qualifier can only be used on block members of blocks declared with std140 or std430 layouts.
+The offset qualifier forces the qualified member to start at or after the specified integral-constant-expression,
+which will be its byte offset from the beginning of the buffer. It is a compile-time error to
+specify an offset that is smaller than the offset of the previous member in the block or that lies within the
+previous member of the block. Two blocks linked together in the same program with the same block
+name must have the exact same set of members qualified with offset and their integral-constant-expression
+values must be the same, or a link-time error results. The specified offset must be a multiple
+of the base alignment of the type of the block member it qualifies, or a compile-time error results.
+The align qualifier can only be used on blocks or block members, and only for blocks declared with
+std140 or std430 layouts. The align qualifier makes the start of each block member have a minimum
+byte alignment. It does not affect the internal layout within each member, which will still follow the
+std140 or std430 rules. The specified alignment must be a power of 2, or a compile-time error results.
+The actual alignment of a member will be the greater of the specified align alignment and the standard
+(e.g., std140) base alignment for the member's type. The actual offset of a member is computed as
+follows: If offset was declared, start with that offset, otherwise start with the next available offset. If the
+resulting offset is not a multiple of the actual alignment, increase it to the first offset that is a multiple of
+the actual alignment. This results in the actual offset the member will have.
+When align is applied to an array, it effects only the start of the array, not the array's internal stride. Both
+an offset and an align qualifier can be specified on a declaration.
+The align qualifier, when used on a block, has the same effect as qualifying each member with the same
+align value as declared on the block, and gets the same compile-time results and errors as if this had been
+done. As described in general earlier, an individual member can specify its own align, which overrides
+the block-level align, but just for that member.
+Examples:
+   layout(std140) uniform block {
+                           vec4                  a;        //   a takes offsets 0-15
+       layout(offset = 20) vec3                  b;        //   b takes offsets 32-43
+       layout(offset = 40) vec2                  c;        //   ERROR, lies within previous member
+       layout(offset = 48) vec2                  d;        //   d takes offsets 48-55
+       layout(align = 16) float                  e;        //   e takes offsets 64-67
+       layout(align = 2)   double                f;        //   f takes offsets 72-79
+       layout(align = 6)   double                g;        //   ERROR, 6 is not a power of 2
+       layout(offset = 80) float                 h;        //   h takes offsets 80-83
+       layout(align = 64) dvec3                  i;        //   i takes offsets 128-151
+       layout(offset = 153, align                = 8)
+                           float                 j;        // j takes offsets 160-163
+   };
 
 4.4.6   Opaque-Uniform Layout Qualifiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Uniform layout qualifiers can be used to bind opaque uniform variables to specific buffers or units.
-        Texture image units can be bound to samplers, image units can be bound to images, and atomic counters
-        can be bound to buffers.
-        Details for specific to image formats and atomic counter bindings are given in the subsections below.
+Uniform layout qualifiers can be used to bind opaque uniform variables to specific buffers or units.
+Texture image units can be bound to samplers, image units can be bound to images, and atomic counters
+can be bound to buffers.
+Details for specific to image formats and atomic counter bindings are given in the subsections below.
 
-       Image and sampler types both take the uniform layout qualifier identifier for binding:
-             layout-qualifier-id
-                  binding = integer-constant-expression
-       The identifier binding specifies which unit will be bound. Any uniform sampler or image variable
-       declared without a binding qualifier is initially bound to unit zero. After a program is linked, the unit
-       referenced by a sampler or image uniform variable declared with or without a binding identifier can be
-       updated by the OpenGL API.
-       If the binding identifier is used with an array, the first element of the array takes the specified unit and
-       each subsequent element takes the next consecutive unit.
-       If the binding is less than zero, or greater than or equal to the implementation-dependent maximum
-       supported number of units, a compile-time error will occur. When the binding identifier is used with an
-       array of size N, all elements of the array from binding through binding + N - 1 must be within this range.
-       A link-time error will result if two compilation units in a program specify different integer-constant-expression
-       bindings for the same opaque-uniform name. However, it is not an error to specify a binding
-       on some but not all declarations for the same name, as shown in the examples below.
-          // in one compilation unit...
-          layout(binding=3) uniform sampler2D s; // s bound to unit 3
+Image and sampler types both take the uniform layout qualifier identifier for binding:
+     layout-qualifier-id
+          binding = integer-constant-expression
+The identifier binding specifies which unit will be bound. Any uniform sampler or image variable
+declared without a binding qualifier is initially bound to unit zero. After a program is linked, the unit
+referenced by a sampler or image uniform variable declared with or without a binding identifier can be
+updated by the OpenGL API.
+If the binding identifier is used with an array, the first element of the array takes the specified unit and
+each subsequent element takes the next consecutive unit.
+If the binding is less than zero, or greater than or equal to the implementation-dependent maximum
+supported number of units, a compile-time error will occur. When the binding identifier is used with an
+array of size N, all elements of the array from binding through binding + N - 1 must be within this range.
+A link-time error will result if two compilation units in a program specify different integer-constant-expression
+bindings for the same opaque-uniform name. However, it is not an error to specify a binding
+on some but not all declarations for the same name, as shown in the examples below.
+  // in one compilation unit...
+  layout(binding=3) uniform sampler2D s; // s bound to unit 3
 
-          // in another compilation unit...
-          uniform sampler2D s;                                    // okay, s still bound at 3
+  // in another compilation unit...
+  uniform sampler2D s;                                    // okay, s still bound at 3
 
-          // in another compilation unit...
-          layout(binding=4) uniform sampler2D s; // ERROR: contradictory bindings
+  // in another compilation unit...
+  layout(binding=4) uniform sampler2D s; // ERROR: contradictory bindings
 
 4.4.6.1 Atomic Counter Layout Qualifiers
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       The atomic counter qualifiers are
-            layout-qualifier-id
-                 binding = integer-constant-expression
-                 offset = integer-constant-expression
-       For example,
-          layout (binding = 2, offset = 4) uniform atomic_uint a;
+The atomic counter qualifiers are
+    layout-qualifier-id
+         binding = integer-constant-expression
+         offset = integer-constant-expression
+For example,
+  layout (binding = 2, offset = 4) uniform atomic_uint a;
 
-       will establish that the opaque handle to the atomic counter a will be bound to atomic counter buffer
-       binding point 2 at an offset of 4 basic machine units into that buffer. The default offset for binding point 2
-       will be post incremented by 4 (the size of an atomic counter).
-       A subsequent atomic counter declaration will inherit the previous (post incremented) offset. For example,
-       a subsequent declaration of
+will establish that the opaque handle to the atomic counter a will be bound to atomic counter buffer
+binding point 2 at an offset of 4 basic machine units into that buffer. The default offset for binding point 2
+will be post incremented by 4 (the size of an atomic counter).
+A subsequent atomic counter declaration will inherit the previous (post incremented) offset. For example,
+a subsequent declaration of
 
-          layout (binding = 2) uniform atomic_uint bar;
+  layout (binding = 2) uniform atomic_uint bar;
 
-       will establish that the atomic counter bar has a binding to buffer binding point 2 at an offset of 8 basic
-       machine units into that buffer. The offset for binding point 2 will again be post-incremented by 4 (the size
-       of an atomic counter).
-       When multiple variables are listed in a layout declaration, the effect will be the same as if they were
-       declared one at a time, in order from left to right.
-       Binding points are not inherited, only offsets. Each binding point tracks its own current default offset for
-       inheritance of subsequent variables using the same binding. The initial state of compilation is that all
-       binding points have an offset of 0. The offset can be set per binding point at global scope (without
-       declaring a variable). For example,
-          layout (binding = 2, offset = 4) uniform atomic_uint;
+will establish that the atomic counter bar has a binding to buffer binding point 2 at an offset of 8 basic
+machine units into that buffer. The offset for binding point 2 will again be post-incremented by 4 (the size
+of an atomic counter).
+When multiple variables are listed in a layout declaration, the effect will be the same as if they were
+declared one at a time, in order from left to right.
+Binding points are not inherited, only offsets. Each binding point tracks its own current default offset for
+inheritance of subsequent variables using the same binding. The initial state of compilation is that all
+binding points have an offset of 0. The offset can be set per binding point at global scope (without
+declaring a variable). For example,
+  layout (binding = 2, offset = 4) uniform atomic_uint;
 
-       Establishes that the next atomic_uint declaration for binding point 2 will inherit offset 4 (but does not
-       establish a default binding):
-          layout (binding = 2) uniform atomic_uint bar; // offset is 4
-          layout (offset = 8) uniform atomic_uint bar; // error, no default binding
+Establishes that the next atomic_uint declaration for binding point 2 will inherit offset 4 (but does not
+establish a default binding):
+  layout (binding = 2) uniform atomic_uint bar; // offset is 4
+  layout (offset = 8) uniform atomic_uint bar; // error, no default binding
 
-       Atomic counters may share the same binding point, but if a binding is shared, their offsets must be either
-       explicitly or implicitly (from inheritance) unique and non overlapping.
-       Example valid uniform declarations, assuming top of shader:
-          layout    (binding=3,      offset=4) uniform atomic_uint a; // offset =                   4
-          layout    (binding=2)      uniform atomic_uint b;           // offset =                   0
-          layout    (binding=3)      uniform atomic_uint c;           // offset =                   8
-          layout    (binding=2)      uniform atomic_uint d;           // offset =                   4
+Atomic counters may share the same binding point, but if a binding is shared, their offsets must be either
+explicitly or implicitly (from inheritance) unique and non overlapping.
+Example valid uniform declarations, assuming top of shader:
+  layout    (binding=3,      offset=4) uniform atomic_uint a; // offset =                   4
+  layout    (binding=2)      uniform atomic_uint b;           // offset =                   0
+  layout    (binding=3)      uniform atomic_uint c;           // offset =                   8
+  layout    (binding=2)      uniform atomic_uint d;           // offset =                   4
 
-       Example of an invalid uniform declaration:
-          layout (offset=4) …               //                error, must include binding
-          layout (binding=1, offset=0) … a; //                okay
-          layout (binding=2, offset=0) … b; //                okay
-          layout (binding=1, offset=0) … c; //                error, offsets must not be shared
-                                            //                       between a and c
-          layout (binding=1, offset=2) … d; //                error, overlaps offset 0 of a
+Example of an invalid uniform declaration:
+  layout (offset=4) …               //                error, must include binding
+  layout (binding=1, offset=0) … a; //                okay
+  layout (binding=2, offset=0) … b; //                okay
+  layout (binding=1, offset=0) … c; //                error, offsets must not be shared
+                                    //                       between a and c
+  layout (binding=1, offset=2) … d; //                error, overlaps offset 0 of a
 
-       It is a compile-time error to bind an atomic counter with a binding value greater than or equal to
-       gl_MaxAtomicCounterBindings.
+It is a compile-time error to bind an atomic counter with a binding value greater than or equal to
+gl_MaxAtomicCounterBindings.
 
 4.4.6.2 Format Layout Qualifiers
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-       Format layout qualifiers can be used on image variable declarations (those declared with a basic type
-       having “image” in its keyword). The format layout qualifier identifiers for image variable declarations
-       are
-            layout-qualifier-id
-                 float-image-format-qualifier
+Format layout qualifiers can be used on image variable declarations (those declared with a basic type
+having “image” in its keyword). The format layout qualifier identifiers for image variable declarations
+are
+    layout-qualifier-id
+         float-image-format-qualifier
 
      int-image-format-qualifier
      uint-image-format-qualifier
@@ -3580,317 +3622,326 @@ uint-image-format-qualifier
       r16ui
       r8ui
 
-      A format layout qualifier specifies the image format associated with a declared image variable. Only one
-      format qualifier may be specified for any image variable declaration. For image variables with floating-point
-      component types (keywords starting with “image”), signed integer component types (keywords
-      starting with “iimage”), or unsigned integer component types (keywords starting with “uimage”), the
-      format qualifier used must match the float-image-format-qualifier, int-image-format-qualifier, or uint-
-      image-format-qualifier grammar rules, respectively. It is a compile-time error to declare an image
-      variable where the format qualifier does not match the image variable type.
-      Any image variable used for image loads or atomic operations must specify a format layout qualifier; it is
-      a compile-time error to pass an image uniform variable or function parameter declared without a format
-      layout qualifier to an image load or atomic function.
-      The binding identifier was described in section 4.4.5 “Uniform and Shader Storage Block Layout
-      Qualifiers”.
-      Uniforms not qualified with writeonly must have a format layout qualifier. Note that an image variable
-      passed to a function for read access cannot be declared as writeonly and hence must have been declared
-      with a format layout qualifier.
+A format layout qualifier specifies the image format associated with a declared image variable. Only one
+format qualifier may be specified for any image variable declaration. For image variables with floating-point
+component types (keywords starting with “image”), signed integer component types (keywords
+starting with “iimage”), or unsigned integer component types (keywords starting with “uimage”), the
+format qualifier used must match the float-image-format-qualifier, int-image-format-qualifier, or uint-
+image-format-qualifier grammar rules, respectively. It is a compile-time error to declare an image
+variable where the format qualifier does not match the image variable type.
+Any image variable used for image loads or atomic operations must specify a format layout qualifier; it is
+a compile-time error to pass an image uniform variable or function parameter declared without a format
+layout qualifier to an image load or atomic function.
+The binding identifier was described in section 4.4.5 “Uniform and Shader Storage Block Layout
+Qualifiers”.
+Uniforms not qualified with writeonly must have a format layout qualifier. Note that an image variable
+passed to a function for read access cannot be declared as writeonly and hence must have been declared
+with a format layout qualifier.
 
 4.5   Interpolation Qualifiers
 ---------------------------------------------------------------
 
-      Inputs and outputs that could be interpolated can be further qualified by at most one of the following
-      interpolation qualifiers:
+Inputs and outputs that could be interpolated can be further qualified by at most one of the following
+interpolation qualifiers:
 
-             Qualifier                    Meaning
-             smooth                       perspective correct interpolation
-             flat                         no interpolation
-             noperspective                linear interpolation
++---------------+-----------------------------------+
+|   Qualifier   |              Meaning              |
++===============+===================================+
+| smooth        | perspective correct interpolation |
++---------------+-----------------------------------+
+| flat          | no interpolation                  |
++---------------+-----------------------------------+
+| noperspective | linear interpolation              |
++---------------+-----------------------------------+
 
+The presence of and type of interpolation is controlled by the above interpolation qualifiers as well as the
+auxiliary storage qualifiers centroid and sample. The auxiliary storage qualifier patch is not used for
+interpolation; it is a compile-time error to use interpolation qualifiers with patch.
+A variable qualified as flat will not be interpolated. Instead, it will have the same value for every
+fragment within a triangle. This value will come from a single provoking vertex, as described by the
+OpenGL Graphics System Specification. A variable may be qualified as flat can also be qualified as
+centroid or sample, which will mean the same thing as qualifying it only as flat.
+A variable qualified as smooth will be interpolated in a perspective-correct manner over the primitive
+being rendered. Interpolation in a perspective correct manner is specified in equation 14.7 in the OpenGL
+Graphics System Specification, section 14.5 “Line Segments”.
+A variable qualified as noperspective must be interpolated linearly in screen space, as described in
+equation 3.7 in the OpenGL Graphics System Specification, section 3.5 “Line Segments”.
+When multi-sample rasterization is disabled, or for fragment shader input variables qualified with neither
+centroid nor sample, the value of the assigned variable may be interpolated anywhere within the pixel
+and a single value may be assigned to each sample within the pixel, to the extent permitted by the
+OpenGL Graphics System Specification.
 
-      The presence of and type of interpolation is controlled by the above interpolation qualifiers as well as the
-      auxiliary storage qualifiers centroid and sample. The auxiliary storage qualifier patch is not used for
-      interpolation; it is a compile-time error to use interpolation qualifiers with patch.
-      A variable qualified as flat will not be interpolated. Instead, it will have the same value for every
-      fragment within a triangle. This value will come from a single provoking vertex, as described by the
-      OpenGL Graphics System Specification. A variable may be qualified as flat can also be qualified as
-      centroid or sample, which will mean the same thing as qualifying it only as flat.
-      A variable qualified as smooth will be interpolated in a perspective-correct manner over the primitive
-      being rendered. Interpolation in a perspective correct manner is specified in equation 14.7 in the OpenGL
-      Graphics System Specification, section 14.5 “Line Segments”.
-      A variable qualified as noperspective must be interpolated linearly in screen space, as described in
-      equation 3.7 in the OpenGL Graphics System Specification, section 3.5 “Line Segments”.
-      When multi-sample rasterization is disabled, or for fragment shader input variables qualified with neither
-      centroid nor sample, the value of the assigned variable may be interpolated anywhere within the pixel
-      and a single value may be assigned to each sample within the pixel, to the extent permitted by the
-      OpenGL Graphics System Specification.
-
-        When multisample rasterization is enabled, centroid and sample may be used to control the location and
-        frequency of the sampling of the qualified fragment shader input. If a fragment shader input is qualified
-        with centroid, a single value may be assigned to that variable for all samples in the pixel, but that value
-        must be interpolated to a location that lies in both the pixel and in the primitive being rendered, including
-        any of the pixel's samples covered by the primitive. Because the location at which the variable is
-        interpolated may be different in neighboring pixels, and derivatives may be computed by computing
-        differences between neighboring pixels, derivatives of centroid-sampled inputs may be less accurate than
-        those for non-centroid interpolated variables. If a fragment shader input is qualified with sample, a
-        separate value must be assigned to that variable for each covered sample in the pixel, and that value must
-        be sampled at the location of the individual sample.
-        It is a link-time error if, within the same stage, the interpolation qualifiers of variables of the same name
-        do not match.
+When multisample rasterization is enabled, centroid and sample may be used to control the location and
+frequency of the sampling of the qualified fragment shader input. If a fragment shader input is qualified
+with centroid, a single value may be assigned to that variable for all samples in the pixel, but that value
+must be interpolated to a location that lies in both the pixel and in the primitive being rendered, including
+any of the pixel's samples covered by the primitive. Because the location at which the variable is
+interpolated may be different in neighboring pixels, and derivatives may be computed by computing
+differences between neighboring pixels, derivatives of centroid-sampled inputs may be less accurate than
+those for non-centroid interpolated variables. If a fragment shader input is qualified with sample, a
+separate value must be assigned to that variable for each covered sample in the pixel, and that value must
+be sampled at the location of the individual sample.
+It is a link-time error if, within the same stage, the interpolation qualifiers of variables of the same name
+do not match.
 
 4.5.1   Redeclaring Built-in Interpolation Variables in the Compatibility Profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The following predeclared variables can be redeclared with an interpolation qualifier when using the
-        compatibility profile:
-        Vertex, tessellation control, tessellation evaluation, and geometry languages:
-           gl_FrontColor
-           gl_BackColor
-           gl_FrontSecondaryColor
-           gl_BackSecondaryColor
+The following predeclared variables can be redeclared with an interpolation qualifier when using the
+compatibility profile:
+Vertex, tessellation control, tessellation evaluation, and geometry languages:
+   gl_FrontColor
+   gl_BackColor
+   gl_FrontSecondaryColor
+   gl_BackSecondaryColor
 
-        Fragment language:
-           gl_Color
-           gl_SecondaryColor
+Fragment language:
+   gl_Color
+   gl_SecondaryColor
 
-        For example,
-           in vec4 gl_Color;                          //   predeclared by the fragment language
-           flat in vec4 gl_Color;                     //   redeclared by user to be flat
-           flat in vec4 gl_FrontColor;                //   input to geometry shader, no “gl_in[]”
-           flat out vec4 gl_FrontColor;               //   output from geometry shader
+For example,
+   in vec4 gl_Color;                          //   predeclared by the fragment language
+   flat in vec4 gl_Color;                     //   redeclared by user to be flat
+   flat in vec4 gl_FrontColor;                //   input to geometry shader, no “gl_in[]”
+   flat out vec4 gl_FrontColor;               //   output from geometry shader
 
-        Ideally, these are redeclared as part of the redeclaration of an interface block, as described in section 7.1.1
-        “Compatibility Profile Built-In Language Variables”. However, for the above purpose, they can be
-        redeclared as individual variables at global scope, outside an interface block. Such redeclarations also
-        allow adding the transform-feedback qualifiers xfb_buffer, xfb_stride, and xfb_offset to output
-        variables. (Using xfb_buffer on a variable does not change the global default buffer.) A compile-time
-        error will result if a shader has both an interface block redeclaration and a separate redeclaration of a
-        member of that interface block outside the interface block redeclaration.
-        If gl_Color is redeclared with an interpolation qualifier, then gl_FrontColor and gl_BackColor (if they
-        are written to) must also be redeclared with the same interpolation qualifier, and vice versa. If
-        gl_SecondaryColor is redeclared with an interpolation qualifier, then gl_FrontSecondaryColor and
-        gl_BackSecondaryColor (if they are written to) must also be redeclared with the same interpolation
-        qualifier, and vice versa. This qualifier matching on predeclared variables is only required for variables
-        that are statically used within the shaders in a program.
+Ideally, these are redeclared as part of the redeclaration of an interface block, as described in section 7.1.1
+“Compatibility Profile Built-In Language Variables”. However, for the above purpose, they can be
+redeclared as individual variables at global scope, outside an interface block. Such redeclarations also
+allow adding the transform-feedback qualifiers xfb_buffer, xfb_stride, and xfb_offset to output
+variables. (Using xfb_buffer on a variable does not change the global default buffer.) A compile-time
+error will result if a shader has both an interface block redeclaration and a separate redeclaration of a
+member of that interface block outside the interface block redeclaration.
+If gl_Color is redeclared with an interpolation qualifier, then gl_FrontColor and gl_BackColor (if they
+are written to) must also be redeclared with the same interpolation qualifier, and vice versa. If
+gl_SecondaryColor is redeclared with an interpolation qualifier, then gl_FrontSecondaryColor and
+gl_BackSecondaryColor (if they are written to) must also be redeclared with the same interpolation
+qualifier, and vice versa. This qualifier matching on predeclared variables is only required for variables
+that are statically used within the shaders in a program.
 
 4.6     Parameter Qualifiers
 ---------------------------------------------------------------
 
-        In addition to precision qualifiers and memory qualifiers, parameters can have these parameter qualifiers.
+In addition to precision qualifiers and memory qualifiers, parameters can have these parameter qualifiers.
 
++-------------------+----------------------------------------------------------------------------+
+|     Qualifier     |                                  Meaning                                   |
++===================+============================================================================+
+| < none: default > | same is in                                                                 |
++-------------------+----------------------------------------------------------------------------+
+| const             | for function parameters that cannot be written to                          |
++-------------------+----------------------------------------------------------------------------+
+| in                | for function parameters passed into a function                             |
++-------------------+----------------------------------------------------------------------------+
+| out               | for function parameters passed back out of a function, but not initialized |
+|                   | for use when passed in                                                     |
++-------------------+----------------------------------------------------------------------------+
+| inout             | for function parameters passed both into and out of a function             |
++-------------------+----------------------------------------------------------------------------+
 
-                 Qualifier             Meaning
-                 < none: default >     same is in
-                 const                 for function parameters that cannot be written to
-                 in                    for function parameters passed into a function
-                 out                   for function parameters passed back out of a function, but not initialized
-                                       for use when passed in
-                 inout                 for function parameters passed both into and out of a function
-
-
-        Parameter qualifiers are discussed in more detail in section 6.1.1 “Function Calling Conventions”.
+Parameter qualifiers are discussed in more detail in section 6.1.1 “Function Calling Conventions”.
 
 4.7     Precision and Precision Qualifiers
 ---------------------------------------------------------------
 
-        Precision qualifiers are added for code portability with OpenGL ES, not for functionality. They have the
-        same syntax as in OpenGL ES, as described below, but they have no semantic meaning, which includes no
-        effect on the precision used to store or operate on variables.
-        If an extension adds in the same semantics and functionality in the OpenGL ES 2.0 specification for
-        precision qualifiers, then the extension is allowed to reuse the keywords below for that purpose.
-        For the purposes of determining if an output from one shader stage matches an input of the next stage, the
-        precision qualifier need not match.
+Precision qualifiers are added for code portability with OpenGL ES, not for functionality. They have the
+same syntax as in OpenGL ES, as described below, but they have no semantic meaning, which includes no
+effect on the precision used to store or operate on variables.
+If an extension adds in the same semantics and functionality in the OpenGL ES 2.0 specification for
+precision qualifiers, then the extension is allowed to reuse the keywords below for that purpose.
+For the purposes of determining if an output from one shader stage matches an input of the next stage, the
+precision qualifier need not match.
 
 4.7.1   Range and Precision
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The precision of stored single- and double-precision floating-point variables is defined by the IEEE 754
-        standard for 32-bit and 64-bit floating-point numbers. This includes support for NaNs (Not a Number)
-        and Infs (positive or negative infinities).
-        The following rules apply to both single and double-precision operations: Infinities and zeros are
-        generated as dictated by IEEE, but subject to the precisions allowed in the following table and subject to
-        allowing positive and negative zeros to be interchanged. However, dividing a non-zero by 0 results in the
-        appropriately signed IEEE Inf: If both positive and negative zeros are implemented, the correctly signed
-        Inf will be generated, otherwise positive Inf is generated. Any denormalized value input into a shader or
-        potentially generated by any operation in a shader can be flushed to 0. The rounding mode cannot be set
-        and is undefined. NaNs are not required to be generated. Support for signaling NaNs is not required and
-        exceptions are never raised. Operations and built-in functions that operate on a NaN are not required to
-        return a NaN as the result.
+The precision of stored single- and double-precision floating-point variables is defined by the IEEE 754
+standard for 32-bit and 64-bit floating-point numbers. This includes support for NaNs (Not a Number)
+and Infs (positive or negative infinities).
+The following rules apply to both single and double-precision operations: Infinities and zeros are
+generated as dictated by IEEE, but subject to the precisions allowed in the following table and subject to
+allowing positive and negative zeros to be interchanged. However, dividing a non-zero by 0 results in the
+appropriately signed IEEE Inf: If both positive and negative zeros are implemented, the correctly signed
+Inf will be generated, otherwise positive Inf is generated. Any denormalized value input into a shader or
+potentially generated by any operation in a shader can be flushed to 0. The rounding mode cannot be set
+and is undefined. NaNs are not required to be generated. Support for signaling NaNs is not required and
+exceptions are never raised. Operations and built-in functions that operate on a NaN are not required to
+return a NaN as the result.
 
-        Precisions are expressed in terms of maximum relative error in units of ULP (units in the last place),
-        unless otherwise noted.
-        For single precision operations, precisions are required as follows:
+Precisions are expressed in terms of maximum relative error in units of ULP (units in the last place),
+unless otherwise noted.
+For single precision operations, precisions are required as follows:
 
-              Operation                          Precision
-              a + b, a – b, a * b                Correctly rounded.
-              <, <=, ==, >, >=                   Correct result.
-              a / b,    1.0 / b                  2.5 ULP for b in the range [2-126, 2126].
-              a*b+c                              Correctly rounded single operation or sequence of
-                                                 two correctly rounded operations.
-              fma()                              Inherited from a * b + c.
-              pow(x, y)                          Inherited from exp2 (x * log2 (y)).
-              exp (x), exp2 (x)                  (3 + 2 * |x|) ULP.
-              log (), log2 ()                    3 ULP outside the range [0.5, 2.0].
-                                                 Absolute error < 2-21 inside the range [0.5, 2.0].
-              sqrt ()                            Inherited from 1.0 / inversesqrt().
-              inversesqrt ()                     2 ULP.
-              implicit and explicit              Correctly rounded.
-              conversions between types
+| Operation                 | Precision                                          |
+| a + b, a – b, a * b       | Correctly rounded.                                 |
+| <, <=, ==, >, >=          | Correct result.                                    |
+| a / b,    1.0 / b         | 2.5 ULP for b in the range [2-126, 2126].          |
+| a*b+c                     | Correctly rounded single operation or sequence of  |
+|                           | two correctly rounded operations.                  |
+| fma()                     | Inherited from a * b + c.                          |
+| pow(x, y)                 | Inherited from exp2 (x * log2 (y)).                |
+| exp (x), exp2 (x)         | :math:`(3 + 2 * \left\vert{x}\right\vert)` ULP.  |
+| log (), log2 ()           | 3 ULP outside the range [0.5, 2.0].                |
+|                           | Absolute error < 2-21 inside the range [0.5, 2.0]. |
+| sqrt ()                   | Inherited from 1.0 / inversesqrt().                |
+| inversesqrt ()            | 2 ULP.                                             |
+| implicit and explicit     | Correctly rounded.                                 |
+| conversions between types |                                                    |
 
 
-        Built-in functions defined in the specification with an equation built from the above operations inherit the
-        above errors. These include, for example, the geometric functions, the common functions, and many of
-        the matrix functions. Built-in functions not listed above and not defined as equations of the above have
-        undefined precision. These include, for example, the trigonometric functions and determinant.
-        The precision of double-precision operations is at least that of single precision.
+Built-in functions defined in the specification with an equation built from the above operations inherit the
+above errors. These include, for example, the geometric functions, the common functions, and many of
+the matrix functions. Built-in functions not listed above and not defined as equations of the above have
+undefined precision. These include, for example, the trigonometric functions and determinant.
+The precision of double-precision operations is at least that of single precision.
 
 4.7.2   Precision Qualifiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Any single-precision floating-point declaration, integer declaration, or sampler declaration can have the
-        type preceded by one of these precision qualifiers:
+Any single-precision floating-point declaration, integer declaration, or sampler declaration can have the
+type preceded by one of these precision qualifiers:
 
-                 Qualifier              Meaning
-                 highp                  None.
-                 mediump                None.
-                 lowp                   None.
+         Qualifier              Meaning
+         highp                  None.
+         mediump                None.
+         lowp                   None.
 
-        For example:
-           lowp float color;
-           out mediump vec2 P;
-           lowp ivec2 foo(lowp mat3);
-           highp mat4 m;
+For example:
+   lowp float color;
+   out mediump vec2 P;
+   lowp ivec2 foo(lowp mat3);
+   highp mat4 m;
 
-        Literal constants do not have precision qualifiers. Neither do Boolean variables. Neither do floating-point
-        constructors nor integer constructors when none of the constructor arguments have precision qualifiers.
-        Precision qualifiers, as with other qualifiers, do not effect the basic type of the variable. In particular,
-        there are no constructors for precision conversions; constructors only convert types. Similarly, precision
-        qualifiers, as with other qualifiers, do not contribute to function overloading based on parameter types. As
-        discussed in the next chapter, function input and output is done through copies, and therefore qualifiers do
-        not have to match.
+Literal constants do not have precision qualifiers. Neither do Boolean variables. Neither do floating-point
+constructors nor integer constructors when none of the constructor arguments have precision qualifiers.
+Precision qualifiers, as with other qualifiers, do not effect the basic type of the variable. In particular,
+there are no constructors for precision conversions; constructors only convert types. Similarly, precision
+qualifiers, as with other qualifiers, do not contribute to function overloading based on parameter types. As
+discussed in the next chapter, function input and output is done through copies, and therefore qualifiers do
+not have to match.
 
 4.7.3   Default Precision Qualifiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The precision statement
-           precision precision-qualifier type;
+The precision statement
+   precision precision-qualifier type;
 
-        can be used to establish a default precision qualifier. The type field can be either int, or float, or any of
-        the sampler types, and the precision-qualifier can be lowp, mediump, or highp. Any other types or
-        qualifiers will result in a compile-time error. If type is float, the directive applies to non-precision-qualified
-        single-precision floating-point type (scalar, vector, and matrix) declarations. If type is int, the
-        directive applies to all non-precision-qualified integer type (scalar, vector, signed, and unsigned)
-        declarations. This includes global variable declarations, function return declarations, function parameter
-        declarations, and local variable declarations.
-        Non-precision qualified declarations will use the precision qualifier specified in the most recent precision
-        statement that is still in scope. The precision statement has the same scoping rules as variable
-        declarations. If it is declared inside a compound statement, its effect stops at the end of the innermost
-        statement it was declared in. Precision statements in nested scopes override precision statements in outer
-        scopes. Multiple precision statements for the same basic type can appear inside the same scope, with later
-        statements overriding earlier statements within that scope.
-        The vertex, tessellation, and geometry languages have the following predeclared globally scoped default
-        precision statements:
-           precision highp float;
-           precision highp int;
+can be used to establish a default precision qualifier. The type field can be either int, or float, or any of
+the sampler types, and the precision-qualifier can be lowp, mediump, or highp. Any other types or
+qualifiers will result in a compile-time error. If type is float, the directive applies to non-precision-qualified
+single-precision floating-point type (scalar, vector, and matrix) declarations. If type is int, the
+directive applies to all non-precision-qualified integer type (scalar, vector, signed, and unsigned)
+declarations. This includes global variable declarations, function return declarations, function parameter
+declarations, and local variable declarations.
+Non-precision qualified declarations will use the precision qualifier specified in the most recent precision
+statement that is still in scope. The precision statement has the same scoping rules as variable
+declarations. If it is declared inside a compound statement, its effect stops at the end of the innermost
+statement it was declared in. Precision statements in nested scopes override precision statements in outer
+scopes. Multiple precision statements for the same basic type can appear inside the same scope, with later
+statements overriding earlier statements within that scope.
+The vertex, tessellation, and geometry languages have the following predeclared globally scoped default
+precision statements:
+   precision highp float;
+   precision highp int;
 
-        The fragment language has the following predeclared globally scoped default precision statements:
-           precision mediump int;
-           precision highp float;
+The fragment language has the following predeclared globally scoped default precision statements:
+   precision mediump int;
+   precision highp float;
 
-        There are no errors for omission of a precision qualifier; so the above is just for reference of what may
-        happen in OpenGL ES versions of the shading languages.
+There are no errors for omission of a precision qualifier; so the above is just for reference of what may
+happen in OpenGL ES versions of the shading languages.
 
 4.7.4   Available Precision Qualifiers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        The built-in macro GL_FRAGMENT_PRECISION_HIGH is defined to 1:
-            #define GL_FRAGMENT_PRECISION_HIGH 1
+The built-in macro GL_FRAGMENT_PRECISION_HIGH is defined to 1:
+    #define GL_FRAGMENT_PRECISION_HIGH 1
 
-        This macro is available in the vertex, tessellation, geometry, and fragment languages.
+This macro is available in the vertex, tessellation, geometry, and fragment languages.
 
 4.8     Variance and the Invariant Qualifier
 ---------------------------------------------------------------
 
-        In this section, variance refers to the possibility of getting different values from the same expression in
-        different programs. For example, say two vertex shaders, in different programs, each set gl_Position with
-        the same expression in both shaders, and the input values into that expression are the same when both
-        shaders run. It is possible, due to independent compilation of the two shaders, that the values assigned to
-        gl_Position are not exactly the same when the two shaders run. In this example, this can cause problems
-        with alignment of geometry in a multi-pass algorithm.
-        In general, such variance between shaders is allowed. When such variance does not exist for a particular
-        output variable, that variable is said to be invariant.
+In this section, variance refers to the possibility of getting different values from the same expression in
+different programs. For example, say two vertex shaders, in different programs, each set gl_Position with
+the same expression in both shaders, and the input values into that expression are the same when both
+shaders run. It is possible, due to independent compilation of the two shaders, that the values assigned to
+gl_Position are not exactly the same when the two shaders run. In this example, this can cause problems
+with alignment of geometry in a multi-pass algorithm.
+In general, such variance between shaders is allowed. When such variance does not exist for a particular
+output variable, that variable is said to be invariant.
 
 4.8.1   The Invariant Qualifier
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        To ensure that a particular output variable is invariant, it is necessary to use the invariant qualifier. It can
-        either be used to qualify a previously declared variable as being invariant
-            invariant gl_Position;             // make existing gl_Position be invariant
+To ensure that a particular output variable is invariant, it is necessary to use the invariant qualifier. It can
+either be used to qualify a previously declared variable as being invariant
+    invariant gl_Position;             // make existing gl_Position be invariant
 
-            out vec3 Color;
-            invariant Color;                   // make existing Color be invariant
+    out vec3 Color;
+    invariant Color;                   // make existing Color be invariant
 
-        or as part of a declaration when a variable is declared
-            invariant centroid out vec3 Color;
+or as part of a declaration when a variable is declared
+    invariant centroid out vec3 Color;
 
-        Only variables output from a shader (including those that are then input to a subsequent shader) can be
-        candidates for invariance. This includes user-defined output variables and the built-in output variables.
-        As only outputs need be declared with invariant, an output from one shader stage will still match an input
-        of a subsequent stage without the input being declared as invariant.
-        Input or output instance names on blocks are not used when redeclaring built-in variables.
-        The invariant keyword can be followed by a comma separated list of previously declared identifiers. All
-        uses of invariant must be at the global scope, and before any use of the variables being declared as
-        invariant.
-        To guarantee invariance of a particular output variable across two programs, the following must also be
-        true:
-        •   The output variable is declared as invariant in both programs.
-        •   The same values must be input to all shader input variables consumed by expressions and flow control
-            contributing to the value assigned to the output variable.
-        •   The texture formats, texel values, and texture filtering are set the same way for any texture function
-            calls contributing to the value of the output variable.
-        •   All input values are all operated on in the same way. All operations in the consuming expressions and
-            any intermediate expressions must be the same, with the same order of operands and same
-            associativity, to give the same order of evaluation. Intermediate variables and functions must be
-            declared as the same type with the same explicit or implicit precision qualifiers. Any control flow
-            affecting the output value must be the same, and any expressions consumed to determine this control
-            flow must also follow these invariance rules.
-        •   All the data flow and control flow leading to setting the invariant output variable reside in a single
-            compilation unit.
-        Essentially, all the data flow and control flow leading to an invariant output must match.
-        Initially, by default, all output variables are allowed to be variant. To force all output variables to be
-        invariant, use the pragma
-            #pragma STDGL invariant(all)
+Only variables output from a shader (including those that are then input to a subsequent shader) can be
+candidates for invariance. This includes user-defined output variables and the built-in output variables.
+As only outputs need be declared with invariant, an output from one shader stage will still match an input
+of a subsequent stage without the input being declared as invariant.
+Input or output instance names on blocks are not used when redeclaring built-in variables.
+The invariant keyword can be followed by a comma separated list of previously declared identifiers. All
+uses of invariant must be at the global scope, and before any use of the variables being declared as
+invariant.
+To guarantee invariance of a particular output variable across two programs, the following must also be
+true:
+•   The output variable is declared as invariant in both programs.
+•   The same values must be input to all shader input variables consumed by expressions and flow control
+    contributing to the value assigned to the output variable.
+•   The texture formats, texel values, and texture filtering are set the same way for any texture function
+    calls contributing to the value of the output variable.
+•   All input values are all operated on in the same way. All operations in the consuming expressions and
+    any intermediate expressions must be the same, with the same order of operands and same
+    associativity, to give the same order of evaluation. Intermediate variables and functions must be
+    declared as the same type with the same explicit or implicit precision qualifiers. Any control flow
+    affecting the output value must be the same, and any expressions consumed to determine this control
+    flow must also follow these invariance rules.
+•   All the data flow and control flow leading to setting the invariant output variable reside in a single
+    compilation unit.
+Essentially, all the data flow and control flow leading to an invariant output must match.
+Initially, by default, all output variables are allowed to be variant. To force all output variables to be
+invariant, use the pragma
+    #pragma STDGL invariant(all)
 
-        before all declarations in a shader. If this pragma is used after the declaration of any variables or
-        functions, then the set of outputs that behave as invariant is undefined. It is a compile-time error to use
-        this pragma in a fragment shader.
-        Generally, invariance is ensured at the cost of flexibility in optimization, so performance can be degraded
-        by use of invariance. Hence, use of this pragma is intended as a debug aid, to avoid individually declaring
-        all output variables as invariant.
+before all declarations in a shader. If this pragma is used after the declaration of any variables or
+functions, then the set of outputs that behave as invariant is undefined. It is a compile-time error to use
+this pragma in a fragment shader.
+Generally, invariance is ensured at the cost of flexibility in optimization, so performance can be degraded
+by use of invariance. Hence, use of this pragma is intended as a debug aid, to avoid individually declaring
+all output variables as invariant.
 
 4.8.2   Invariance of Constant Expressions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Invariance must be guaranteed for constant expressions. A particular constant expression must evaluate to
-        the same result if it appears again in the same shader or a different shader. This includes the same
-        expression appearing two shaders of the same language or shaders of two different languages.
-        Constant expressions must evaluate to the same result when operated on as already described above for
-        invariant variables, whether or not the invariant qualifier is used.
+Invariance must be guaranteed for constant expressions. A particular constant expression must evaluate to
+the same result if it appears again in the same shader or a different shader. This includes the same
+expression appearing two shaders of the same language or shaders of two different languages.
+Constant expressions must evaluate to the same result when operated on as already described above for
+invariant variables, whether or not the invariant qualifier is used.
 
 4.9     The Precise Qualifier
 ---------------------------------------------------------------
 
-        Some algorithms require floating-point computations to exactly follow the order of operations specified in
-        the source code and to treat all operations consistently, even if the implementation supports optimizations
-        that could produce nearly equivalent results with higher performance. For example, many GL
-        implementations support a "multiply-add" instruction that can compute a floating-point expression such as
-            result = (a * b) + (c * d);
+Some algorithms require floating-point computations to exactly follow the order of operations specified in
+the source code and to treat all operations consistently, even if the implementation supports optimizations
+that could produce nearly equivalent results with higher performance. For example, many GL
+implementations support a "multiply-add" instruction that can compute a floating-point expression such as
+    result = (a * b) + (c * d);
 
-        in two operations instead of three operations; one multiply and one multiply-add instead of two multiplies
-        and one add. The result of a floating-point multiply-add might not always be identical to first doing a
-        multiply yielding a floating-point result and then doing a floating-point add. Hence, in this example, the
-        two multiply operations would not be treated consistently; the two multiplies could effectively appear to
-        have differing precisions.
+in two operations instead of three operations; one multiply and one multiply-add instead of two multiplies
+and one add. The result of a floating-point multiply-add might not always be identical to first doing a
+multiply yielding a floating-point result and then doing a floating-point add. Hence, in this example, the
+two multiply operations would not be treated consistently; the two multiplies could effectively appear to
+have differing precisions.
 
  The key computation that needs to be made consistent appears when tessellating, where intermediate
  points for subdivision are synthesized in different directions, yet need to yield the same result, as shown in
