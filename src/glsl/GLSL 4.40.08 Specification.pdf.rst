@@ -3772,22 +3772,34 @@ Precisions are expressed in terms of maximum relative error in units of ULP (uni
 unless otherwise noted.
 For single precision operations, precisions are required as follows:
 
-| Operation                 | Precision                                          |
-| a + b, a – b, a * b       | Correctly rounded.                                 |
-| <, <=, ==, >, >=          | Correct result.                                    |
-| a / b,    1.0 / b         | 2.5 ULP for b in the range [2-126, 2126].          |
-| a*b+c                     | Correctly rounded single operation or sequence of  |
-|                           | two correctly rounded operations.                  |
-| fma()                     | Inherited from a * b + c.                          |
-| pow(x, y)                 | Inherited from exp2 (x * log2 (y)).                |
-| exp (x), exp2 (x)         | :math:`(3 + 2 * \left\vert{x}\right\vert)` ULP.  |
-| log (), log2 ()           | 3 ULP outside the range [0.5, 2.0].                |
-|                           | Absolute error < 2-21 inside the range [0.5, 2.0]. |
-| sqrt ()                   | Inherited from 1.0 / inversesqrt().                |
-| inversesqrt ()            | 2 ULP.                                             |
-| implicit and explicit     | Correctly rounded.                                 |
-| conversions between types |                                                    |
-
++---------------------------+-------------------------------------------------------------+
+|         Operation         |                          Precision                          |
++===========================+=============================================================+
+| a + b, a – b, a * b       | Correctly rounded.                                          |
++---------------------------+-------------------------------------------------------------+
+| <, <=, ==, >, >=          | Correct result.                                             |
++---------------------------+-------------------------------------------------------------+
+| a / b,    1.0 / b         | 2.5 ULP for b in the range [2\ :sup:`-126`, 2\ :sup:`126`]. |
++---------------------------+-------------------------------------------------------------+
+| a*b+c                     | Correctly rounded single operation or sequence of           |
+|                           | two correctly rounded operations.                           |
++---------------------------+-------------------------------------------------------------+
+| fma()                     | Inherited from a * b + c.                                   |
++---------------------------+-------------------------------------------------------------+
+| pow(x, y)                 | Inherited from exp2 (x * log2 (y)).                         |
++---------------------------+-------------------------------------------------------------+
+| exp (x), exp2 (x)         | (3 + 2 * \|x\|) ULP.                                        |
++---------------------------+-------------------------------------------------------------+
+| log (), log2 ()           | 3 ULP outside the range [0.5, 2.0].                         |
+|                           | Absolute error < 2\ :sup:`-21` inside the range [0.5, 2.0]. |
++---------------------------+-------------------------------------------------------------+
+| sqrt ()                   | Inherited from 1.0 / inversesqrt().                         |
++---------------------------+-------------------------------------------------------------+
+| inversesqrt ()            | 2 ULP.                                                      |
++---------------------------+-------------------------------------------------------------+
+| implicit and explicit     | Correctly rounded.                                          |
+| conversions between types |                                                             |
++---------------------------+-------------------------------------------------------------+
 
 Built-in functions defined in the specification with an equation built from the above operations inherit the
 above errors. These include, for example, the geometric functions, the common functions, and many of
@@ -3801,10 +3813,15 @@ The precision of double-precision operations is at least that of single precisio
 Any single-precision floating-point declaration, integer declaration, or sampler declaration can have the
 type preceded by one of these precision qualifiers:
 
-         Qualifier              Meaning
-         highp                  None.
-         mediump                None.
-         lowp                   None.
++-----------+---------+
+| Qualifier | Meaning |
++===========+=========+
+| highp     | None.   |
++-----------+---------+
+| mediump   | None.   |
++-----------+---------+
+| lowp      | None.   |
++-----------+---------+
 
 For example:
    lowp float color;
@@ -4047,19 +4064,25 @@ but that are eventually consumed outside the function by an variable qualified a
        Variables declared as image types (the basic opaque types with “image” in their keyword) can be further
        qualified with one or more of the following memory qualifiers:
 
-       Qualifier                   Meaning
-       coherent                    memory variable where reads and writes are coherent with reads and
-                                   writes from other shader invocations
-       volatile                    memory variable whose underlying value may be changed at any point
-                                   during shader execution by some source other than the current shader
-                                   invocation
-       restrict                    memory variable where use of that variable is the only way to read
-                                   and write the underlying memory in the relevant shader stage
-       readonly                    memory variable that can be used to read the underlying memory, but
-                                   cannot be used to write the underlying memory
-       writeonly                   memory variable that can be used to write the underlying memory, but
-                                   cannot be used to read the underlying memory
-
++-----------+----------------------------------------------------------------------+
+| Qualifier |                               Meaning                                |
++===========+======================================================================+
+| coherent  | memory variable where reads and writes are coherent with reads and   |
+|           | writes from other shader invocations                                 |
++-----------+----------------------------------------------------------------------+
+| volatile  | memory variable whose underlying value may be changed at any point   |
+|           | during shader execution by some source other than the current shader |
+|           | invocation                                                           |
++-----------+----------------------------------------------------------------------+
+| restrict  | memory variable where use of that variable is the only way to read   |
+|           | and write the underlying memory in the relevant shader stage         |
++-----------+----------------------------------------------------------------------+
+| readonly  | memory variable that can be used to read the underlying memory, but  |
+|           | cannot be used to write the underlying memory                        |
++-----------+----------------------------------------------------------------------+
+| writeonly | memory variable that can be used to write the underlying memory, but |
+|           | cannot be used to read the underlying memory                         |
++-----------+----------------------------------------------------------------------+
 
 Memory accesses to image variables declared using the coherent qualifier are performed coherently with
 similar accesses from other shader invocations. In particular, when reading a variable declared as
@@ -4161,33 +4184,51 @@ parameter, but not to have fewer.
 
       The OpenGL Shading Language has the following operators.
 
-            Precedence       Operator Class                              Operators            Associativity
-             1 (highest)     parenthetical grouping                        ()                     NA
-                             array subscript                               []                 Left to Right
-                             function call and constructor structure       ()
-                             field or method selector, swizzle             .
-             2               post fix increment and decrement              ++ --
-                             prefix increment and decrement                ++ --              Right to Left
-             3               unary                                         + - ~ !
-             4               multiplicative                                * /       %        Left to Right
-             5               additive                                      + -                Left to Right
-             6               bit-wise shift                                <<     >>          Left to Right
-             7               relational                                    <     >   <= >=    Left to Right
-             8               equality                                      == !=              Left to Right
-             9               bit-wise and                                  &                  Left to Right
-            10               bit-wise exclusive or                         ^                  Left to Right
-            11               bit-wise inclusive or                         |                  Left to Right
-            12               logical and                                   &&                 Left to Right
-            13               logical exclusive or                          ^^                 Left to Right
-            14               logical inclusive or                          ||                 Left to Right
-            15               selection                                     ?:                 Right to Left
-                             Assignment                                    =          Right to Left
-                             arithmetic assignments                        += -=
-                                                                           *= /=
-                                                                           %= <<= >>=
-            16                                                             &= ^= |=
-            17 (lowest)      sequence                                      ,                  Left to Right
-
++-------------+-----------------------------------------+------------+---------------+
+|  Precedence |              Operator Class             | Operators  | Associativity |
++=============+=========================================+============+===============+
+| 1 (highest) | parenthetical grouping                  | ()         | NA            |
++-------------+-----------------------------------------+------------+---------------+
+|             | array subscript                         | []         | Left to Right |
+|             | function call and constructor structure | ()         |               |
+|             | field or method selector, swizzle       | .          |               |
+| 2           | post fix increment and decrement        | ++ --      |               |
++-------------+-----------------------------------------+------------+---------------+
+|             | prefix increment and decrement          | ++ --      | Right to Left |
+| 3           | unary                                   | + - ~ !    |               |
++-------------+-----------------------------------------+------------+---------------+
+| 4           | multiplicative                          | \* / %     | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 5           | additive                                | \+ -       | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 6           | bit-wise shift                          | << >>      | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 7           | relational                              | < > <= >=  | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 8           | equality                                | == !=      | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 9           | bit-wise and                            | &          | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 10          | bit-wise exclusive or                   | ^          | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 11          | bit-wise inclusive or                   | —          | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 12          | logical and                             | &&         | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 13          | logical exclusive or                    | ^^         | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 14          | logical inclusive or                    | ||         | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
+| 15          | selection                               | ? :        | Right to Left |
++-------------+-----------------------------------------+------------+---------------+
+|             | Assignment                              | =          | Right to Left |
+|             | arithmetic assignments                  | += -=      |               |
+|             |                                         | \*= /=     |               |
+|             |                                         | %= <<= >>= |               |
+| 16          |                                         | &= ^= \|=  |               |
++-------------+-----------------------------------------+------------+---------------+
+| 17 (lowest) | sequence                                | ,          | Left to Right |
++-------------+-----------------------------------------+------------+---------------+
 
       There is no address-of operator nor a dereference operator. There is no typecast operator; constructors
       are used instead.
@@ -4399,9 +4440,13 @@ That is, result[i][j] is set to the float argument for all i = j and set to 0 fo
         name with period ( . ) and then the component name.
         The component names supported are:
 
-              {x, y, z, w}        Useful when accessing vectors that represent points or normals
-              {r, g, b, a}              Useful when accessing vectors that represent colors
-              {s, t, p, q}       Useful when accessing vectors that represent texture coordinates
++--------------+------------------------------------------------------------------+
+| {x, y, z, w} | Useful when accessing vectors that represent points or normals   |
++--------------+------------------------------------------------------------------+
+| {r, g, b, a} | Useful when accessing vectors that represent colors              |
++--------------+------------------------------------------------------------------+
+| {s, t, p, q} | Useful when accessing vectors that represent texture coordinates |
++--------------+------------------------------------------------------------------+
 
 The component names x, r, and s are, for example, synonyms for the same (first) component in a vector.
 They are also the names of the only component in a scalar.
@@ -4498,11 +4543,15 @@ specified.
 
       In total, only the following operators are allowed to operate on arrays and structures as whole entities:
 
-           field selector                 .
-           equality                       == !=
-           assignment                     =
-           indexing (arrays only)         []
-
++------------------------+-------+
+| field selector         |   .   |
++------------------------+-------+
+| equality               | == != |
++------------------------+-------+
+| assignment             | =     |
++------------------------+-------+
+| indexing (arrays only) | []    |
++------------------------+-------+
 
       The equality operators and assignment operator are only allowed if the two operands are same size and
       type. Structure types must be of the same declared structure. Both array operands must be explicitly
@@ -5348,13 +5397,21 @@ the value layer*6+face will render to face face of the cube defined in layer lay
 defined in Table 9.3 of section 9.4.9 “Layered Framebuffers” of the OpenGL Graphics System
 Specification, but repeated below for clarity.
 
-               Face Value                      Resulting Target
-                     0             TEXTURE_CUBE_MAP_POSITIVE_X
-                     1             TEXTURE_CUBE_MAP_NEGATIVE_X
-                     2             TEXTURE_CUBE_MAP_POSITIVE_Y
-                     3             TEXTURE_CUBE_MAP_NEGATIVE_Y
-                     4             TEXTURE_CUBE_MAP_POSITIVE_Z
-                     5             TEXTURE_CUBE_MAP_NEGATIVE_Z
++------------+-----------------------------+
+| Face Value |       Resulting Target      |
++============+=============================+
+|          0 | TEXTURE_CUBE_MAP_POSITIVE_X |
++------------+-----------------------------+
+|          1 | TEXTURE_CUBE_MAP_NEGATIVE_X |
++------------+-----------------------------+
+|          2 | TEXTURE_CUBE_MAP_POSITIVE_Y |
++------------+-----------------------------+
+|          3 | TEXTURE_CUBE_MAP_NEGATIVE_Y |
++------------+-----------------------------+
+|          4 | TEXTURE_CUBE_MAP_POSITIVE_Z |
++------------+-----------------------------+
+|          5 | TEXTURE_CUBE_MAP_NEGATIVE_Z |
++------------+-----------------------------+
 
 For example, to render to the positive y cube map face located in the 5th layer of the cube map array,
 gl_Layer should be set to 5*6+2.
@@ -5956,71 +6013,51 @@ uniform gl_FogParameters gl_Fog;
       functions result in a divide by zero error. If the divisor of a ratio is 0, then results will be undefined.
       These all operate component-wise. The description is per component.
 
-       Syntax                                          Description
-       genType radians (genType degrees)                                                     
-                                                       Converts degrees to radians, i.e.,       ⋅degrees
-                                                                                            180
-
-
-       genType degrees (genType radians)                                                    180
-                                                       Converts radians to degrees, i.e.,       ⋅radians
-                                                                                             
-
-
-       genType sin (genType angle)                     The standard trigonometric sine function.
-
-
-       genType cos (genType angle)                     The standard trigonometric cosine function.
-
-
-       genType tan (genType angle)                     The standard trigonometric tangent.
-
-
-       genType asin (genType x)                        Arc sine. Returns an angle whose sine is x. The range
-
-                                                                                               [ 
-                                                       of values returned by this function is − ,
-                                                                                                 2 2    ]
-                                                       Results are undefined if ∣x∣1.
-
-
-       genType acos (genType x)                        Arc cosine. Returns an angle whose cosine is x. The
-                                                       range of values returned by this function is [0, p].
-                                                       Results are undefined if ∣x∣1.
-
-
-       genType atan (genType y, genType x)             Arc tangent. Returns an angle whose tangent is y/x. The
-                                                       signs of x and y are used to determine what quadrant the
-                                                       angle is in. The range of values returned by this
-                                                       function is [− , ]. Results are undefined if x and
-                                                       y are both 0.
-
-
-       genType atan (genType y_over_x)                 Arc tangent. Returns an angle whose tangent is
-                                                       y_over_x. The range of values returned by this function
-
-                                                            [
-                                                       is − ,
-                                                               
-                                                              2 2    ].
-
-Syntax                        Description
-genType sinh (genType x)      Returns the hyperbolic sine function
-                                 x   −x
-                                e −e
-                                   2
-genType cosh (genType x)      Returns the hyperbolic cosine function
-                                 x   −x
-                                e e
-                                   2
-genType tanh (genType x)      Returns the hyperbolic tangent function
-                                sinh x
-                                cosh  x
-genType asinh (genType x)     Arc hyperbolic sine; returns the inverse of sinh.
-genType acosh (genType x)     Arc hyperbolic cosine; returns the non-negative inverse
-                              of cosh. Results are undefined if x < 1.
-genType atanh (genType x)     Arc hyperbolic tangent; returns the inverse of tanh.
-                              Results are undefined if ∣x∣≥1.
++-------------------------------------+-----------------------------------------------------------------------------------------+
+|                Syntax               |                                       Description                                       |
++=====================================+=========================================================================================+
+| genType radians (genType degrees)   | Converts degrees to radians, i.e., :math:`\frac{\pi}{180}⋅degrees`                      |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType degrees (genType radians)   | Converts degrees to radians, i.e., :math:`\frac{180}{\pi}⋅radians`                      |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType sin (genType angle)         | The standard trigonometric sine function.                                               |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType cos (genType angle)         | The standard trigonometric cosine function.                                             |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType tan (genType angle)         | The standard trigonometric tangent.                                                     |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType asin (genType x)            | Arc sine. Returns an angle whose sine is *x*. The range                                 |
+|                                     | of values returned by this function is :math:`[−\frac{\pi}{2}, \frac{\pi}{2}]`,         |
+|                                     | Results are undefined if :math:`|x| > 1`.                                               |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType acos (genType x)            | Arc cosine. Returns an angle whose cosine is *x*. The                                   |
+|                                     | range of values returned by this function is :math:`[0, \pi]`.                          |
+|                                     | Results are undefined if :math:`|x| > 1`.                                               |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType atan (genType y, genType x) | Arc tangent. Returns an angle whose tangent is *y*/*x*. The                             |
+|                                     | signs of *x* and *y* are used to determine what quadrant the                            |
+|                                     | angle is in. The range of values returned by this                                       |
+|                                     | function is :math:`[−\pi, \pi]`. Results are undefined if *x* and                       |
+|                                     | *y* are both 0.                                                                         |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType atan (genType y_over_x)     | Arc tangent. Returns an angle whose tangent is                                          |
+|                                     | y_over_x. The range of values returned by this function                                 |
+|                                     | is :math:`[−\frac{\pi}{2}, \frac{\pi}{2}]`.                                             |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType sinh (genType x)            | Returns the hyperbolic sine function :math:`\frac{\mathrm{e}^{x}-\mathrm{e}^{-x}}{2}`   |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType cosh (genType x)            | Returns the hyperbolic cosine function :math:`\frac{\mathrm{e}^{x}+\mathrm{e}^{-x}}{2}` |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType tanh (genType x)            | Returns the hyperbolic tangent function :math:`\frac{sinh(x)}{cosh(x)}`                 |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType asinh (genType x)           | Arc hyperbolic sine; returns the inverse of sinh.                                       |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType acosh (genType x)           | Arc hyperbolic cosine; returns the non-negative inverse                                 |
+|                                     | of cosh. Results are undefined if :math:`x < 1`.                                        |
++-------------------------------------+-----------------------------------------------------------------------------------------+
+| genType atanh (genType x)           | Arc hyperbolic tangent; returns the inverse of tanh.                                    |
+|                                     | Results are undefined if :math:`|x| \geq 1`.                                            |
++-------------------------------------+-----------------------------------------------------------------------------------------+
 
 8.2   Exponential Functions
 ---------------------------------------------------------------
