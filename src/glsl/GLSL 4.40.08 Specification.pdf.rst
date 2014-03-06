@@ -101,7 +101,7 @@ this version:
 ---------------------------------------------------------------
 
 1.2.1   Changes since revision 7 of GLSL version 4.40
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Bug 10440: Clarify that a name collision between members of two anonymous blocks, or
   between a variable and a member of an anonymous block is an error.
@@ -149,7 +149,7 @@ this version:
   it either works or you get a link error.
 
 1.2.2   Changes since revision 6 of GLSL version 4.40
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Deprecation**
 
@@ -183,7 +183,7 @@ this version:
   in the set of constant expressions.
 
 1.2.3   Summary of Changes from Revision 9 of GLSL Version 4.30
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Deprecations**
 
@@ -579,7 +579,7 @@ constants, plus identifiers consumed by the **defined** operator. Character cons
 The operators available are as follows.
 
 +-------------+------------------------+-----------------+---------------+
-|Precedence   |Operator class          |Operators        |Associativity  |
+|  Precedence |     Operator class     | Operators       | Associativity |
 +=============+========================+=================+===============+
 |1 (highest)  |parenthetical grouping  |()               |NA             |
 +-------------+------------------------+-----------------+---------------+
@@ -918,11 +918,15 @@ The following are the keywords reserved for future use. Using them will result i
       Some language rules described below depend on the following definitions.
 
 3.8.1   Static Use
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         A shader contains a static use of (or static assignment to) a variable x if, after preprocessing, the shader
         contains a statement that would read (or write) x, whether or not run-time flow of control will cause that
         statement to be executed.
 
 3.8.2   Uniform and Non-Uniform Control Flow
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         When executing statements in a fragment shader, control flow starts as uniform control flow; all fragments
         enter the same control path into main(). Control flow becomes non-uniform when different fragments
         take different paths through control-flow statements (selection, iteration, and jumps). Control flow
@@ -947,6 +951,8 @@ The following are the keywords reserved for future use. Using them will result i
         This is similarly defined for other shader stages, based on the per-instance data items they process.
 
 3.8.3   Dynamically Uniform Expressions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         A fragment-shader expression is dynamically uniform if all fragments evaluating it get the same resulting
         value. When loops are involved, this refers to the expression's value for the same loop iteration. When
         functions are involved, this refers to calls from the same call point.
@@ -955,181 +961,270 @@ The following are the keywords reserved for future use. Using them will result i
         based on these are also dynamically uniform.
 
 
-
-
-                                                        23
 4 Variables and Types
 ===============================================================
 
-      All variables and functions must be declared before being used. Variable and function names are
-      identifiers.
-      There are no default types. All variable and function declarations must have a declared type, and
-      optionally qualifiers. A variable is declared by specifying its type followed by one or more names
-      separated by commas. In many cases, a variable can be initialized as part of its declaration by using the
-      assignment operator (=).
-      User-defined types may be defined using struct to aggregate a list of existing types into a single name.
-      The OpenGL Shading Language is type safe. There are some implicit conversions between types.
-      Exactly how and when this can occur is described in section 4.1.10 “Implicit Conversions” and as
-      referenced by other sections in this specification.
+All variables and functions must be declared before being used. Variable and function names are
+identifiers.
+There are no default types. All variable and function declarations must have a declared type, and
+optionally qualifiers. A variable is declared by specifying its type followed by one or more names
+separated by commas. In many cases, a variable can be initialized as part of its declaration by using the
+assignment operator (=).
+User-defined types may be defined using struct to aggregate a list of existing types into a single name.
+The OpenGL Shading Language is type safe. There are some implicit conversions between types.
+Exactly how and when this can occur is described in section 4.1.10 “Implicit Conversions” and as
+referenced by other sections in this specification.
 
 4.1   Basic Types
 ---------------------------------------------------------------
 
-      The OpenGL Shading Language supports the following basic data types, grouped as follows.
-      Transparent types
+The OpenGL Shading Language supports the following basic data types, grouped as follows.
 
-           Type                         Meaning
-           void                         for functions that do not return a value
-           bool                         a conditional type, taking on values of true or false
-           int                          a signed integer
-           uint                         an unsigned integer
-           float                        a single-precision floating-point scalar
-           double                       a double-precision floating-point scalar
-           vec2                         a two-component single-precision floating-point vector
-           vec3                         a three-component single-precision floating-point vector
-           vec4                         a four-component single-precision floating-point vector
-           dvec2                        a two-component double-precision floating-point vector
-           dvec3                        a three-component double-precision floating-point vector
-           dvec4                        a four-component double-precision floating-point vector
-           bvec2                        a two-component Boolean vector
-           bvec3                        a three-component Boolean vector
-           bvec4                        a four-component Boolean vector
-           ivec2                        a two-component signed integer vector
+Transparent types
 
-Type      Meaning
-ivec3     a three-component signed integer vector
-ivec4     a four-component signed integer vector
-uvec2     a two-component unsigned integer vector
-uvec3     a three-component unsigned integer vector
-uvec4     a four-component unsigned integer vector
-mat2      a 2×2 single-precision floating-point matrix
-mat3      a 3×3 single-precision floating-point matrix
-mat4      a 4×4 single-precision floating-point matrix
-mat2x2    same as a mat2
-mat2x3    a single-precision floating-point matrix with 2 columns and 3 rows
-mat2x4    a single-precision floating-point matrix with 2 columns and 4 rows
-mat3x2    a single-precision floating-point matrix with 3 columns and 2 rows
-mat3x3    same as a mat3
-mat3x4    a single-precision floating-point matrix with 3 columns and 4 rows
-mat4x2    a single-precision floating-point matrix with 4 columns and 2 rows
-mat4x3    a single-precision floating-point matrix with 4 columns and 3 rows
-mat4x4    same as a mat4
-dmat2     a 2×2 double-precision floating-point matrix
-dmat3     a 3×3 double-precision floating-point matrix
-dmat4     a 4×4 double-precision floating-point matrix
-dmat2x2   same as a dmat2
-dmat2x3   a double-precision floating-point matrix with 2 columns and 3 rows
-dmat2x4   a double-precision floating-point matrix with 2 columns and 4 rows
-dmat3x2   a double-precision floating-point matrix with 3 columns and 2 rows
-dmat3x3   same as a dmat3
-dmat3x4   a double-precision floating-point matrix with 3 columns and 4 rows
-dmat4x2   a double-precision floating-point matrix with 4 columns and 2 rows
-dmat4x3   a double-precision floating-point matrix with 4 columns and 3 rows
-dmat4x4   same as a dmat4
++---------+--------------------------------------------------------------------+
+|   Type  |                              Meaning                               |
++=========+====================================================================+
+| void    | for functions that do not return a value                           |
++---------+--------------------------------------------------------------------+
+| bool    | a conditional type, taking on values of true or false              |
++---------+--------------------------------------------------------------------+
+| int     | a signed integer                                                   |
++---------+--------------------------------------------------------------------+
+| uint    | an unsigned integer                                                |
++---------+--------------------------------------------------------------------+
+| float   | a single-precision floating-point scalar                           |
++---------+--------------------------------------------------------------------+
+| double  | a double-precision floating-point scalar                           |
++---------+--------------------------------------------------------------------+
+| vec2    | a two-component single-precision floating-point vector             |
++---------+--------------------------------------------------------------------+
+| vec3    | a three-component single-precision floating-point vector           |
++---------+--------------------------------------------------------------------+
+| vec4    | a four-component single-precision floating-point vector            |
++---------+--------------------------------------------------------------------+
+| dvec2   | a two-component double-precision floating-point vector             |
++---------+--------------------------------------------------------------------+
+| dvec3   | a three-component double-precision floating-point vector           |
++---------+--------------------------------------------------------------------+
+| dvec4   | a four-component double-precision floating-point vector            |
++---------+--------------------------------------------------------------------+
+| bvec2   | a two-component Boolean vector                                     |
++---------+--------------------------------------------------------------------+
+| bvec3   | a three-component Boolean vector                                   |
++---------+--------------------------------------------------------------------+
+| bvec4   | a four-component Boolean vector                                    |
++---------+--------------------------------------------------------------------+
+| ivec2   | a two-component signed integer vector                              |
++---------+--------------------------------------------------------------------+
+| ivec3   | a three-component signed integer vector                            |
++---------+--------------------------------------------------------------------+
+| ivec4   | a four-component signed integer vector                             |
++---------+--------------------------------------------------------------------+
+| uvec2   | a two-component unsigned integer vector                            |
++---------+--------------------------------------------------------------------+
+| uvec3   | a three-component unsigned integer vector                          |
++---------+--------------------------------------------------------------------+
+| uvec4   | a four-component unsigned integer vector                           |
++---------+--------------------------------------------------------------------+
+| mat2    | a 2×2 single-precision floating-point matrix                       |
++---------+--------------------------------------------------------------------+
+| mat3    | a 3×3 single-precision floating-point matrix                       |
++---------+--------------------------------------------------------------------+
+| mat4    | a 4×4 single-precision floating-point matrix                       |
++---------+--------------------------------------------------------------------+
+| mat2x2  | same as a mat2                                                     |
++---------+--------------------------------------------------------------------+
+| mat2x3  | a single-precision floating-point matrix with 2 columns and 3 rows |
++---------+--------------------------------------------------------------------+
+| mat2x4  | a single-precision floating-point matrix with 2 columns and 4 rows |
++---------+--------------------------------------------------------------------+
+| mat3x2  | a single-precision floating-point matrix with 3 columns and 2 rows |
++---------+--------------------------------------------------------------------+
+| mat3x3  | same as a mat3                                                     |
++---------+--------------------------------------------------------------------+
+| mat3x4  | a single-precision floating-point matrix with 3 columns and 4 rows |
++---------+--------------------------------------------------------------------+
+| mat4x2  | a single-precision floating-point matrix with 4 columns and 2 rows |
++---------+--------------------------------------------------------------------+
+| mat4x3  | a single-precision floating-point matrix with 4 columns and 3 rows |
++---------+--------------------------------------------------------------------+
+| mat4x4  | same as a mat4                                                     |
++---------+--------------------------------------------------------------------+
+| dmat2   | a 2×2 double-precision floating-point matrix                       |
++---------+--------------------------------------------------------------------+
+| dmat3   | a 3×3 double-precision floating-point matrix                       |
++---------+--------------------------------------------------------------------+
+| dmat4   | a 4×4 double-precision floating-point matrix                       |
++---------+--------------------------------------------------------------------+
+| dmat2x2 | same as a dmat2                                                    |
++---------+--------------------------------------------------------------------+
+| dmat2x3 | a double-precision floating-point matrix with 2 columns and 3 rows |
++---------+--------------------------------------------------------------------+
+| dmat2x4 | a double-precision floating-point matrix with 2 columns and 4 rows |
++---------+--------------------------------------------------------------------+
+| dmat3x2 | a double-precision floating-point matrix with 3 columns and 2 rows |
++---------+--------------------------------------------------------------------+
+| dmat3x3 | same as a dmat3                                                    |
++---------+--------------------------------------------------------------------+
+| dmat3x4 | a double-precision floating-point matrix with 3 columns and 4 rows |
++---------+--------------------------------------------------------------------+
+| dmat4x2 | a double-precision floating-point matrix with 4 columns and 2 rows |
++---------+--------------------------------------------------------------------+
+| dmat4x3 | a double-precision floating-point matrix with 4 columns and 3 rows |
++---------+--------------------------------------------------------------------+
+| dmat4x4 | same as a dmat4                                                    |
++---------+--------------------------------------------------------------------+
 
 Floating-Point Opaque Types
 
-    Type                        Meaning
-    sampler1D                   a handle for accessing a 1D texture
-    image1D
-    sampler2D                   a handle for accessing a 2D texture
-    image2D
-    sampler3D                   a handle for accessing a 3D texture
-    image3D
-    samplerCube                 a handle for accessing a cube mapped texture
-    imageCube
-    sampler2DRect               a handle for accessing a rectangle texture
-    image2DRect
-    sampler1DArray              a handle for accessing a 1D array texture
-    image1DArray
-    sampler2DArray              a handle for accessing a 2D array texture
-    image2DArray
-    samplerBuffer               a handle for accessing a buffer texture
-    imageBuffer
-    sampler2DMS                 a handle for accessing a 2D multi-sample texture
-    image2DMS
-    sampler2DMSArray            a handle for accessing a 2D multi-sample array texture
-    image2DMSArray
-    samplerCubeArray            a handle for accessing a cube map array texture
-    imageCubeArray
-    sampler1DShadow             a handle for accessing a 1D depth texture with comparison
-    sampler2DShadow             a handle for accessing a 2D depth texture with comparison
-    sampler2DRectShadow         a handle for accessing a rectangle texture with comparison
-    sampler1DArrayShadow        a handle for accessing a 1D array depth texture with comparison
-    sampler2DArrayShadow        a handle for accessing a 2D array depth texture with comparison
-    samplerCubeShadow           a handle for accessing a cube map depth texture with comparison
-    samplerCubeArrayShadow a handle for accessing a cube map array depth texture with
-                           comparison
-
++------------------------+-----------------------------------------------------------------+
+|          Type          |                             Meaning                             |
++========================+=================================================================+
+| sampler1D              | a handle for accessing a 1D texture                             |
+| image1D                |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| sampler2D              | a handle for accessing a 2D texture                             |
+| image2D                |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| sampler3D              | a handle for accessing a 3D texture                             |
+| image3D                |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| samplerCube            | a handle for accessing a cube mapped texture                    |
+| imageCube              |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| sampler2DRect          | a handle for accessing a rectangle texture                      |
+| image2DRect            |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| sampler1DArray         | a handle for accessing a 1D array texture                       |
+| image1DArray           |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| sampler2DArray         | a handle for accessing a 2D array texture                       |
+| image2DArray           |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| samplerBuffer          | a handle for accessing a buffer texture                         |
+| imageBuffer            |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| sampler2DMS            | a handle for accessing a 2D multi-sample texture                |
+| image2DMS              |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| sampler2DMSArray       | a handle for accessing a 2D multi-sample array texture          |
+| image2DMSArray         |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| samplerCubeArray       | a handle for accessing a cube map array texture                 |
+| imageCubeArray         |                                                                 |
++------------------------+-----------------------------------------------------------------+
+| sampler1DShadow        | a handle for accessing a 1D depth texture with comparison       |
++------------------------+-----------------------------------------------------------------+
+| sampler2DShadow        | a handle for accessing a 2D depth texture with comparison       |
++------------------------+-----------------------------------------------------------------+
+| sampler2DRectShadow    | a handle for accessing a rectangle texture with comparison      |
++------------------------+-----------------------------------------------------------------+
+| sampler1DArrayShadow   | a handle for accessing a 1D array depth texture with comparison |
++------------------------+-----------------------------------------------------------------+
+| sampler2DArrayShadow   | a handle for accessing a 2D array depth texture with comparison |
++------------------------+-----------------------------------------------------------------+
+| samplerCubeShadow      | a handle for accessing a cube map depth texture with comparison |
++------------------------+-----------------------------------------------------------------+
+| samplerCubeArrayShadow | a handle for accessing a cube map array depth texture with      |
+|                        | comparison                                                      |
++------------------------+-----------------------------------------------------------------+
 
 Signed Integer Opaque Types
 
-    Type                      Meaning
-    isampler1D                a handle for accessing an integer 1D texture
-    iimage1D
-
-    Type                        Meaning
-    isampler2D                  a handle for accessing an integer 2D texture
-    iimage2D
-    isampler3D                  a handle for accessing an integer 3D texture
-    iimage3D
-    isamplerCube                a handle for accessing an integer cube mapped texture
-    iimageCube
-    isampler2DRect              a handle for accessing an integer 2D rectangle texture
-    iimage2DRect
-    isampler1DArray             a handle for accessing an integer 1D array texture
-    iimage1DArray
-    isampler2DArray             a handle for accessing an integer 2D array texture
-    iimage2DArray
-    isamplerBuffer              a handle for accessing an integer buffer texture
-    iimageBuffer
-    isampler2DMS                a handle for accessing an integer 2D multi-sample texture
-    iimage2DMS
-    isampler2DMSArray           a handle for accessing an integer 2D multi-sample array texture
-    iimage2DMSArray
-    isamplerCubeArray           a handle for accessing an integer cube map array texture
-    iimageCubeArray
-
++-------------------+-----------------------------------------------------------------+
+|        Type       |                             Meaning                             |
++===================+=================================================================+
+| isampler1D        | a handle for accessing an integer 1D texture                    |
+| iimage1D          |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isampler2D        | a handle for accessing an integer 2D texture                    |
+| iimage2D          |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isampler3D        | a handle for accessing an integer 3D texture                    |
+| iimage3D          |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isamplerCube      | a handle for accessing an integer cube mapped texture           |
+| iimageCube        |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isampler2DRect    | a handle for accessing an integer 2D rectangle texture          |
+| iimage2DRect      |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isampler1DArray   | a handle for accessing an integer 1D array texture              |
+| iimage1DArray     |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isampler2DArray   | a handle for accessing an integer 2D array texture              |
+| iimage2DArray     |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isamplerBuffer    | a handle for accessing an integer buffer texture                |
+| iimageBuffer      |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isampler2DMS      | a handle for accessing an integer 2D multi-sample texture       |
+| iimage2DMS        |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isampler2DMSArray | a handle for accessing an integer 2D multi-sample array texture |
+| iimage2DMSArray   |                                                                 |
++-------------------+-----------------------------------------------------------------+
+| isamplerCubeArray | a handle for accessing an integer cube map array texture        |
+| iimageCubeArray   |                                                                 |
++-------------------+-----------------------------------------------------------------+
 
 Unsigned Integer Opaque Types
 
-    Type                        Meaning
-    atomic_uint                 a handle for accessing an unsigned integer atomic counter
-    usampler1D                  a handle for accessing an unsigned integer 1D texture
-    uimage1D
-    usampler2D                  a handle for accessing an unsigned integer 2D texture
-    uimage2D
-    usampler3D                  a handle for accessing an unsigned integer 3D texture
-    uimage3D
-    usamplerCube                a handle for accessing an unsigned integer cube mapped texture
-    uimageCube
-    usampler2DRect              a handle for accessing an unsigned integer rectangle texture
-    uimage2DRect
-    usampler1DArray             a handle for accessing an unsigned integer 1D array texture
-    uimage1DArray
-    usampler2DArray             a handle for accessing an unsigned integer 2D array texture
-    uimage2DArray
++-------------------+--------------------------------------------------------------------+
+|        Type       |                              Meaning                               |
++===================+====================================================================+
+| atomic_uint       | a handle for accessing an unsigned integer atomic counter          |
++-------------------+--------------------------------------------------------------------+
+| usampler1D        | a handle for accessing an unsigned integer 1D texture              |
+| uimage1D          |                                                                    |
++-------------------+--------------------------------------------------------------------+
+| usampler2D        | a handle for accessing an unsigned integer 2D texture              |
+| uimage2D          |                                                                    |
++-------------------+--------------------------------------------------------------------+
+| usampler3D        | a handle for accessing an unsigned integer 3D texture              |
+| uimage3D          |                                                                    |
++-------------------+--------------------------------------------------------------------+
+| usamplerCube      | a handle for accessing an unsigned integer cube mapped texture     |
+| uimageCube        |                                                                    |
++-------------------+--------------------------------------------------------------------+
+| usampler2DRect    | a handle for accessing an unsigned integer rectangle texture       |
+| uimage2DRect      |                                                                    |
++-------------------+--------------------------------------------------------------------+
+| usampler1DArray   | a handle for accessing an unsigned integer 1D array texture        |
+| uimage1DArray     |                                                                    |
++-------------------+--------------------------------------------------------------------+
+| usampler2DArray   | a handle for accessing an unsigned integer 2D array texture        |
+| uimage2DArray     |                                                                    |
++-------------------+--------------------------------------------------------------------+
+| usamplerBuffer    | a handle for accessing an unsigned integer buffer texture          |
+| uimageBuffer      |                                                                    |
++-------------------+--------------------------------------------------------------------+
+| usampler2DMS      | a handle for accessing an unsigned integer 2D multi-sample texture |
+| uimage2DMS        |                                                                    |
++-------------------+--------------------------------------------------------------------+
+| usampler2DMSArray | a handle for accessing an unsigned integer 2D multi-sample texture |
+| uimage2DMSArray   | array                                                              |
++-------------------+--------------------------------------------------------------------+
+| usamplerCubeArray | a handle for accessing an unsigned integer cube map array texture  |
+| uimageCubeArray   |                                                                    |
++-------------------+--------------------------------------------------------------------+
 
-             Type                          Meaning
-             usamplerBuffer                a handle for accessing an unsigned integer buffer texture
-             uimageBuffer
-             usampler2DMS                  a handle for accessing an unsigned integer 2D multi-sample texture
-             uimage2DMS
-             usampler2DMSArray             a handle for accessing an unsigned integer 2D multi-sample texture
-             uimage2DMSArray               array
-             usamplerCubeArray             a handle for accessing an unsigned integer cube map array texture
-             uimageCubeArray
+In addition, a shader can aggregate these basic types using arrays and structures to build more complex
+types.
 
-        In addition, a shader can aggregate these basic types using arrays and structures to build more complex
-        types.
-        There are no pointer types.
+There are no pointer types.
 
 4.1.1   Void
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Functions that do not return a value must be declared as void. There is no default function return type.
         The keyword void cannot be used in any other declarations (except for empty formal or actual parameter
         lists), or a compile-time error results.
 
 4.1.2   Booleans
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         To make conditional execution of code easier to express, the type bool is supported. There is no
         expectation that hardware directly supports variables of this type. It is a genuine Boolean type, holding
         only one of two values meaning either true or false. Two keywords true and false can be used as literal
@@ -1141,6 +1236,8 @@ Unsigned Integer Opaque Types
         Expressions used for conditional jumps (if, for, ?:, while, do-while) must evaluate to the type bool.
 
 4.1.3   Integers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Signed and unsigned integer variables are fully supported. In this document, the term integer is meant to
         generally include both signed and unsigned integers. Unsigned integers have exactly 32 bits of precision.
         Signed integers use 32 bits, including a sign bit, in two's complement form. Addition, subtraction, and
@@ -1220,6 +1317,8 @@ creates a negative value. For example,
         independently of their context.
 
 4.1.4   Floating-Point Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Single-precision and double-precision floating point variables are available for use in a variety of scalar
         calculations. Generally, the term floating-point will refer to both single- and double-precision floating
         point. Floating-point variables are defined as in the following examples:
@@ -1261,6 +1360,8 @@ creates a negative value. For example,
         as a unary operator and is not part of the floating-point constant.
 
 4.1.5   Vectors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The OpenGL Shading Language includes data types for generic 2-, 3-, and 4-component vectors of
         floating-point values, integers, or Booleans. Floating-point vector variables can be used to store colors,
         normals, positions, texture coordinates, texture lookup results and the like. Boolean vectors can be used
@@ -1274,6 +1375,8 @@ creates a negative value. For example,
         Initialization of vectors can be done with constructors, which are discussed shortly.
 
 4.1.6   Matrices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The OpenGL Shading Language has built-in types for 2×2, 2×3, 2×4, 3×2, 3×3, 3×4, 4×2, 4×3, and 4×4
         matrices of floating-point numbers. Matrix types beginning with "mat" have single-precision components
         while matrix types beginning with "dmat" have double-precision components. The first number in the
@@ -1291,6 +1394,8 @@ creates a negative value. For example,
         column-major order.
 
 4.1.7   Opaque Types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The opaque types declare variables that are effectively opaque handles to other objects. These objects are
         accessed through built-in functions, not through direct reading or writing of the declared variable. They
         can only be declared as function parameters or in uniform-qualified variables. The only opaque types
@@ -1307,6 +1412,8 @@ creates a negative value. For example,
         to.
 
 4.1.7.1 Samplers
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
         Sampler types (e.g., sampler2D) are opaque types, declared and behaving as described above for opaque
         types. When aggregated into arrays within a shader, samplers can only be indexed with a dynamically
         uniform integral expression, otherwise results are undefined.
@@ -1317,6 +1424,8 @@ creates a negative value. For example,
         specify which texture to access and how it is to be filtered.
 
 4.1.7.2 Images
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
         Image types are opaque types, declared and behaving as described above for opaque types. They can be
         further qualified with memory qualifiers. When aggregated into arrays within a shader, images can only
         be indexed with a dynamically uniform integral expression, otherwise results are undefined.
@@ -1335,6 +1444,8 @@ creates a negative value. For example,
         Functions" to specify an image to access.
 
 4.1.7.3 Atomic Counters
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
         Atomic counter types (atomic_uint) are opaque handles to counters, declared and behaving as described
         above for opaque types. The variables they declare specify which counter to access when using the built-in
         atomic counter functions as described in section 8.10 “Atomic Counter Functions”. They are bound to
@@ -1343,6 +1454,8 @@ creates a negative value. For example,
         otherwise results are undefined. Members of structures cannot be declared as atomic counter types.
 
 4.1.8   Structures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         User-defined types can be created by aggregating other already defined types into a structure using the
         struct keyword. For example,
            struct light {
@@ -1392,6 +1505,8 @@ creates a negative value. For example,
         that type or qualifier. This also applies to structure members that are structures, recursively.
 
 4.1.9   Arrays
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Variables of the same type can be aggregated into arrays by declaring a name followed by brackets ( [ ] )
         enclosing an optional size. When an array size is specified in a declaration, it must be an integral constant
         expression (see section 4.3.3 “Constant Expressions”) greater than zero. Except for the last declared
@@ -1521,6 +1636,8 @@ unsized arrays may be indexed with general integer expressions. However, it is a
 pass them as an argument to a function or index them with a negative constant expression.
 
 4.1.10 Implicit Conversions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
        In some situations, an expression and its type will be implicitly converted to a different type. The
        following table shows all allowed implicit conversions:
 
@@ -1575,6 +1692,8 @@ pass them as an argument to a function or index them with a negative constant ex
         The conversions in the table above are done only as indicated by other sections of this specification.
 
 4.1.11 Initializers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         At declaration, an initial value for an aggregate variable may be provided, specified as an equals (=)
         followed by an initializer. The initializer is either an assignment-expression or a list of initializers
         enclosed in curly braces. The grammar for the initializer is:
@@ -1823,12 +1942,16 @@ initializer to be a constant expression.)
         output don't match if their auxiliary qualifiers (or lack thereof) are not the same.
 
 4.3.1   Default Storage Qualifier
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         If no qualifier is present on a global variable, then the variable has no linkage to the application or shaders
         running on other pipeline stages. For either global or local unqualified variables, the declaration will
         appear to allocate memory associated with the processor it targets. This variable will provide read/write
         access to this allocated memory.
 
 4.3.2   Constant Qualifier
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Named compile-time constants or read-only variables can be declared using the const qualifier. The const
         qualifier can be used with any of the non-void transparent basic data types, as well as with structures and
         arrays of these. It is a compile-time error to write to a const variable outside of its declaration, so they
@@ -1842,6 +1965,8 @@ initializer to be a constant expression.)
         “Constant Expressions.”
 
 4.3.3   Constant Expressions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         A constant expression is one of
         •   a literal value (e.g., 5 or true)
         •   a variable declared with the const qualifier and an initializer, where the initializer is a constant
@@ -1871,6 +1996,8 @@ initializer to be a constant expression.)
         same or greater precision than the target would use.
 
 4.3.4   Input Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Shader input variables are declared with the storage qualifier in. They form the input interface between
         previous stages of the OpenGL pipeline and the declaring shader. Input variables must be declared at
         global scope. Values from the previous pipeline stage are copied into input variables at the beginning of
@@ -1990,6 +2117,8 @@ not possible to detect mismatches between inputs and outputs when the programs a
         variables in compute shaders is not permitted.
 
 4.3.5   Uniform Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The uniform qualifier is used to declare global variables whose values are the same across the entire
         primitive being processed. All uniform variables are read-only and are initialized externally either at link
         time or through the API. The link-time initial value is either the value of the variable's initializer, if
@@ -2018,6 +2147,8 @@ not possible to detect mismatches between inputs and outputs when the programs a
         the same location.
 
 4.3.6   Output Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Shader output variables are declared with a storage qualifier using the keyword out. They form the output
         interface between the declaring shader and the subsequent stages of the OpenGL pipeline. Output
 variables must be declared at global scope. During shader execution they will behave as normal
@@ -2106,6 +2237,8 @@ not form a formal interface with any other shader stage. All outputs from a comp
 of the side effects such as image stores and operations on atomic counters.
 
 4.3.7   Buffer Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The buffer qualifier is used to declare global variables whose values are stored in the data store of a
         buffer object bound through the OpenGL API. Buffer variables can be read and written with the
         underlying storage shared among all active shader invocations. Buffer variable memory reads and writes
@@ -2135,6 +2268,8 @@ of the side effects such as image stores and operations on atomic counters.
         with the same name must match across all shaders that are linked into a single program.
 
 4.3.8   Shared Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The shared qualifier is used to declare variables that have storage shared between all work items
         compute shader local work group. Variables declared as shared may only be used in compute shaders
         (see section 2.6 “Compute Processor”). Shared variables are implicitly coherent. That is, writes to shared
@@ -2152,6 +2287,8 @@ of the side effects such as image stores and operations on atomic counters.
         of MAX_COMPUTE_SHARED_MEMORY_SIZE.
 
 4.3.9   Interface Blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Input, output, uniform, and buffer variable declarations can be grouped into named interface blocks to
         provide coarser granularity backing than is achievable with individual declarations. They can have an
         optional instance name, used in the shader to reference their members. An output block of one
@@ -2431,6 +2568,8 @@ early_fragment_tests         X
 
 
 4.4.1   Input Layout Qualifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Some input layout qualifiers apply to all shader languages and some apply only to specific languages.
         The latter are discussed in separate sections below.
         All shaders, except compute shaders, allow location layout qualifiers on input variable declarations, input
@@ -2571,6 +2710,8 @@ gets larger than 3. For example:
        multiple inputs aliased to any single component.
 
 4.4.1.1 Tessellation Evaluation Inputs
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        Additional input layout qualifier identifiers allowed for tessellation evaluation shaders are:
 
      layout-qualifier-id
@@ -2616,6 +2757,8 @@ counter-clockwise vertex ordering, respectively. If a point mode declaration is 
 primitive generator will produce lines or triangles according to the primitive mode.
 
 4.4.1.2 Geometry Shader Inputs
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        Additional layout qualifier identifiers for geometry shader inputs include primitive identifiers and an
        invocation count identifier:
             layout-qualifier-id
@@ -2676,6 +2819,8 @@ primitive generator will produce lines or triangles according to the primitive m
        geometry shaders in a program.
 
 4.4.1.3 Fragment Shader Inputs
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        Additional fragment layout qualifier identifiers include the following for gl_FragCoord
             layout-qualifier-id
                  origin_upper_left
@@ -2721,6 +2866,8 @@ primitive generator will produce lines or triangles according to the primitive m
        enabled.
 
 4.4.1.4 Compute Shader Inputs
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        There are no layout location qualifiers for compute shader inputs.
        Layout qualifier identifiers for compute shader inputs are the work-group size qualifiers:
             layout-qualifier-id
@@ -2751,6 +2898,8 @@ primitive generator will produce lines or triangles according to the primitive m
         qualifier specifying a fixed local group size for the program, or a link-time error will occur.
 
 4.4.2   Output Layout Qualifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Some output layout qualifiers apply to all shader languages and some apply only to specific languages.
         The latter are discussed in separate sections below.
         As with input layout qualifiers, all shaders except compute shaders allow location layout qualifiers
@@ -2826,6 +2975,8 @@ A program will fail to link if any of the following occur:
        stage, the location layout qualifier (if any) must match.
 
 4.4.2.1 Transform Feedback Layout Qualifiers
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        The vertex, tessellation, and geometry stages allow shaders to control transform feedback. When doing
        this, shaders will dictate which transform feedback buffers are in use, which output variables will be
        written to which buffers, and how each buffer is laid out. To accomplish this, shaders allow the following
@@ -2939,6 +3090,8 @@ outputs with double-precision components, the stride must be a multiple of 8, ot
        implementation-dependent constant gl_MaxTransformFeedbackInterleavedComponents.
 
 4.4.2.2 Tessellation Control Outputs
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        Other than for the transform feedback layout qualifiers, tessellation control shaders allow output layout
        qualifiers only on the interface qualifier out, not on an output block, block member, or variable
        declaration. The output layout qualifier identifiers allowed for tessellation control shaders include the
@@ -2964,6 +3117,8 @@ outputs with double-precision components, the stride must be a multiple of 8, ot
        control shaders.
 
 4.4.2.3 Geometry Outputs
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        Geometry shaders can have three additional types of output layout identifiers: an output primitive type, a
        maximum output vertex count, and per-output stream numbers. The primitive type and vertex count
        identifiers are allowed only on the interface qualifier out, not on an output block, block member, or
@@ -3039,6 +3194,8 @@ with one stream may overwrite output variables associated with any other stream.
        required to declare it.
 
 4.4.2.4 Fragment Outputs
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        The built-in fragment shader variable gl_FragDepth may be redeclared using one of the following layout
        qualifiers.
             layout-qualifier-id
@@ -3093,6 +3250,8 @@ with one stream may overwrite output variables associated with any other stream.
         language results in a compile-time error.
 
 4.4.3   Uniform Variable Layout Qualifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Layout qualifiers can be used for uniform variables and subroutine uniforms. The layout qualifier
         identifiers for uniform variables and subroutine uniforms are:
              layout-qualifier-id
@@ -3118,6 +3277,8 @@ with one stream may overwrite output variables associated with any other stream.
         that element of member is deemed unused.
 
 4.4.4   Subroutine Function Layout Qualifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Layout qualifiers can be used for subroutine functions. The layout qualifier identifiers for subroutine
         functions are:
              layout-qualifier-id
@@ -3129,6 +3290,8 @@ with one stream may overwrite output variables associated with any other stream.
         enumeration API returns a non-empty name for all active indices.
 
 4.4.5   Uniform and Shader Storage Block Layout Qualifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Layout qualifiers can be used for uniform and shader storage blocks, but not for non-block uniform
         declarations. The layout qualifier identifiers (and shared keyword) for uniform and shader storage blocks
         are
@@ -3278,6 +3441,8 @@ results in the qualification being column_major. Other examples:
            };
 
 4.4.6   Opaque-Uniform Layout Qualifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Uniform layout qualifiers can be used to bind opaque uniform variables to specific buffers or units.
         Texture image units can be bound to samplers, image units can be bound to images, and atomic counters
         can be bound to buffers.
@@ -3308,6 +3473,8 @@ results in the qualification being column_major. Other examples:
           layout(binding=4) uniform sampler2D s; // ERROR: contradictory bindings
 
 4.4.6.1 Atomic Counter Layout Qualifiers
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        The atomic counter qualifiers are
             layout-qualifier-id
                  binding = integer-constant-expression
@@ -3359,6 +3526,8 @@ results in the qualification being column_major. Other examples:
        gl_MaxAtomicCounterBindings.
 
 4.4.6.2 Format Layout Qualifiers
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
        Format layout qualifiers can be used on image variable declarations (those declared with a basic type
        having “image” in its keyword). The format layout qualifier identifiers for image variable declarations
        are
@@ -3470,6 +3639,8 @@ uint-image-format-qualifier
         do not match.
 
 4.5.1   Redeclaring Built-in Interpolation Variables in the Compatibility Profile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The following predeclared variables can be redeclared with an interpolation qualifier when using the
         compatibility profile:
         Vertex, tessellation control, tessellation evaluation, and geometry languages:
@@ -3531,6 +3702,8 @@ uint-image-format-qualifier
         precision qualifier need not match.
 
 4.7.1   Range and Precision
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The precision of stored single- and double-precision floating-point variables is defined by the IEEE 754
         standard for 32-bit and 64-bit floating-point numbers. This includes support for NaNs (Not a Number)
         and Infs (positive or negative infinities).
@@ -3572,6 +3745,8 @@ uint-image-format-qualifier
         The precision of double-precision operations is at least that of single precision.
 
 4.7.2   Precision Qualifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Any single-precision floating-point declaration, integer declaration, or sampler declaration can have the
         type preceded by one of these precision qualifiers:
 
@@ -3595,6 +3770,8 @@ uint-image-format-qualifier
         not have to match.
 
 4.7.3   Default Precision Qualifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The precision statement
            precision precision-qualifier type;
 
@@ -3624,6 +3801,8 @@ uint-image-format-qualifier
         happen in OpenGL ES versions of the shading languages.
 
 4.7.4   Available Precision Qualifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The built-in macro GL_FRAGMENT_PRECISION_HIGH is defined to 1:
             #define GL_FRAGMENT_PRECISION_HIGH 1
 
@@ -3642,6 +3821,8 @@ uint-image-format-qualifier
         output variable, that variable is said to be invariant.
 
 4.8.1   The Invariant Qualifier
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         To ensure that a particular output variable is invariant, it is necessary to use the invariant qualifier. It can
         either be used to qualify a previously declared variable as being invariant
             invariant gl_Position;             // make existing gl_Position be invariant
@@ -3688,6 +3869,8 @@ uint-image-format-qualifier
         all output variables as invariant.
 
 4.8.2   Invariance of Constant Expressions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Invariance must be guaranteed for constant expressions. A particular constant expression must evaluate to
         the same result if it appears again in the same shader or a different shader. This includes the same
         expression appearing two shaders of the same language or shaders of two different languages.
@@ -3919,10 +4102,6 @@ parameter, but not to have fewer.
        qualifier, and at most one interpolation qualifier. If inout is used, neither in nor out may be used.
        Multiple memory qualifiers can be used. Any violation of these rules will cause a compile-time error.
 
-
-
-
-                                                      95
 5 Operators and Expressions
 ===============================================================
 
@@ -3989,6 +4168,8 @@ parameter, but not to have fewer.
         follow. The prototypes actually listed below are merely a subset of examples.
 
 5.4.1   Conversion and Scalar Constructors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Converting between scalar types is done as the following prototypes indicate:
            int(uint)    //        converts    an unsigned integer to a signed integer
            int(bool)    //        converts    a Boolean value to an int
@@ -4024,6 +4205,8 @@ parameter, but not to have fewer.
         For example, the constructor float(vec3) will select the first component of the vec3 parameter.
 
 5.4.2   Vector and Matrix Constructors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Constructors can be used to create vectors or matrices from a set of scalars, vectors, or matrices. This
         includes the ability to shorten vectors.
         If there is a single scalar parameter to a vector constructor, it is used to initialize all components of the
@@ -4113,6 +4296,8 @@ That is, result[i][j] is set to the float argument for all i = j and set to 0 fo
                                    //    component to 1, and the rest to 0
 
 5.4.3   Structure Constructors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Once a structure is defined, and its type is given a name, a constructor is available with the same name to
         construct instances of that structure. For example:
            struct light {
@@ -4128,6 +4313,8 @@ That is, result[i][j] is set to the float argument for all i = j and set to 0 fo
         Structure constructors can be used as initializers or in expressions.
 
 5.4.4   Array Constructors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Array types can also be used as constructor names, which can then be used in expressions or initializers.
         For example,
 
@@ -4515,10 +4702,6 @@ specified.
        memory. Applications that require defined behavior for out-of-bounds accesses should range check all
        computed indices before dereferencing an array.
 
-
-
-
-                                                      109
 6 Statements and Structure
 ===============================================================
 
@@ -4680,6 +4863,8 @@ It is a compile-time or link-time error to declare or define a function main wit
 return type.
 
 6.1.1   Function Calling Conventions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Functions are called by value-return. This means input arguments are copied into the function at call time,
         and output arguments are copied back to the caller before function exit. Because the function works with
         local copies of parameters, there are no issues regarding aliasing of variables within a function. To
@@ -4736,6 +4921,8 @@ return type.
         unit (shader) contains either static recursion or the potential for recursion through subroutine variables.
 
 6.1.2   Subroutines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Subroutines provide a mechanism allowing shaders to be compiled in a manner where the target of one or
         more function calls can be changed at run-time without requiring any shader recompilation. For example,
         a single shader may be compiled with support for multiple illumination algorithms to handle different
@@ -4891,10 +5078,6 @@ the function had been reached. It does not imply a use of discard in a fragment 
 main before defining outputs will have the same behavior as reaching the end of main before defining
 outputs.
 
-
-
-
-                                              119
 7 Built-in Variables
 ===============================================================
 
@@ -5255,6 +5438,8 @@ subset of the built-in members of gl_PerVertex. Such a redeclaration can also ad
         undefined.
 
 7.1.1   Compatibility Profile Built-In Language Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         When using the compatibility profile, the GL can provide fixed functionality behavior for the vertex and
         fragment programmable pipeline stages. For example, mixing a fixed functionality vertex stage with a
         programmable fragment stage.
@@ -5498,6 +5683,8 @@ The constant gl_MaxVaryingFloats is removed in the core profile, use gl_MaxVaryi
 instead.
 
 7.3.1   Compatibility Profile Built-In Constants
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
            const      int    gl_MaxTextureUnits = 2;
            const      int    gl_MaxTextureCoords = 8;
            const      int    gl_MaxClipPlanes = 8;
@@ -5528,6 +5715,8 @@ instead.
 
 
 7.4.1   Compatibility Profile State
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         These variables are present only in the compatibility profile. They are not available to compute shaders,
         but are available to all other shaders.
            //
@@ -5674,10 +5863,6 @@ struct gl_FogParameters {
 
 uniform gl_FogParameters gl_Fog;
 
-
-
-
-                                 137
 8 Built-in Functions
 ===============================================================
 
@@ -6431,6 +6616,8 @@ genIType findMSB (genUType value)                 binary representation of value
         will return undefined values.
 
 8.9.1   Texture Query Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The textureSize functions query the dimensions of a specific texture level for a sampler.
         The textureQueryLod functions are available only in a fragment shader. They take the components of P
         and compute the level of detail information that the texture pipe would use to access that texture through a
@@ -6520,6 +6707,8 @@ int textureQueryLevels(sampler2DArrayShadow sampler)           Available in all 
 int textureQueryLevels(samplerCubeArrayShadow sampler)
 
 8.9.2   Texel Lookup Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
          Syntax                                                               Description
          gvec4 texture (gsampler1D sampler, float P [, float bias] )          Use the texture coordinate P to
          gvec4 texture (gsampler2D sampler, vec2 P [, float bias] )           do a texture lookup in the
@@ -6829,6 +7018,8 @@ gvec4 textureProjGrad (gsampler2DRect sampler, vec4 P,
 
 
 8.9.3   Texture Gather Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The texture gather functions take components of a single floating-point vector operand as a texture
         coordinate, determine a set of four texels to sample from the base level of detail of the specified texture
         image, and return one component from each texel in a four-component result vector.
@@ -6921,6 +7112,8 @@ vec4 textureGatherOffsets (
                     offsets[4])
 
 8.9.4   Compatibility Profile Texture Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         The following texture functions are only in the compatibility profile.
 
           Syntax (deprecated)                                         Description (deprecated)
@@ -7212,6 +7405,8 @@ int imageAtomicCompSwap
        Fragment processing functions are only available in fragment shaders.
 
 8.13.1 Derivative Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
        Derivatives may be computationally expensive and/or numerically unstable. Therefore, an OpenGL
        implementation may approximate the true derivatives by using a fast but not entirely accurate derivative
        computation. Derivatives are undefined within non-uniform control flow.
@@ -7280,6 +7475,8 @@ int imageAtomicCompSwap
 
 
 8.13.2 Interpolation Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
        Built-in interpolation functions are available to compute an interpolated value of a fragment shader input
        variable at a shader-specified (x, y) location. A separate (x, y) location may be used for each invocation of
        the built-in function, and those locations may differ from the default (x, y) location used to produce the
