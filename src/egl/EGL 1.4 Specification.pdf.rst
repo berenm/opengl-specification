@@ -2,7 +2,7 @@
 Khronos Native Platform Graphics Interface (EGL Version 1.4 - December 4, 2013)
 ====================================================================================================
 
-Editor: Jon Leech
+*Editor: Jon Leech*
 
 Copyright (c) 2002-2013 The Khronos Group Inc. All Rights Reserved.
 
@@ -52,7 +52,7 @@ Chapter 1 - Overview
 ====================================================================================================
 
 This document describes EGL, an interface between rendering APIs such as
-OpenGL , OpenGL ES or OpenVG (referred to collectively as client APIs ) and
+OpenGL , OpenGL ES or OpenVG (referred to collectively as *client APIs*) and
 an underlying native platform window system. It refers to concepts discussed in
 the OpenGL , OpenGL ES and OpenVG specifications, and should be read together
 with those documents. EGL uses OpenGL ES conventions for naming entry
@@ -61,7 +61,7 @@ points and macros.
 EGL provides mechanisms for creating rendering surfaces onto which client
 APIs can draw, creating graphics contexts for client APIs , and synchronizing
 drawing by client APIs as well as native platform rendering APIs. EGL does not
-explicitly support remote or indirect rendering, unlike the similar GLX API.
+explicitly support remote or *indirect* rendering, unlike the similar GLX API.
 
 Chapter 2 - EGL Operation
 ====================================================================================================
@@ -70,78 +70,78 @@ Chapter 2 - EGL Operation
 ----------------------------------------------------------------------------------------------------
 
 EGL is intended to be implementable on multiple operating systems (such as Symbian,
-embedded Linux, Unix, and Windows) and native window systems (such as
+embedded Linux, Unix, and Windows) and *native window systems* (such as
 X and Microsoft Windows). Implementations may also choose to allow rendering
-into specific types of EGL surfaces via other supported native rendering APIs, such
+into specific types of EGL *surfaces* via other supported *native rendering APIs*, such
 as Xlib or GDI. Native rendering is described in more detail in section 2.2.3.
 
 To the extent possible, EGL itself is independent of definitions and concepts
 specific to any native window system or rendering API. However, there are a few
 places where native concepts must be mapped into EGL-specific concepts, including
-the definition of the display on which graphics are drawn, and the definition of
+the definition of the *display* on which graphics are drawn, and the definition of
 native windows and pixmaps which can also support client API rendering.
 
 2.1.1   Scalar Types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-EGLBoolean is an integral type representing a boolean value, and should only
-take on the values EGL_TRUE (1) and EGL_FALSE (0). If boolean parameters
+``EGLBoolean`` is an integral type representing a boolean value, and should only
+take on the values ``EGL_TRUE`` (1) and ``EGL_FALSE`` (0). If boolean parameters
 passed to EGL take on other values, behavior is undefined, although typically any
-non-zero value will be interpreted as EGL_TRUE.
+non-zero value will be interpreted as ``EGL_TRUE``.
 
-EGLint is an integral type used because EGL may need to represent scalar
+``EGLint`` is an integral type used because EGL may need to represent scalar
 values larger than the native platform ”int” type. All legal attribute names and
 values, whether their type is boolean, bitmask, enumerant (symbolic constant),
-integer, handle, or other, may be converted to and from EGLint without loss of
+integer, handle, or other, may be converted to and from ``EGLint`` without loss of
 information.
 
-Starting with the November, 2013 update of EGL 1.4, EGLint is defined to
-be at least the same size as the native platform int type. This change means
+Starting with the November, 2013 update of EGL 1.4, ``EGLint`` is defined to
+be at least the same size as the native platform ``int`` type. This change means
 that handle and pointer attribute values may not be representable in attribute lists
-on platforms where sizeof(pointer) > sizeof(EGLint). Existing extensions which
-assume that pointers can always be represented in EGLint attributes are being
+on platforms where sizeof(pointer) > sizeof(``EGLint``). Existing extensions which
+assume that pointers can always be represented in ``EGLint`` attributes are being
 replaced with new extensions specifying new entry points and attribute types, to
-work around this issue [#]_.
+work around this issue. [#]_
 
 .. [#] This functionality regression has been adopted because EGL implementations on some 64-bit
-       platforms chose their EGLint type to be a 32-bit integer type, and changing the definition would
-       break their ABIs in a way considered to be too disruptive to their application base. The EGL_KHR_cl_event2
-       and EGL_KHR_lock_surface3 extensions replace similar earlier extensions allowing pointers in
+       platforms chose their ``EGLint`` type to be a 32-bit integer type, and changing the definition would
+       break their ABIs in a way considered to be too disruptive to their application base. The ``EGL_KHR_cl_event2``
+       and ``EGL_KHR_lock_surface3`` extensions replace similar earlier extensions allowing pointers in
        attribute lists, and work around this regression by providing new interfaces using attribute
-       types which are guaranteed to be sufficiently large.
+       types which **are** guaranteed to be sufficiently large.
 
 2.1.2     Displays
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Most EGL calls include an EGLDisplay parameter. This represents the abstract
+Most EGL calls include an ``EGLDisplay`` parameter. This represents the abstract
 display on which graphics are drawn. In most environments a display corresponds
 to a single physical screen. The initialization routines described in section 3.2
-include a method for querying a default display, and platform-specific EGL extensions
+include a method for querying a *default display*, and platform-specific EGL extensions
 may be defined to obtain other displays.
 
-All EGL objects are associated with an EGLDisplay, and exist in a namespace
+All EGL objects are associated with an ``EGLDisplay``, and exist in a namespace
 defined by that display. Objects are always specified by the combination of an
-EGLDisplay parameter with a parameter representing the handle of the object.
+``EGLDisplay`` parameter with a parameter representing the handle of the object.
 
 2.2      Rendering Contexts and Drawing Surfaces
 ----------------------------------------------------------------------------------------------------
 
-The client API specifications are intentionally vague on how a rendering context
+The client API specifications are intentionally vague on how a *rendering context*
 (e.g. the state machine defined by a client API ) is created. One of the purposes
 of EGL is to provide a means to create client API rendering contexts (henceforth
-simply referred to as contexts), and associate them with drawing surfaces.
+simply referred to as *contexts*), and associate them with drawing surfaces.
 
 EGL defines several types of drawing surfaces collectively referred to as
-EGLSurfaces. These include windows, used for onscreen rendering; pbuffers,
-used for offscreen rendering; and pixmaps, used for offscreen rendering into buffers
+``EGLSurfaces``. These include *windows*, used for onscreen rendering; *pbuffers*,
+used for offscreen rendering; and *pixmaps*, used for offscreen rendering into buffers
 that may be accessed through native APIs. EGL windows and pixmaps are tied to
 native window system windows and pixmaps.
 
-EGLSurfaces are created with respect to an EGLConfig. The EGLConfig
+``EGLSurfaces`` are created with respect to an ``EGLConfig``. The ``EGLConfig``
 describes the depth of the color buffer components and the types, quantities and
-sizes of the ancillary buffers (i.e., the depth, multisample, and stencil buffers).
+sizes of the *ancillary buffers* (i.e., the depth, multisample, and stencil buffers).
 
-Ancillary buffers are associated with an EGLSurface, not with a context. If
+Ancillary buffers are associated with an ``EGLSurface``, not with a context. If
 several contexts are all writing to the same surface, they will share those buffers.
 Rendering operations to one window never affect the unobscured pixels of another
 window, or the corresponding pixels of ancillary buffers of that window.
@@ -151,7 +151,7 @@ ancillary buffers are not necessarily meaningful for every client API . In parti
 depth, multisample, and stencil buffers are currently used only by OpenGL and
 OpenGL ES .
 
-A context can be used with any EGLSurface that it is compatible with (subject
+A context can be used with any ``EGLSurface`` that it is *compatible* with (subject
 to the restrictions discussed in the section on address space). A surface and
 context are compatible if
 
@@ -169,16 +169,16 @@ context are compatible if
   the contexts are of the same depth. The stencil buffer is irrelevant because
   OpenVG does not use it.
 
-* The surface was created with respect to an EGLConfig supporting client
+* The surface was created with respect to an ``EGLConfig`` supporting client
   API rendering of the same type as the API type of the context (in environments
   supporting multiple client APIs ).
 
-* They were created with respect to the same EGLDisplay (in environments
+* They were created with respect to the same ``EGLDisplay`` (in environments
   supporting multiple displays).
 
 As long as the compatibility constraint and the address space requirement are
-satisfied, clients can render into the same EGLSurface using different contexts.
-It is also possible to use a single context to render into multiple EGLSurfaces.
+satisfied, clients can render into the same ``EGLSurface`` using different contexts.
+It is also possible to use a single context to render into multiple ``EGLSurfaces``.
 
 2.2.1    Using Rendering Contexts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -187,10 +187,10 @@ OpenGL and OpenGL ES define both client state and server state. Thus an
 OpenGL or OpenGL ES context consists of two parts: one to hold the client state
 and one to hold the server state. OpenVG does not separate client and server state.
 
-The OpenGL , OpenGL ES , and OpenVG client APIs rely on an implicit context
+The OpenGL , OpenGL ES , and OpenVG client APIs rely on an *implicit* context
 used by all entry points, rather than passing an explicit context parameter. The
 implicit context for each API is set with EGL calls (see section 3.7.3). The implicit
-contexts used by these APIs are called current contexts.
+contexts used by these APIs are called *current contexts*.
 
 Each thread can have at most one current rendering context for each supported
 client API ; for example, there may be both a current OpenGL ES context and
@@ -209,7 +209,7 @@ and single buffered.
 Back buffered rendering is used by window and pbuffer surfaces. Memory for
 the color buffer used during rendering is allocated and owned by EGL. When the
 client is finished drawing a frame, the back buffer may be copied to a visible window
-using eglSwapBuffers. Pbuffer surfaces have a back buffer but no associated
+using **eglSwapBuffers**. Pbuffer surfaces have a back buffer but no associated
 window, so the back buffer need not be copied.
 
 Single buffered rendering is used by pixmap surfaces. Memory for the color
@@ -228,7 +228,7 @@ must be kept consistent when binding window surfaces to contexts for each API
 type (see section 3.7.3).
 
 Both back and single buffered surfaces may also be copied to a specified native
-pixmap using eglCopyBuffers.
+pixmap using **eglCopyBuffers**.
 
 2.2.2.1   Native Surface Coordinate Systems
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -238,9 +238,9 @@ inverted relative to the OpenGL , OpenGL ES , and OpenVG client API coordinate
 systems. In such systems, native windows and pixmaps have (0, 0) in the upper left
 of the pixmap, while the client APIs have (0, 0) in the lower left. To accomodate
 this, client API rendering to window and pixmap surfaces must invert their own
-y coordinate when accessing the color buffer in the underlying native window or
+*y* coordinate when accessing the color buffer in the underlying native window or
 pixmap, so that the resulting images appear as intended by the application when the
-final image is displayed by eglSwapBuffers or copied from a pixmap to a visible
+final image is displayed by **eglSwapBuffers** or copied from a pixmap to a visible
 window using native rendering APIs.
 
 2.2.2.2   Window Resizing
@@ -253,7 +253,7 @@ may instead define an EGL extension giving explicit control of surface
 resizing.
 
 Implementations which cannot resize EGL window surfaces on demand must
-instead respond to native window size changes in eglSwapBuffers (see section
+instead respond to native window size changes in **eglSwapBuffers** (see section
 3.9.3).
 
 2.2.3     Interaction With Native Rendering
@@ -287,8 +287,8 @@ surfaces.
 2.3     Direct Rendering and Address Spaces
 ----------------------------------------------------------------------------------------------------
 
-EGL is assumed to support only direct rendering, unlike similar APIs such as GLX.
-EGL objects and related context state cannot be used outside of the address space
+EGL is assumed to support only *direct* rendering, unlike similar APIs such as GLX.
+EGL objects and related context state cannot be used outside of the *address space*
 in which they are created. In a single-threaded environment, each process has its
 own address space. In a multi-threaded environment, all threads may share the
 same virtual address space; however, this capability is not required, and implementations
@@ -322,7 +322,7 @@ defined by the corresponding client API specifications.
 
 Texture state can be encapsulated in a named texture object. A texture object
 is created by binding an unused name to one of the supported texture targets
-(GL_TEXTURE_2D, GL_TEXTURE_3D, or GL_TEXTURE_CUBE_MAP) of OpenGL
+(``GL_TEXTURE_2D``, ``GL_TEXTURE_3D``, or ``GL_TEXTURE_CUBE_MAP``) of OpenGL
 or OpenGL ES context. When a texture object is bound, operations on the target to
 which it is bound affect the bound texture object, and queries of the target to which
 it is bound return state from the bound texture object.
@@ -333,7 +333,7 @@ programmer to ensure that the contents of the object are not being changed via o
 context while another context is using the texture object for rendering. The results
 of changing a texture object while another context is using it are undefined.
 
-All modifications to shared context state as a result of executing glBindTexture
+All modifications to shared context state as a result of executing **glBindTexture**
 are atomic. Also, a texture object will not be deleted while it is still bound to any
 context.
 
@@ -346,7 +346,7 @@ being changed via one context while another context is using the buffer object f
 rendering. The results of changing a buffer object while another context is using it
 are undefined.
 
-All modifications to shared context state as a result of executing glBindBuffer
+All modifications to shared context state as a result of executing **glBindBuffer**
 are atomic. Also, a buffer object will not be deleted while it is still bound to any
 context.
 
@@ -369,8 +369,8 @@ hardware, or drawing a large OpenGL ES vertex array, could prevent a user from
 popping up a menu soon enough to be usable.
 
 Synchronization is in the hands of the client. It can be maintained at moderate
-cost with the judicious use of commands such as glFinish, vgFinish, eglWaitClient,
-and eglWaitNative, as well as (if they exist) synchronization commands
+cost with the judicious use of commands such as **glFinish**, **vgFinish**, **eglWaitClient**,
+and **eglWaitNative**, as well as (if they exist) synchronization commands
 present in native rendering APIs. Client API and native rendering can be done
 in parallel so long as the client does not preclude it with explicit synchronization
 calls.
@@ -383,18 +383,18 @@ client APIs and native rendering is done.
 
 Power management events can occur asynchronously while an application is
 running. When the system returns from the power management event the
-EGLContext will be invalidated, and all subsequent client API calls will have
+``EGLContext`` will be invalidated, and all subsequent client API calls will have
 no effect (as if no context is bound).
 
-Following a power management event, calls to eglSwapBuffers, eglCopyBuffers,
-or eglMakeCurrent will indicate failure by returning EGL_FALSE. The
-error EGL_CONTEXT_LOST will be returned if a power management event has occurred.
+Following a power management event, calls to **eglSwapBuffers**, **eglCopyBuffers**,
+or **eglMakeCurrent** will indicate failure by returning ``EGL_FALSE``. The
+error ``EGL_CONTEXT_LOST`` will be returned if a power management event has occurred.
 On detection of this error, the application must destroy all contexts (by calling
-eglDestroyContext for each context). To continue rendering the application must
+**eglDestroyContext** for each context). To continue rendering the application must
 recreate any contexts it requires, and subsequently restore any client API state and
 objects it wishes to use.
 
-Any EGLSurfaces that the application has created need not be destroyed
+Any ``EGLSurfaces`` that the application has created need not be destroyed
 following a power management event, but their contents will be invalid.
 
 Note that not all implementations can be made to generate power management
@@ -414,17 +414,17 @@ Chapter 3 - EGL Functions and Errors
 Where possible, when an EGL function fails it has no side effects.
 
 EGL functions usually return an indicator of success or failure; either an
-EGLBoolean EGL_TRUE or EGL_FALSE value, or in the form of an out-of-band
-return value indicating failure, such as returning EGL_NO_CONTEXT instead of a
+``EGLBoolean`` ``EGL_TRUE`` or ``EGL_FALSE`` value, or in the form of an out-of-band
+return value indicating failure, such as returning ``EGL_NO_CONTEXT`` instead of a
 requested context handle. Additional information about the success or failure of
-the most recent EGL function called in a specific thread [#]_, in the form of an error
+the **most recent** EGL function called in a specific thread, [#]_ in the form of an error
 code, can be obtained by calling
 
 .. code:: cpp
 
   EGLint eglGetError(void);
 
-The error codes that may be returned from eglGetError, and their meanings,
+The error codes that may be returned from **eglGetError**, and their meanings,
 are:
 
 EGL_SUCCESS
@@ -450,25 +450,25 @@ EGL_BAD_ATTRIBUTE
   this error.
 
 EGL_BAD_CONTEXT
-  An EGLContext argument does not name a valid EGLContext. Any
-  command taking an EGLContext parameter may generate this error.
+  An ``EGLContext`` argument does not name a valid ``EGLContext``. Any
+  command taking an ``EGLContext`` parameter may generate this error.
 
 EGL_BAD_CONFIG
-  An EGLConfig argument does not name a valid EGLConfig. Any command
-  taking an EGLConfig parameter may generate this error.
+  An ``EGLConfig`` argument does not name a valid ``EGLConfig``. Any command
+  taking an ``EGLConfig`` parameter may generate this error.
 
 EGL_BAD_CURRENT_SURFACE
   The current surface of the calling thread is a window, pbuffer, or pixmap that
   is no longer valid.
 
 EGL_BAD_DISPLAY
-  An EGLDisplay argument does not name a valid EGLDisplay. Any
-  command taking an EGLDisplay parameter may generate this error.
+  An ``EGLDisplay`` argument does not name a valid ``EGLDisplay``. Any
+  command taking an ``EGLDisplay`` parameter may generate this error.
 
 EGL_BAD_SURFACE
-  An EGLSurface argument does not name a valid surface (window,
+  An ``EGLSurface`` argument does not name a valid surface (window,
   pbuffer, or pixmap) configured for rendering. Any command taking an
-  EGLSurface parameter may generate this error.
+  ``EGLSurface`` parameter may generate this error.
 
 EGL_BAD_MATCH
   Arguments are inconsistent; for example, an otherwise valid context requires
@@ -479,13 +479,13 @@ EGL_BAD_PARAMETER
   may generate this error.
 
 EGL_BAD_NATIVE_PIXMAP
-  An EGLNativePixmapType argument does not refer to a valid native
-  pixmap. Any command taking an EGLNativePixmapType parameter
+  An ``EGLNativePixmapType`` argument does not refer to a valid native
+  pixmap. Any command taking an ``EGLNativePixmapType`` parameter
   may generate this error.
 
 EGL_BAD_NATIVE_WINDOW
-  An EGLNativeWindowType argument does not refer to a valid native
-  window. Any command taking an EGLNativeWindowType parameter
+  An ``EGLNativeWindowType`` argument does not refer to a valid native
+  window. Any command taking an ``EGLNativeWindowType`` parameter
   may generate this error.
 
 EGL_CONTEXT_LOST
@@ -493,12 +493,12 @@ EGL_CONTEXT_LOST
   contexts and reinitialise client API state and objects to continue rendering,
   as described in section 2.6. Any command may generate this error.
 
-When there is no status to return (in other words, when eglGetError is called
-as the first EGL call in a thread, or immediately after calling eglReleaseThread),
-EGL_SUCCESS will be returned.
+When there is no status to return (in other words, when **eglGetError** is called
+as the first EGL call in a thread, or immediately after calling **eglReleaseThread**),
+``EGL_SUCCESS`` will be returned.
 
-.. [#] Note that calling eglGetError twice without any other intervening EGL calls will always return
-       EGL_SUCCESS on the second call, since eglGetError is itself an EGL function, and the second
+.. [#] Note that calling **eglGetError** twice without any other intervening EGL calls will always return
+       ``EGL_SUCCESS`` on the second call, since **eglGetError** is itself an EGL function, and the second
        call is reporting the success or failure of the first call. In other words, error checking must always be
        performed immediately after an EGL function fails.
 
@@ -511,8 +511,8 @@ EGL_SUCCESS will be returned.
 Some specific error codes that may be generated by a failed EGL function,
 and their meanings, are described together with each function. However, not all
 possible errors are described with each function. Errors whose meanings are identical
-across many functions (such as returning EGL_BAD_DISPLAY or EGL_NOT_INITIALIZED
-for an unsuitable EGLDisplay argument) may not be described
+across many functions (such as returning ``EGL_BAD_DISPLAY`` or ``EGL_NOT_INITIALIZED``
+for an unsuitable ``EGLDisplay`` argument) may not be described
 repeatedly. Some of the error codes above describe a class of commands which
 may generate them. Such errors are not necessarily described repeatedly together
 with each such command in the class.
@@ -523,7 +523,7 @@ with each such command in the class.
 EGL normally checks the validity of objects passed into it, but detecting invalid
 native objects (pixmaps, windows, and displays) may not always be possible.
 Specifying such invalid handles may result in undefined behavior, although
-implementations should generate EGL_BAD_NATIVE_PIXMAP and EGL_BAD_NATIVE_WINDOW
+implementations should generate ``EGL_BAD_NATIVE_PIXMAP`` and ``EGL_BAD_NATIVE_WINDOW``
 errors if possible.
 
 3.2       Initialization
@@ -535,15 +535,15 @@ A display can be obtained by calling
 
   EGLDisplay eglGetDisplay(EGLNativeDisplayType display_id);
 
-The type and format of display id are implementation-specific, and it describes a
+The type and format of *display_id* are implementation-specific, and it describes a
 specific display provided by the system EGL is running on. For example, an EGL
-implementation under X windows could define display id to be an X Display,
-while an implementation under Microsoft Windows could define display id to be
-a Windows Device Context. If display id is EGL_DEFAULT_DISPLAY, a default
-display is returned. Multiple calls made to eglGetDisplay with the same display_id
-will all return the same EGLDisplay handle.
+implementation under X windows could define *display_id* to be an X ``Display``,
+while an implementation under Microsoft Windows could define *display_id* to be
+a Windows Device Context. If *display_id* is ``EGL_DEFAULT_DISPLAY``, a *default
+display* is returned. Multiple calls made to **eglGetDisplay** with the same *display_id*
+will all return the same ``EGLDisplay`` handle.
 
-If no display matching display id is available, EGL_NO_DISPLAY is returned;
+If no display matching *display_id* is available, ``EGL_NO_DISPLAY`` is returned;
 no error condition is raised in this case.
 
 EGL may be initialized on a display by calling
@@ -790,7 +790,7 @@ of the color buffer, the green and blue components are discarded, and the alpha
 component is written to the alpha channel of the color buffer (if present).
 
 EGL_BUFFER_SIZE gives the total of the color component bits of the color
-buffer [#]_. For an RGB color buffer, the total is the sum of EGL_RED_SIZE, EGL_GREEN_SIZE,
+buffer. [#]_ For an RGB color buffer, the total is the sum of EGL_RED_SIZE, EGL_GREEN_SIZE,
 EGL_BLUE_SIZE, and EGL_ALPHA_SIZE. For a luminance color
 buffer, the total is the sum of EGL_LUMINANCE_SIZE and EGL_ALPHA_SIZE.
 
@@ -1108,7 +1108,7 @@ attributes are ignored.
 
 If EGL_MATCH_NATIVE_PIXMAP is specified in attrib list, it must be followed
 by an attribute value which is the handle of a valid native pixmap. Only
-EGLConfigs which support rendering to that pixmap will match this attribute [#]_.
+EGLConfigs which support rendering to that pixmap will match this attribute. [#]_
 
 If no EGLConfig matching the attribute list exists, then the call succeeds, but
 num config is set to 0.
@@ -1141,7 +1141,7 @@ Sorting for each rule is either numerically Smaller or Larger as described in th
 3. Special: by larger total number of color bits (for an RGB color buffer,
    this is the sum of EGL_RED_SIZE, EGL_GREEN_SIZE, EGL_BLUE_SIZE,
    and EGL_ALPHA_SIZE; for a luminance color buffer, the sum of EGL_LUMINANCE_SIZE
-   and EGL_ALPHA_SIZE) [#]_ If the requested number of bits
+   and EGL_ALPHA_SIZE). [#]_ If the requested number of bits
    in attrib list for a particular color component is 0 or EGL_DONT_CARE, then
    the number of bits for that component is not considered.
 
@@ -1279,8 +1279,8 @@ exception of EGL_MATCH_NATIVE_PIXMAP.
 To create an on-screen rendering surface, first create a native platform window
 whose pixel format corresponds to the format, type, and size of the color buffers
 required by config. On some implementations, the pixel format of the native window
-must match that of the EGLConfig [#]_. Other implementations may allow any
-win and config to correspond, even if their formats differ [#]_.
+must match that of the EGLConfig. [#]_ Other implementations may allow any
+win and config to correspond, even if their formats differ. [#]_
 
 Using the platform-specific type EGLNativeWindowType, which is the
 type of a handle to that native window, then call:
@@ -1546,7 +1546,7 @@ may fail and generate errors for the following reasons:
 
 * There may be additional constraints on which types of buffers may be bound
   to EGL surfaces, as described in client API specifications. If those constraints
-  are violated, then an EGL_BAD_MATCH error is generated [#]_.
+  are violated, then an EGL_BAD_MATCH error is generated. [#]_
 
 * If buffer is already bound to another pbuffer, or is in use by a client API as
   discussed below, an EGL_BAD_ACCESS error is generated.
@@ -1792,7 +1792,7 @@ be less than the requested size if EGL_LARGEST_PBUFFER is EGL_TRUE).
 Querying EGL_HORIZONTAL_RESOLUTION and EGL_VERTICAL_RESOLUTION returns respectively
 the horizontal and vertical dot pitch of the display on which a window surface is
 visible. The values returned are equal to the actual dot pitch, in pixels/meter,
-multiplied by the constant value EGL_DISPLAY_SCALING (10000) [#]_.
+multiplied by the constant value EGL_DISPLAY_SCALING (10000). [#]_
 
 Querying EGL_PIXEL_ASPECT_RATIO returns the aspect ratio of an individual
 pixel (the ratio of a pixel’s width to its height), multiplied by EGL_DISPLAY_SCALING.
@@ -2002,12 +2002,12 @@ contexts to surfaces, making them current.
 
 At most one context for each supported client API may be current to a particular
 thread at a given time, and at most one context may be bound to a particular surface
-at a given time [#]_. The minimum number of current contexts that must be supported
-by an EGL implementation is one for each supported client API [#]_.
+at a given time. [#]_ The minimum number of current contexts that must be supported
+by an EGL implementation is one for each supported client API. [#]_
 
 Only one OpenGL or OpenGL ES context may be current to a particular
 thread, even if the implementation supports OpenGL and both OpenGL ES 1.x and
-OpenGL ES 2.x in the same runtime [#]_. This restriction is enforced by eglMakeCurrent
+OpenGL ES 2.x in the same runtime. [#]_ This restriction is enforced by eglMakeCurrent
 as described in section 3.7.3.
 
 Some of the functions described in this section make use of the current rendering
@@ -2027,7 +2027,7 @@ eglCopyBuffers, eglSwapBuffers, eglMakeCurrent (when its ctx parameter is
 EGL_NO_CONTEXT), eglWaitClient, or eglWaitNative.
 
 EGL_OPENGL_API and EGL_OPENGL_ES_API are interchangeable for all purposes
-except eglCreateContext [#]_.
+except eglCreateContext. [#]_
 
 eglBindAPI returns EGL_FALSE on failure. If api is not one of the values
 specified above, or if the client API specified by api is not supported by the implementation,
@@ -2223,7 +2223,7 @@ eglMakeCurrent returns EGL_FALSE on failure. Errors generated may include:
   is generated.
 
 * As with other commands taking EGLDisplay parameters, if dpy is not a
-  valid EGLDisplay handle, an EGL_BAD_DISPLAY error is generated [#]_.
+  valid EGLDisplay handle, an EGL_BAD_DISPLAY error is generated. [#]_
 
 Other errors may arise when the context state is inconsistent with the surface
 state, as described in the following paragraphs.
@@ -2498,7 +2498,7 @@ The contents of ancillary buffers are always undefined after calling eglSwapBuff
 The contents of the color buffer are undefined if the value of the EGL_SWAP_BEHAVIOR
 attribute of surface is not EGL_BUFFER_PRESERVED. The value
 of EGL_SWAP_BEHAVIOR can be set for some surfaces using eglSurfaceAttrib, as
-described in section 3.5.6 [#]_.
+described in section 3.5.6. [#]_
 
 .. [#] The EGL 1.4 specification has been updated to acknowledge that ancillary buffers are not necessarily
        preserved after a swap, and that the EGL_SWAP_BEHAVIOR attribute applies only to
@@ -2640,7 +2640,7 @@ extension function is actually supported at runtime. The client must also make
 a corresponding query, such as glGetString(GL_EXTENSIONS) for OpenGL and
 OpenGL ES extensions; vgGetString(VG_EXTENSIONS) for OpenVG extensions;
 or eglQueryString(dpy, EGL_EXTENSIONS) for EGL extensions, to determine if
-an extension is supported by a particular client API context [#]_
+an extension is supported by a particular client API context. [#]_
 
 Client API function pointers returned by eglGetProcAddress are independent
 of the display and the currently bound client API context, and may be used by any
@@ -2653,7 +2653,7 @@ eglGetProcAddress may be queried for all of the following functions:
   context or not). This includes any mandatory OpenGL ES extensions.
 
 eglGetProcAddress may not be queried for core (non-extension) functions in
-EGL or client APIs [#]_.
+EGL or client APIs. [#]_
 
 For functions that are queryable with eglGetProcAddress, implementations
 may choose to also export those functions statically from the object libraries implementing
